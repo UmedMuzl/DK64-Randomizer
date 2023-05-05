@@ -1686,10 +1686,10 @@ def applyHolidayMode(spoiler: Spoiler):
 
 
 boot_phrases = (
-    "You are lousy",
-    "Good Luck",
-    "The lottery Numbers are.. I forgot",
-    "DK Arcade Round 2 is Way of the Hoard"
+    "Adding Oops All Stealthy Snoop"
+    "Never Asking Umed For Another Seed"
+    "Bean is WOTH"
+    "Removing Will To Live"
 )
 
 

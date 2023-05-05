@@ -275,7 +275,7 @@ void initHack(int source) {
 				*(int*)(0x806ADDC0) = 0x0C000000 | (((int)&handleSpiderTrapCode & 0xFFFFFF) >> 2);
 				*(short*)(0x806B12DA) = 0x3A9; // Kasplat Shockwave Chance
 				*(short*)(0x806B12FE) = 0x3B3; // Kasplat Shockwave Chance
-				actor_health_damage[259].init_health = 9; // Increase Guard Health
+				actor_health_damage[259].init_health = 24; // Increase Guard Health
 			}
 			// Fix some silk memes
 			*(int*)(0x806ADA6C) = 0;

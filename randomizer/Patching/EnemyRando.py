@@ -216,6 +216,9 @@ def isBanned(new_enemy_id: Enemies, cont_map_id: Maps, spawner: Spawner, no_grou
         return True
     if cont_map_id == Maps.ForestGiantMushroom and spawner.index in (3, 4):
         return True
+    if new_enemy_id == Enemies.Guard and cont_map_id == Maps.GloomyGalleon: 
+        if spawner.index in (12, 18):
+            return True 
     gun_enemy_gauntlets = (
         Maps.ForestMillAttic,
         Maps.CavesDonkeyCabin,

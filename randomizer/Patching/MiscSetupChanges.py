@@ -251,7 +251,7 @@ def randomize_setup(spoiler: Spoiler):
                     ROM().writeMultipleBytes(int(float_to_hex(star_x), 16), 4)
                     if cont_map_id == Maps.GalleonBoss:
                         ROM().seek(item_start + 4)
-                        ROM().writeMultipleBytes(int(float_to_hex(325), 16), 4)
+                        ROM().writeMultipleBytes(int(float_to_hex(345), 16), 4)
                     ROM().seek(item_start + 8)
                     ROM().writeMultipleBytes(int(float_to_hex(star_z), 16), 4)
                     ROM().seek(item_start + 0x1C)

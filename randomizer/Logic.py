@@ -776,6 +776,8 @@ class LogicVarHolder:
             hasRequiredMoves = self.hunkyChunky and self.barrels
         elif bossFight == Maps.JapesBoss or bossFight == Maps.AztecBoss or bossFight == Maps.CavesBoss:
             hasRequiredMoves = self.barrels
+        elif bossFight == Maps.CastleBoss:
+            hasRequiredMoves = self.InstUpgrades >= 2
         return self.IsKong(requiredKong) and hasRequiredMoves
 
     def HasFillRequirementsForLevel(self, level):
