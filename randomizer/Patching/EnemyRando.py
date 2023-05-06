@@ -197,6 +197,7 @@ banned_enemy_maps = {
     Enemies.Book: [Maps.CavesDonkeyCabin, Maps.JapesLankyCave, Maps.AngryAztecLobby],
     Enemies.Kosha: [Maps.CavesDiddyLowerCabin, Maps.CavesTinyCabin],
     Enemies.Guard: [Maps.CavesDiddyLowerCabin, Maps.CavesTinyIgloo, Maps.CavesTinyCabin],
+    Enemies.SpiderSmall: [Maps.CavesDiddyLowerCabin, Maps.CavesTinyIgloo, Maps.CavesTinyCabin],
 }
 
 
@@ -219,6 +220,9 @@ def isBanned(new_enemy_id: Enemies, cont_map_id: Maps, spawner: Spawner, no_grou
     if new_enemy_id == Enemies.Guard and cont_map_id == Maps.GloomyGalleon: 
         if spawner.index in (12, 18):
             return True 
+    if new_enemy_id == Enemies.Guard and cont_map_id == Maps.FranticFactory:
+        if spawner.index in (59, 62, 63, 73, 87, 88):  # Various enemies that are in tight hallways that are difficult to navigate around
+            return True
     gun_enemy_gauntlets = (
         Maps.ForestMillAttic,
         Maps.CavesDonkeyCabin,
@@ -504,7 +508,6 @@ def randomize_enemies(spoiler: Spoiler):
             Enemies.MrDice1,
             Enemies.SirDomino,
             Enemies.FireballGlasses,
-            Enemies.SpiderSmall,
             Enemies.Ghost,
         ],
         EnemySubtype.Air: [
@@ -516,6 +519,7 @@ def randomize_enemies(spoiler: Spoiler):
             # Enemies.Book, # Causes way too many problems
         ],
         EnemySubtype.GroundBeefy: [
+            Enemies.SpiderSmall,
             Enemies.Klump,
             Enemies.RoboKremling,
             # Enemies.EvilTomato, # Causes way too many problems
