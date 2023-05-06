@@ -791,19 +791,13 @@ class LogicVarHolder:
             # Levels have some special requirements depending on where they fall in the level order
             order_of_level = 8  # If order_of_level remains unchanged in the coming loop, then the level is Helm which is always 8th
             order_of_aztec = 0
-            order_of_galleon = 0
             for level_order in self.settings.level_order:
                 if self.settings.level_order[level_order] == level:
                     order_of_level = level_order
                 if self.settings.level_order[level_order] == Levels.AngryAztec:
                     order_of_aztec = level_order
-                if self.settings.level_order[level_order] == Levels.GloomyGalleon:
-                    order_of_aztec = level_order
             # You need to have vines or twirl before you can enter Aztec or any level beyond it
             if order_of_level >= order_of_aztec and not (self.vines or (self.istiny and self.twirl)):
-                return False
-            # You need to have enough health for this cursed version of Galleon (probably not 3 melons, but let's be reasonable)
-            if order_of_level >= order_of_aztec and not (self.InstUpgrades >= 2):
                 return False
             if order_of_level >= 3:
                 # Require barrels by level 3 to prevent boss barrel fill failures
@@ -826,6 +820,9 @@ class LogicVarHolder:
         # We must meet the fill's kong and move requirements to enter this level
         if not self.HasFillRequirementsForLevel(level):
             return False
+        if level == Levels.GloomyGalleon:
+            if not self.InstUpgrades >= 2:
+                return False
         # Calculate what levels we can glitch into
         dk_skip_levels = [Levels.AngryAztec, Levels.GloomyGalleon, Levels.FungiForest, Levels.CrystalCaves, Levels.CreepyCastle]
         if self.CanMoonkick():
