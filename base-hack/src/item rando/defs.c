@@ -390,11 +390,13 @@ void initActorExpansion(void) {
     actor_health_damage[183].init_health = 5; // Zinger
     actor_health_damage[238].init_health = 5; // Kremling
     actor_health_damage[206].init_health = 5; // Zinger
-    actor_health_damage[194].init_health = 10; // Shooting Vulture
+    actor_health_damage[194].init_health = 50; // Shooting Vulture
     actor_health_damage[230].init_health = 5; // Ruler
-    for (int i = 0; i < 5; i++) {
-        actor_health_damage[241 + i].init_health = 50; // Kasplat
-    }
+    actor_health_damage[241].init_health = 75; // DK's Kasplat
+    actor_health_damage[242].init_health = 100; //Diddy's Kasplat
+    actor_health_damage[243].init_health = 80; // Lanky's Kasplat
+    actor_health_damage[244].init_health = 90; // Tiny's Kasplat
+    actor_health_damage[245].init_health = 150; // Chunky's Kasplat
     actor_health_damage[269].init_health = 5; // Mr. Dice
     actor_health_damage[271].init_health = 5; // Mr. Dice
     actor_health_damage[276].init_health = 100; // Spiders
