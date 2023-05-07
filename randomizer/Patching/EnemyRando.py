@@ -624,6 +624,8 @@ def randomize_enemies(spoiler: Spoiler):
                         if spawner.enemy_id in class_types:
                             if cont_map_id != Maps.FranticFactory or spawner.index < 35 or spawner.index > 44:
                                 new_enemy_id = arr[sub_index]
+                                if cont_map_id == Maps.CastleBoss:
+                                    new_enemy_id = Enemies.BeaverGold
                                 sub_index += 1
                                 if not isBanned(new_enemy_id, cont_map_id, spawner, no_ground_simple_selected):
                                     writeEnemy(spoiler, cont_map_spawner_address, new_enemy_id, spawner, cont_map_id, 0)
