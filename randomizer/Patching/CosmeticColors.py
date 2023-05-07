@@ -1688,7 +1688,7 @@ def applyHolidayMode(spoiler: Spoiler):
 boot_phrases = (
     "Adding Oops All Stealthy Snoop",
     "Never Asking Umed For Another Seed",
-    "Bean is WOTH",
+    "Removing Cylinder",
     "Removing Will To Live"
 )
 
