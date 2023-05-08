@@ -278,6 +278,24 @@ def getFile(table_index: int, file_index: int, compressed: bool, width: int, hei
             pix[x, y] = (red, green, blue, alpha)
     return im_f
 
+def getIAFile(table_index: int, file_index: int, compressed: bool, width: int, height: int):
+    """Grab image from file."""
+    file_start = js.pointer_addresses[table_index]["entries"][file_index]["pointing_to"]
+    file_end = js.pointer_addresses[table_index]["entries"][file_index + 1]["pointing_to"]
+    file_size = file_end - file_start
+    ROM().seek(file_start)
+    data = ROM().readBytes(file_size)
+    if compressed:
+        data = zlib.decompress(data, (15 + 32))
+    im_f = Image.new(mode="L", size=(width, height))
+    pix = im_f.load()
+    for y in range(height):
+        for x in range(width):
+            offset = ((y * width) + x)
+            pix_data = int.from_bytes([data[offset]], "big")
+            pix[x, y] = (pix_data)
+    return im_f
+
 
 def getRGBFromHash(hash: str):
     """Convert hash RGB code to rgb array."""
@@ -512,6 +530,31 @@ def maskImageWithOutline(im_f, base_index, min_y, colorblind_mode, type=""):
                     ):
                         pix[x, y] = (mask2[0], mask2[1], mask2[2], base[3])
     return im_f
+
+
+def writeIAImageToROM(im_f, table_index, file_index, width, height):
+    """Write texture to ROM."""
+    file_start = js.pointer_addresses[table_index]["entries"][file_index]["pointing_to"]
+    file_end = js.pointer_addresses[table_index]["entries"][file_index + 1]["pointing_to"]
+    file_size = file_end - file_start
+    ROM().seek(file_start)
+    pix = im_f.load()
+    width, height = im_f.size
+    bytes_array = []
+    for y in range(height):
+        for x in range(width):
+            value = pix[x, y]
+            bytes_array.append(value)
+    data = bytearray(bytes_array)
+    bytes_per_px = 1
+    if len(data) > (bytes_per_px * width * height):
+        print(f"Image too big error: {table_index} > {file_index}")
+    if table_index in (14, 25):
+        data = gzip.compress(data, compresslevel=9)
+    if len(data) > file_size:
+        print(f"File too big error: {table_index} > {file_index}")
+        print(file_size, " <", len(data))
+    ROM().writeBytes(data)
 
 
 def writeColorImageToROM(im_f, table_index, file_index, width, height, transparent_border: bool, format: str):
@@ -1197,6 +1240,19 @@ def recolorMushrooms():
         mushroom_image_side_2 = maskMushroomImage(mushroom_image_side_2, reference_mushroom_image_side2, color_bases[file], True)
         writeColorImageToROM(mushroom_image_side_2, 25, files_table_25_side_2[file], 64, 32, False, TextureFormat.RGBA5551)
 
+def beanify_sun(sun):
+    pix_bean = [0, 0, 0, 0, 0, 151, 106, 136, 151, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 121, 136, 136, 151, 136, 121, 0, 0, 0, 0, 0, 0, 121, 91, 121, 136, 151, 151, 136, 151, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 91, 121, 136, 166, 166, 166, 151, 151, 136, 0, 0, 0, 166, 151, 106, 106, 136, 136, 166, 181, 181, 151, 0, 0, 0, 0, 0, 0, 0, 0, 0, 91, 91, 121, 151, 181, 196, 181, 166, 151, 136, 136, 151, 151, 136, 106, 121, 121, 136, 151, 181, 211, 196, 166, 151, 106, 106, 166, 0, 0, 0, 0, 0, 76, 91, 121, 136, 166, 211, 211, 196, 181, 166, 151, 136, 136, 121, 121, 136, 136, 136, 166, 181, 196, 181, 166, 136, 106, 91, 121, 0, 166, 0, 0, 0, 61, 76, 106, 121, 151, 181, 211, 211, 196, 196, 181, 166, 151, 151, 136, 136, 136, 136, 151, 166, 166, 151, 136, 136, 106, 91, 136, 166, 151, 0, 0, 0, 136, 61, 91, 106, 121, 151, 181, 211, 211, 211, 211, 181, 181, 166, 151, 136, 136, 136, 136, 136, 136, 121, 121, 121, 106, 76, 121, 166, 151, 0, 0, 0, 0, 46, 76, 91, 106, 121, 151, 166, 181, 196, 196, 181, 166, 151, 151, 136, 136, 136, 121, 121, 121, 121, 106, 106, 106, 76, 106, 166, 151, 0, 0, 0, 0, 76, 61, 76, 91, 106, 121, 136, 136, 151, 151, 151, 151, 136, 136, 121, 121, 106, 106, 106, 106, 106, 106, 91, 91, 0, 106, 106, 136, 136, 0, 0, 0, 0, 46, 61, 76, 91, 106, 106, 121, 121, 136, 121, 121, 121, 106, 106, 106, 106, 106, 91, 106, 91, 91, 91, 91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 61, 46, 61, 76, 76, 91, 91, 106, 106, 106, 106, 106, 91, 106, 91, 91, 91, 76, 91, 76, 76, 76, 136, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 46, 61, 61, 76, 76, 91, 91, 91, 91, 91, 76, 91, 76, 76, 76, 76, 76, 76, 61, 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 46, 46, 46, 61, 61, 76, 76, 76, 76, 76, 76, 61, 61, 61, 61, 61, 46, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 46, 46, 46, 46, 46, 46, 61, 46, 46, 61, 46, 46, 46, 46, 46, 61, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 136, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 46, 151, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 121, 46, 46, 46, 46, 46, 46, 46, 61, 136, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    pix_sun = sun.load()
+    w, h = sun.size
+    pixel_counter = 0
+    for x in range(w):
+        for y in range(h):
+            if y > 15 and y < 48 and x > 23 and x < 40:
+                if pix_bean[pixel_counter] > 0:
+                    pix_sun[y, x] = pix_bean[pixel_counter]
+                pixel_counter = pixel_counter + 1
+    return sun
+
 
 BALLOON_START = [5835, 5827, 5843, 5851, 5819]
 
@@ -1205,6 +1261,9 @@ def overwrite_object_colors(spoiler: Spoiler):
     """Overwrite object colors."""
     global color_bases
     mode = spoiler.settings.colorblind_mode
+    sun = getIAFile(14, 0x4D, True, 64, 64)
+    sun_output = beanify_sun(sun)
+    writeIAImageToROM(sun_output, 14, 0x4D, 64, 64)
     if mode != ColorblindMode.off:
         if mode == ColorblindMode.prot:
             color_bases = ["#000000", "#0072FF", "#766D5A", "#FFFFFF", "#FDE400"]

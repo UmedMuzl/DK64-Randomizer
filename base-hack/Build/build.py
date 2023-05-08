@@ -220,6 +220,16 @@ for bell in [692, 693]:
         )
     )
 
+file_dict.append(
+        File(
+            name=f"Sun",
+            pointer_table_index=TableNames.TexturesHUD,
+            file_index=0x4D,
+            source_file=f"sun.png",
+            target_size=64 * 32,
+        )
+    )
+
 for klap_tex in [0xF31, 0xF32, 0xF33, 0xF35, 0xF37, 0xF38, 0xF39, 0xF3C, 0xF3D, 0xF3E, 0xF3F, 0xF40, 0xF41, 0xF44, 0xF45, 0xF46, 0xF47, 0xF48, 0xF49]:
     file_dict.append(
         File(
