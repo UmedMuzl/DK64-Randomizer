@@ -515,15 +515,15 @@ class Settings:
         # Helm Doors
         helmdoor_items = {
             HelmDoorItem.req_gb: {"max": 201, "random_min": 20, "random_max": 100},
-            HelmDoorItem.req_bp: {"max": 40, "random_min": 7, "random_max": 30},
-            HelmDoorItem.req_companycoins: {"max": 2, "random_min": 1, "random_max": 2},
+            HelmDoorItem.req_bp: {"max": 40, "random_min": 10, "random_max": 30},
+            HelmDoorItem.req_companycoins: {"max": 2, "random_min": 2, "random_max": 2},
             HelmDoorItem.req_key: {"max": 8, "random_min": 4, "random_max": 7},
-            HelmDoorItem.req_medal: {"max": 40, "random_min": 5, "random_max": 20},
-            HelmDoorItem.req_crown: {"max": 10, "random_min": 2, "random_max": 6},
-            HelmDoorItem.req_fairy: {"max": 18, "random_min": 3, "random_max": 10},  # Remove two fairies since you can't get the final two fairies glitchless if on the crown door
-            HelmDoorItem.req_rainbowcoin: {"max": 16, "random_min": 4, "random_max": 10},
+            HelmDoorItem.req_medal: {"max": 40, "random_min": 10, "random_max": 25},
+            HelmDoorItem.req_crown: {"max": 10, "random_min": 4, "random_max": 8},
+            HelmDoorItem.req_fairy: {"max": 18, "random_min": 9, "random_max": 15},  # Remove two fairies since you can't get the final two fairies glitchless if on the crown door
+            HelmDoorItem.req_rainbowcoin: {"max": 16, "random_min": 6, "random_max": 15},
             HelmDoorItem.req_bean: {"max": 1, "random_min": 1, "random_max": 1},
-            HelmDoorItem.req_pearl: {"max": 5, "random_min": 1, "random_max": 3},
+            HelmDoorItem.req_pearl: {"max": 5, "random_min": 1, "random_max": 5},
         }
         random_door_options = [
             HelmDoorItem.req_bp,
@@ -534,6 +534,8 @@ class Settings:
             HelmDoorItem.req_bean,
             HelmDoorItem.req_pearl,
             HelmDoorItem.req_rainbowcoin,
+            HelmDoorItem.req_gb,
+            HelmDoorItem.req_key,
         ]
         if self.crown_door_item == HelmDoorItem.random and self.coin_door_item == HelmDoorItem.random:
             self.crown_door_random = True
