@@ -31,6 +31,7 @@ GlitchLogicItems = [
     GlitchLogicItem("Swim through Shores", "A trick that allows you to swim into a sloped shoreline to get out of bounds."),
     GlitchLogicItem("Tag Barrel Storage", "A trick that allows you to store a tag barrel being entered and abuse that storage. Includes telegrabs and Orangstand TBS Noclips."),
     GlitchLogicItem("Troff n Scoff Skips", "Any skip that allows you to bypass the kong and small banana requirement in order to fight a boss."),
+    GlitchLogicItem("Advanced Grenading", "A trick that allows you to grenade flying enemies"),
     # GlitchLogicItem("Boulder Clips"),
 ]
 for item in GlitchLogicItems:

@@ -97,6 +97,7 @@ class LogicVarHolder:
         self.swim_through_shores = enable_glitch_logic and IsGlitchEnabled(settings, GlitchesSelected.swim_through_shores)
         self.boulder_clip = enable_glitch_logic and IsGlitchEnabled(settings, GlitchesSelected.boulder_clips) and False  # Temporarily disabled
         self.skew = enable_glitch_logic and IsGlitchEnabled(settings, GlitchesSelected.skew)
+        self.advanced_grenading = enable_glitch_logic and IsGlitchEnabled(settings, GlitchesSelected.advanced_grenading)
         # Reset
         self.Reset()
 
@@ -504,6 +505,10 @@ class LogicVarHolder:
     def CanOStandTBSNoclip(self):
         """Determine whether the player can perform Orangstand TBS Noclip."""
         return self.tbs and self.handstand and self.islanky
+    
+    def CanAdvancedGrenade(self):
+        """Determine whether the player can perform Advanced Grenading."""
+        return self.oranges and self.advanced_grenading
 
     def CanAccessRNDRoom(self):
         """Determine whether the player can enter an R&D Room with glitches."""

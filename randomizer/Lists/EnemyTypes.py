@@ -490,7 +490,7 @@ enemy_location_list = {
     Locations.JapesMainEnemy_NearUnderground: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 49, [], True),
     Locations.JapesMainEnemy_NearPainting0: EnemyLoc(Maps.JungleJapes, Enemies.BeaverBlue, 34, [], True),
     Locations.JapesMainEnemy_NearPainting1: EnemyLoc(Maps.JungleJapes, Enemies.BeaverBlue, 35, [], True),
-    Locations.JapesMainEnemy_NearPainting2: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 48, [], True),
+    Locations.JapesMainEnemy_NearPainting2: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 48, [], True), #Only works with charging enemies
     Locations.JapesMainEnemy_Mountain: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 50, [], True),
     Locations.JapesMainEnemy_FeatherTunnel: EnemyLoc(Maps.JungleJapes, Enemies.ZingerLime, 52, [], True),
     Locations.JapesMainEnemy_MiddleTunnel: EnemyLoc(Maps.JungleJapes, Enemies.BeaverBlue, 54, [], True),
@@ -968,6 +968,76 @@ enemy_location_list = {
     Locations.IslesMainEnemy_LowerFactoryPath0: EnemyLoc(Maps.Isles, Enemies.ZingerLime, 11, [], True),
     Locations.IslesMainEnemy_LowerFactoryPath1: EnemyLoc(Maps.Isles, Enemies.ZingerLime, 12, [], True),
 }
+
+CanAdvancedGrenade = [
+    #Japes
+    Locations.JapesMainEnemy_Hive0,
+    Locations.JapesMainEnemy_Hive1,
+    Locations.JapesMainEnemy_Hive2,
+    Locations.JapesMainEnemy_NearUnderground,
+    Locations.JapesMainEnemy_Mountain, #Only works with crate spawned
+    Locations.JapesMainEnemy_FeatherTunnel,
+    #Mountain
+    Locations.JapesMountainEnemy_Start3,
+    Locations.JapesMountainEnemy_Start4,
+    Locations.JapesMountainEnemy_NearGateSwitch0, #Needs more testing
+    Locations.JapesMountainEnemy_NearGateSwitch1, #Needs more testing
+    #Shellhive
+    Locations.JapesShellhiveEnemy_ThirdRoom2,
+    Locations.JapesShellhiveEnemy_ThirdRoom3,
+    Locations.JapesShellhiveEnemy_MainRoom, #Might only work with charging zing
+    #Aztec
+    #Main
+    Locations.AztecMainEnemy_VaseRoom0, #Needs Barrels
+    Locations.AztecMainEnemy_VaseRoom1, #Needs Barrels
+    Locations.AztecMainEnemy_TunnelPad0, #Needs Barrels
+    Locations.AztecMainEnemy_NearCandy,
+    Locations.AztecMainEnemy_StartingTunnel3,
+    #Tiny 5DT
+    Locations.AztecTiny5DTEnemy_StartRightFront,
+    Locations.AztecTiny5DTEnemy_StartRightBack,
+    Locations.AztecTiny5DTEnemy_StartLeftFront,
+    Locations.AztecTiny5DTEnemy_Reward0,
+    Locations.AztecTiny5DTEnemy_Reward1,
+    Locations.AztecTiny5DTEnemy_DeadEnd0,
+    Locations.AztecTiny5DTEnemy_DeadEnd1,
+    #Chunky 5DT
+    Locations.AztecChunky5DTEnemy_Reward,
+    #Factory
+    #Main
+    Locations.FactoryMainEnemy_StorageRoom,
+    Locations.FactoryMainEnemy_TunnelToRace1,
+    Locations.FactoryMainEnemy_DarkRoom0,
+    Locations.FactoryMainEnemy_DarkRoom1,
+    #Lobby
+    Locations.FactoryLobbyEnemy_Enemy0,
+    #Forest
+    #Main
+    Locations.ForestMainEnemy_HollowTreeEntrance,
+    Locations.ForestMainEnemy_GreenTunnel,
+    Locations.ForestMainEnemy_BetweenRBAndYellowTunnel,
+    Locations.ForestMainEnemy_NearPinkTunnelBounceTag,
+    Locations.ForestMainEnemy_NearPinkTunnelGM,
+    Locations.ForestMainEnemy_GMRearTag,
+    Locations.ForestMainEnemy_NearFacePuzzle, #Needs Ostand or RB
+    Locations.ForestMainEnemy_NearCrown, #^
+    Locations.ForestMainEnemy_NearHighWarp5, #^
+    Locations.ForestMainEnemy_NearAppleDropoff,
+    Locations.ForestMainEnemy_NearWellTag,
+    Locations.ForestMainEnemy_NearIsoCoin,
+    Locations.ForestMainEnemy_NearWellExit, #Seems like its only possible with Kongs that can get on top of well exit
+    Locations.ForestMainEnemy_Thornvine2, #Strong Kong Logic
+    #Mill Rear
+    Locations.ForestMillRearEnemy_Enemy,
+    #GM
+    Locations.ForestGMEnemy_Path1, #Only works with diddy/tiny
+    #Caves
+    #Main
+    Locations.CavesMainEnemy_Outside5DC,
+    Locations.CavesMainEnemy_NearFunky,
+    #Isles
+    Locations.IslesMainEnemy_FungiCannon1,
+]
 
 EnemySelector = []
 for enemyEnum, enemy in EnemyMetaData.items():
