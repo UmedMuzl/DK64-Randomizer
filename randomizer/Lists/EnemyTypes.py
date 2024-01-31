@@ -490,7 +490,7 @@ enemy_location_list = {
     Locations.JapesMainEnemy_NearUnderground: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 49, [], True),
     Locations.JapesMainEnemy_NearPainting0: EnemyLoc(Maps.JungleJapes, Enemies.BeaverBlue, 34, [], True),
     Locations.JapesMainEnemy_NearPainting1: EnemyLoc(Maps.JungleJapes, Enemies.BeaverBlue, 35, [], True),
-    Locations.JapesMainEnemy_NearPainting2: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 48, [], True), #Only works with charging enemies
+    Locations.JapesMainEnemy_NearPainting2: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 48, [], True),
     Locations.JapesMainEnemy_Mountain: EnemyLoc(Maps.JungleJapes, Enemies.ZingerCharger, 50, [], True),
     Locations.JapesMainEnemy_FeatherTunnel: EnemyLoc(Maps.JungleJapes, Enemies.ZingerLime, 52, [], True),
     Locations.JapesMainEnemy_MiddleTunnel: EnemyLoc(Maps.JungleJapes, Enemies.BeaverBlue, 54, [], True),
@@ -969,13 +969,12 @@ enemy_location_list = {
     Locations.IslesMainEnemy_LowerFactoryPath1: EnemyLoc(Maps.Isles, Enemies.ZingerLime, 12, [], True),
 }
 
-CanAdvancedGrenade = [
+flying_enemy_grenade = [
     #Japes
     Locations.JapesMainEnemy_Hive0,
     Locations.JapesMainEnemy_Hive1,
     Locations.JapesMainEnemy_Hive2,
     Locations.JapesMainEnemy_NearUnderground,
-    Locations.JapesMainEnemy_Mountain, #Only works with crate spawned
     Locations.JapesMainEnemy_FeatherTunnel,
     #Mountain
     Locations.JapesMountainEnemy_Start3,
