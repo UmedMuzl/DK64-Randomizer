@@ -154,7 +154,7 @@ def create_region(
             if location_logic.id == Locations.FactoryDonkeyDKArcade:
                 if logic_holder.checkFastCheck(FasterChecksSelected.factory_arcade_round_1) and region_name == "FactoryArcadeTunnel":
                     continue
-                elif not logic_holder.checkFastCheck(FasterChecksSelected.factory_arcade_round_2) and region_name == "FactoryBaboonBlast":
+                elif not logic_holder.checkFastCheck(FasterChecksSelected.factory_arcade_round_1) and region_name == "FactoryBaboonBlast":
                     continue
             # Starting move locations and Kongs may be shuffled but their locations are not relevant ever due to item placement restrictions
             # V1 LIMITATION: Kong locations are always empty because we can't put the vast majority of items (including AP items) there yet
