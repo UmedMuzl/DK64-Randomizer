@@ -217,6 +217,10 @@ if baseclasses_loaded:
         item_name_to_id = {name: data.code for name, data in full_item_table.items()}
         location_name_to_id = all_locations
 
+        with open("donklocations.txt", "w") as f:
+            for key, value in location_name_to_id.items():
+                print(f"{key}: {value}", file=f)
+
         web = DK64Web()
 
         def __init__(self, multiworld: MultiWorld, player: int):
@@ -267,6 +271,7 @@ if baseclasses_loaded:
             settings_dict = decrypt_settings_string_enum(self.settings_string)
             settings_dict["archipelago"] = True
             settings_dict["starting_kongs_count"] = self.options.starting_kong_count.value
+            settings_dict["enemy_drop_rando"] = self.options.enemy_drop_rando.value
             settings_dict["starting_keys_list_selected"] = []
             for item in self.options.start_inventory:
                 if item == "Key 1":
@@ -536,6 +541,7 @@ if baseclasses_loaded:
             return {
                 "Goal": self.options.goal.value,
                 "ClimbingShuffle": self.options.climbing_shuffle.value,
+                "Dropsanity": self.options.enemy_drop_rando.value,
                 "PlayerNum": self.player,
                 "death_link": self.options.death_link.value,
                 "receive_notifications": self.options.receive_notifications.value,

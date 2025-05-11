@@ -29,6 +29,12 @@ class ClimbingShuffle(Toggle):
     display_name = "Climbing Shuffle"
 
 
+class Dropsanity(Toggle):
+    """Whether or not you add enemy drops to locations."""
+
+    display_name = "Dropsanity"
+
+
 class StartingKongCount(Range):
     """Determines how many Kongs you start with."""
 
@@ -121,3 +127,4 @@ class DK64Options(PerGameCommonOptions):
     bubble_trap_weight: BubbleTrapWeight
     reverse_trap_weight: ReverseTrapWeight
     slow_trap_weight: SlowTrapWeight
+    enemy_drop_rando: Dropsanity
