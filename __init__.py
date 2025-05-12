@@ -217,10 +217,6 @@ if baseclasses_loaded:
         item_name_to_id = {name: data.code for name, data in full_item_table.items()}
         location_name_to_id = all_locations
 
-        with open("donklocations.txt", "w") as f:
-            for key, value in location_name_to_id.items():
-                print(f"{key}: {value}", file=f)
-
         web = DK64Web()
 
         def __init__(self, multiworld: MultiWorld, player: int):
