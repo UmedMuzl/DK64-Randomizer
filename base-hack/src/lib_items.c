@@ -1277,7 +1277,7 @@ health_damage_struct actor_health_damage[] = {
 	{.init_health = 0, .damage_applied = 0},
 	{.init_health = 0, .damage_applied = 0},
 	{.init_health = 0, .damage_applied = 0},
-	{.init_health = 0, .damage_applied = 0},
+	{.init_health = 0, .damage_applied = 1},
 	{.init_health = 0, .damage_applied = 0},
 	{.init_health = 0, .damage_applied = 0},
 	{.init_health = 0, .damage_applied = 0},

@@ -95,11 +95,11 @@ void initHelmSetup(void) {
 	}
 	// Check barrier flags for gates
 	if (Rando.removed_barriers.helm_star_gates) {
-		setFlag(FLAG_HELM_ROMANDOORS_OPEN,1,FLAGTYPE_TEMPORARY); // Roman Numeral Doors
+		setFlag(FLAG_HELM_ROMANDOORS_OPEN,1,FLAGTYPE_PERMANENT); // Roman Numeral Doors
 	}
 	if (Rando.removed_barriers.helm_punch_gates) {
 		for (int j = 0; j < 4; j++) {
-			setFlag(FLAG_HELM_GATE_0 + j,1,FLAGTYPE_TEMPORARY); // Gates knocked down
+			setFlag(FLAG_HELM_GATE_0 + j,1,FLAGTYPE_PERMANENT); // Gates knocked down
 		}
 	}
 }
