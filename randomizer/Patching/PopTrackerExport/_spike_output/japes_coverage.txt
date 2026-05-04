@@ -1,0 +1,8 @@
+Regions parsed: 25
+Total entries:  221  (locations=138, events=20, exits=61)
+Successful:     221  (100.0%)
+Errors:         0  (locations=0, events=0, exits=0)
+
+Top error reasons:
+
+First 30 errors with detail:
