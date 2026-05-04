@@ -19,7 +19,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-from .lambda_to_lua import LambdaTranspileError, TranspileContext, transpile_lambda
+from .lambda_to_lua import AttrReferences, LambdaTranspileError, TranspileContext, transpile_lambda
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 LOGIC_DIR = REPO_ROOT / "randomizer" / "LogicFiles"
@@ -56,7 +56,8 @@ class RegionMeta:
     display_name: str
     hint_region: str
     level: str
-    tagbarrel: bool
+    # tagbarrel is intentionally not emitted: AP forces tag_anywhere on, so the
+    # tag-barrel-spawn flag is irrelevant for tracker reachability.
     deathwarp: Optional[str]
     restart: Optional[str]
 
@@ -64,18 +65,21 @@ class RegionMeta:
 def main(argv: List[str]) -> int:
     parser = argparse.ArgumentParser(description="Emit per-level Lua region files from randomizer/LogicFiles.")
     parser.add_argument("--out", default=str(DEFAULT_OUT), help="Output directory for generated .lua files")
+    parser.add_argument("--no-validate", action="store_true", help="Skip setting_map.py validation pass")
     args = parser.parse_args(argv)
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     grand_ok = grand_err = 0
     locations_index: List[Tuple[str, str, str]] = []  # (location_name, region_name, lua_expr)
+    refs = AttrReferences()
     for fname in LOGIC_FILES:
         path = LOGIC_DIR / fname
-        ok, err, locs = _emit_file(path, out_dir)
+        ok, err, locs, file_refs = _emit_file(path, out_dir)
         grand_ok += ok
         grand_err += err
         locations_index.extend(locs)
+        refs.merge(file_refs)
         total = ok + err
         pct = (100.0 * ok / total) if total else 100.0
         print(f"  {fname:24s}  ok={ok:4d}  err={err:3d}  ({pct:5.1f}%)  locs={len(locs)}")
@@ -86,13 +90,24 @@ def main(argv: List[str]) -> int:
 
     _emit_locations_index(out_dir, locations_index)
     print(f"  wrote {out_dir / 'locations_index.lua'}")
+
+    if not args.no_validate:
+        from . import setting_map  # local import: optional dep until generator is wired everywhere
+        problems = setting_map.validate(refs)
+        if problems:
+            print("\nValidation errors against setting_map.py:")
+            for p in problems:
+                print(f"  - {p}")
+            return 2
+
     return 1 if grand_err else 0
 
 
-def _emit_file(src_path: Path, out_dir: Path) -> Tuple[int, int, List[Tuple[str, str, str]]]:
+def _emit_file(src_path: Path, out_dir: Path) -> Tuple[int, int, List[Tuple[str, str, str]], AttrReferences]:
     src = src_path.read_text()
     tree = ast.parse(src, filename=str(src_path))
     regions: List[Tuple[RegionMeta, List[Entry]]] = []
+    refs = AttrReferences()
 
     for node in ast.walk(tree):
         if not (isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and t.id == "LogicRegions" for t in node.targets)):
@@ -102,7 +117,7 @@ def _emit_file(src_path: Path, out_dir: Path) -> Tuple[int, int, List[Tuple[str,
         for key, value in zip(node.value.keys, node.value.values):
             if not (isinstance(key, ast.Attribute) and isinstance(value, ast.Call)):
                 continue
-            meta, entries = _parse_region(key.attr, value, src, str(src_path))
+            meta, entries = _parse_region(key.attr, value, src, str(src_path), refs)
             regions.append((meta, entries))
         break
 
@@ -116,7 +131,7 @@ def _emit_file(src_path: Path, out_dir: Path) -> Tuple[int, int, List[Tuple[str,
         for e in entries:
             if e.kind == "location" and e.lua_expr is not None:
                 locs.append((e.name, meta.name, e.lua_expr))
-    return ok, err, locs
+    return ok, err, locs, refs
 
 
 def _emit_locations_index(out_dir: Path, locations: List[Tuple[str, str, str]]) -> None:
@@ -161,7 +176,7 @@ def _emit_locations_index(out_dir: Path, locations: List[Tuple[str, str, str]]) 
     (out_dir / "locations_index.lua").write_text("\n".join(out_lines))
 
 
-def _parse_region(region_name: str, region_call: ast.Call, src: str, filename: str) -> Tuple[RegionMeta, List[Entry]]:
+def _parse_region(region_name: str, region_call: ast.Call, src: str, filename: str, refs: AttrReferences) -> Tuple[RegionMeta, List[Entry]]:
     """Region(name, hint, level, tagbarrel, deathwarp, locations, events, transitionFronts, restart=...)."""
     args = list(region_call.args)
     kwargs = {kw.arg: kw.value for kw in region_call.keywords}
@@ -169,7 +184,7 @@ def _parse_region(region_name: str, region_call: ast.Call, src: str, filename: s
     display_name = _str_const(args[0]) if len(args) >= 1 else region_name
     hint_region = _enum_member(args[1]) if len(args) >= 2 else "Unknown"
     level = _enum_member(args[2]) if len(args) >= 3 else "Unknown"
-    tagbarrel = isinstance(args[3], ast.Constant) and bool(args[3].value) if len(args) >= 4 else False
+    # args[3] = tagbarrel; intentionally ignored under AP's tag-anywhere assumption.
     deathwarp = _format_simple(args[4]) if len(args) >= 5 else None
     restart_node = kwargs.get("restart")
     restart = _format_simple(restart_node) if restart_node is not None else None
@@ -179,7 +194,6 @@ def _parse_region(region_name: str, region_call: ast.Call, src: str, filename: s
         display_name=display_name or region_name,
         hint_region=hint_region or "Unknown",
         level=level or "Unknown",
-        tagbarrel=tagbarrel,
         deathwarp=deathwarp,
         restart=restart,
     )
@@ -188,17 +202,17 @@ def _parse_region(region_name: str, region_call: ast.Call, src: str, filename: s
     if len(args) >= 8:
         if isinstance(args[5], ast.List):
             for elt in args[5].elts:
-                _maybe_entry(elt, region_name, "location", src, filename, entries)
+                _maybe_entry(elt, region_name, "location", src, filename, entries, refs)
         if isinstance(args[6], ast.List):
             for elt in args[6].elts:
-                _maybe_entry(elt, region_name, "event", src, filename, entries)
+                _maybe_entry(elt, region_name, "event", src, filename, entries, refs)
         if isinstance(args[7], ast.List):
             for elt in args[7].elts:
-                _maybe_entry(elt, region_name, "exit", src, filename, entries)
+                _maybe_entry(elt, region_name, "exit", src, filename, entries, refs)
     return meta, entries
 
 
-def _maybe_entry(call: ast.AST, region: str, kind: str, src: str, filename: str, out: List[Entry]) -> None:
+def _maybe_entry(call: ast.AST, region: str, kind: str, src: str, filename: str, out: List[Entry], refs: AttrReferences) -> None:
     if not (isinstance(call, ast.Call) and isinstance(call.func, ast.Name) and call.func.id in ("LocationLogic", "Event", "TransitionFront")):
         return
     cls_name = call.func.id
@@ -226,7 +240,7 @@ def _maybe_entry(call: ast.AST, region: str, kind: str, src: str, filename: str,
 
     src_text = ast.get_source_segment(src, lam) or ""
     try:
-        lua = transpile_lambda(lam, TranspileContext(filename=filename, source=src_text))
+        lua = transpile_lambda(lam, TranspileContext(filename=filename, source=src_text, references=refs))
         out.append(Entry(kind, region, name, lam.lineno, lua, None, extra))
     except LambdaTranspileError as e:
         out.append(Entry(kind, region, name, lam.lineno, None, str(e), extra))
@@ -279,7 +293,6 @@ def _render_lua(level_stem: str, regions: List[Tuple[RegionMeta, List[Entry]]]) 
         lines.append(f'  display_name = [[{meta.display_name}]],')
         lines.append(f'  hint_region  = "{meta.hint_region}",')
         lines.append(f'  level        = "{meta.level}",')
-        lines.append(f'  tagbarrel    = {"true" if meta.tagbarrel else "false"},')
         if meta.deathwarp is not None:
             lines.append(f"  deathwarp    = {_lua_repr(meta.deathwarp)},")
         if meta.restart is not None:

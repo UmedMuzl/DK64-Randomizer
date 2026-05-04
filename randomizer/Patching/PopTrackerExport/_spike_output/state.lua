@@ -59,13 +59,10 @@ function M.lanky()   return has("lanky") end
 function M.tiny()    return has("tiny") end
 function M.chunky()  return has("chunky") end
 
--- "is currently <kong>" — under tag-anywhere we treat HasKong == IsKong.
--- (archipelago/Logic.py forces tag_anywhere on; matches dk64pt's tracker model.)
-function M.isdonkey() return M.donkey() end
-function M.isdiddy()  return M.diddy() end
-function M.islanky()  return M.lanky() end
-function M.istiny()   return M.tiny() end
-function M.ischunky() return M.chunky() end
+-- NOTE: there is no separate "is<kong>" surface. The transpiler rewrites
+-- `l.isdonkey`/`l.isdiddy`/... directly to `state.donkey()`/`state.diddy()`/... at
+-- generation time, since archipelago/Logic.py forces tag_anywhere on. See
+-- lambda_to_lua._attribute ISX_ALIAS.
 
 -- Weapons (always require the owning kong).
 function M.coconut()   return has("donkey") and has("coconut") end
@@ -220,14 +217,14 @@ function M.CanSTS() return M.swim_through_shores() and M.swim() end
 -- @logic Logic.py:700
 function M.CanMoonkick()
   -- Krusha-model DK can't moonkick; until we model kong models, accept the glitch toggle.
-  return M.moonkicks() and M.isdonkey()
+  return M.moonkicks() and M.donkey()
 end
 -- @logic Logic.py:735
-function M.CanMoontail() return M.moontail() and M.isdiddy() end
+function M.CanMoontail() return M.moontail() and M.diddy() end
 -- @logic Logic.py:704
-function M.CanOStandTBSNoclip() return M.tbs() and M.handstand() and M.islanky() end
+function M.CanOStandTBSNoclip() return M.tbs() and M.handstand() and M.lanky() end
 -- @logic Logic.py:739
-function M.CanPhase() return M.phasewalk() or (M.phasefall() and M.ischunky() and M.camera()) end
+function M.CanPhase() return M.phasewalk() or (M.phasefall() and M.chunky() and M.camera()) end
 -- @logic Logic.py:708
 function M.CanAccessRNDRoom() return M.CanPhase() or M.generalclips() or M.CanOStandTBSNoclip() end
 
@@ -245,7 +242,7 @@ end
 
 -- @logic Logic.py:712
 function M.CanGetOnCannonGamePlatform()
-  return M.event("WaterRaised") or (M.monkey_maneuvers() and (M.ischunky() or M.islanky()))
+  return M.event("WaterRaised") or (M.monkey_maneuvers() and (M.chunky() or M.lanky()))
 end
 
 -- @logic Logic.py:570
@@ -417,7 +414,7 @@ function M.canTravelToMechFish()
   return M.swim() and lh and sy
 end
 function M.CanOpenForestLobbyGoneDoor()
-  return M.gorillaGone() and M.ischunky()
+  return M.gorillaGone() and M.chunky()
 end
 
 -- @logic Logic.py:603
@@ -494,7 +491,7 @@ end
 
 -- @logic Logic.py:1469/1476/1483 — tracker can't model these accurately yet.
 function M.CanGetRarewareCoin() return M.HasGun("any") end
-function M.CanGetRarewareGB()   return M.hunkyChunky() and M.ischunky() end
+function M.CanGetRarewareGB()   return M.hunkyChunky() and M.chunky() end
 function M.CanGetBlueprintReward(value)
   return M.Blueprints() >= (tonumber(value) or 0)
 end

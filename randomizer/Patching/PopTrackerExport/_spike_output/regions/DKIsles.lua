@@ -10,7 +10,6 @@ M.regions["GameStart"] = {
   display_name = [[Game Start]],
   hint_region  = "GameStart",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "IslesVinesTrainingBarrel", logic = function() return settings.fast_start_beginning_of_game() end },
@@ -112,7 +111,6 @@ M.regions["DKIslesMedals"] = {
   display_name = [[DK Isles Medals]],
   hint_region  = "IslesCBs",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -138,7 +136,6 @@ M.regions["Credits"] = {
   display_name = [[Credits]],
   hint_region  = "Credits",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "BananaHoard", logic = function() return state.WinConditionMet() end },
@@ -154,7 +151,6 @@ M.regions["Treehouse"] = {
   display_name = [[Treehouse]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -170,7 +166,6 @@ M.regions["TrainingGrounds"] = {
   display_name = [[Training Grounds]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "IslesVinesTrainingBarrel", logic = function() return state.event("TrainingBarrelsSpawned") end, bonusBarrel="MinigameType.TrainingBarrel" },
@@ -196,11 +191,10 @@ M.regions["IslesMain"] = {
   display_name = [[Isles Main]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "IslesDonkeyJapesRock", logic = function() return (settings.open_lobbies() or state.event("KLumsyTalkedTo")) end },
-    { id = "IslesChunkyCagedBanana", logic = function() return ((state.pineapple() and state.chunky()) or ((state.CanSTS() or state.CanPhase()) and (state.ischunky() or settings.free_trade_items()))) end },
+    { id = "IslesChunkyCagedBanana", logic = function() return ((state.pineapple() and state.chunky()) or ((state.CanSTS() or state.CanPhase()) and (state.chunky() or settings.free_trade_items()))) end },
     { id = "IslesMainEnemy_PineappleCage0", logic = function() return true end },
     { id = "IslesMainEnemy_FungiCannon0", logic = function() return true end },
     { id = "IslesMainEnemy_JapesEntrance", logic = function() return true end },
@@ -240,10 +234,9 @@ M.regions["OuterIsles"] = {
   display_name = [[Outer Isles]],
   hint_region  = "OuterIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "IslesTinyCagedBanana", logic = function() return ((state.feather() and state.tiny()) or ((state.CanPhase() or state.CanSTS()) and (state.istiny() or settings.free_trade_items()))) end },
+    { id = "IslesTinyCagedBanana", logic = function() return ((state.feather() and state.tiny()) or ((state.CanPhase() or state.CanSTS()) and (state.tiny() or settings.free_trade_items()))) end },
     { id = "IslesChunkyPoundtheX", logic = function() return (state.event("IslesChunkyBarrelSpawn") and state.hunkyChunky() and state.Slam() and state.chunky()) end },
     { id = "IslesBananaFairyIsland", logic = function() return state.camera() end },
   },
@@ -252,7 +245,7 @@ M.regions["OuterIsles"] = {
   },
   exits = {
     { dest = "IslesMain", logic = function() return true end },
-    { dest = "BananaFairyRoom", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.CanSTS()) end, exitShuffleId="Transitions.IslesMainToFairy" },
+    { dest = "BananaFairyRoom", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.CanSTS()) end, exitShuffleId="Transitions.IslesMainToFairy" },
   },
 }
 
@@ -261,7 +254,6 @@ M.regions["IslesHill"] = {
   display_name = [[Isles Hill]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "RainbowCoin_Location04", logic = function() return true end },
@@ -280,14 +272,13 @@ M.regions["IslesMainUpper"] = {
   display_name = [[Isles Main Upper]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "IslesChunkyInstrumentPad", logic = function() return (state.triangle() and state.chunky() and state.barrels()) end },
     { id = "IslesMainEnemy_NearAztec", logic = function() return true end },
     { id = "KremKap_IslesMainEnemy_NearAztec", logic = function() return state.camera() end },
-    { id = "HoldableBoulderIslesNearAztec", logic = function() return (state.barrels() and state.ischunky()) end },
-    { id = "HoldableBoulderIslesNearCaves", logic = function() return (state.barrels() and state.ischunky()) end },
+    { id = "HoldableBoulderIslesNearAztec", logic = function() return (state.barrels() and state.chunky()) end },
+    { id = "HoldableBoulderIslesNearCaves", logic = function() return (state.barrels() and state.chunky()) end },
   },
   events = {
     { id = "IslesDiddyBarrelSpawn", logic = function() return (state.chunky() and state.hasMoveSwitchsanity("IslesSpawnRocketbarrel", false) and state.barrels()) end },
@@ -298,7 +289,7 @@ M.regions["IslesMainUpper"] = {
     { dest = "IslesHill", logic = function() return true end },
     { dest = "AztecLobbyRoof", logic = function() return state.CanMoonkick() end },
     { dest = "AngryAztecLobby", logic = function() return (settings.open_lobbies() or state.event("JapesKeyTurnedIn") or state.CanPhase()) end, exitShuffleId="Transitions.IslesMainToAztecLobby" },
-    { dest = "IslesEar", logic = function() return ((settings.open_lobbies() or state.event("ForestKeyTurnedIn")) and ((state.istiny() and state.twirl()) or (state.isdonkey() or state.ischunky() or (((state.isdiddy() or state.islanky()) and state.monkey_maneuvers()) and (not state.isKrushaAdjacent(state.kong())))))) end },
+    { dest = "IslesEar", logic = function() return ((settings.open_lobbies() or state.event("ForestKeyTurnedIn")) and ((state.tiny() and state.twirl()) or (state.donkey() or state.chunky() or (((state.diddy() or state.lanky()) and state.monkey_maneuvers()) and (not state.isKrushaAdjacent(state.kong())))))) end },
   },
 }
 
@@ -307,7 +298,6 @@ M.regions["IslesEar"] = {
   display_name = [[Isles Ear]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -316,7 +306,7 @@ M.regions["IslesEar"] = {
   exits = {
     { dest = "CrystalCavesLobby", logic = function() return true end, exitShuffleId="Transitions.IslesMainToCavesLobby" },
     { dest = "IslesHill", logic = function() return true end },
-    { dest = "IslesMainUpper", logic = function() return ((state.istiny() and state.twirl()) or (state.isdonkey() or state.ischunky() or (((state.isdiddy() or state.islanky()) and state.monkey_maneuvers()) and (not state.isKrushaAdjacent(state.kong()))))) end },
+    { dest = "IslesMainUpper", logic = function() return ((state.tiny() and state.twirl()) or (state.donkey() or state.chunky() or (((state.diddy() or state.lanky()) and state.monkey_maneuvers()) and (not state.isKrushaAdjacent(state.kong()))))) end },
   },
 }
 
@@ -325,10 +315,9 @@ M.regions["Prison"] = {
   display_name = [[Prison]],
   hint_region  = "KremIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "IslesLankyPrisonOrangsprint", logic = function() return ((state.sprint() and state.islanky()) or (state.CanPhase() and (state.islanky() or settings.free_trade_items()))) end },
+    { id = "IslesLankyPrisonOrangsprint", logic = function() return ((state.sprint() and state.lanky()) or (state.CanPhase() and (state.lanky() or settings.free_trade_items()))) end },
     { id = "RainbowCoin_Location12", logic = function() return true end },
   },
   events = {
@@ -352,7 +341,6 @@ M.regions["BananaFairyRoom"] = {
   display_name = [[Banana Fairy Room]],
   hint_region  = "OuterIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CameraAndShockwave", logic = function() return true end },
@@ -371,7 +359,6 @@ M.regions["RarewareGBRoom"] = {
   display_name = [[Rareware GB Room]],
   hint_region  = "OuterIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "RarewareBanana", logic = function() return true end },
@@ -388,7 +375,6 @@ M.regions["JungleJapesLobby"] = {
   display_name = [[Jungle Japes Lobby]],
   hint_region  = "EarlyLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "IslesLankyInstrumentPad", logic = function() return (state.chunky() and state.trombone() and state.lanky() and state.barrels()) end },
@@ -401,7 +387,7 @@ M.regions["JungleJapesLobby"] = {
     { id = "JapesLobbyEnemy_Enemy1", logic = function() return true end },
     { id = "KremKap_JapesLobbyEnemy_Enemy0", logic = function() return state.camera() end },
     { id = "KremKap_JapesLobbyEnemy_Enemy1", logic = function() return state.camera() end },
-    { id = "HoldableBoulderJapesLobby", logic = function() return (state.barrels() and state.ischunky()) end },
+    { id = "HoldableBoulderJapesLobby", logic = function() return (state.barrels() and state.chunky()) end },
   },
   events = {
     { id = "JapesLobbyAccessed", logic = function() return true end },
@@ -417,10 +403,9 @@ M.regions["AngryAztecLobby"] = {
   display_name = [[Angry Aztec Lobby]],
   hint_region  = "EarlyLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "IslesTinyAztecLobby", logic = function() return ((((state.charge() and state.diddy() and state.twirl()) or (settings.bonus_barrels() == "skip")) and state.istiny()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "IslesTinyAztecLobby", logic = function() return ((((state.charge() and state.diddy() and state.twirl()) or (settings.bonus_barrels() == "skip")) and state.tiny()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "AztecDonkeyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "AztecDiddyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "AztecLankyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
@@ -441,7 +426,6 @@ M.regions["KremIsle"] = {
   display_name = [[Krem Isle Base]],
   hint_region  = "KremIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "IslesLankyCagedBanana", logic = function() return (((state.grape() or state.CanPhaseswim() or state.CanPhase()) and state.lanky()) or (state.CanPhase() and settings.free_trade_items())) end },
@@ -465,10 +449,9 @@ M.regions["KremIsleBeyondLift"] = {
   display_name = [[Krem Isle Beyond Lift]],
   hint_region  = "KremIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "IslesDonkeyCagedBanana", logic = function() return (state.coconut() and state.isdonkey()) end },
+    { id = "IslesDonkeyCagedBanana", logic = function() return (state.coconut() and state.donkey()) end },
     { id = "IslesMainEnemy_UpperFactoryPath", logic = function() return true end },
     { id = "IslesMainEnemy_LowerFactoryPath0", logic = function() return true end },
     { id = "IslesMainEnemy_LowerFactoryPath1", logic = function() return true end },
@@ -491,14 +474,13 @@ M.regions["KremIsleTopLevel"] = {
   display_name = [[Krem Isle Top Level]],
   hint_region  = "KremIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "IslesTinyInstrumentPad", logic = function() return (state.event("IslesChunkyBarrelSpawn") and state.istiny()) end },
+    { id = "IslesTinyInstrumentPad", logic = function() return (state.event("IslesChunkyBarrelSpawn") and state.tiny()) end },
     { id = "IslesBananaFairyCrocodisleIsle", logic = function() return state.camera() end },
   },
   events = {
-    { id = "IslesChunkyBarrelSpawn", logic = function() return (state.saxophone() and state.istiny()) end },
+    { id = "IslesChunkyBarrelSpawn", logic = function() return (state.saxophone() and state.tiny()) end },
   },
   exits = {
     { dest = "HideoutHelmLobby", logic = function() return ((state.generalclips() and state.twirl()) or state.tbs()) end, exitShuffleId="Transitions.IslesMainToHelmLobby", isGlitchTransition=true },
@@ -512,7 +494,6 @@ M.regions["KremIsleMouth"] = {
   display_name = [[Krem Isle Mouth]],
   hint_region  = "KremIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -531,10 +512,9 @@ M.regions["IslesSnideRoom"] = {
   display_name = [[Isles Snide Room]],
   hint_region  = "KremIsles",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "IslesDiddySnidesLobby", logic = function() return ((((settings.bonus_barrels() == "skip") or state.spring()) and state.isdiddy()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "IslesDiddySnidesLobby", logic = function() return ((((settings.bonus_barrels() == "skip") or state.spring()) and state.diddy()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "IslesBattleArena1", logic = function() return ((not settings.crown_placement_rando()) and state.chunky() and state.barrels()) end },
   },
   events = {
@@ -550,16 +530,15 @@ M.regions["FranticFactoryLobby"] = {
   display_name = [[Frantic Factory Lobby]],
   hint_region  = "EarlyLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "IslesDonkeyInstrumentPad", logic = function() return ((state.grab() or state.CanMoonkick()) and state.bongos() and state.donkey()) end },
     { id = "IslesKasplatFactoryLobby", logic = function() return ((not settings.kasplat_rando()) and state.punch() and state.chunky()) end },
     { id = "IslesBananaFairyFactoryLobby", logic = function() return (state.camera() and state.punch() and state.chunky()) end },
     { id = "FactoryDonkeyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
-    { id = "FactoryDiddyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.istiny() or state.isdiddy())))) end },
+    { id = "FactoryDiddyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.tiny() or state.diddy())))) end },
     { id = "FactoryLankyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or state.monkey_maneuvers())) end },
-    { id = "FactoryTinyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.istiny() or state.isdiddy())))) end },
+    { id = "FactoryTinyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.tiny() or state.diddy())))) end },
     { id = "FactoryChunkyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "FactoryLobbyEnemy_Enemy0", logic = function() return true end },
     { id = "KremKap_FactoryLobbyEnemy_Enemy0", logic = function() return state.camera() end },
@@ -578,7 +557,6 @@ M.regions["GloomyGalleonLobbyEntrance"] = {
   display_name = [[Gloomy Galleon Lobby Entrance]],
   hint_region  = "EarlyLobbies",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -595,10 +573,9 @@ M.regions["GloomyGalleonLobby"] = {
   display_name = [[Gloomy Galleon Lobby]],
   hint_region  = "EarlyLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "IslesTinyGalleonLobby", logic = function() return (((state.chunky() and state.CanSlamSwitch("GloomyGalleon", 2) and state.mini() and state.twirl() and state.swim() and state.tiny()) or (state.CanPhaseswim() and (state.istiny() or settings.free_trade_items()))) and ((not state.IsLavaWater()) or (state.Melons() >= 3))) end },
+    { id = "IslesTinyGalleonLobby", logic = function() return (((state.chunky() and state.CanSlamSwitch("GloomyGalleon", 2) and state.mini() and state.twirl() and state.swim() and state.tiny()) or (state.CanPhaseswim() and (state.tiny() or settings.free_trade_items()))) and ((not state.IsLavaWater()) or (state.Melons() >= 3))) end },
     { id = "IslesKasplatGalleonLobby", logic = function() return (not settings.kasplat_rando()) end },
     { id = "GalleonDonkeyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "GalleonDiddyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
@@ -620,7 +597,6 @@ M.regions["CabinIsle"] = {
   display_name = [[Cabin Isle]],
   hint_region  = "OuterIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "RainbowCoin_Location03", logic = function() return true end },
@@ -629,9 +605,9 @@ M.regions["CabinIsle"] = {
   },
   exits = {
     { dest = "IslesMain", logic = function() return true end },
-    { dest = "IslesMainUpper", logic = function() return (state.twirl() and state.istiny() and state.monkey_maneuvers()) end },
-    { dest = "IslesAboveWaterfall", logic = function() return (state.monkey_maneuvers() and (((state.isdiddy() or state.isdonkey() or state.ischunky()) and (not state.isKrushaAdjacent(state.kong()))) or (state.istiny() and state.twirl()))) end },
-    { dest = "IslesAirspace", logic = function() return (state.event("IslesDiddyBarrelSpawn") and state.jetpack() and state.isdiddy()) end },
+    { dest = "IslesMainUpper", logic = function() return (state.twirl() and state.tiny() and state.monkey_maneuvers()) end },
+    { dest = "IslesAboveWaterfall", logic = function() return (state.monkey_maneuvers() and (((state.diddy() or state.donkey() or state.chunky()) and (not state.isKrushaAdjacent(state.kong()))) or (state.tiny() and state.twirl()))) end },
+    { dest = "IslesAirspace", logic = function() return (state.event("IslesDiddyBarrelSpawn") and state.jetpack() and state.diddy()) end },
     { dest = "CabinDoor", logic = function() return true end },
   },
 }
@@ -641,7 +617,6 @@ M.regions["CabinDoor"] = {
   display_name = [[Cabin Door]],
   hint_region  = "OuterIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -658,18 +633,17 @@ M.regions["IslesAboveWaterfall"] = {
   display_name = [[Isles Above Waterfall]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "IslesDiddyCagedBanana", logic = function() return (state.peanut() and state.isdiddy()) end },
+    { id = "IslesDiddyCagedBanana", logic = function() return (state.peanut() and state.diddy()) end },
   },
   events = {
   },
   exits = {
     { dest = "IslesMain", logic = function() return true end },
     { dest = "IslesMainUpper", logic = function() return state.monkey_maneuvers() end },
-    { dest = "CabinIsle", logic = function() return (state.CanMoonkick() or (state.monkey_maneuvers() and (((state.isdiddy() or state.isdonkey() or state.ischunky()) and (not state.isKrushaAdjacent(state.kong()))) or (state.istiny() and state.twirl())))) end },
-    { dest = "AztecLobbyRoof", logic = function() return (state.monkey_maneuvers() and state.istiny() and state.twirl()) end },
+    { dest = "CabinIsle", logic = function() return (state.CanMoonkick() or (state.monkey_maneuvers() and (((state.diddy() or state.donkey() or state.chunky()) and (not state.isKrushaAdjacent(state.kong()))) or (state.tiny() and state.twirl())))) end },
+    { dest = "AztecLobbyRoof", logic = function() return (state.monkey_maneuvers() and state.tiny() and state.twirl()) end },
   },
 }
 
@@ -678,7 +652,6 @@ M.regions["IslesAirspace"] = {
   display_name = [[Isles Airspace]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "IslesDiddySummit", logic = function() return true end, bonusBarrel="MinigameType.BonusBarrel" },
@@ -701,7 +674,6 @@ M.regions["AztecLobbyRoof"] = {
   display_name = [[Aztec Lobby Roof]],
   hint_region  = "MainIsles",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "RainbowCoin_Location05", logic = function() return true end },
@@ -719,10 +691,9 @@ M.regions["FungiForestLobby"] = {
   display_name = [[Fungi Forest Lobby]],
   hint_region  = "EarlyLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "IslesBattleArena2", logic = function() return ((not settings.crown_placement_rando()) and (state.CanOpenForestLobbyGoneDoor() and state.gorillaGone() and state.ischunky())) end },
+    { id = "IslesBattleArena2", logic = function() return ((not settings.crown_placement_rando()) and (state.CanOpenForestLobbyGoneDoor() and state.gorillaGone() and state.chunky())) end },
     { id = "IslesBananaFairyForestLobby", logic = function() return (state.camera() and state.hasMoveSwitchsanity("IslesFungiLobbyFeather", false)) end },
     { id = "ForestDonkeyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "ForestDiddyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
@@ -744,14 +715,13 @@ M.regions["CrystalCavesLobby"] = {
   display_name = [[Crystal Caves Lobby]],
   hint_region  = "LateLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "IslesDonkeyLavaBanana", logic = function() return (((state.punch() and state.chunky() and state.strongKong()) or state.CanPhase()) and state.donkey()) end },
     { id = "IslesDiddyInstrumentPad", logic = function() return (state.jetpack() and state.guitar() and state.diddy()) end },
     { id = "IslesKasplatCavesLobby", logic = function() return ((not settings.kasplat_rando()) and ((state.punch() and state.chunky()) or state.CanPhase() or state.ledgeclip())) end },
     { id = "CavesDonkeyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles())) end },
-    { id = "CavesDiddyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles()) and ((state.isdiddy() and state.jetpack()) or state.CanMoonkick())) end },
+    { id = "CavesDiddyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles()) and ((state.diddy() and state.jetpack()) or state.CanMoonkick())) end },
     { id = "CavesLankyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles())) end },
     { id = "CavesTinyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles())) end },
     { id = "CavesChunkyDoor", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles())) end },
@@ -771,24 +741,23 @@ M.regions["CreepyCastleLobby"] = {
   display_name = [[Creepy Castle Lobby]],
   hint_region  = "LateLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "IslesLankyCastleLobby", logic = function() return ((state.chunky() and state.balloon() and state.islanky() and state.barrels()) or ((state.CanMoonkick() or (state.monkey_maneuvers() and state.istiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "IslesLankyCastleLobby", logic = function() return ((state.chunky() and state.balloon() and state.lanky() and state.barrels()) or ((state.CanMoonkick() or (state.monkey_maneuvers() and state.tiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "IslesKasplatCastleLobby", logic = function() return ((not settings.kasplat_rando()) and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
     { id = "CastleDonkeyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "CastleDiddyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "CastleLankyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "CastleTinyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
     { id = "CastleChunkyDoor", logic = function() return (not settings.wrinkly_location_rando()) end },
-    { id = "RainbowCoin_Location15", logic = function() return ((state.chunky() and state.balloon() and state.islanky() and state.barrels()) or state.CanMoonkick() or (state.monkey_maneuvers() and state.istiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) end },
+    { id = "RainbowCoin_Location15", logic = function() return ((state.chunky() and state.balloon() and state.lanky() and state.barrels()) or state.CanMoonkick() or (state.monkey_maneuvers() and state.tiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) end },
     { id = "CastleLobbyEnemy_Left", logic = function() return true end },
     { id = "CastleLobbyEnemy_FarRight", logic = function() return true end },
     { id = "CastleLobbyEnemy_NearRight", logic = function() return true end },
     { id = "KremKap_CastleLobbyEnemy_Left", logic = function() return state.camera() end },
     { id = "KremKap_CastleLobbyEnemy_FarRight", logic = function() return state.camera() end },
     { id = "KremKap_CastleLobbyEnemy_NearRight", logic = function() return state.camera() end },
-    { id = "HoldableBoulderCastleLobby", logic = function() return (state.barrels() and state.ischunky()) end },
+    { id = "HoldableBoulderCastleLobby", logic = function() return (state.barrels() and state.chunky()) end },
   },
   events = {
     { id = "CastleLobbyAccessed", logic = function() return true end },
@@ -804,10 +773,9 @@ M.regions["HideoutHelmLobby"] = {
   display_name = [[Hideout Helm Lobby]],
   hint_region  = "LateLobbies",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "IslesChunkyHelmLobby", logic = function() return ((state.hasMoveSwitchsanity("IslesHelmLobbyGone", false) and state.ischunky() and state.can_use_vines()) or ((settings.bonus_barrels() == "skip") and state.monkey_maneuvers() and state.istiny() and state.twirl() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "IslesChunkyHelmLobby", logic = function() return ((state.hasMoveSwitchsanity("IslesHelmLobbyGone", false) and state.chunky() and state.can_use_vines()) or ((settings.bonus_barrels() == "skip") and state.monkey_maneuvers() and state.tiny() and state.twirl() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "IslesKasplatHelmLobby", logic = function() return ((not settings.kasplat_rando()) and ((state.scope() and state.coconut()) or (state.twirl() and state.tiny() and state.monkey_maneuvers()))) end },
   },
   events = {
@@ -826,7 +794,6 @@ M.regions["HideoutHelmLobbyPastVines"] = {
   display_name = [[Hideout Helm Lobby Past Vines]],
   hint_region  = "LateLobbies",
   level        = "DKIsles",
-  tagbarrel    = false,
   deathwarp    = "Regions.HideoutHelmLobby",
   locations = {
   },
@@ -844,7 +811,6 @@ M.regions["KRool"] = {
   display_name = [[K. Rool]],
   hint_region  = "KRool",
   level        = "DKIsles",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
   },

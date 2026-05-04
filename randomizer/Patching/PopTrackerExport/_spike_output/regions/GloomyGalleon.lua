@@ -10,7 +10,6 @@ M.regions["GloomyGalleonMedals"] = {
   display_name = [[Gloomy Galleon Medals]],
   hint_region  = "GalleonCBs",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -36,7 +35,6 @@ M.regions["GloomyGalleonEntryHandler"] = {
   display_name = [[Gloomy Galleon Entry Handler]],
   hint_region  = "Error",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -55,7 +53,6 @@ M.regions["GloomyGalleonStart"] = {
   display_name = [[Gloomy Galleon Start]],
   hint_region  = "GalleonCaverns",
   level        = "GloomyGalleon",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "GalleonChunkyChest", logic = function() return (state.punch() and state.chunky()) end },
@@ -103,7 +100,6 @@ M.regions["GalleonPastVines"] = {
   display_name = [[Galleon Past Vines]],
   hint_region  = "GalleonCaverns",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "GalleonKasplatNearLab", logic = function() return (not settings.kasplat_rando()) end },
@@ -122,12 +118,11 @@ M.regions["GalleonBeyondPineappleGate"] = {
   display_name = [[Galleon Beyond Pineapple Gate]],
   hint_region  = "GalleonCaverns",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonChunkyCannonGame", logic = function() return (state.CanGetOnCannonGamePlatform() and state.ischunky() and state.barrels()) end },
+    { id = "GalleonChunkyCannonGame", logic = function() return (state.CanGetOnCannonGamePlatform() and state.chunky() and state.barrels()) end },
     { id = "GalleonKasplatCannons", logic = function() return ((not settings.kasplat_rando()) and state.CanGetOnCannonGamePlatform()) end },
-    { id = "Balloon048", logic = function() return (state.ischunky() and state.pineapple() and state.CanGetOnCannonGamePlatform()) end },
+    { id = "Balloon048", logic = function() return (state.chunky() and state.pineapple() and state.CanGetOnCannonGamePlatform()) end },
   },
   events = {
   },
@@ -142,11 +137,10 @@ M.regions["LighthouseSurface"] = {
   display_name = [[Lighthouse Surface]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "GalleonKasplatLighthouseArea", logic = function() return (not settings.kasplat_rando()) end },
-    { id = "Balloon040", logic = function() return (state.istiny() and state.feather() and state.event("WaterLowered")) end },
+    { id = "Balloon040", logic = function() return (state.tiny() and state.feather() and state.event("WaterLowered")) end },
   },
   events = {
     { id = "GalleonChunkyPad", logic = function() return ((state.triangle() and state.chunky()) and (state.swim() or state.galleonGatesStayOpen()) and state.event("WaterLowered")) end },
@@ -156,8 +150,8 @@ M.regions["LighthouseSurface"] = {
   exits = {
     { dest = "GloomyGalleonStart", logic = function() return state.event("LighthouseGateOpened") end },
     { dest = "LighthouseUnderwater", logic = function() return (state.swim() and ((not state.IsLavaWater()) or (state.Melons() >= 3))) end },
-    { dest = "LighthousePlatform", logic = function() return (state.event("WaterRaised") or (state.monkey_maneuvers() and (state.islanky() or state.ischunky()))) end },
-    { dest = "LighthouseSnideAlcove", logic = function() return (state.event("WaterRaised") or (state.monkey_maneuvers() and (state.islanky() or state.ischunky()))) end },
+    { dest = "LighthousePlatform", logic = function() return (state.event("WaterRaised") or (state.monkey_maneuvers() and (state.lanky() or state.chunky()))) end },
+    { dest = "LighthouseSnideAlcove", logic = function() return (state.event("WaterRaised") or (state.monkey_maneuvers() and (state.lanky() or state.chunky()))) end },
     { dest = "GalleonBeyondPineappleGate", logic = function() return state.CanPhaseswim() end },
   },
 }
@@ -167,23 +161,22 @@ M.regions["LighthousePlatform"] = {
   display_name = [[Lighthouse Platform]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonDiddyShipSwitch", logic = function() return (state.event("ActivatedLighthouse") and state.jetpack() and state.CanSlamSwitch("GloomyGalleon", 1) and state.isdiddy()) end },
-    { id = "Balloon044", logic = function() return (state.isdiddy() and state.peanut()) end },
-    { id = "Balloon045", logic = function() return (state.isdonkey() and state.coconut()) end },
+    { id = "GalleonDiddyShipSwitch", logic = function() return (state.event("ActivatedLighthouse") and state.jetpack() and state.CanSlamSwitch("GloomyGalleon", 1) and state.diddy()) end },
+    { id = "Balloon044", logic = function() return (state.diddy() and state.peanut()) end },
+    { id = "Balloon045", logic = function() return (state.donkey() and state.coconut()) end },
   },
   events = {
-    { id = "MechafishSummoned", logic = function() return (state.jetpack() and state.guitar() and state.canTravelToMechFish() and state.isdiddy()) end },
+    { id = "MechafishSummoned", logic = function() return (state.jetpack() and state.guitar() and state.canTravelToMechFish() and state.diddy()) end },
     { id = "GalleonW1bTagged", logic = function() return true end },
     { id = "GalleonW5aTagged", logic = function() return true end },
   },
   exits = {
     { dest = "LighthouseSurface", logic = function() return true end },
-    { dest = "Lighthouse", logic = function() return (((state.CanSlamSwitch("GloomyGalleon", 1) and state.isdonkey()) or state.generalclips()) and state.climbing()) end, exitShuffleId="Transitions.GalleonLighthouseAreaToLighthouse" },
-    { dest = "SickBay", logic = function() return (state.event("ActivatedLighthouse") and state.Slam() and state.ischunky()) end, exitShuffleId="Transitions.GalleonLighthouseAreaToSickBay" },
-    { dest = "GalleonBaboonBlast", logic = function() return (state.blast() and state.isdonkey()) end },
+    { dest = "Lighthouse", logic = function() return (((state.CanSlamSwitch("GloomyGalleon", 1) and state.donkey()) or state.generalclips()) and state.climbing()) end, exitShuffleId="Transitions.GalleonLighthouseAreaToLighthouse" },
+    { dest = "SickBay", logic = function() return (state.event("ActivatedLighthouse") and state.Slam() and state.chunky()) end, exitShuffleId="Transitions.GalleonLighthouseAreaToSickBay" },
+    { dest = "GalleonBaboonBlast", logic = function() return (state.blast() and state.donkey()) end },
   },
 }
 
@@ -192,7 +185,6 @@ M.regions["LighthouseUnderwater"] = {
   display_name = [[Lighthouse Underwater]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "GalleonLankyEnguardeChest", logic = function() return (state.event("LighthouseEnguarde") and state.lanky()) end },
@@ -209,7 +201,7 @@ M.regions["LighthouseUnderwater"] = {
   exits = {
     { dest = "LighthouseSurface", logic = function() return true end },
     { dest = "LighthouseEnguardeDoor", logic = function() return (state.event("LighthouseEnguarde") or state.CanPhaseswim()) end },
-    { dest = "MermaidRoom", logic = function() return ((state.mini() and state.istiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonLighthouseAreaToMermaid" },
+    { dest = "MermaidRoom", logic = function() return ((state.mini() and state.tiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonLighthouseAreaToMermaid" },
     { dest = "GalleonBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
 }
@@ -219,7 +211,6 @@ M.regions["LighthouseEnguardeDoor"] = {
   display_name = [[Lighthouse Enguarde Door]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -236,7 +227,6 @@ M.regions["LighthouseSnideAlcove"] = {
   display_name = [[Lighthouse Snide Alcove]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "Balloon051", logic = function() return (state.tiny() and state.feather()) end },
@@ -255,12 +245,11 @@ M.regions["GalleonBaboonBlast"] = {
   display_name = [[Galleon Baboon Blast]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
   events = {
-    { id = "SealReleased", logic = function() return state.isdonkey() end },
+    { id = "SealReleased", logic = function() return state.donkey() end },
   },
   exits = {
     { dest = "LighthousePlatform", logic = function() return true end },
@@ -272,7 +261,6 @@ M.regions["Lighthouse"] = {
   display_name = [[Lighthouse]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "RainbowCoin_Location09", logic = function() return true end },
@@ -295,13 +283,12 @@ M.regions["LighthouseAboveLadder"] = {
   display_name = [[Lighthouse Above Ladder]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonDonkeyLighthouse", logic = function() return (state.event("ActivatedLighthouse") and (state.isdonkey() or settings.free_trade_items())) end },
+    { id = "GalleonDonkeyLighthouse", logic = function() return (state.event("ActivatedLighthouse") and (state.donkey() or settings.free_trade_items())) end },
   },
   events = {
-    { id = "ActivatedLighthouse", logic = function() return (state.grab() and state.isdonkey()) end },
+    { id = "ActivatedLighthouse", logic = function() return (state.grab() and state.donkey()) end },
   },
   exits = {
     { dest = "Lighthouse", logic = function() return true end },
@@ -313,10 +300,9 @@ M.regions["MermaidRoom"] = {
   display_name = [[Mermaid Room]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonTinyPearls", logic = function() return ((state.Pearls() >= settings.mermaid_gb_pearls()) and (state.istiny() or settings.free_trade_items())) end },
+    { id = "GalleonTinyPearls", logic = function() return ((state.Pearls() >= settings.mermaid_gb_pearls()) and (state.tiny() or settings.free_trade_items())) end },
     { id = "KremKap_GalleonNPC_Mermaid", logic = function() return state.camera() end },
   },
   events = {
@@ -331,10 +317,9 @@ M.regions["SickBay"] = {
   display_name = [[Sick Bay]],
   hint_region  = "Lighthouse",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "GalleonChunkySeasick", logic = function() return (state.punch() and state.ischunky()) end },
+    { id = "GalleonChunkySeasick", logic = function() return (state.punch() and state.chunky()) end },
   },
   events = {
   },
@@ -348,10 +333,9 @@ M.regions["Shipyard"] = {
   display_name = [[Shipyard]],
   hint_region  = "ShipyardOutskirts",
   level        = "GloomyGalleon",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonDonkeyFreetheSeal", logic = function() return (state.event("SealReleased") and (state.isdonkey() or settings.free_trade_items())) end },
+    { id = "GalleonDonkeyFreetheSeal", logic = function() return (state.event("SealReleased") and (state.donkey() or settings.free_trade_items())) end },
     { id = "GalleonKasplatNearSub", logic = function() return (not settings.kasplat_rando()) end },
     { id = "MelonCrate_Location05", logic = function() return true end },
     { id = "KremKap_GalleonNPC_Seal", logic = function() return (state.camera() and state.event("SealReleased")) end },
@@ -362,10 +346,10 @@ M.regions["Shipyard"] = {
   },
   events = {
     { id = "ShipyardTreasureRoomOpened", logic = function() return ((state.event("ShipyardEnguarde") and (state.event("WaterRaised") or state.monkey_maneuvers())) or state.checkBarrier("galleon_treasure_room")) end },
-    { id = "GalleonDonkeyPad", logic = function() return (state.bongos() and state.isdonkey() and (state.swim() or state.galleonGatesStayOpen())) end },
-    { id = "GalleonDiddyPad", logic = function() return (state.guitar() and state.isdiddy() and (state.swim() or state.galleonGatesStayOpen()) and state.event("WaterLowered")) end },
-    { id = "GalleonLankyPad", logic = function() return (state.trombone() and state.islanky() and (state.swim() or state.galleonGatesStayOpen()) and state.event("WaterLowered")) end },
-    { id = "GalleonTinyPad", logic = function() return (state.saxophone() and state.istiny() and (state.swim() or state.galleonGatesStayOpen())) end },
+    { id = "GalleonDonkeyPad", logic = function() return (state.bongos() and state.donkey() and (state.swim() or state.galleonGatesStayOpen())) end },
+    { id = "GalleonDiddyPad", logic = function() return (state.guitar() and state.diddy() and (state.swim() or state.galleonGatesStayOpen()) and state.event("WaterLowered")) end },
+    { id = "GalleonLankyPad", logic = function() return (state.trombone() and state.lanky() and (state.swim() or state.galleonGatesStayOpen()) and state.event("WaterLowered")) end },
+    { id = "GalleonTinyPad", logic = function() return (state.saxophone() and state.tiny() and (state.swim() or state.galleonGatesStayOpen())) end },
     { id = "GalleonW2bTagged", logic = function() return true end },
     { id = "GalleonW4bTagged", logic = function() return true end },
     { id = "GalleonW5bTagged", logic = function() return true end },
@@ -375,7 +359,7 @@ M.regions["Shipyard"] = {
   exits = {
     { dest = "GloomyGalleonStart", logic = function() return state.event("ShipyardGateOpened") end },
     { dest = "ShipyardUnderwater", logic = function() return (state.swim() and ((not state.IsLavaWater()) or (state.Melons() >= 3))) end },
-    { dest = "SealRace", logic = function() return ((state.event("SealReleased") and state.event("WaterRaised") and state.isdonkey()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToSeal" },
+    { dest = "SealRace", logic = function() return ((state.event("SealReleased") and state.event("WaterRaised") and state.donkey()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToSeal" },
     { dest = "CandyGalleon", logic = function() return state.candyAccess() end },
     { dest = "FunkyGalleon", logic = function() return state.funkyAccess() end },
   },
@@ -386,13 +370,12 @@ M.regions["ShipyardUnderwater"] = {
   display_name = [[Shipyard Underwater]],
   hint_region  = "ShipyardOutskirts",
   level        = "GloomyGalleon",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "KremKap_GalleonMainEnemy_Submarine", logic = function() return state.camera() end },
     { id = "KremKap_GalleonMainEnemy_5DS0", logic = function() return state.camera() end },
     { id = "KremKap_GalleonMainEnemy_5DS1", logic = function() return state.camera() end },
-    { id = "KremKap_GalleonNPC_Mechfish", logic = function() return (state.camera() and state.event("MechafishSummoned") and state.isdiddy()) end },
+    { id = "KremKap_GalleonNPC_Mechfish", logic = function() return (state.camera() and state.event("MechafishSummoned") and state.diddy()) end },
     { id = "BreakableGalleonCloseSubmarine", logic = function() return state.event("ShipyardEnguarde") end },
     { id = "BreakableGalleonClose2DS", logic = function() return state.event("ShipyardEnguarde") end },
     { id = "BreakableGalleonUnderTunnel", logic = function() return state.event("ShipyardEnguarde") end },
@@ -405,15 +388,15 @@ M.regions["ShipyardUnderwater"] = {
   exits = {
     { dest = "Shipyard", logic = function() return ((not state.IsLavaWater()) or (state.Melons() >= 2)) end },
     { dest = "TreasureRoom", logic = function() return (state.event("ShipyardTreasureRoomOpened") or state.CanPhaseswim()) end },
-    { dest = "Submarine", logic = function() return (((state.mini() or state.CanSTS()) and state.istiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToSubmarine" },
-    { dest = "Mechafish", logic = function() return (state.event("MechafishSummoned") and state.isdiddy()) end, exitShuffleId="Transitions.GalleonShipyardToMechFish" },
-    { dest = "LankyShip", logic = function() return ((state.event("GalleonLankySwitch") and state.islanky()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToLanky" },
-    { dest = "TinyShip", logic = function() return ((state.event("GalleonTinySwitch") and state.istiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToTiny" },
-    { dest = "BongosShip", logic = function() return ((state.event("GalleonDonkeyPad") and state.isdonkey()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToBongos" },
-    { dest = "GuitarShip", logic = function() return ((state.event("GalleonDiddyPad") and state.isdiddy()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToGuitar" },
-    { dest = "TromboneShip", logic = function() return ((state.event("GalleonLankyPad") and state.islanky()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToTrombone" },
-    { dest = "SaxophoneShip", logic = function() return ((state.event("GalleonTinyPad") and state.istiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToSaxophone" },
-    { dest = "TriangleShip", logic = function() return ((state.event("GalleonChunkyPad") and state.ischunky()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToTriangle" },
+    { dest = "Submarine", logic = function() return (((state.mini() or state.CanSTS()) and state.tiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToSubmarine" },
+    { dest = "Mechafish", logic = function() return (state.event("MechafishSummoned") and state.diddy()) end, exitShuffleId="Transitions.GalleonShipyardToMechFish" },
+    { dest = "LankyShip", logic = function() return ((state.event("GalleonLankySwitch") and state.lanky()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToLanky" },
+    { dest = "TinyShip", logic = function() return ((state.event("GalleonTinySwitch") and state.tiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToTiny" },
+    { dest = "BongosShip", logic = function() return ((state.event("GalleonDonkeyPad") and state.donkey()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToBongos" },
+    { dest = "GuitarShip", logic = function() return ((state.event("GalleonDiddyPad") and state.diddy()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToGuitar" },
+    { dest = "TromboneShip", logic = function() return ((state.event("GalleonLankyPad") and state.lanky()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToTrombone" },
+    { dest = "SaxophoneShip", logic = function() return ((state.event("GalleonTinyPad") and state.tiny()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToSaxophone" },
+    { dest = "TriangleShip", logic = function() return ((state.event("GalleonChunkyPad") and state.chunky()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonShipyardToTriangle" },
     { dest = "GalleonBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
 }
@@ -423,7 +406,6 @@ M.regions["SealRace"] = {
   display_name = [[Seal Race]],
   hint_region  = "ShipyardOutskirts",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "GalleonDonkeySealRace", logic = function() return state.HasEnoughRaceCoins("GalleonSealRace", "donkey", (not settings.free_trade_items())) end },
@@ -440,12 +422,11 @@ M.regions["TreasureRoom"] = {
   display_name = [[Treasure Room]],
   hint_region  = "TreasureRoom",
   level        = "GloomyGalleon",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonLankyGoldTower", logic = function() return (((state.event("WaterRaised") or (state.event("ShipyardEnguarde") and state.event("ShipyardTreasureRoomOpened") and state.monkey_maneuvers())) and state.balloon() and state.islanky()) or (state.CanMoonkick() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "Balloon047", logic = function() return (state.isdiddy() and state.peanut()) end },
-    { id = "Balloon052", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "GalleonLankyGoldTower", logic = function() return (((state.event("WaterRaised") or (state.event("ShipyardEnguarde") and state.event("ShipyardTreasureRoomOpened") and state.monkey_maneuvers())) and state.balloon() and state.lanky()) or (state.CanMoonkick() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "Balloon047", logic = function() return (state.diddy() and state.peanut()) end },
+    { id = "Balloon052", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
     { id = "WaterLowered", logic = function() return (settings.galleon_water_internal() == "lowered") end },
@@ -454,8 +435,8 @@ M.regions["TreasureRoom"] = {
   },
   exits = {
     { dest = "ShipyardUnderwater", logic = function() return ((state.event("ShipyardTreasureRoomOpened") or state.CanPhaseswim()) and state.swim()) end },
-    { dest = "TinyChest", logic = function() return ((state.mini() and state.istiny() and state.swim()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonTreasureToChest" },
-    { dest = "TreasureRoomDiddyGoldTower", logic = function() return ((state.event("WaterRaised") and state.spring() and state.diddy()) or state.CanMoonkick() or (state.event("ShipyardEnguarde") and state.event("ShipyardTreasureRoomOpened") and state.monkey_maneuvers() and state.balloon() and state.islanky())) end },
+    { dest = "TinyChest", logic = function() return ((state.mini() and state.tiny() and state.swim()) or state.CanPhaseswim()) end, exitShuffleId="Transitions.GalleonTreasureToChest" },
+    { dest = "TreasureRoomDiddyGoldTower", logic = function() return ((state.event("WaterRaised") and state.spring() and state.diddy()) or state.CanMoonkick() or (state.event("ShipyardEnguarde") and state.event("ShipyardTreasureRoomOpened") and state.monkey_maneuvers() and state.balloon() and state.lanky())) end },
   },
 }
 
@@ -464,10 +445,9 @@ M.regions["TreasureRoomDiddyGoldTower"] = {
   display_name = [[Treasure Room Diddy Gold Tower]],
   hint_region  = "TreasureRoom",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonDiddyGoldTower", logic = function() return ((state.spring() and state.isdiddy()) or (state.CanMoonkick() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "GalleonDiddyGoldTower", logic = function() return ((state.spring() and state.diddy()) or (state.CanMoonkick() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "GalleonKasplatGoldTower", logic = function() return (not settings.kasplat_rando()) end },
   },
   events = {
@@ -483,7 +463,6 @@ M.regions["TinyChest"] = {
   display_name = [[Tiny Chest]],
   hint_region  = "TreasureRoom",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "GalleonPearl0", logic = function() return true end },
@@ -504,10 +483,9 @@ M.regions["Submarine"] = {
   display_name = [[Submarine]],
   hint_region  = "ShipyardOutskirts",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonTinySubmarine", logic = function() return (state.istiny() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "GalleonTinySubmarine", logic = function() return (state.tiny() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "KremKap_GalleonSubEnemy_Enemy0", logic = function() return state.camera() end },
     { id = "KremKap_GalleonSubEnemy_Enemy1", logic = function() return state.camera() end },
     { id = "KremKap_GalleonSubEnemy_Enemy2", logic = function() return state.camera() end },
@@ -525,7 +503,6 @@ M.regions["Mechafish"] = {
   display_name = [[Mechafish]],
   hint_region  = "ShipyardOutskirts",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "GalleonDiddyMechafish", logic = function() return (state.HasGun("diddy") or (settings.free_trade_items() and state.HasGun("any"))) end },
@@ -542,14 +519,13 @@ M.regions["LankyShip"] = {
   display_name = [[Lanky Ship]],
   hint_region  = "ShipyardOutskirts",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonLanky2DoorShip", logic = function() return (state.islanky() or (settings.free_trade_items() and state.CanPhaseswim())) end },
-    { id = "BreakableGalleon2DSNearest", logic = function() return state.islanky() end },
-    { id = "BreakableGalleon2DSNear", logic = function() return state.islanky() end },
-    { id = "BreakableGalleon2DSFar", logic = function() return state.islanky() end },
-    { id = "BreakableGalleon2DSFurthest", logic = function() return state.islanky() end },
+    { id = "GalleonLanky2DoorShip", logic = function() return (state.lanky() or (settings.free_trade_items() and state.CanPhaseswim())) end },
+    { id = "BreakableGalleon2DSNearest", logic = function() return state.lanky() end },
+    { id = "BreakableGalleon2DSNear", logic = function() return state.lanky() end },
+    { id = "BreakableGalleon2DSFar", logic = function() return state.lanky() end },
+    { id = "BreakableGalleon2DSFurthest", logic = function() return state.lanky() end },
   },
   events = {
   },
@@ -564,10 +540,9 @@ M.regions["TinyShip"] = {
   display_name = [[Tiny Ship]],
   hint_region  = "ShipyardOutskirts",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonTiny2DoorShip", logic = function() return (state.istiny() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "GalleonTiny2DoorShip", logic = function() return (state.tiny() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "KremKap_Galleon2DSEnemy_Tiny0", logic = function() return state.camera() end },
     { id = "KremKap_Galleon2DSEnemy_Tiny1", logic = function() return state.camera() end },
   },
@@ -584,10 +559,9 @@ M.regions["BongosShip"] = {
   display_name = [[Bongos Ship]],
   hint_region  = "FiveDoorShip",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonDonkey5DoorShip", logic = function() return (state.isdonkey() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "GalleonDonkey5DoorShip", logic = function() return (state.donkey() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "KremKap_Galleon5DSDTEnemy_DK0", logic = function() return state.camera() end },
     { id = "KremKap_Galleon5DSDTEnemy_DK1", logic = function() return state.camera() end },
     { id = "KremKap_Galleon5DSDTEnemy_DK2", logic = function() return state.camera() end },
@@ -605,10 +579,9 @@ M.regions["GuitarShip"] = {
   display_name = [[Guitar Ship]],
   hint_region  = "FiveDoorShip",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonDiddy5DoorShip", logic = function() return (state.isdiddy() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "GalleonDiddy5DoorShip", logic = function() return (state.diddy() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "KremKap_Galleon5DSDLCEnemy_Diddy", logic = function() return state.camera() end },
   },
   events = {
@@ -625,10 +598,9 @@ M.regions["TromboneShip"] = {
   display_name = [[Trombone Ship]],
   hint_region  = "FiveDoorShip",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonLanky5DoorShip", logic = function() return (state.islanky() or settings.free_trade_items()) end },
+    { id = "GalleonLanky5DoorShip", logic = function() return (state.lanky() or settings.free_trade_items()) end },
     { id = "KremKap_Galleon5DSDLCEnemy_Lanky", logic = function() return state.camera() end },
   },
   events = {
@@ -645,10 +617,9 @@ M.regions["SaxophoneShip"] = {
   display_name = [[Saxophone Ship]],
   hint_region  = "FiveDoorShip",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonTiny5DoorShip", logic = function() return (state.istiny() or settings.free_trade_items()) end },
+    { id = "GalleonTiny5DoorShip", logic = function() return (state.tiny() or settings.free_trade_items()) end },
     { id = "GalleonBananaFairy5DoorShip", logic = function() return state.camera() end },
     { id = "KremKap_Galleon5DSDTEnemy_TinyCage", logic = function() return state.camera() end },
     { id = "KremKap_Galleon5DSDTEnemy_TinyBed", logic = function() return state.camera() end },
@@ -666,10 +637,9 @@ M.regions["TriangleShip"] = {
   display_name = [[Triangle Ship]],
   hint_region  = "FiveDoorShip",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "GalleonChunky5DoorShip", logic = function() return (state.ischunky() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "GalleonChunky5DoorShip", logic = function() return (state.chunky() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "KremKap_Galleon5DSDLCEnemy_Chunky", logic = function() return state.camera() end },
   },
   events = {
@@ -686,7 +656,6 @@ M.regions["GalleonBossLobby"] = {
   display_name = [[Galleon Boss Lobby]],
   hint_region  = "Bosses",
   level        = "GloomyGalleon",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
   },
@@ -702,7 +671,6 @@ M.regions["GalleonBoss"] = {
   display_name = [[Galleon Boss]],
   hint_region  = "Bosses",
   level        = "GloomyGalleon",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "GalleonKey", logic = function() return state.IsBossBeatable("GloomyGalleon") end },

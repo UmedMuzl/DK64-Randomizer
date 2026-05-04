@@ -10,7 +10,6 @@ M.regions["CreepyCastleMedals"] = {
   display_name = [[Creepy Castle Medals]],
   hint_region  = "CastleCBs",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -36,7 +35,6 @@ M.regions["CreepyCastleEntryHandler"] = {
   display_name = [[Creepy Castle Entry Handler]],
   hint_region  = "Error",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -55,10 +53,9 @@ M.regions["CreepyCastleMain"] = {
   display_name = [[Creepy Castle Main]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "CastleDiddyAboveCastle", logic = function() return (state.jetpack() and state.isdiddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CastleDiddyAboveCastle", logic = function() return (state.jetpack() and state.diddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "CastleKasplatHalfway", logic = function() return (not settings.kasplat_rando()) end },
     { id = "RainbowCoin_Location11", logic = function() return true end },
     { id = "CastleMainEnemy_NearBridge0", logic = function() return true end },
@@ -100,18 +97,18 @@ M.regions["CreepyCastleMain"] = {
     { dest = "CastleTree", logic = function() return (state.event("CastleTreeOpened") or state.CanPhase() or state.CanPhaseswim()) end, exitShuffleId="Transitions.CastleMainToTree" },
     { dest = "CastleGraveyardPlatform", logic = function() return true end },
     { dest = "CastleVeryBottom", logic = function() return true end },
-    { dest = "Library", logic = function() return (state.CanSlamSwitch("CreepyCastle", 3) and state.isdonkey()) end, exitShuffleId="Transitions.CastleMainToLibraryStart" },
+    { dest = "Library", logic = function() return (state.CanSlamSwitch("CreepyCastle", 3) and state.donkey()) end, exitShuffleId="Transitions.CastleMainToLibraryStart" },
     { dest = "Ballroom", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.diddy()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToBallroom" },
-    { dest = "Tower", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.islanky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToTower" },
-    { dest = "Greenhouse", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.islanky()) or state.CanPhase() or state.ledgeclip() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToGreenhouse" },
-    { dest = "TrashCan", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToTrash" },
-    { dest = "Shed", logic = function() return ((state.punch() and state.ischunky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToShed" },
-    { dest = "Museum", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.ischunky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToMuseum" },
+    { dest = "Tower", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.lanky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToTower" },
+    { dest = "Greenhouse", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.lanky()) or state.CanPhase() or state.ledgeclip() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToGreenhouse" },
+    { dest = "TrashCan", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToTrash" },
+    { dest = "Shed", logic = function() return ((state.punch() and state.chunky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToShed" },
+    { dest = "Museum", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.chunky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CastleMainToMuseum" },
     { dest = "UpperCave", logic = function() return true end, exitShuffleId="Transitions.CastleMainToUpper" },
     { dest = "CrankyCastle", logic = function() return state.crankyAccess() end },
     { dest = "Snide", logic = function() return state.snideAccess() end },
     { dest = "CastleBossLobby", logic = function() return (not settings.tns_location_rando()) end },
-    { dest = "CastleBaboonBlast", logic = function() return (state.blast() and state.isdonkey()) end },
+    { dest = "CastleBaboonBlast", logic = function() return (state.blast() and state.donkey()) end },
   },
 }
 
@@ -120,7 +117,6 @@ M.regions["CastleVeryBottom"] = {
   display_name = [[Creepy Castle Very Bottom]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CastleKasplatLowerLedge", logic = function() return (not settings.kasplat_rando()) end },
@@ -135,8 +131,8 @@ M.regions["CastleVeryBottom"] = {
   },
   exits = {
     { dest = "LowerCave", logic = function() return true end, exitShuffleId="Transitions.CastleMainToLower" },
-    { dest = "CastleGraveyardPlatform", logic = function() return (state.climbing() or (state.monkey_maneuvers() and (state.isdiddy() or state.istiny()))) end },
-    { dest = "CreepyCastleMain", logic = function() return (state.climbing() or (state.monkey_maneuvers() and (state.isdiddy() or state.istiny()))) end },
+    { dest = "CastleGraveyardPlatform", logic = function() return (state.climbing() or (state.monkey_maneuvers() and (state.diddy() or state.tiny()))) end },
+    { dest = "CreepyCastleMain", logic = function() return (state.climbing() or (state.monkey_maneuvers() and (state.diddy() or state.tiny()))) end },
     { dest = "CastleBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
 }
@@ -146,7 +142,6 @@ M.regions["CastleGraveyardPlatform"] = {
   display_name = [[Creepy Graveyard Platform]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -163,12 +158,11 @@ M.regions["CastleBaboonBlast"] = {
   display_name = [[Castle Baboon Blast]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
   events = {
-    { id = "CastleTreeOpened", logic = function() return state.isdonkey() end },
+    { id = "CastleTreeOpened", logic = function() return state.donkey() end },
   },
   exits = {
     { dest = "CreepyCastleMain", logic = function() return true end },
@@ -180,7 +174,6 @@ M.regions["CastleWaterfall"] = {
   display_name = [[Castle Waterfall]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -197,24 +190,23 @@ M.regions["CastleTree"] = {
   display_name = [[Castle Tree]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "CastleDonkeyTree", logic = function() return (((state.scope() and state.coconut()) or state.generalclips() or state.CanPhase()) and state.isdonkey()) end },
-    { id = "CastleKasplatTree", logic = function() return ((not settings.kasplat_rando()) and (state.coconut() or state.CanPhase() or state.generalclips()) and state.isdonkey()) end },
-    { id = "CastleBananaFairyTree", logic = function() return (state.camera() and state.swim() and (((state.coconut() or state.generalclips()) and state.isdonkey()) or state.CanPhase())) end },
+    { id = "CastleDonkeyTree", logic = function() return (((state.scope() and state.coconut()) or state.generalclips() or state.CanPhase()) and state.donkey()) end },
+    { id = "CastleKasplatTree", logic = function() return ((not settings.kasplat_rando()) and (state.coconut() or state.CanPhase() or state.generalclips()) and state.donkey()) end },
+    { id = "CastleBananaFairyTree", logic = function() return (state.camera() and state.swim() and (((state.coconut() or state.generalclips()) and state.donkey()) or state.CanPhase())) end },
     { id = "CastleTreeEnemy_StartRoom0", logic = function() return true end },
     { id = "CastleTreeEnemy_StartRoom1", logic = function() return true end },
     { id = "KremKap_CastleTreeEnemy_StartRoom0", logic = function() return state.camera() end },
     { id = "KremKap_CastleTreeEnemy_StartRoom1", logic = function() return state.camera() end },
-    { id = "Balloon099", logic = function() return (state.isdonkey() and state.coconut()) end },
+    { id = "Balloon099", logic = function() return (state.donkey() and state.coconut()) end },
   },
   events = {
   },
   exits = {
     { dest = "CreepyCastleMain", logic = function() return true end, exitShuffleId="Transitions.CastleTreeToMain" },
-    { dest = "CastleTreePastPunch", logic = function() return ((state.punch() and state.ischunky()) or state.CanPhase()) end },
-    { dest = "CreepyCastleMain", logic = function() return ((((state.coconut() and state.swim()) or state.generalclips()) and state.isdonkey()) or state.CanPhase()) end, exitShuffleId="Transitions.CastleTreeDrainToMain" },
+    { dest = "CastleTreePastPunch", logic = function() return ((state.punch() and state.chunky()) or state.CanPhase()) end },
+    { dest = "CreepyCastleMain", logic = function() return ((((state.coconut() and state.swim()) or state.generalclips()) and state.donkey()) or state.CanPhase()) end, exitShuffleId="Transitions.CastleTreeDrainToMain" },
   },
 }
 
@@ -223,11 +215,10 @@ M.regions["CastleTreePastPunch"] = {
   display_name = [[Castle Tree Past Punch]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleChunkyTree", logic = function() return ((((state.scope() or state.hard_shooting()) and state.pineapple() and state.ischunky()) or state.CanPhase()) and (state.ischunky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "Balloon100", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "CastleChunkyTree", logic = function() return ((((state.scope() or state.hard_shooting()) and state.pineapple() and state.chunky()) or state.CanPhase()) and (state.chunky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "Balloon100", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
   },
@@ -241,7 +232,6 @@ M.regions["Library"] = {
   display_name = [[Library]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "CastleLibraryEnemy_ForkLeft0", logic = function() return true end },
@@ -257,7 +247,7 @@ M.regions["Library"] = {
   },
   exits = {
     { dest = "CreepyCastleMain", logic = function() return true end, exitShuffleId="Transitions.CastleLibraryStartToMain" },
-    { dest = "LibraryPastSlam", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdonkey()) or state.CanPhase() or state.ledgeclip()) end },
+    { dest = "LibraryPastSlam", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.donkey()) or state.CanPhase() or state.ledgeclip()) end },
     { dest = "CreepyCastleMain", logic = function() return (state.CanPhase() or state.ledgeclip()) end, exitShuffleId="Transitions.CastleLibraryEndToMain", isGlitchTransition=true },
   },
 }
@@ -267,7 +257,6 @@ M.regions["LibraryPastSlam"] = {
   display_name = [[Library Middle]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "KremKap_CastleLibraryEnemy_Corridor00", logic = function() return state.camera() end },
@@ -281,7 +270,7 @@ M.regions["LibraryPastSlam"] = {
   },
   exits = {
     { dest = "Library", logic = function() return true end },
-    { dest = "LibraryPastBooks", logic = function() return ((state.isdonkey() and state.strongKong()) or state.CanPhase() or state.ledgeclip()) end },
+    { dest = "LibraryPastBooks", logic = function() return ((state.donkey() and state.strongKong()) or state.CanPhase() or state.ledgeclip()) end },
   },
 }
 
@@ -290,16 +279,15 @@ M.regions["LibraryPastBooks"] = {
   display_name = [[Library Rear]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "CastleDonkeyLibrary", logic = function() return (state.isdonkey() or settings.free_trade_items()) end },
+    { id = "CastleDonkeyLibrary", logic = function() return (state.donkey() or settings.free_trade_items()) end },
   },
   events = {
   },
   exits = {
-    { dest = "LibraryPastSlam", logic = function() return ((state.isdonkey() and state.strongKong()) or state.CanPhase()) end },
-    { dest = "CreepyCastleMain", logic = function() return (state.isdonkey() and state.coconut()) end, exitShuffleId="Transitions.CastleLibraryEndToMain" },
+    { dest = "LibraryPastSlam", logic = function() return ((state.donkey() and state.strongKong()) or state.CanPhase()) end },
+    { dest = "CreepyCastleMain", logic = function() return (state.donkey() and state.coconut()) end, exitShuffleId="Transitions.CastleLibraryEndToMain" },
   },
 }
 
@@ -308,10 +296,9 @@ M.regions["Ballroom"] = {
   display_name = [[Ballroom]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "CastleDiddyBallroom", logic = function() return (state.jetpack() and state.isdiddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CastleDiddyBallroom", logic = function() return (state.jetpack() and state.diddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "CastleBallroomEnemy_Start", logic = function() return true end },
     { id = "KremKap_CastleBallroomEnemy_Start", logic = function() return state.camera() end },
     { id = "Balloon083", logic = function() return (state.diddy() and state.peanut()) end },
@@ -320,7 +307,7 @@ M.regions["Ballroom"] = {
   },
   exits = {
     { dest = "CreepyCastleMain", logic = function() return true end, exitShuffleId="Transitions.CastleBallroomToMain" },
-    { dest = "MuseumBehindGlass", logic = function() return (state.monkeyport() and state.istiny()) end, exitShuffleId="Transitions.CastleBallroomToMuseum" },
+    { dest = "MuseumBehindGlass", logic = function() return (state.monkeyport() and state.tiny()) end, exitShuffleId="Transitions.CastleBallroomToMuseum" },
   },
 }
 
@@ -329,17 +316,16 @@ M.regions["MuseumBehindGlass"] = {
   display_name = [[Museum Behind Glass]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CastleBananaFairyBallroom", logic = function() return state.camera() end },
-    { id = "Balloon092", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "Balloon092", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
   },
   exits = {
-    { dest = "Ballroom", logic = function() return (state.monkeyport() and state.istiny()) end, exitShuffleId="Transitions.CastleMuseumToBallroom" },
-    { dest = "CastleTinyRace", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase()) end, exitShuffleId="Transitions.CastleMuseumToCarRace" },
+    { dest = "Ballroom", logic = function() return (state.monkeyport() and state.tiny()) end, exitShuffleId="Transitions.CastleMuseumToBallroom" },
+    { dest = "CastleTinyRace", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase()) end, exitShuffleId="Transitions.CastleMuseumToCarRace" },
     { dest = "Museum", logic = function() return state.CanPhase() end },
   },
 }
@@ -349,7 +335,6 @@ M.regions["CastleTinyRace"] = {
   display_name = [[Castle Tiny Race]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CastleTinyCarRace", logic = function() return state.HasEnoughRaceCoins("CastleTinyRace", "tiny", (not settings.free_trade_items())) end },
@@ -366,11 +351,10 @@ M.regions["Tower"] = {
   display_name = [[Tower]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleLankyTower", logic = function() return ((state.scope() or (state.hard_shooting() and state.homing())) and state.balloon() and state.grape() and state.islanky()) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "Balloon088", logic = function() return (state.islanky() and state.grape()) end },
+    { id = "CastleLankyTower", logic = function() return ((state.scope() or (state.hard_shooting() and state.homing())) and state.balloon() and state.grape() and state.lanky()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "Balloon088", logic = function() return (state.lanky() and state.grape()) end },
   },
   events = {
   },
@@ -384,17 +368,16 @@ M.regions["Greenhouse"] = {
   display_name = [[Greenhouse]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleLankyGreenhouse", logic = function() return (state.islanky() or settings.free_trade_items()) end },
-    { id = "CastleBattleArena", logic = function() return ((not settings.crown_placement_rando()) and (state.islanky() or settings.free_trade_items())) end },
+    { id = "CastleLankyGreenhouse", logic = function() return (state.lanky() or settings.free_trade_items()) end },
+    { id = "CastleBattleArena", logic = function() return ((not settings.crown_placement_rando()) and (state.lanky() or settings.free_trade_items())) end },
   },
   events = {
   },
   exits = {
     { dest = "CreepyCastleMain", logic = function() return true end, exitShuffleId="Transitions.CastleGreenhouseStartToMain" },
-    { dest = "CreepyCastleMain", logic = function() return (state.islanky() or settings.free_trade_items()) end, exitShuffleId="Transitions.CastleGreenhouseEndToMain" },
+    { dest = "CreepyCastleMain", logic = function() return (state.lanky() or settings.free_trade_items()) end, exitShuffleId="Transitions.CastleGreenhouseEndToMain" },
   },
 }
 
@@ -403,10 +386,9 @@ M.regions["TrashCan"] = {
   display_name = [[Trash Can]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleTinyTrashCan", logic = function() return ((state.istiny() and (state.saxophone() or (state.feather() and (state.homing() or state.hard_shooting())))) or (settings.free_trade_items() and (state.HasInstrument("any") or (state.HasGun("any") and (state.homing() or state.hard_shooting()))))) end },
+    { id = "CastleTinyTrashCan", logic = function() return ((state.tiny() and (state.saxophone() or (state.feather() and (state.homing() or state.hard_shooting())))) or (settings.free_trade_items() and (state.HasInstrument("any") or (state.HasGun("any") and (state.homing() or state.hard_shooting()))))) end },
   },
   events = {
   },
@@ -420,12 +402,11 @@ M.regions["Shed"] = {
   display_name = [[Shed]],
   hint_region  = "CastleSurroundings",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleChunkyShed", logic = function() return ((state.punch() or state.CanPhase()) and ((state.gorillaGone() and state.pineapple()) or state.triangle()) and state.ischunky()) end },
-    { id = "BreakableCastleShed", logic = function() return (state.ischunky() and state.punch()) end },
-    { id = "Balloon101", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "CastleChunkyShed", logic = function() return ((state.punch() or state.CanPhase()) and ((state.gorillaGone() and state.pineapple()) or state.triangle()) and state.chunky()) end },
+    { id = "BreakableCastleShed", logic = function() return (state.chunky() and state.punch()) end },
+    { id = "Balloon101", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
   },
@@ -439,10 +420,9 @@ M.regions["Museum"] = {
   display_name = [[Museum]],
   hint_region  = "CastleRooms",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "CastleChunkyMuseum", logic = function() return ((state.punch() and state.ischunky() and state.barrels()) or (state.CanPhase() and (state.ischunky() or settings.free_trade_items()))) end },
+    { id = "CastleChunkyMuseum", logic = function() return ((state.punch() and state.chunky() and state.barrels()) or (state.CanPhase() and (state.chunky() or settings.free_trade_items()))) end },
     { id = "CastleMuseumEnemy_MainFloor0", logic = function() return true end },
     { id = "CastleMuseumEnemy_MainFloor1", logic = function() return true end },
     { id = "CastleMuseumEnemy_MainFloor2", logic = function() return true end },
@@ -453,8 +433,8 @@ M.regions["Museum"] = {
     { id = "KremKap_CastleMuseumEnemy_MainFloor2", logic = function() return state.camera() end },
     { id = "KremKap_CastleMuseumEnemy_MainFloor3", logic = function() return state.camera() end },
     { id = "KremKap_CastleMuseumEnemy_Start", logic = function() return state.camera() end },
-    { id = "HoldableBoulderMuseum", logic = function() return (state.barrels() and state.ischunky() and (state.punch() or state.CanPhase())) end },
-    { id = "Balloon093", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "HoldableBoulderMuseum", logic = function() return (state.barrels() and state.chunky() and (state.punch() or state.CanPhase())) end },
+    { id = "Balloon093", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
   },
@@ -469,7 +449,6 @@ M.regions["LowerCave"] = {
   display_name = [[Lower Cave]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "CastleKasplatCrypt", logic = function() return (not settings.kasplat_rando()) end },
@@ -491,8 +470,8 @@ M.regions["LowerCave"] = {
   },
   exits = {
     { dest = "CastleVeryBottom", logic = function() return true end, exitShuffleId="Transitions.CastleLowerToMain" },
-    { dest = "Crypt", logic = function() return ((state.coconut() and state.isdonkey()) or (state.peanut() and state.isdiddy()) or (state.pineapple() and state.ischunky()) or state.CanPhase() or state.ledgeclip() or state.checkBarrier("castle_crypt_doors")) end, exitShuffleId="Transitions.CastleLowerToCrypt" },
-    { dest = "Mausoleum", logic = function() return ((state.grape() and state.islanky()) or (state.feather() and state.istiny()) or state.CanPhase() or state.checkBarrier("castle_crypt_doors")) end, exitShuffleId="Transitions.CastleLowerToMausoleum" },
+    { dest = "Crypt", logic = function() return ((state.coconut() and state.donkey()) or (state.peanut() and state.diddy()) or (state.pineapple() and state.chunky()) or state.CanPhase() or state.ledgeclip() or state.checkBarrier("castle_crypt_doors")) end, exitShuffleId="Transitions.CastleLowerToCrypt" },
+    { dest = "Mausoleum", logic = function() return ((state.grape() and state.lanky()) or (state.feather() and state.tiny()) or state.CanPhase() or state.checkBarrier("castle_crypt_doors")) end, exitShuffleId="Transitions.CastleLowerToMausoleum" },
     { dest = "FunkyCastle", logic = function() return state.funkyAccess() end },
     { dest = "CastleBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
@@ -503,7 +482,6 @@ M.regions["Crypt"] = {
   display_name = [[Crypt]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "CastleCryptEnemy_Fork", logic = function() return true end },
@@ -523,9 +501,9 @@ M.regions["Crypt"] = {
   },
   exits = {
     { dest = "LowerCave", logic = function() return true end, exitShuffleId="Transitions.CastleCryptToLower" },
-    { dest = "CryptDonkeyRoom", logic = function() return ((state.coconut() and state.isdonkey()) or state.checkBarrier("castle_crypt_doors") or state.CanPhase() or state.generalclips()) end },
-    { dest = "CryptDiddyRoom", logic = function() return ((state.peanut() and state.isdiddy()) or state.checkBarrier("castle_crypt_doors") or state.CanPhase() or state.generalclips()) end },
-    { dest = "CryptChunkyRoom", logic = function() return ((state.pineapple() and state.ischunky()) or state.checkBarrier("castle_crypt_doors") or state.CanPhase() or state.generalclips()) end },
+    { dest = "CryptDonkeyRoom", logic = function() return ((state.coconut() and state.donkey()) or state.checkBarrier("castle_crypt_doors") or state.CanPhase() or state.generalclips()) end },
+    { dest = "CryptDiddyRoom", logic = function() return ((state.peanut() and state.diddy()) or state.checkBarrier("castle_crypt_doors") or state.CanPhase() or state.generalclips()) end },
+    { dest = "CryptChunkyRoom", logic = function() return ((state.pineapple() and state.chunky()) or state.checkBarrier("castle_crypt_doors") or state.CanPhase() or state.generalclips()) end },
   },
 }
 
@@ -534,18 +512,17 @@ M.regions["CryptDonkeyRoom"] = {
   display_name = [[Crypt Donkey Room]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CastleCryptEnemy_MinecartEntry", logic = function() return true end },
     { id = "KremKap_CastleCryptEnemy_MinecartEntry", logic = function() return state.camera() end },
-    { id = "Balloon091", logic = function() return (state.isdonkey() and state.coconut()) end },
+    { id = "Balloon091", logic = function() return (state.donkey() and state.coconut()) end },
   },
   events = {
   },
   exits = {
     { dest = "Crypt", logic = function() return true end },
-    { dest = "CastleMinecarts", logic = function() return ((state.grab() and state.isdonkey()) or state.generalclips() or state.CanPhase()) end, exitShuffleId="Transitions.CastleCryptToCarts" },
+    { dest = "CastleMinecarts", logic = function() return ((state.grab() and state.donkey()) or state.generalclips() or state.CanPhase()) end, exitShuffleId="Transitions.CastleCryptToCarts" },
   },
 }
 
@@ -554,19 +531,18 @@ M.regions["CryptDiddyRoom"] = {
   display_name = [[Crypt Diddy Room]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleDiddyCrypt", logic = function() return (state.charge() and state.isdiddy()) end },
-    { id = "CastleCryptEnemy_DiddyCoffin0", logic = function() return (state.isdiddy() and state.charge()) end },
-    { id = "CastleCryptEnemy_DiddyCoffin1", logic = function() return (state.isdiddy() and state.charge()) end },
-    { id = "CastleCryptEnemy_DiddyCoffin2", logic = function() return (state.isdiddy() and state.charge()) end },
-    { id = "CastleCryptEnemy_DiddyCoffin3", logic = function() return (state.isdiddy() and state.charge()) end },
-    { id = "KremKap_CastleCryptEnemy_DiddyCoffin0", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
-    { id = "KremKap_CastleCryptEnemy_DiddyCoffin1", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
-    { id = "KremKap_CastleCryptEnemy_DiddyCoffin2", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
-    { id = "KremKap_CastleCryptEnemy_DiddyCoffin3", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
-    { id = "Balloon090", logic = function() return (state.isdiddy() and state.peanut() and state.charge()) end },
+    { id = "CastleDiddyCrypt", logic = function() return (state.charge() and state.diddy()) end },
+    { id = "CastleCryptEnemy_DiddyCoffin0", logic = function() return (state.diddy() and state.charge()) end },
+    { id = "CastleCryptEnemy_DiddyCoffin1", logic = function() return (state.diddy() and state.charge()) end },
+    { id = "CastleCryptEnemy_DiddyCoffin2", logic = function() return (state.diddy() and state.charge()) end },
+    { id = "CastleCryptEnemy_DiddyCoffin3", logic = function() return (state.diddy() and state.charge()) end },
+    { id = "KremKap_CastleCryptEnemy_DiddyCoffin0", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
+    { id = "KremKap_CastleCryptEnemy_DiddyCoffin1", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
+    { id = "KremKap_CastleCryptEnemy_DiddyCoffin2", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
+    { id = "KremKap_CastleCryptEnemy_DiddyCoffin3", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
+    { id = "Balloon090", logic = function() return (state.diddy() and state.peanut() and state.charge()) end },
   },
   events = {
   },
@@ -580,18 +556,17 @@ M.regions["CryptChunkyRoom"] = {
   display_name = [[Crypt Chunky Room]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleChunkyCrypt", logic = function() return ((state.punch() and state.ischunky()) or ((state.ischunky() or settings.free_trade_items()) and (state.CanPhase() or state.generalclips()))) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "CastleCryptEnemy_ChunkyCoffin0", logic = function() return (state.ischunky() and state.Slam()) end },
-    { id = "CastleCryptEnemy_ChunkyCoffin1", logic = function() return (state.ischunky() and state.Slam()) end },
-    { id = "CastleCryptEnemy_ChunkyCoffin2", logic = function() return (state.ischunky() and state.Slam()) end },
-    { id = "CastleCryptEnemy_ChunkyCoffin3", logic = function() return (state.ischunky() and state.Slam()) end },
-    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin0", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
-    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin1", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
-    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin2", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
-    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin3", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
+    { id = "CastleChunkyCrypt", logic = function() return ((state.punch() and state.chunky()) or ((state.chunky() or settings.free_trade_items()) and (state.CanPhase() or state.generalclips()))) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CastleCryptEnemy_ChunkyCoffin0", logic = function() return (state.chunky() and state.Slam()) end },
+    { id = "CastleCryptEnemy_ChunkyCoffin1", logic = function() return (state.chunky() and state.Slam()) end },
+    { id = "CastleCryptEnemy_ChunkyCoffin2", logic = function() return (state.chunky() and state.Slam()) end },
+    { id = "CastleCryptEnemy_ChunkyCoffin3", logic = function() return (state.chunky() and state.Slam()) end },
+    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin0", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
+    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin1", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
+    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin2", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
+    { id = "KremKap_CastleCryptEnemy_ChunkyCoffin3", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
   },
   events = {
   },
@@ -605,7 +580,6 @@ M.regions["CastleMinecarts"] = {
   display_name = [[Castle Minecarts]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CastleDonkeyMinecarts", logic = function() return state.HasEnoughRaceCoins("CastleMinecarts", "donkey", (not settings.free_trade_items())) end },
@@ -622,18 +596,17 @@ M.regions["Mausoleum"] = {
   display_name = [[Mausoleum]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CastleLankyMausoleum", logic = function() return ((((state.grape() and state.sprint()) or state.generalclips() or state.CanPhase()) and ((state.trombone() and state.can_use_vines()) or (state.monkey_maneuvers() and state.sprint())) and state.islanky()) or (settings.free_trade_items() and state.CanPhase())) end },
-    { id = "CastleTinyMausoleum", logic = function() return (state.CanSlamSwitch("CreepyCastle", 3) and state.twirl() and state.istiny()) end },
+    { id = "CastleLankyMausoleum", logic = function() return ((((state.grape() and state.sprint()) or state.generalclips() or state.CanPhase()) and ((state.trombone() and state.can_use_vines()) or (state.monkey_maneuvers() and state.sprint())) and state.lanky()) or (settings.free_trade_items() and state.CanPhase())) end },
+    { id = "CastleTinyMausoleum", logic = function() return (state.CanSlamSwitch("CreepyCastle", 3) and state.twirl() and state.tiny()) end },
     { id = "CastleMausoleumEnemy_TinyPath", logic = function() return true end },
     { id = "CastleMausoleumEnemy_LankyPath0", logic = function() return true end },
     { id = "CastleMausoleumEnemy_LankyPath1", logic = function() return true end },
     { id = "KremKap_CastleMausoleumEnemy_TinyPath", logic = function() return state.camera() end },
     { id = "KremKap_CastleMausoleumEnemy_LankyPath0", logic = function() return state.camera() end },
     { id = "KremKap_CastleMausoleumEnemy_LankyPath1", logic = function() return state.camera() end },
-    { id = "Balloon089", logic = function() return (state.islanky() and state.grape() and (state.sprint() or state.generalclips() or state.CanPhase())) end },
+    { id = "Balloon089", logic = function() return (state.lanky() and state.grape() and (state.sprint() or state.generalclips() or state.CanPhase())) end },
   },
   events = {
   },
@@ -647,10 +620,9 @@ M.regions["UpperCave"] = {
   display_name = [[Upper Cave]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
-    { id = "CastleTinyOverChasm", logic = function() return ((state.twirl() or state.CanPhase()) and state.istiny()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CastleTinyOverChasm", logic = function() return ((state.twirl() or state.CanPhase()) and state.tiny()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "CastleKasplatNearCandy", logic = function() return (not settings.kasplat_rando()) end },
     { id = "CastleUpperCaveEnemy_NearDungeon", logic = function() return true end },
     { id = "CastleUpperCaveEnemy_NearPit", logic = function() return true end },
@@ -678,23 +650,22 @@ M.regions["Dungeon"] = {
   display_name = [[Dungeon]],
   hint_region  = "CastleUnderground",
   level        = "CreepyCastle",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "CastleDonkeyDungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) or (state.Slam() and state.CanPhase())) and state.donkey()) end },
-    { id = "CastleDiddyDungeon", logic = function() return ((state.CanPhase() and (state.isdiddy() or settings.free_trade_items())) or (state.CanSlamSwitch("CreepyCastle", 3) and state.isdiddy() and (state.can_use_vines() and ((state.scope() and state.peanut() and state.diddy()) or state.CanMoontail())))) end },
-    { id = "CastleLankyDungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.trombone() and state.balloon() and state.islanky()) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "CastleDungeonEnemy_FaceRoom", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdonkey()) or state.CanPhase()) end },
-    { id = "CastleDungeonEnemy_ChairRoom", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdiddy()) or state.CanPhase()) end },
+    { id = "CastleDiddyDungeon", logic = function() return ((state.CanPhase() and (state.diddy() or settings.free_trade_items())) or (state.CanSlamSwitch("CreepyCastle", 3) and state.diddy() and (state.can_use_vines() and ((state.scope() and state.peanut() and state.diddy()) or state.CanMoontail())))) end },
+    { id = "CastleLankyDungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.trombone() and state.balloon() and state.lanky()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CastleDungeonEnemy_FaceRoom", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.donkey()) or state.CanPhase()) end },
+    { id = "CastleDungeonEnemy_ChairRoom", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.diddy()) or state.CanPhase()) end },
     { id = "CastleDungeonEnemy_OutsideLankyRoom", logic = function() return true end },
-    { id = "KremKap_CastleDungeonEnemy_FaceRoom", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdonkey()) or state.CanPhase())) end },
-    { id = "KremKap_CastleDungeonEnemy_ChairRoom", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdiddy()) or state.CanPhase())) end },
+    { id = "KremKap_CastleDungeonEnemy_FaceRoom", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.donkey()) or state.CanPhase())) end },
+    { id = "KremKap_CastleDungeonEnemy_ChairRoom", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.diddy()) or state.CanPhase())) end },
     { id = "KremKap_CastleDungeonEnemy_OutsideLankyRoom", logic = function() return state.camera() end },
-    { id = "Balloon094", logic = function() return (state.isdiddy() and state.peanut() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
-    { id = "Balloon095", logic = function() return (state.islanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
-    { id = "Balloon096", logic = function() return (state.ischunky() and state.pineapple() and state.punch()) end },
-    { id = "Balloon097", logic = function() return (state.islanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.balloon()) end },
-    { id = "Balloon098", logic = function() return (state.ischunky() and state.pineapple() and state.punch()) end },
+    { id = "Balloon094", logic = function() return (state.diddy() and state.peanut() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
+    { id = "Balloon095", logic = function() return (state.lanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
+    { id = "Balloon096", logic = function() return (state.chunky() and state.pineapple() and state.punch()) end },
+    { id = "Balloon097", logic = function() return (state.lanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.balloon()) end },
+    { id = "Balloon098", logic = function() return (state.chunky() and state.pineapple() and state.punch()) end },
   },
   events = {
   },
@@ -708,7 +679,6 @@ M.regions["CastleBossLobby"] = {
   display_name = [[Castle Boss Lobby]],
   hint_region  = "Bosses",
   level        = "CreepyCastle",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
   },
@@ -724,7 +694,6 @@ M.regions["CastleBoss"] = {
   display_name = [[Castle Boss]],
   hint_region  = "Bosses",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CastleKey", logic = function() return state.IsBossBeatable("CreepyCastle") end },

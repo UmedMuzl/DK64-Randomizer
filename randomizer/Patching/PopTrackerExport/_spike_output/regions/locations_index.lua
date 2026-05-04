@@ -51,13 +51,13 @@ M.locations["HoldableVasePlus"] = {
   { region = "BetweenVinesByPortal", logic = function() return ((state.pineapple() or state.CanPhase()) and state.chunky() and state.barrels()) end },
 }
 M.locations["AztecMainEnemy_VaseRoom0"] = {
-  { region = "BetweenVinesByPortal", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
+  { region = "BetweenVinesByPortal", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
 }
 M.locations["AztecMainEnemy_VaseRoom1"] = {
-  { region = "BetweenVinesByPortal", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
+  { region = "BetweenVinesByPortal", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
 }
 M.locations["AztecMainEnemy_VaseRoom2"] = {
-  { region = "BetweenVinesByPortal", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
+  { region = "BetweenVinesByPortal", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
 }
 M.locations["AztecMainEnemy_StartingTunnel0"] = {
   { region = "BetweenVinesByPortal", logic = function() return true end },
@@ -69,13 +69,13 @@ M.locations["AztecMainEnemy_StartingTunnel2"] = {
   { region = "BetweenVinesByPortal", logic = function() return true end },
 }
 M.locations["KremKap_AztecMainEnemy_VaseRoom0"] = {
-  { region = "BetweenVinesByPortal", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
+  { region = "BetweenVinesByPortal", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecMainEnemy_VaseRoom1"] = {
-  { region = "BetweenVinesByPortal", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
+  { region = "BetweenVinesByPortal", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecMainEnemy_VaseRoom2"] = {
-  { region = "BetweenVinesByPortal", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
+  { region = "BetweenVinesByPortal", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecMainEnemy_StartingTunnel0"] = {
   { region = "BetweenVinesByPortal", logic = function() return state.camera() end },
@@ -87,7 +87,7 @@ M.locations["KremKap_AztecMainEnemy_StartingTunnel2"] = {
   { region = "BetweenVinesByPortal", logic = function() return state.camera() end },
 }
 M.locations["AztecKasplatSandyBridge"] = {
-  { region = "AztecTunnelBeforeOasis", logic = function() return ((not settings.kasplat_rando()) and (state.CanPhase() or (state.hasMoveSwitchsanity("AztecBlueprintDoor", false) and ((state.strongKong() and state.isdonkey()) or (state.twirl() and state.istiny()))))) end },
+  { region = "AztecTunnelBeforeOasis", logic = function() return ((not settings.kasplat_rando()) and (state.CanPhase() or (state.hasMoveSwitchsanity("AztecBlueprintDoor", false) and ((state.strongKong() and state.donkey()) or (state.twirl() and state.tiny()))))) end },
 }
 M.locations["AztecMainEnemy_StartingTunnel3"] = {
   { region = "AztecTunnelBeforeOasis", logic = function() return true end },
@@ -99,7 +99,7 @@ M.locations["AztecDonkeyFreeLlama"] = {
   { region = "AngryAztecOasis", logic = function() return state.event("LlamaFreed") end },
 }
 M.locations["AztecKasplatOnTinyTemple"] = {
-  { region = "AngryAztecOasis", logic = function() return ((not settings.kasplat_rando()) and state.jetpack() and state.isdiddy() and state.climbing()) end },
+  { region = "AngryAztecOasis", logic = function() return ((not settings.kasplat_rando()) and state.jetpack() and state.diddy() and state.climbing()) end },
 }
 M.locations["RainbowCoin_Location06"] = {
   { region = "AngryAztecOasis", logic = function() return true end },
@@ -120,7 +120,7 @@ M.locations["Balloon055"] = {
   { region = "AngryAztecOasis", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["AztecChunkyKlaptrapRoom"] = {
-  { region = "TempleStart", logic = function() return ((state.triangle() or (state.CanPhaseswim() and state.event("AztecIceMelted")) or state.CanPhase()) and state.ischunky()) end },
+  { region = "TempleStart", logic = function() return ((state.triangle() or (state.CanPhaseswim() and state.event("AztecIceMelted")) or state.CanPhase()) and state.chunky()) end },
 }
 M.locations["AztecTempleEnemy_GuardRotating0"] = {
   { region = "TempleStart", logic = function() return true end },
@@ -153,19 +153,19 @@ M.locations["KremKap_AztecTempleEnemy_MainRoom2"] = {
   { region = "TempleStart", logic = function() return state.camera() end },
 }
 M.locations["AztecTinyKlaptrapRoom"] = {
-  { region = "TempleUnderwater", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.generalclips() or state.CanPhaseswim()) end },
+  { region = "TempleUnderwater", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.generalclips() or state.CanPhaseswim()) end },
 }
 M.locations["KremKap_AztecTempleEnemy_Underwater"] = {
   { region = "TempleUnderwater", logic = function() return state.camera() end },
 }
 M.locations["AztecLankyVulture"] = {
-  { region = "TempleVultureRoom", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.grape() and state.islanky()) end },
+  { region = "TempleVultureRoom", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.grape() and state.lanky()) end },
 }
 M.locations["AztecBattleArena"] = {
   { region = "TempleVultureRoom", logic = function() return ((not settings.crown_placement_rando()) and state.CanSlamSwitch("AngryAztec", 1) and state.grape() and state.lanky()) end },
 }
 M.locations["Balloon017"] = {
-  { region = "TempleVultureRoom", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "TempleVultureRoom", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["TinyKong"] = {
   { region = "TempleKONGRoom", logic = function() return state.CanFreeTiny() end },
@@ -204,13 +204,13 @@ M.locations["KremKap_AztecTempleEnemy_KongRoom4"] = {
   { region = "TempleKONGRoom", logic = function() return state.camera() end },
 }
 M.locations["Balloon015"] = {
-  { region = "TempleKONGRoom", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "TempleKONGRoom", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["Balloon016"] = {
-  { region = "TempleKONGRoom", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "TempleKONGRoom", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["AztecChunkyCagedBarrel"] = {
-  { region = "AngryAztecConnectorTunnel", logic = function() return (state.ischunky() and ((state.hunkyChunky() and (state.barrels() or state.generalclips())) or state.CanPhase())) end },
+  { region = "AngryAztecConnectorTunnel", logic = function() return (state.chunky() and ((state.hunkyChunky() and (state.barrels() or state.generalclips())) or state.CanPhase())) end },
 }
 M.locations["AztecKasplatNearLab"] = {
   { region = "AngryAztecConnectorTunnel", logic = function() return (not settings.kasplat_rando()) end },
@@ -252,7 +252,7 @@ M.locations["KremKap_AztecMainEnemy_TunnelPad1"] = {
   { region = "AngryAztecConnectorTunnel", logic = function() return state.camera() end },
 }
 M.locations["HoldableBoulderAztec"] = {
-  { region = "AngryAztecConnectorTunnel", logic = function() return (state.barrels() and state.hunkyChunky() and state.ischunky()) end },
+  { region = "AngryAztecConnectorTunnel", logic = function() return (state.barrels() and state.hunkyChunky() and state.chunky()) end },
 }
 M.locations["Balloon054"] = {
   { region = "AngryAztecConnectorTunnel", logic = function() return (state.donkey() and state.coconut()) end },
@@ -267,7 +267,7 @@ M.locations["AztecDiddyVultureRace"] = {
   { region = "AngryAztecMain", logic = function() return (state.jetpack() and state.diddy()) end },
 }
 M.locations["MelonCrate_Location06"] = {
-  { region = "AngryAztecMain", logic = function() return ((state.jetpack() and state.isdiddy()) or state.CanMoonkick()) end },
+  { region = "AngryAztecMain", logic = function() return ((state.jetpack() and state.diddy()) or state.CanMoonkick()) end },
 }
 M.locations["MelonCrate_Location07"] = {
   { region = "AngryAztecMain", logic = function() return true end },
@@ -312,49 +312,49 @@ M.locations["Balloon056"] = {
   { region = "AngryAztecMain", logic = function() return (state.donkey() and state.coconut() and state.strongKong()) end },
 }
 M.locations["AztecDonkeyQuicksandCave"] = {
-  { region = "AztecDonkeyQuicksandCave", logic = function() return (state.isdonkey() or settings.free_trade_items()) end },
+  { region = "AztecDonkeyQuicksandCave", logic = function() return (state.donkey() or settings.free_trade_items()) end },
 }
 M.locations["Balloon058"] = {
-  { region = "AztecDonkeyQuicksandCave", logic = function() return (state.diddy() and state.peanut() and state.isdonkey() and state.strongKong()) end },
+  { region = "AztecDonkeyQuicksandCave", logic = function() return (state.diddy() and state.peanut() and state.donkey() and state.strongKong()) end },
 }
 M.locations["AztecDonkey5DoorTemple"] = {
-  { region = "DonkeyTemple", logic = function() return ((state.coconut() or state.CanPhase()) and (state.isdonkey() or settings.free_trade_items())) end },
+  { region = "DonkeyTemple", logic = function() return ((state.coconut() or state.CanPhase()) and (state.donkey() or settings.free_trade_items())) end },
 }
 M.locations["AztecDK5DTEnemy_EndTrap0"] = {
-  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
+  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
 }
 M.locations["AztecDK5DTEnemy_EndTrap1"] = {
-  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
+  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
 }
 M.locations["AztecDK5DTEnemy_EndTrap2"] = {
-  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
+  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
 }
 M.locations["AztecDK5DTEnemy_EndPath0"] = {
-  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
+  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
 }
 M.locations["AztecDK5DTEnemy_EndPath1"] = {
-  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
+  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
 }
 M.locations["AztecDK5DTEnemy_StartPath"] = {
-  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
+  { region = "DonkeyTemple", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
 }
 M.locations["KremKap_AztecDK5DTEnemy_EndTrap0"] = {
-  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
+  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDK5DTEnemy_EndTrap1"] = {
-  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
+  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDK5DTEnemy_EndTrap2"] = {
-  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
+  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDK5DTEnemy_EndPath0"] = {
-  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
+  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDK5DTEnemy_EndPath1"] = {
-  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
+  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDK5DTEnemy_StartPath"] = {
-  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
+  { region = "DonkeyTemple", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["AztecDK5DTEnemy_StartTrap0"] = {
   { region = "DonkeyTempleDeadEndRight", logic = function() return true end },
@@ -375,34 +375,34 @@ M.locations["KremKap_AztecDK5DTEnemy_StartTrap2"] = {
   { region = "DonkeyTempleDeadEndRight", logic = function() return state.camera() end },
 }
 M.locations["AztecDiddy5DoorTemple"] = {
-  { region = "DiddyTemple", logic = function() return ((state.peanut() or state.CanPhase()) and (state.isdiddy() or settings.free_trade_items())) end },
+  { region = "DiddyTemple", logic = function() return ((state.peanut() or state.CanPhase()) and (state.diddy() or settings.free_trade_items())) end },
 }
 M.locations["AztecDiddy5DTEnemy_StartLeft0"] = {
-  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
+  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["AztecDiddy5DTEnemy_StartLeft1"] = {
-  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
+  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["AztecDiddy5DTEnemy_Reward"] = {
-  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
+  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["AztecDiddy5DTEnemy_SecondSwitch"] = {
-  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
+  { region = "DiddyTemple", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["KremKap_AztecDiddy5DTEnemy_StartLeft0"] = {
-  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
+  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDiddy5DTEnemy_StartLeft1"] = {
-  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
+  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDiddy5DTEnemy_Reward"] = {
-  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
+  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecDiddy5DTEnemy_SecondSwitch"] = {
-  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
+  { region = "DiddyTemple", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["Balloon021"] = {
-  { region = "DiddyTemple", logic = function() return (state.isdiddy() and state.peanut()) end },
+  { region = "DiddyTemple", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["AztecDiddy5DTEnemy_EndTrap0"] = {
   { region = "DiddyTempleDeadEndRight", logic = function() return true end },
@@ -423,34 +423,34 @@ M.locations["KremKap_AztecDiddy5DTEnemy_EndTrap2"] = {
   { region = "DiddyTempleDeadEndRight", logic = function() return state.camera() end },
 }
 M.locations["AztecLanky5DoorTemple"] = {
-  { region = "LankyTemple", logic = function() return ((state.grape() or state.CanPhase()) and (state.islanky() or settings.free_trade_items())) end },
+  { region = "LankyTemple", logic = function() return ((state.grape() or state.CanPhase()) and (state.lanky() or settings.free_trade_items())) end },
 }
 M.locations["AztecLanky5DTEnemy_JoiningPaths"] = {
   { region = "LankyTemple", logic = function() return true end },
 }
 M.locations["AztecLanky5DTEnemy_EndTrap"] = {
-  { region = "LankyTemple", logic = function() return ((state.grape() and state.islanky()) or state.CanPhase()) end },
+  { region = "LankyTemple", logic = function() return ((state.grape() and state.lanky()) or state.CanPhase()) end },
 }
 M.locations["AztecLanky5DTEnemy_Reward"] = {
-  { region = "LankyTemple", logic = function() return ((state.grape() and state.islanky()) or state.CanPhase()) end },
+  { region = "LankyTemple", logic = function() return ((state.grape() and state.lanky()) or state.CanPhase()) end },
 }
 M.locations["KremKap_AztecLanky5DTEnemy_JoiningPaths"] = {
   { region = "LankyTemple", logic = function() return state.camera() end },
 }
 M.locations["KremKap_AztecLanky5DTEnemy_EndTrap"] = {
-  { region = "LankyTemple", logic = function() return (state.camera() and ((state.grape() and state.islanky()) or state.CanPhase())) end },
+  { region = "LankyTemple", logic = function() return (state.camera() and ((state.grape() and state.lanky()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecLanky5DTEnemy_Reward"] = {
-  { region = "LankyTemple", logic = function() return (state.camera() and ((state.grape() and state.islanky()) or state.CanPhase())) end },
+  { region = "LankyTemple", logic = function() return (state.camera() and ((state.grape() and state.lanky()) or state.CanPhase())) end },
 }
 M.locations["Balloon022"] = {
-  { region = "LankyTemple", logic = function() return (state.islanky() and state.grape()) end },
+  { region = "LankyTemple", logic = function() return (state.lanky() and state.grape()) end },
 }
 M.locations["AztecTiny5DoorTemple"] = {
-  { region = "TinyTemple", logic = function() return ((state.feather() or state.CanPhase()) and (state.istiny() or settings.free_trade_items())) end },
+  { region = "TinyTemple", logic = function() return ((state.feather() or state.CanPhase()) and (state.tiny() or settings.free_trade_items())) end },
 }
 M.locations["AztecBananaFairyTinyTemple"] = {
-  { region = "TinyTemple", logic = function() return (state.camera() and ((state.mini() and state.istiny()) or state.CanPhase())) end },
+  { region = "TinyTemple", logic = function() return (state.camera() and ((state.mini() and state.tiny()) or state.CanPhase())) end },
 }
 M.locations["AztecTiny5DTEnemy_StartRightFront"] = {
   { region = "TinyTemple", logic = function() return true end },
@@ -465,16 +465,16 @@ M.locations["AztecTiny5DTEnemy_StartLeftFront"] = {
   { region = "TinyTemple", logic = function() return true end },
 }
 M.locations["AztecTiny5DTEnemy_Reward0"] = {
-  { region = "TinyTemple", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
+  { region = "TinyTemple", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
 }
 M.locations["AztecTiny5DTEnemy_Reward1"] = {
-  { region = "TinyTemple", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
+  { region = "TinyTemple", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
 }
 M.locations["AztecTiny5DTEnemy_DeadEnd0"] = {
-  { region = "TinyTemple", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
+  { region = "TinyTemple", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
 }
 M.locations["AztecTiny5DTEnemy_DeadEnd1"] = {
-  { region = "TinyTemple", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
+  { region = "TinyTemple", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
 }
 M.locations["KremKap_AztecTiny5DTEnemy_StartRightFront"] = {
   { region = "TinyTemple", logic = function() return state.camera() end },
@@ -489,22 +489,22 @@ M.locations["KremKap_AztecTiny5DTEnemy_StartLeftFront"] = {
   { region = "TinyTemple", logic = function() return state.camera() end },
 }
 M.locations["KremKap_AztecTiny5DTEnemy_Reward0"] = {
-  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
+  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecTiny5DTEnemy_Reward1"] = {
-  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
+  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecTiny5DTEnemy_DeadEnd0"] = {
-  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
+  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
 }
 M.locations["KremKap_AztecTiny5DTEnemy_DeadEnd1"] = {
-  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
+  { region = "TinyTemple", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
 }
 M.locations["AztecChunky5DoorTemple"] = {
-  { region = "ChunkyTemple", logic = function() return ((state.pineapple() or state.CanPhase()) and (state.ischunky() or settings.free_trade_items())) end },
+  { region = "ChunkyTemple", logic = function() return ((state.pineapple() or state.CanPhase()) and (state.chunky() or settings.free_trade_items())) end },
 }
 M.locations["AztecKasplatChunky5DT"] = {
-  { region = "ChunkyTemple", logic = function() return ((not settings.kasplat_rando()) and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
+  { region = "ChunkyTemple", logic = function() return ((not settings.kasplat_rando()) and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
 }
 M.locations["RainbowCoin_Location01"] = {
   { region = "ChunkyTemple", logic = function() return true end },
@@ -522,7 +522,7 @@ M.locations["AztecChunky5DTEnemy_SecondLeft"] = {
   { region = "ChunkyTemple", logic = function() return true end },
 }
 M.locations["AztecChunky5DTEnemy_Reward"] = {
-  { region = "ChunkyTemple", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
+  { region = "ChunkyTemple", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
 }
 M.locations["KremKap_AztecChunky5DTEnemy_StartRight"] = {
   { region = "ChunkyTemple", logic = function() return state.camera() end },
@@ -537,13 +537,13 @@ M.locations["KremKap_AztecChunky5DTEnemy_SecondLeft"] = {
   { region = "ChunkyTemple", logic = function() return state.camera() end },
 }
 M.locations["KremKap_AztecChunky5DTEnemy_Reward"] = {
-  { region = "ChunkyTemple", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
+  { region = "ChunkyTemple", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
 }
 M.locations["Balloon023"] = {
-  { region = "ChunkyTemple", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "ChunkyTemple", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["Balloon024"] = {
-  { region = "ChunkyTemple", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "ChunkyTemple", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["AztecTinyBeetleRace"] = {
   { region = "AztecTinyRace", logic = function() return state.HasEnoughRaceCoins("AztecTinyRace", "tiny", (not settings.free_trade_items())) end },
@@ -555,7 +555,7 @@ M.locations["AztecDonkeyFreeLanky"] = {
   { region = "LlamaTemple", logic = function() return state.CanFreeLanky() end },
 }
 M.locations["AztecLankyLlamaTempleBarrel"] = {
-  { region = "LlamaTemple", logic = function() return (state.trombone() and ((state.handstand() and state.islanky()) or (settings.free_trade_items() and ((state.istiny() and ((state.twirl() and state.monkey_maneuvers()) or state.slope_resets())) or state.CanMoonkick())))) end },
+  { region = "LlamaTemple", logic = function() return (state.trombone() and ((state.handstand() and state.lanky()) or (settings.free_trade_items() and ((state.tiny() and ((state.twirl() and state.monkey_maneuvers()) or state.slope_resets())) or state.CanMoonkick())))) end },
 }
 M.locations["AztecBananaFairyLlamaTemple"] = {
   { region = "LlamaTemple", logic = function() return state.camera() end },
@@ -564,13 +564,13 @@ M.locations["MelonCrate_Location02"] = {
   { region = "LlamaTemple", logic = function() return true end },
 }
 M.locations["Balloon018"] = {
-  { region = "LlamaTemple", logic = function() return (state.istiny() and state.feather() and state.swim()) end },
+  { region = "LlamaTemple", logic = function() return (state.tiny() and state.feather() and state.swim()) end },
 }
 M.locations["Balloon019"] = {
-  { region = "LlamaTemple", logic = function() return (state.islanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
+  { region = "LlamaTemple", logic = function() return (state.lanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
 }
 M.locations["Balloon020"] = {
-  { region = "LlamaTemple", logic = function() return (state.islanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
+  { region = "LlamaTemple", logic = function() return (state.lanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
 }
 M.locations["AztecLlamaEnemy_KongFreeInstrument"] = {
   { region = "LlamaTemple", logic = function() return true end },
@@ -627,7 +627,7 @@ M.locations["KremKap_AztecLlamaEnemy_Matching1"] = {
   { region = "LlamaTempleMatching", logic = function() return state.camera() end },
 }
 M.locations["AztecTinyLlamaTemple"] = {
-  { region = "LlamaTempleBack", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.istiny()) end },
+  { region = "LlamaTempleBack", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.tiny()) end },
 }
 M.locations["AztecKasplatLlamaTemple"] = {
   { region = "LlamaTempleBack", logic = function() return (not settings.kasplat_rando()) end },
@@ -666,7 +666,7 @@ M.locations["CastleChunkyHalfMedal"] = {
   { region = "CreepyCastleMedals", logic = function() return (state.cb("CreepyCastle", "chunky") >= math.max(1, math.floor(math.floor(settings.medal_cb_req_level(6) / (2 ^ 1))))) end },
 }
 M.locations["CastleDiddyAboveCastle"] = {
-  { region = "CreepyCastleMain", logic = function() return (state.jetpack() and state.isdiddy()) end },
+  { region = "CreepyCastleMain", logic = function() return (state.jetpack() and state.diddy()) end },
 }
 M.locations["CastleKasplatHalfway"] = {
   { region = "CreepyCastleMain", logic = function() return (not settings.kasplat_rando()) end },
@@ -759,13 +759,13 @@ M.locations["KremKap_CastleMainEnemy_LowTnS"] = {
   { region = "CastleVeryBottom", logic = function() return state.camera() end },
 }
 M.locations["CastleDonkeyTree"] = {
-  { region = "CastleTree", logic = function() return (((state.scope() and state.coconut()) or state.generalclips() or state.CanPhase()) and state.isdonkey()) end },
+  { region = "CastleTree", logic = function() return (((state.scope() and state.coconut()) or state.generalclips() or state.CanPhase()) and state.donkey()) end },
 }
 M.locations["CastleKasplatTree"] = {
-  { region = "CastleTree", logic = function() return ((not settings.kasplat_rando()) and (state.coconut() or state.CanPhase() or state.generalclips()) and state.isdonkey()) end },
+  { region = "CastleTree", logic = function() return ((not settings.kasplat_rando()) and (state.coconut() or state.CanPhase() or state.generalclips()) and state.donkey()) end },
 }
 M.locations["CastleBananaFairyTree"] = {
-  { region = "CastleTree", logic = function() return (state.camera() and state.swim() and (((state.coconut() or state.generalclips()) and state.isdonkey()) or state.CanPhase())) end },
+  { region = "CastleTree", logic = function() return (state.camera() and state.swim() and (((state.coconut() or state.generalclips()) and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["CastleTreeEnemy_StartRoom0"] = {
   { region = "CastleTree", logic = function() return true end },
@@ -780,13 +780,13 @@ M.locations["KremKap_CastleTreeEnemy_StartRoom1"] = {
   { region = "CastleTree", logic = function() return state.camera() end },
 }
 M.locations["Balloon099"] = {
-  { region = "CastleTree", logic = function() return (state.isdonkey() and state.coconut()) end },
+  { region = "CastleTree", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["CastleChunkyTree"] = {
-  { region = "CastleTreePastPunch", logic = function() return ((((state.scope() or state.hard_shooting()) and state.pineapple() and state.ischunky()) or state.CanPhase()) and (state.ischunky() or settings.free_trade_items())) end },
+  { region = "CastleTreePastPunch", logic = function() return ((((state.scope() or state.hard_shooting()) and state.pineapple() and state.chunky()) or state.CanPhase()) and (state.chunky() or settings.free_trade_items())) end },
 }
 M.locations["Balloon100"] = {
-  { region = "CastleTreePastPunch", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "CastleTreePastPunch", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["CastleLibraryEnemy_ForkLeft0"] = {
   { region = "Library", logic = function() return true end },
@@ -831,10 +831,10 @@ M.locations["KremKap_CastleLibraryEnemy_Corridor05"] = {
   { region = "LibraryPastSlam", logic = function() return state.camera() end },
 }
 M.locations["CastleDonkeyLibrary"] = {
-  { region = "LibraryPastBooks", logic = function() return (state.isdonkey() or settings.free_trade_items()) end },
+  { region = "LibraryPastBooks", logic = function() return (state.donkey() or settings.free_trade_items()) end },
 }
 M.locations["CastleDiddyBallroom"] = {
-  { region = "Ballroom", logic = function() return (state.jetpack() and state.isdiddy()) end },
+  { region = "Ballroom", logic = function() return (state.jetpack() and state.diddy()) end },
 }
 M.locations["CastleBallroomEnemy_Start"] = {
   { region = "Ballroom", logic = function() return true end },
@@ -849,37 +849,37 @@ M.locations["CastleBananaFairyBallroom"] = {
   { region = "MuseumBehindGlass", logic = function() return state.camera() end },
 }
 M.locations["Balloon092"] = {
-  { region = "MuseumBehindGlass", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "MuseumBehindGlass", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["CastleTinyCarRace"] = {
   { region = "CastleTinyRace", logic = function() return state.HasEnoughRaceCoins("CastleTinyRace", "tiny", (not settings.free_trade_items())) end },
 }
 M.locations["CastleLankyTower"] = {
-  { region = "Tower", logic = function() return ((state.scope() or (state.hard_shooting() and state.homing())) and state.balloon() and state.grape() and state.islanky()) end },
+  { region = "Tower", logic = function() return ((state.scope() or (state.hard_shooting() and state.homing())) and state.balloon() and state.grape() and state.lanky()) end },
 }
 M.locations["Balloon088"] = {
-  { region = "Tower", logic = function() return (state.islanky() and state.grape()) end },
+  { region = "Tower", logic = function() return (state.lanky() and state.grape()) end },
 }
 M.locations["CastleLankyGreenhouse"] = {
-  { region = "Greenhouse", logic = function() return (state.islanky() or settings.free_trade_items()) end },
+  { region = "Greenhouse", logic = function() return (state.lanky() or settings.free_trade_items()) end },
 }
 M.locations["CastleBattleArena"] = {
-  { region = "Greenhouse", logic = function() return ((not settings.crown_placement_rando()) and (state.islanky() or settings.free_trade_items())) end },
+  { region = "Greenhouse", logic = function() return ((not settings.crown_placement_rando()) and (state.lanky() or settings.free_trade_items())) end },
 }
 M.locations["CastleTinyTrashCan"] = {
-  { region = "TrashCan", logic = function() return ((state.istiny() and (state.saxophone() or (state.feather() and (state.homing() or state.hard_shooting())))) or (settings.free_trade_items() and (state.HasInstrument("any") or (state.HasGun("any") and (state.homing() or state.hard_shooting()))))) end },
+  { region = "TrashCan", logic = function() return ((state.tiny() and (state.saxophone() or (state.feather() and (state.homing() or state.hard_shooting())))) or (settings.free_trade_items() and (state.HasInstrument("any") or (state.HasGun("any") and (state.homing() or state.hard_shooting()))))) end },
 }
 M.locations["CastleChunkyShed"] = {
-  { region = "Shed", logic = function() return ((state.punch() or state.CanPhase()) and ((state.gorillaGone() and state.pineapple()) or state.triangle()) and state.ischunky()) end },
+  { region = "Shed", logic = function() return ((state.punch() or state.CanPhase()) and ((state.gorillaGone() and state.pineapple()) or state.triangle()) and state.chunky()) end },
 }
 M.locations["BreakableCastleShed"] = {
-  { region = "Shed", logic = function() return (state.ischunky() and state.punch()) end },
+  { region = "Shed", logic = function() return (state.chunky() and state.punch()) end },
 }
 M.locations["Balloon101"] = {
-  { region = "Shed", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "Shed", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["CastleChunkyMuseum"] = {
-  { region = "Museum", logic = function() return ((state.punch() and state.ischunky() and state.barrels()) or (state.CanPhase() and (state.ischunky() or settings.free_trade_items()))) end },
+  { region = "Museum", logic = function() return ((state.punch() and state.chunky() and state.barrels()) or (state.CanPhase() and (state.chunky() or settings.free_trade_items()))) end },
 }
 M.locations["CastleMuseumEnemy_MainFloor0"] = {
   { region = "Museum", logic = function() return true end },
@@ -912,10 +912,10 @@ M.locations["KremKap_CastleMuseumEnemy_Start"] = {
   { region = "Museum", logic = function() return state.camera() end },
 }
 M.locations["HoldableBoulderMuseum"] = {
-  { region = "Museum", logic = function() return (state.barrels() and state.ischunky() and (state.punch() or state.CanPhase())) end },
+  { region = "Museum", logic = function() return (state.barrels() and state.chunky() and (state.punch() or state.CanPhase())) end },
 }
 M.locations["Balloon093"] = {
-  { region = "Museum", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "Museum", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["CastleKasplatCrypt"] = {
   { region = "LowerCave", logic = function() return (not settings.kasplat_rando()) end },
@@ -984,73 +984,73 @@ M.locations["KremKap_CastleCryptEnemy_MinecartEntry"] = {
   { region = "CryptDonkeyRoom", logic = function() return state.camera() end },
 }
 M.locations["Balloon091"] = {
-  { region = "CryptDonkeyRoom", logic = function() return (state.isdonkey() and state.coconut()) end },
+  { region = "CryptDonkeyRoom", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["CastleDiddyCrypt"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.charge() and state.isdiddy()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.charge() and state.diddy()) end },
 }
 M.locations["CastleCryptEnemy_DiddyCoffin0"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.diddy() and state.charge()) end },
 }
 M.locations["CastleCryptEnemy_DiddyCoffin1"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.diddy() and state.charge()) end },
 }
 M.locations["CastleCryptEnemy_DiddyCoffin2"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.diddy() and state.charge()) end },
 }
 M.locations["CastleCryptEnemy_DiddyCoffin3"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.diddy() and state.charge()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_DiddyCoffin0"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_DiddyCoffin1"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_DiddyCoffin2"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_DiddyCoffin3"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.isdiddy() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.camera() and state.diddy() and state.charge()) end },
 }
 M.locations["Balloon090"] = {
-  { region = "CryptDiddyRoom", logic = function() return (state.isdiddy() and state.peanut() and state.charge()) end },
+  { region = "CryptDiddyRoom", logic = function() return (state.diddy() and state.peanut() and state.charge()) end },
 }
 M.locations["CastleChunkyCrypt"] = {
-  { region = "CryptChunkyRoom", logic = function() return ((state.punch() and state.ischunky()) or ((state.ischunky() or settings.free_trade_items()) and (state.CanPhase() or state.generalclips()))) end },
+  { region = "CryptChunkyRoom", logic = function() return ((state.punch() and state.chunky()) or ((state.chunky() or settings.free_trade_items()) and (state.CanPhase() or state.generalclips()))) end },
 }
 M.locations["CastleCryptEnemy_ChunkyCoffin0"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.chunky() and state.Slam()) end },
 }
 M.locations["CastleCryptEnemy_ChunkyCoffin1"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.chunky() and state.Slam()) end },
 }
 M.locations["CastleCryptEnemy_ChunkyCoffin2"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.chunky() and state.Slam()) end },
 }
 M.locations["CastleCryptEnemy_ChunkyCoffin3"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.chunky() and state.Slam()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_ChunkyCoffin0"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_ChunkyCoffin1"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_ChunkyCoffin2"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
 }
 M.locations["KremKap_CastleCryptEnemy_ChunkyCoffin3"] = {
-  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.ischunky() and state.Slam()) end },
+  { region = "CryptChunkyRoom", logic = function() return (state.camera() and state.chunky() and state.Slam()) end },
 }
 M.locations["CastleDonkeyMinecarts"] = {
   { region = "CastleMinecarts", logic = function() return state.HasEnoughRaceCoins("CastleMinecarts", "donkey", (not settings.free_trade_items())) end },
 }
 M.locations["CastleLankyMausoleum"] = {
-  { region = "Mausoleum", logic = function() return ((((state.grape() and state.sprint()) or state.generalclips() or state.CanPhase()) and ((state.trombone() and state.can_use_vines()) or (state.monkey_maneuvers() and state.sprint())) and state.islanky()) or (settings.free_trade_items() and state.CanPhase())) end },
+  { region = "Mausoleum", logic = function() return ((((state.grape() and state.sprint()) or state.generalclips() or state.CanPhase()) and ((state.trombone() and state.can_use_vines()) or (state.monkey_maneuvers() and state.sprint())) and state.lanky()) or (settings.free_trade_items() and state.CanPhase())) end },
 }
 M.locations["CastleTinyMausoleum"] = {
-  { region = "Mausoleum", logic = function() return (state.CanSlamSwitch("CreepyCastle", 3) and state.twirl() and state.istiny()) end },
+  { region = "Mausoleum", logic = function() return (state.CanSlamSwitch("CreepyCastle", 3) and state.twirl() and state.tiny()) end },
 }
 M.locations["CastleMausoleumEnemy_TinyPath"] = {
   { region = "Mausoleum", logic = function() return true end },
@@ -1071,10 +1071,10 @@ M.locations["KremKap_CastleMausoleumEnemy_LankyPath1"] = {
   { region = "Mausoleum", logic = function() return state.camera() end },
 }
 M.locations["Balloon089"] = {
-  { region = "Mausoleum", logic = function() return (state.islanky() and state.grape() and (state.sprint() or state.generalclips() or state.CanPhase())) end },
+  { region = "Mausoleum", logic = function() return (state.lanky() and state.grape() and (state.sprint() or state.generalclips() or state.CanPhase())) end },
 }
 M.locations["CastleTinyOverChasm"] = {
-  { region = "UpperCave", logic = function() return ((state.twirl() or state.CanPhase()) and state.istiny()) end },
+  { region = "UpperCave", logic = function() return ((state.twirl() or state.CanPhase()) and state.tiny()) end },
 }
 M.locations["CastleKasplatNearCandy"] = {
   { region = "UpperCave", logic = function() return (not settings.kasplat_rando()) end },
@@ -1110,43 +1110,43 @@ M.locations["CastleDonkeyDungeon"] = {
   { region = "Dungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) or (state.Slam() and state.CanPhase())) and state.donkey()) end },
 }
 M.locations["CastleDiddyDungeon"] = {
-  { region = "Dungeon", logic = function() return ((state.CanPhase() and (state.isdiddy() or settings.free_trade_items())) or (state.CanSlamSwitch("CreepyCastle", 3) and state.isdiddy() and (state.can_use_vines() and ((state.scope() and state.peanut() and state.diddy()) or state.CanMoontail())))) end },
+  { region = "Dungeon", logic = function() return ((state.CanPhase() and (state.diddy() or settings.free_trade_items())) or (state.CanSlamSwitch("CreepyCastle", 3) and state.diddy() and (state.can_use_vines() and ((state.scope() and state.peanut() and state.diddy()) or state.CanMoontail())))) end },
 }
 M.locations["CastleLankyDungeon"] = {
-  { region = "Dungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.trombone() and state.balloon() and state.islanky()) end },
+  { region = "Dungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.trombone() and state.balloon() and state.lanky()) end },
 }
 M.locations["CastleDungeonEnemy_FaceRoom"] = {
-  { region = "Dungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdonkey()) or state.CanPhase()) end },
+  { region = "Dungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.donkey()) or state.CanPhase()) end },
 }
 M.locations["CastleDungeonEnemy_ChairRoom"] = {
-  { region = "Dungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdiddy()) or state.CanPhase()) end },
+  { region = "Dungeon", logic = function() return ((state.CanSlamSwitch("CreepyCastle", 3) and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["CastleDungeonEnemy_OutsideLankyRoom"] = {
   { region = "Dungeon", logic = function() return true end },
 }
 M.locations["KremKap_CastleDungeonEnemy_FaceRoom"] = {
-  { region = "Dungeon", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdonkey()) or state.CanPhase())) end },
+  { region = "Dungeon", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.donkey()) or state.CanPhase())) end },
 }
 M.locations["KremKap_CastleDungeonEnemy_ChairRoom"] = {
-  { region = "Dungeon", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.isdiddy()) or state.CanPhase())) end },
+  { region = "Dungeon", logic = function() return (state.camera() and ((state.CanSlamSwitch("CreepyCastle", 3) and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["KremKap_CastleDungeonEnemy_OutsideLankyRoom"] = {
   { region = "Dungeon", logic = function() return state.camera() end },
 }
 M.locations["Balloon094"] = {
-  { region = "Dungeon", logic = function() return (state.isdiddy() and state.peanut() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
+  { region = "Dungeon", logic = function() return (state.diddy() and state.peanut() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
 }
 M.locations["Balloon095"] = {
-  { region = "Dungeon", logic = function() return (state.islanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
+  { region = "Dungeon", logic = function() return (state.lanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase())) end },
 }
 M.locations["Balloon096"] = {
-  { region = "Dungeon", logic = function() return (state.ischunky() and state.pineapple() and state.punch()) end },
+  { region = "Dungeon", logic = function() return (state.chunky() and state.pineapple() and state.punch()) end },
 }
 M.locations["Balloon097"] = {
-  { region = "Dungeon", logic = function() return (state.islanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.balloon()) end },
+  { region = "Dungeon", logic = function() return (state.lanky() and state.grape() and state.trombone() and (state.CanSlamSwitch("CreepyCastle", 3) or state.CanPhase()) and state.balloon()) end },
 }
 M.locations["Balloon098"] = {
-  { region = "Dungeon", logic = function() return (state.ischunky() and state.pineapple() and state.punch()) end },
+  { region = "Dungeon", logic = function() return (state.chunky() and state.pineapple() and state.punch()) end },
 }
 M.locations["CastleKey"] = {
   { region = "CastleBoss", logic = function() return state.IsBossBeatable("CreepyCastle") end },
@@ -1182,7 +1182,7 @@ M.locations["CavesChunkyHalfMedal"] = {
   { region = "CrystalCavesMedals", logic = function() return (state.cb("CrystalCaves", "chunky") >= math.max(1, math.floor(math.floor(settings.medal_cb_req_level(5) / (2 ^ 1))))) end },
 }
 M.locations["CavesDiddyJetpackBarrel"] = {
-  { region = "CrystalCavesMain", logic = function() return ((state.jetpack() and state.isdiddy()) or ((not settings.shuffle_shops()) and state.monkey_maneuvers() and ((state.isdonkey() and (not state.isKrushaAdjacent("donkey"))) or (state.istiny() and state.twirl())) and settings.free_trade_items())) end },
+  { region = "CrystalCavesMain", logic = function() return ((state.jetpack() and state.diddy()) or ((not settings.shuffle_shops()) and state.monkey_maneuvers() and ((state.donkey() and (not state.isKrushaAdjacent("donkey"))) or (state.tiny() and state.twirl())) and settings.free_trade_items())) end },
 }
 M.locations["CavesKasplatNearLab"] = {
   { region = "CrystalCavesMain", logic = function() return (not settings.kasplat_rando()) end },
@@ -1224,10 +1224,10 @@ M.locations["Balloon070"] = {
   { region = "CrystalCavesMain", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["CavesChunkyGorillaGone"] = {
-  { region = "CavesGGRoom", logic = function() return (state.gorillaGone() and state.ischunky()) end },
+  { region = "CavesGGRoom", logic = function() return (state.gorillaGone() and state.chunky()) end },
 }
 M.locations["Balloon074"] = {
-  { region = "CavesGGRoom", logic = function() return (state.isdonkey() and state.coconut()) end },
+  { region = "CavesGGRoom", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["Balloon071"] = {
   { region = "CavesSnideArea", logic = function() return (state.chunky() and state.pineapple()) end },
@@ -1236,19 +1236,19 @@ M.locations["CavesKasplatNearFunky"] = {
   { region = "CavesBlueprintCave", logic = function() return (not settings.kasplat_rando()) end },
 }
 M.locations["Balloon077"] = {
-  { region = "CavesBlueprintCave", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "CavesBlueprintCave", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["CavesTinyCaveBarrel"] = {
-  { region = "CavesBonusCave", logic = function() return (state.istiny() or settings.free_trade_items()) end },
+  { region = "CavesBonusCave", logic = function() return (state.tiny() or settings.free_trade_items()) end },
 }
 M.locations["Balloon076"] = {
-  { region = "CavesBonusCave", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "CavesBonusCave", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["CavesKasplatPillar"] = {
   { region = "CavesBlueprintPillar", logic = function() return (not settings.kasplat_rando()) end },
 }
 M.locations["CavesDonkeyBaboonBlast"] = {
-  { region = "CavesBaboonBlast", logic = function() return state.isdonkey() end },
+  { region = "CavesBaboonBlast", logic = function() return state.donkey() end },
 }
 M.locations["HoldableBoulderCavesLarge"] = {
   { region = "BoulderCave", logic = function() return (state.barrels() and state.chunky() and state.hunkyChunky() and state.event("CavesSmallBoulderButton")) end },
@@ -1260,16 +1260,16 @@ M.locations["CavesLankyBeetleRace"] = {
   { region = "CavesLankyRace", logic = function() return (state.sprint() and state.HasEnoughRaceCoins("CavesLankyRace", "lanky", true)) end },
 }
 M.locations["CavesLankyCastle"] = {
-  { region = "FrozenCastle", logic = function() return (state.Slam() and (state.islanky() or (settings.free_trade_items() and (state.isdiddy() or state.istiny() or state.ischunky() or state.superSlam())))) end },
+  { region = "FrozenCastle", logic = function() return (state.Slam() and (state.lanky() or (settings.free_trade_items() and (state.diddy() or state.tiny() or state.chunky() or state.superSlam())))) end },
 }
 M.locations["KremKap_CavesNPC_IceTomato"] = {
   { region = "FrozenCastle", logic = function() return state.camera() end },
 }
 M.locations["Balloon086"] = {
-  { region = "FrozenCastle", logic = function() return (state.islanky() and state.grape()) end },
+  { region = "FrozenCastle", logic = function() return (state.lanky() and state.grape()) end },
 }
 M.locations["CavesTinyMonkeyportIgloo"] = {
-  { region = "IglooArea", logic = function() return (((state.event("CavesMonkeyportAccess") or state.CanPhaseswim()) and state.istiny()) or (state.CanPhaseswim() and settings.free_trade_items())) end },
+  { region = "IglooArea", logic = function() return (((state.event("CavesMonkeyportAccess") or state.CanPhaseswim()) and state.tiny()) or (state.CanPhaseswim() and settings.free_trade_items())) end },
 }
 M.locations["CavesChunkyTransparentIgloo"] = {
   { region = "IglooArea", logic = function() return (((state.event("CavesLargeBoulderButton") or state.generalclips() or state.CanPhaseswim()) and state.chunky()) or ((state.generalclips() or state.CanPhaseswim()) and settings.free_trade_items())) end },
@@ -1281,7 +1281,7 @@ M.locations["RainbowCoin_Location10"] = {
   { region = "GiantKosha", logic = function() return true end },
 }
 M.locations["CavesDonkey5DoorIgloo"] = {
-  { region = "DonkeyIgloo", logic = function() return ((state.strongKong() and state.isdonkey()) or state.CanMoonkick()) end },
+  { region = "DonkeyIgloo", logic = function() return ((state.strongKong() and state.donkey()) or state.CanMoonkick()) end },
 }
 M.locations["Caves5DIDKEnemy_Right"] = {
   { region = "DonkeyIgloo", logic = function() return true end },
@@ -1296,25 +1296,25 @@ M.locations["KremKap_Caves5DIDKEnemy_Left"] = {
   { region = "DonkeyIgloo", logic = function() return state.camera() end },
 }
 M.locations["Balloon081"] = {
-  { region = "DonkeyIgloo", logic = function() return (state.isdonkey() and state.coconut()) end },
+  { region = "DonkeyIgloo", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["CavesDiddy5DoorIgloo"] = {
-  { region = "DiddyIgloo", logic = function() return ((state.isdiddy() or settings.free_trade_items()) and state.barrels()) end },
+  { region = "DiddyIgloo", logic = function() return ((state.diddy() or settings.free_trade_items()) and state.barrels()) end },
 }
 M.locations["Balloon087"] = {
-  { region = "DiddyIgloo", logic = function() return (state.isdiddy() and state.peanut()) end },
+  { region = "DiddyIgloo", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["CavesLanky5DoorIgloo"] = {
-  { region = "LankyIgloo", logic = function() return (((state.balloon() or state.monkey_maneuvers()) and state.islanky()) or (settings.free_trade_items() and state.monkey_maneuvers() and (state.isdiddy() or state.istiny()))) end },
+  { region = "LankyIgloo", logic = function() return (((state.balloon() or state.monkey_maneuvers()) and state.lanky()) or (settings.free_trade_items() and state.monkey_maneuvers() and (state.diddy() or state.tiny()))) end },
 }
 M.locations["Balloon080"] = {
-  { region = "LankyIgloo", logic = function() return (state.islanky() and state.grape() and (state.balloon() or state.monkey_maneuvers())) end },
+  { region = "LankyIgloo", logic = function() return (state.lanky() and state.grape() and (state.balloon() or state.monkey_maneuvers())) end },
 }
 M.locations["CavesTiny5DoorIgloo"] = {
-  { region = "TinyIgloo", logic = function() return (state.Slam() and state.istiny()) end },
+  { region = "TinyIgloo", logic = function() return (state.Slam() and state.tiny()) end },
 }
 M.locations["CavesBananaFairyIgloo"] = {
-  { region = "TinyIgloo", logic = function() return (state.Slam() and state.istiny() and state.camera()) end },
+  { region = "TinyIgloo", logic = function() return (state.Slam() and state.tiny() and state.camera()) end },
 }
 M.locations["Caves5DITinyEnemy_BigEnemy"] = {
   { region = "TinyIgloo", logic = function() return true end },
@@ -1323,13 +1323,13 @@ M.locations["KremKap_Caves5DITinyEnemy_BigEnemy"] = {
   { region = "TinyIgloo", logic = function() return state.camera() end },
 }
 M.locations["Balloon079"] = {
-  { region = "TinyIgloo", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "TinyIgloo", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["CavesChunky5DoorIgloo"] = {
-  { region = "ChunkyIgloo", logic = function() return (state.ischunky() or settings.free_trade_items()) end },
+  { region = "ChunkyIgloo", logic = function() return (state.chunky() or settings.free_trade_items()) end },
 }
 M.locations["Balloon085"] = {
-  { region = "ChunkyIgloo", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "ChunkyIgloo", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["CavesKasplatNearCandy"] = {
   { region = "CabinArea", logic = function() return (not settings.kasplat_rando()) end },
@@ -1362,25 +1362,25 @@ M.locations["Balloon075"] = {
   { region = "CabinArea", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["CavesDonkeyRotatingCabin"] = {
-  { region = "RotatingCabin", logic = function() return ((state.Slam() and state.isdonkey()) or state.CanMoonkick()) end },
+  { region = "RotatingCabin", logic = function() return ((state.Slam() and state.donkey()) or state.CanMoonkick()) end },
 }
 M.locations["CavesBattleArena"] = {
-  { region = "RotatingCabin", logic = function() return ((not settings.crown_placement_rando()) and state.Slam() and state.isdonkey()) end },
+  { region = "RotatingCabin", logic = function() return ((not settings.crown_placement_rando()) and state.Slam() and state.donkey()) end },
 }
 M.locations["CavesDonkey5DoorCabin"] = {
   { region = "DonkeyCabin", logic = function() return ((state.homing() or state.hard_shooting()) and (state.HasGun("donkey") or state.adv_orange_usage() or (settings.free_trade_items() and state.HasGun("any")))) end },
 }
 M.locations["CavesDiddy5DoorCabinLower"] = {
-  { region = "DiddyLowerCabin", logic = function() return (state.isdiddy() and state.oranges() and (state.jetpack() or state.monkey_maneuvers())) end },
+  { region = "DiddyLowerCabin", logic = function() return (state.diddy() and state.oranges() and (state.jetpack() or state.monkey_maneuvers())) end },
 }
 M.locations["CavesDiddy5DoorCabinUpper"] = {
-  { region = "DiddyUpperCabin", logic = function() return ((state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.isdiddy()) end },
+  { region = "DiddyUpperCabin", logic = function() return ((state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.diddy()) end },
 }
 M.locations["CavesBananaFairyCabin"] = {
-  { region = "DiddyUpperCabin", logic = function() return (state.camera() and (state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.isdiddy()) end },
+  { region = "DiddyUpperCabin", logic = function() return (state.camera() and (state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.diddy()) end },
 }
 M.locations["CavesLanky1DoorCabin"] = {
-  { region = "LankyCabin", logic = function() return (state.sprint() and state.balloon() and state.islanky()) end },
+  { region = "LankyCabin", logic = function() return (state.sprint() and state.balloon() and state.lanky()) end },
 }
 M.locations["Caves1DCEnemy_Near"] = {
   { region = "LankyCabin", logic = function() return true end },
@@ -1389,13 +1389,13 @@ M.locations["KremKap_Caves1DCEnemy_Near"] = {
   { region = "LankyCabin", logic = function() return state.camera() end },
 }
 M.locations["CavesTiny5DoorCabin"] = {
-  { region = "TinyCabin", logic = function() return ((state.istiny() or settings.free_trade_items()) and state.oranges()) end },
+  { region = "TinyCabin", logic = function() return ((state.tiny() or settings.free_trade_items()) and state.oranges()) end },
 }
 M.locations["Balloon084"] = {
-  { region = "TinyCabin", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "TinyCabin", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["CavesChunky5DoorCabin"] = {
-  { region = "ChunkyCabin", logic = function() return (state.gorillaGone() and state.Slam() and state.ischunky()) end },
+  { region = "ChunkyCabin", logic = function() return (state.gorillaGone() and state.Slam() and state.chunky()) end },
 }
 M.locations["CavesKey"] = {
   { region = "CavesBoss", logic = function() return state.IsBossBeatable("CrystalCaves") end },
@@ -1598,7 +1598,7 @@ M.locations["IslesDonkeyJapesRock"] = {
   { region = "IslesMain", logic = function() return (settings.open_lobbies() or state.event("KLumsyTalkedTo")) end },
 }
 M.locations["IslesChunkyCagedBanana"] = {
-  { region = "IslesMain", logic = function() return ((state.pineapple() and state.chunky()) or ((state.CanSTS() or state.CanPhase()) and (state.ischunky() or settings.free_trade_items()))) end },
+  { region = "IslesMain", logic = function() return ((state.pineapple() and state.chunky()) or ((state.CanSTS() or state.CanPhase()) and (state.chunky() or settings.free_trade_items()))) end },
 }
 M.locations["IslesMainEnemy_PineappleCage0"] = {
   { region = "IslesMain", logic = function() return true end },
@@ -1631,7 +1631,7 @@ M.locations["KremKap_IslesMainEnemy_PineappleCage1"] = {
   { region = "IslesMain", logic = function() return state.camera() end },
 }
 M.locations["IslesTinyCagedBanana"] = {
-  { region = "OuterIsles", logic = function() return ((state.feather() and state.tiny()) or ((state.CanPhase() or state.CanSTS()) and (state.istiny() or settings.free_trade_items()))) end },
+  { region = "OuterIsles", logic = function() return ((state.feather() and state.tiny()) or ((state.CanPhase() or state.CanSTS()) and (state.tiny() or settings.free_trade_items()))) end },
 }
 M.locations["IslesChunkyPoundtheX"] = {
   { region = "OuterIsles", logic = function() return (state.event("IslesChunkyBarrelSpawn") and state.hunkyChunky() and state.Slam() and state.chunky()) end },
@@ -1652,13 +1652,13 @@ M.locations["KremKap_IslesMainEnemy_NearAztec"] = {
   { region = "IslesMainUpper", logic = function() return state.camera() end },
 }
 M.locations["HoldableBoulderIslesNearAztec"] = {
-  { region = "IslesMainUpper", logic = function() return (state.barrels() and state.ischunky()) end },
+  { region = "IslesMainUpper", logic = function() return (state.barrels() and state.chunky()) end },
 }
 M.locations["HoldableBoulderIslesNearCaves"] = {
-  { region = "IslesMainUpper", logic = function() return (state.barrels() and state.ischunky()) end },
+  { region = "IslesMainUpper", logic = function() return (state.barrels() and state.chunky()) end },
 }
 M.locations["IslesLankyPrisonOrangsprint"] = {
-  { region = "Prison", logic = function() return ((state.sprint() and state.islanky()) or (state.CanPhase() and (state.islanky() or settings.free_trade_items()))) end },
+  { region = "Prison", logic = function() return ((state.sprint() and state.lanky()) or (state.CanPhase() and (state.lanky() or settings.free_trade_items()))) end },
 }
 M.locations["RainbowCoin_Location12"] = {
   { region = "Prison", logic = function() return true end },
@@ -1703,10 +1703,10 @@ M.locations["KremKap_JapesLobbyEnemy_Enemy1"] = {
   { region = "JungleJapesLobby", logic = function() return state.camera() end },
 }
 M.locations["HoldableBoulderJapesLobby"] = {
-  { region = "JungleJapesLobby", logic = function() return (state.barrels() and state.ischunky()) end },
+  { region = "JungleJapesLobby", logic = function() return (state.barrels() and state.chunky()) end },
 }
 M.locations["IslesTinyAztecLobby"] = {
-  { region = "AngryAztecLobby", logic = function() return ((((state.charge() and state.diddy() and state.twirl()) or (settings.bonus_barrels() == "skip")) and state.istiny()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end },
+  { region = "AngryAztecLobby", logic = function() return ((((state.charge() and state.diddy() and state.twirl()) or (settings.bonus_barrels() == "skip")) and state.tiny()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end },
 }
 M.locations["AztecDonkeyDoor"] = {
   { region = "AngryAztecLobby", logic = function() return (not settings.wrinkly_location_rando()) end },
@@ -1733,7 +1733,7 @@ M.locations["KremKap_IslesMainEnemy_MonkeyportPad"] = {
   { region = "KremIsle", logic = function() return state.camera() end },
 }
 M.locations["IslesDonkeyCagedBanana"] = {
-  { region = "KremIsleBeyondLift", logic = function() return (state.coconut() and state.isdonkey()) end },
+  { region = "KremIsleBeyondLift", logic = function() return (state.coconut() and state.donkey()) end },
 }
 M.locations["IslesMainEnemy_UpperFactoryPath"] = {
   { region = "KremIsleBeyondLift", logic = function() return true end },
@@ -1754,13 +1754,13 @@ M.locations["KremKap_IslesMainEnemy_LowerFactoryPath1"] = {
   { region = "KremIsleBeyondLift", logic = function() return state.camera() end },
 }
 M.locations["IslesTinyInstrumentPad"] = {
-  { region = "KremIsleTopLevel", logic = function() return (state.event("IslesChunkyBarrelSpawn") and state.istiny()) end },
+  { region = "KremIsleTopLevel", logic = function() return (state.event("IslesChunkyBarrelSpawn") and state.tiny()) end },
 }
 M.locations["IslesBananaFairyCrocodisleIsle"] = {
   { region = "KremIsleTopLevel", logic = function() return state.camera() end },
 }
 M.locations["IslesDiddySnidesLobby"] = {
-  { region = "IslesSnideRoom", logic = function() return ((((settings.bonus_barrels() == "skip") or state.spring()) and state.isdiddy()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end },
+  { region = "IslesSnideRoom", logic = function() return ((((settings.bonus_barrels() == "skip") or state.spring()) and state.diddy()) or ((settings.bonus_barrels() == "skip") and settings.free_trade_items())) end },
 }
 M.locations["IslesBattleArena1"] = {
   { region = "IslesSnideRoom", logic = function() return ((not settings.crown_placement_rando()) and state.chunky() and state.barrels()) end },
@@ -1778,13 +1778,13 @@ M.locations["FactoryDonkeyDoor"] = {
   { region = "FranticFactoryLobby", logic = function() return (not settings.wrinkly_location_rando()) end },
 }
 M.locations["FactoryDiddyDoor"] = {
-  { region = "FranticFactoryLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.istiny() or state.isdiddy())))) end },
+  { region = "FranticFactoryLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.tiny() or state.diddy())))) end },
 }
 M.locations["FactoryLankyDoor"] = {
   { region = "FranticFactoryLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or state.monkey_maneuvers())) end },
 }
 M.locations["FactoryTinyDoor"] = {
-  { region = "FranticFactoryLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.istiny() or state.isdiddy())))) end },
+  { region = "FranticFactoryLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.grab() and state.donkey()) or state.CanMoonkick() or (state.monkey_maneuvers() and (state.tiny() or state.diddy())))) end },
 }
 M.locations["FactoryChunkyDoor"] = {
   { region = "FranticFactoryLobby", logic = function() return (not settings.wrinkly_location_rando()) end },
@@ -1796,7 +1796,7 @@ M.locations["KremKap_FactoryLobbyEnemy_Enemy0"] = {
   { region = "FranticFactoryLobby", logic = function() return state.camera() end },
 }
 M.locations["IslesTinyGalleonLobby"] = {
-  { region = "GloomyGalleonLobby", logic = function() return (((state.chunky() and state.CanSlamSwitch("GloomyGalleon", 2) and state.mini() and state.twirl() and state.swim() and state.tiny()) or (state.CanPhaseswim() and (state.istiny() or settings.free_trade_items()))) and ((not state.IsLavaWater()) or (state.Melons() >= 3))) end },
+  { region = "GloomyGalleonLobby", logic = function() return (((state.chunky() and state.CanSlamSwitch("GloomyGalleon", 2) and state.mini() and state.twirl() and state.swim() and state.tiny()) or (state.CanPhaseswim() and (state.tiny() or settings.free_trade_items()))) and ((not state.IsLavaWater()) or (state.Melons() >= 3))) end },
 }
 M.locations["IslesKasplatGalleonLobby"] = {
   { region = "GloomyGalleonLobby", logic = function() return (not settings.kasplat_rando()) end },
@@ -1820,7 +1820,7 @@ M.locations["RainbowCoin_Location03"] = {
   { region = "CabinIsle", logic = function() return true end },
 }
 M.locations["IslesDiddyCagedBanana"] = {
-  { region = "IslesAboveWaterfall", logic = function() return (state.peanut() and state.isdiddy()) end },
+  { region = "IslesAboveWaterfall", logic = function() return (state.peanut() and state.diddy()) end },
 }
 M.locations["IslesDiddySummit"] = {
   { region = "IslesAirspace", logic = function() return true end },
@@ -1829,7 +1829,7 @@ M.locations["RainbowCoin_Location05"] = {
   { region = "AztecLobbyRoof", logic = function() return true end },
 }
 M.locations["IslesBattleArena2"] = {
-  { region = "FungiForestLobby", logic = function() return ((not settings.crown_placement_rando()) and (state.CanOpenForestLobbyGoneDoor() and state.gorillaGone() and state.ischunky())) end },
+  { region = "FungiForestLobby", logic = function() return ((not settings.crown_placement_rando()) and (state.CanOpenForestLobbyGoneDoor() and state.gorillaGone() and state.chunky())) end },
 }
 M.locations["IslesBananaFairyForestLobby"] = {
   { region = "FungiForestLobby", logic = function() return (state.camera() and state.hasMoveSwitchsanity("IslesFungiLobbyFeather", false)) end },
@@ -1862,7 +1862,7 @@ M.locations["CavesDonkeyDoor"] = {
   { region = "CrystalCavesLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles())) end },
 }
 M.locations["CavesDiddyDoor"] = {
-  { region = "CrystalCavesLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles()) and ((state.isdiddy() and state.jetpack()) or state.CanMoonkick())) end },
+  { region = "CrystalCavesLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles()) and ((state.diddy() and state.jetpack()) or state.CanMoonkick())) end },
 }
 M.locations["CavesLankyDoor"] = {
   { region = "CrystalCavesLobby", logic = function() return ((not settings.wrinkly_location_rando()) and ((state.punch() and state.chunky() and state.barrels()) or settings.remove_wrinkly_puzzles())) end },
@@ -1877,7 +1877,7 @@ M.locations["HoldableBoulderCavesLobby"] = {
   { region = "CrystalCavesLobby", logic = function() return (state.barrels() and state.chunky() and (state.punch() or state.CanPhase())) end },
 }
 M.locations["IslesLankyCastleLobby"] = {
-  { region = "CreepyCastleLobby", logic = function() return ((state.chunky() and state.balloon() and state.islanky() and state.barrels()) or ((state.CanMoonkick() or (state.monkey_maneuvers() and state.istiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) and settings.free_trade_items())) end },
+  { region = "CreepyCastleLobby", logic = function() return ((state.chunky() and state.balloon() and state.lanky() and state.barrels()) or ((state.CanMoonkick() or (state.monkey_maneuvers() and state.tiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) and settings.free_trade_items())) end },
 }
 M.locations["IslesKasplatCastleLobby"] = {
   { region = "CreepyCastleLobby", logic = function() return ((not settings.kasplat_rando()) and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
@@ -1898,7 +1898,7 @@ M.locations["CastleChunkyDoor"] = {
   { region = "CreepyCastleLobby", logic = function() return (not settings.wrinkly_location_rando()) end },
 }
 M.locations["RainbowCoin_Location15"] = {
-  { region = "CreepyCastleLobby", logic = function() return ((state.chunky() and state.balloon() and state.islanky() and state.barrels()) or state.CanMoonkick() or (state.monkey_maneuvers() and state.istiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) end },
+  { region = "CreepyCastleLobby", logic = function() return ((state.chunky() and state.balloon() and state.lanky() and state.barrels()) or state.CanMoonkick() or (state.monkey_maneuvers() and state.tiny() and state.twirl() and (not state.isKrushaAdjacent("tiny")))) end },
 }
 M.locations["CastleLobbyEnemy_Left"] = {
   { region = "CreepyCastleLobby", logic = function() return true end },
@@ -1919,10 +1919,10 @@ M.locations["KremKap_CastleLobbyEnemy_NearRight"] = {
   { region = "CreepyCastleLobby", logic = function() return state.camera() end },
 }
 M.locations["HoldableBoulderCastleLobby"] = {
-  { region = "CreepyCastleLobby", logic = function() return (state.barrels() and state.ischunky()) end },
+  { region = "CreepyCastleLobby", logic = function() return (state.barrels() and state.chunky()) end },
 }
 M.locations["IslesChunkyHelmLobby"] = {
-  { region = "HideoutHelmLobby", logic = function() return ((state.hasMoveSwitchsanity("IslesHelmLobbyGone", false) and state.ischunky() and state.can_use_vines()) or ((settings.bonus_barrels() == "skip") and state.monkey_maneuvers() and state.istiny() and state.twirl() and settings.free_trade_items())) end },
+  { region = "HideoutHelmLobby", logic = function() return ((state.hasMoveSwitchsanity("IslesHelmLobbyGone", false) and state.chunky() and state.can_use_vines()) or ((settings.bonus_barrels() == "skip") and state.monkey_maneuvers() and state.tiny() and state.twirl() and settings.free_trade_items())) end },
 }
 M.locations["IslesKasplatHelmLobby"] = {
   { region = "HideoutHelmLobby", logic = function() return ((not settings.kasplat_rando()) and ((state.scope() and state.coconut()) or (state.twirl() and state.tiny() and state.monkey_maneuvers()))) end },
@@ -1976,16 +1976,16 @@ M.locations["KremKap_FactoryMainEnemy_TunnelToHatch"] = {
   { region = "FranticFactoryStart", logic = function() return state.camera() end },
 }
 M.locations["Balloon025"] = {
-  { region = "FranticFactoryStart", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "FranticFactoryStart", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["FactoryDonkeyNumberGame"] = {
-  { region = "Testing", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.isdonkey()) end },
+  { region = "Testing", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.donkey()) end },
 }
 M.locations["FactoryDiddyBlockTower"] = {
-  { region = "Testing", logic = function() return ((state.spring() or state.CanMoontail()) and state.isdiddy()) end },
+  { region = "Testing", logic = function() return ((state.spring() or state.CanMoontail()) and state.diddy()) end },
 }
 M.locations["FactoryLankyTestingRoomBarrel"] = {
-  { region = "Testing", logic = function() return ((state.balloon() or state.monkey_maneuvers()) and state.islanky()) end },
+  { region = "Testing", logic = function() return ((state.balloon() or state.monkey_maneuvers()) and state.lanky()) end },
 }
 M.locations["FactoryTinyDartboard"] = {
   { region = "Testing", logic = function() return (state.event("DartsPlayed") and state.tiny()) end },
@@ -2034,8 +2034,8 @@ M.locations["KremKap_FactoryMainEnemy_ToBlockTowerTunnel"] = {
 }
 M.locations["FactoryDonkeyDKArcade"] = {
   { region = "Testing", logic = function() return ((not state.checkFastCheck("factory_arcade_round_1")) and (state.CanOStandTBSNoclip() and state.spawn_snags())) end },
-  { region = "FactoryArcadeTunnel", logic = function() return ((not state.checkFastCheck("factory_arcade_round_1")) and (state.event("ArcadeLeverSpawned") and state.grab() and state.isdonkey())) end },
-  { region = "FactoryBaboonBlast", logic = function() return (state.checkFastCheck("factory_arcade_round_1") and state.isdonkey()) end },
+  { region = "FactoryArcadeTunnel", logic = function() return ((not state.checkFastCheck("factory_arcade_round_1")) and (state.event("ArcadeLeverSpawned") and state.grab() and state.donkey())) end },
+  { region = "FactoryBaboonBlast", logic = function() return (state.checkFastCheck("factory_arcade_round_1") and state.donkey()) end },
 }
 M.locations["Balloon026"] = {
   { region = "Testing", logic = function() return (state.chunky() and state.pineapple()) end },
@@ -2050,10 +2050,10 @@ M.locations["Balloon036"] = {
   { region = "Testing", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["FactoryDiddyRandD"] = {
-  { region = "RandDUpper", logic = function() return ((state.guitar() or state.CanAccessRNDRoom()) and state.charge() and state.isdiddy()) end },
+  { region = "RandDUpper", logic = function() return ((state.guitar() or state.CanAccessRNDRoom()) and state.charge() and state.diddy()) end },
 }
 M.locations["FactoryChunkyRandD"] = {
-  { region = "RandDUpper", logic = function() return (((state.triangle() and state.climbing()) or state.CanAccessRNDRoom()) and state.punch() and state.hunkyChunky() and state.ischunky() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) end },
+  { region = "RandDUpper", logic = function() return (((state.triangle() and state.climbing()) or state.CanAccessRNDRoom()) and state.punch() and state.hunkyChunky() and state.chunky() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) end },
 }
 M.locations["FactoryKasplatRandD"] = {
   { region = "RandDUpper", logic = function() return (not settings.kasplat_rando()) end },
@@ -2062,25 +2062,25 @@ M.locations["FactoryBattleArena"] = {
   { region = "RandDUpper", logic = function() return ((not settings.crown_placement_rando()) and ((state.grab() and state.donkey()) or state.CanAccessRNDRoom())) end },
 }
 M.locations["Balloon029"] = {
-  { region = "RandDUpper", logic = function() return (state.isdiddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
+  { region = "RandDUpper", logic = function() return (state.diddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
 }
 M.locations["Balloon030"] = {
-  { region = "RandDUpper", logic = function() return (state.isdiddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
+  { region = "RandDUpper", logic = function() return (state.diddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
 }
 M.locations["Balloon031"] = {
-  { region = "RandDUpper", logic = function() return (state.isdonkey() and state.coconut()) end },
+  { region = "RandDUpper", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["Balloon034"] = {
-  { region = "RandDUpper", logic = function() return (state.isdiddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
+  { region = "RandDUpper", logic = function() return (state.diddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
 }
 M.locations["Balloon038"] = {
-  { region = "RandDUpper", logic = function() return (state.ischunky() and state.pineapple() and ((state.triangle() and state.climbing() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) or state.CanAccessRNDRoom())) end },
+  { region = "RandDUpper", logic = function() return (state.chunky() and state.pineapple() and ((state.triangle() and state.climbing() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) or state.CanAccessRNDRoom())) end },
 }
 M.locations["FactoryLankyRandD"] = {
-  { region = "RandD", logic = function() return ((((state.trombone() or state.CanAccessRNDRoom()) and state.CanSlamSwitch("FranticFactory", 1)) or (state.CanOStandTBSNoclip() and state.spawn_snags())) and state.islanky()) end },
+  { region = "RandD", logic = function() return ((((state.trombone() or state.CanAccessRNDRoom()) and state.CanSlamSwitch("FranticFactory", 1)) or (state.CanOStandTBSNoclip() and state.spawn_snags())) and state.lanky()) end },
 }
 M.locations["Balloon027"] = {
-  { region = "RandD", logic = function() return (state.islanky() and state.grape() and (state.trombone() or state.CanAccessRNDRoom())) end },
+  { region = "RandD", logic = function() return (state.lanky() and state.grape() and (state.trombone() or state.CanAccessRNDRoom())) end },
 }
 M.locations["FactoryMainEnemy_TunnelToRace0"] = {
   { region = "RandD", logic = function() return true end },
@@ -2098,10 +2098,10 @@ M.locations["FactoryTinyCarRace"] = {
   { region = "FactoryTinyRace", logic = function() return state.HasEnoughRaceCoins("FactoryTinyRace", "tiny", (not settings.free_trade_items())) end },
 }
 M.locations["FactoryDiddyChunkyRoomBarrel"] = {
-  { region = "ChunkyRoomPlatform", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.isdiddy() and (state.can_use_vines() or (settings.bonus_barrels() == "skip"))) end },
+  { region = "ChunkyRoomPlatform", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.diddy() and (state.can_use_vines() or (settings.bonus_barrels() == "skip"))) end },
 }
 M.locations["FactoryDonkeyPowerHut"] = {
-  { region = "PowerHut", logic = function() return (state.event("MainCoreActivated") and (state.isdonkey() or settings.free_trade_items())) end },
+  { region = "PowerHut", logic = function() return (state.event("MainCoreActivated") and (state.donkey() or settings.free_trade_items())) end },
 }
 M.locations["ChunkyKong"] = {
   { region = "BeyondHatch", logic = function() return state.event("ChunkyFreed") end },
@@ -2110,7 +2110,7 @@ M.locations["FactoryLankyFreeChunky"] = {
   { region = "BeyondHatch", logic = function() return state.event("ChunkyFreed") end },
 }
 M.locations["FactoryChunkyDarkRoom"] = {
-  { region = "BeyondHatch", logic = function() return ((state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase()) and ((state.punch() and state.CanSlamSwitch("FranticFactory", 1)) or state.generalclips()) and state.ischunky()) end },
+  { region = "BeyondHatch", logic = function() return ((state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase()) and ((state.punch() and state.CanSlamSwitch("FranticFactory", 1)) or state.generalclips()) and state.chunky()) end },
 }
 M.locations["BreakableFactoryDarkRoom"] = {
   { region = "BeyondHatch", logic = function() return ((state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase()) and state.Slam() and state.chunky()) end },
@@ -2158,13 +2158,13 @@ M.locations["Balloon032"] = {
   { region = "BeyondHatch", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["NintendoCoin"] = {
-  { region = "FactoryArcadeTunnel", logic = function() return (state.event("ArcadeLeverSpawned") and state.grab() and state.isdonkey() and (state.GetCoins("donkey") >= 2)) end },
+  { region = "FactoryArcadeTunnel", logic = function() return (state.event("ArcadeLeverSpawned") and state.grab() and state.donkey() and (state.GetCoins("donkey") >= 2)) end },
 }
 M.locations["FactoryTinybyArcade"] = {
   { region = "FactoryArcadeTunnel", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase()) end },
 }
 M.locations["FactoryChunkybyArcade"] = {
-  { region = "FactoryArcadeTunnel", logic = function() return (((state.hasMoveSwitchsanity("FactoryArcadeTunnelGrate", false) or state.CanPhase()) and state.ischunky()) or (state.CanPhase() and settings.free_trade_items())) end },
+  { region = "FactoryArcadeTunnel", logic = function() return (((state.hasMoveSwitchsanity("FactoryArcadeTunnelGrate", false) or state.CanPhase()) and state.chunky()) or (state.CanPhase() and settings.free_trade_items())) end },
 }
 M.locations["FactoryKasplatProductionBottom"] = {
   { region = "LowerCore", logic = function() return (not settings.kasplat_rando()) end },
@@ -2194,13 +2194,13 @@ M.locations["KremKap_FactoryMainEnemy_TunnelToProd1"] = {
   { region = "LowerCore", logic = function() return state.camera() end },
 }
 M.locations["FactoryDonkeyCrusherRoom"] = {
-  { region = "InsideCore", logic = function() return ((state.strongKong() and state.isdonkey()) or state.generalclips() or state.CanPhase()) end },
+  { region = "InsideCore", logic = function() return ((state.strongKong() and state.donkey()) or state.generalclips() or state.CanPhase()) end },
 }
 M.locations["Balloon053"] = {
-  { region = "InsideCore", logic = function() return (state.islanky() and state.grape()) end },
+  { region = "InsideCore", logic = function() return (state.lanky() and state.grape()) end },
 }
 M.locations["Balloon035"] = {
-  { region = "MiddleCore", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "MiddleCore", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["FactoryChunkyProductionRoom"] = {
   { region = "SpinningCore", logic = function() return (state.event("ChunkyCoreSwitch") and state.event("MainCoreActivated") and state.chunky()) end },
@@ -2212,7 +2212,7 @@ M.locations["FactoryLankyProductionRoom"] = {
   { region = "UpperCore", logic = function() return (state.event("LankyCoreSwitch") and state.event("MainCoreActivated") and ((state.handstand() and state.lanky()) or (state.tiny() and settings.free_trade_items() and state.slope_resets()))) end },
 }
 M.locations["FactoryTinyProductionRoom"] = {
-  { region = "UpperCore", logic = function() return (state.event("TinyCoreSwitch") and state.event("MainCoreActivated") and state.twirl() and state.istiny()) end },
+  { region = "UpperCore", logic = function() return (state.event("TinyCoreSwitch") and state.event("MainCoreActivated") and state.twirl() and state.tiny()) end },
 }
 M.locations["FactoryKasplatProductionTop"] = {
   { region = "UpperCore", logic = function() return (not settings.kasplat_rando()) end },
@@ -2281,7 +2281,7 @@ M.locations["ForestChunkyMinecarts"] = {
   { region = "ForestMinecarts", logic = function() return state.HasEnoughRaceCoins("ForestMinecarts", "chunky", (not settings.free_trade_items())) end },
 }
 M.locations["ForestDiddyTopofMushroom"] = {
-  { region = "GiantMushroomArea", logic = function() return (state.jetpack() and state.isdiddy()) end },
+  { region = "GiantMushroomArea", logic = function() return (state.jetpack() and state.diddy()) end },
 }
 M.locations["ForestLankyRabbitRace"] = {
   { region = "GiantMushroomArea", logic = function() return (state.CanOStandTBSNoclip() and state.spawn_snags()) end },
@@ -2339,7 +2339,7 @@ M.locations["Balloon068"] = {
   { region = "MushroomLower", logic = function() return (state.lanky() and state.grape()) end },
 }
 M.locations["ForestTinyMushroomBarrel"] = {
-  { region = "MushroomLowerMid", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and state.istiny() and state.climbing()) end },
+  { region = "MushroomLowerMid", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and state.tiny() and state.climbing()) end },
 }
 M.locations["ForestMainEnemy_NearBBlast"] = {
   { region = "MushroomBlastLevelExterior", logic = function() return true end },
@@ -2351,10 +2351,10 @@ M.locations["ForestKasplatLowerMushroomExterior"] = {
   { region = "MushroomLowerExterior", logic = function() return (not settings.kasplat_rando()) end },
 }
 M.locations["Balloon060"] = {
-  { region = "MushroomLowerExterior", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "MushroomLowerExterior", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["ForestDonkeyBaboonBlast"] = {
-  { region = "ForestBaboonBlast", logic = function() return state.isdonkey() end },
+  { region = "ForestBaboonBlast", logic = function() return state.donkey() end },
 }
 M.locations["ForestKasplatInsideMushroom"] = {
   { region = "MushroomMiddle", logic = function() return (not settings.kasplat_rando()) end },
@@ -2387,10 +2387,10 @@ M.locations["ForestKasplatUpperMushroomExterior"] = {
   { region = "MushroomNightExterior", logic = function() return (not settings.kasplat_rando()) end },
 }
 M.locations["Balloon062"] = {
-  { region = "MushroomNightExterior", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "MushroomNightExterior", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["ForestBattleArena"] = {
-  { region = "MushroomUpperExterior", logic = function() return ((not settings.crown_placement_rando()) and ((not state.IsHardFallDamage()) or (state.istiny() and state.twirl()) or (state.isdiddy() and state.jetpack()) or state.event("Night"))) end },
+  { region = "MushroomUpperExterior", logic = function() return ((not settings.crown_placement_rando()) and ((not state.IsHardFallDamage()) or (state.tiny() and state.twirl()) or (state.diddy() and state.jetpack()) or state.event("Night"))) end },
 }
 M.locations["ForestMainEnemy_NearFacePuzzle"] = {
   { region = "MushroomUpperExterior", logic = function() return true end },
@@ -2417,7 +2417,7 @@ M.locations["KremKap_ForestMainEnemy_TopOfMushroom"] = {
   { region = "MushroomVeryTopExterior", logic = function() return state.camera() end },
 }
 M.locations["ForestChunkyFacePuzzle"] = {
-  { region = "MushroomChunkyRoom", logic = function() return (state.pineapple() and state.CanSlamSwitch("FungiForest", 2) and state.ischunky()) end },
+  { region = "MushroomChunkyRoom", logic = function() return (state.pineapple() and state.CanSlamSwitch("FungiForest", 2) and state.chunky()) end },
 }
 M.locations["ForestFacePuzzleEnemy_Enemy"] = {
   { region = "MushroomChunkyRoom", logic = function() return true end },
@@ -2426,10 +2426,10 @@ M.locations["KremKap_ForestFacePuzzleEnemy_Enemy"] = {
   { region = "MushroomChunkyRoom", logic = function() return state.camera() end },
 }
 M.locations["Balloon069"] = {
-  { region = "MushroomChunkyRoom", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "MushroomChunkyRoom", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["ForestLankyZingers"] = {
-  { region = "MushroomLankyZingersRoom", logic = function() return (state.islanky() or settings.free_trade_items()) end },
+  { region = "MushroomLankyZingersRoom", logic = function() return (state.lanky() or settings.free_trade_items()) end },
 }
 M.locations["ForestLeapEnemy_Enemy0"] = {
   { region = "MushroomLankyZingersRoom", logic = function() return true end },
@@ -2444,10 +2444,10 @@ M.locations["KremKap_ForestLeapEnemy_Enemy1"] = {
   { region = "MushroomLankyZingersRoom", logic = function() return state.camera() end },
 }
 M.locations["ForestLankyColoredMushrooms"] = {
-  { region = "MushroomLankyMushroomsRoom", logic = function() return (state.Slam() and (state.islanky() or settings.free_trade_items())) end },
+  { region = "MushroomLankyMushroomsRoom", logic = function() return (state.Slam() and (state.lanky() or settings.free_trade_items())) end },
 }
 M.locations["ForestDiddyOwlRace"] = {
-  { region = "HollowTreeArea", logic = function() return (state.TimeAccess("HollowTreeArea", "Night") and state.jetpack() and state.guitar() and state.isdiddy()) end },
+  { region = "HollowTreeArea", logic = function() return (state.TimeAccess("HollowTreeArea", "Night") and state.jetpack() and state.guitar() and state.diddy()) end },
 }
 M.locations["ForestKasplatOwlTree"] = {
   { region = "HollowTreeArea", logic = function() return (not settings.kasplat_rando()) end },
@@ -2510,10 +2510,10 @@ M.locations["KremKap_ForestMainEnemy_TreeMelonCrate2"] = {
   { region = "HollowTreeArea", logic = function() return state.camera() end },
 }
 M.locations["ForestTinyAnthill"] = {
-  { region = "Anthill", logic = function() return ((state.istiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
+  { region = "Anthill", logic = function() return ((state.tiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
 }
 M.locations["ForestBean"] = {
-  { region = "Anthill", logic = function() return ((state.istiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
+  { region = "Anthill", logic = function() return ((state.tiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
 }
 M.locations["ForestAnthillEnemy_Gauntlet0"] = {
   { region = "Anthill", logic = function() return true end },
@@ -2543,7 +2543,7 @@ M.locations["ForestDonkeyMill"] = {
   { region = "MillArea", logic = function() return ((state.TimeAccess("MillArea", "Night") or state.CanPhase() or state.CanPhaseswim() or state.ledgeclip()) and state.event("ConveyorActivated") and state.donkey()) end },
 }
 M.locations["ForestDiddyCagedBanana"] = {
-  { region = "MillArea", logic = function() return ((state.TimeAccess("MillArea", "Night") and state.event("WinchRaised") and state.guitar() and state.diddy()) or ((state.CanPhaseswim() or state.ledgeclip()) and (state.isdiddy() or settings.free_trade_items()))) end },
+  { region = "MillArea", logic = function() return ((state.TimeAccess("MillArea", "Night") and state.event("WinchRaised") and state.guitar() and state.diddy()) or ((state.CanPhaseswim() or state.ledgeclip()) and (state.diddy() or settings.free_trade_items()))) end },
 }
 M.locations["RainbowCoin_Location07"] = {
   { region = "MillArea", logic = function() return true end },
@@ -2594,13 +2594,13 @@ M.locations["KremKap_ForestMillRearEnemy_Enemy"] = {
   { region = "MillChunkyTinyArea", logic = function() return state.camera() end },
 }
 M.locations["HoldableKegMillRear"] = {
-  { region = "MillChunkyTinyArea", logic = function() return (state.barrels() and state.ischunky()) end },
+  { region = "MillChunkyTinyArea", logic = function() return (state.barrels() and state.chunky()) end },
 }
 M.locations["BreakableForestMillRearTriangle"] = {
-  { region = "MillChunkyTinyArea", logic = function() return (state.punch() and state.ischunky()) end },
+  { region = "MillChunkyTinyArea", logic = function() return (state.punch() and state.chunky()) end },
 }
 M.locations["BreakableForestMillRearMini"] = {
-  { region = "MillChunkyTinyArea", logic = function() return (state.punch() and state.ischunky()) end },
+  { region = "MillChunkyTinyArea", logic = function() return (state.punch() and state.chunky()) end },
 }
 M.locations["ForestTinySpiderBoss"] = {
   { region = "SpiderRoom", logic = function() return (state.HasGun("tiny") or (settings.free_trade_items() and state.HasGun("any"))) end },
@@ -2615,22 +2615,22 @@ M.locations["KremKap_ForestMillFrontEnemy_Enemy"] = {
   { region = "GrinderRoom", logic = function() return state.camera() end },
 }
 M.locations["HoldableKegMillFrontFar"] = {
-  { region = "GrinderRoom", logic = function() return (state.barrels() and state.ischunky()) end },
+  { region = "GrinderRoom", logic = function() return (state.barrels() and state.chunky()) end },
 }
 M.locations["HoldableKegMillFrontNear"] = {
-  { region = "GrinderRoom", logic = function() return (state.barrels() and state.ischunky()) end },
+  { region = "GrinderRoom", logic = function() return (state.barrels() and state.chunky()) end },
 }
 M.locations["BreakableForestMillFront"] = {
   { region = "GrinderRoom", logic = function() return state.Slam() end },
 }
 M.locations["Balloon066"] = {
-  { region = "GrinderRoom", logic = function() return (state.isdonkey() and state.coconut() and state.Slam() and state.CanSlamSwitch("FungiForest", 2)) end },
+  { region = "GrinderRoom", logic = function() return (state.donkey() and state.coconut() and state.Slam() and state.CanSlamSwitch("FungiForest", 2)) end },
 }
 M.locations["ForestDiddyRafters"] = {
-  { region = "MillRafters", logic = function() return (state.guitar() and state.isdiddy()) end },
+  { region = "MillRafters", logic = function() return (state.guitar() and state.diddy()) end },
 }
 M.locations["ForestBananaFairyRafters"] = {
-  { region = "MillRafters", logic = function() return (state.guitar() and state.isdiddy() and state.camera()) end },
+  { region = "MillRafters", logic = function() return (state.guitar() and state.diddy() and state.camera()) end },
 }
 M.locations["ForestWinchEnemy_Enemy"] = {
   { region = "WinchRoom", logic = function() return true end },
@@ -2639,10 +2639,10 @@ M.locations["KremKap_ForestWinchEnemy_Enemy"] = {
   { region = "WinchRoom", logic = function() return state.camera() end },
 }
 M.locations["Balloon065"] = {
-  { region = "WinchRoom", logic = function() return (state.isdiddy() and state.peanut()) end },
+  { region = "WinchRoom", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["ForestLankyAttic"] = {
-  { region = "MillAttic", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and (state.homing() or state.hard_shooting()) and state.grape() and state.islanky()) end },
+  { region = "MillAttic", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and (state.homing() or state.hard_shooting()) and state.grape() and state.lanky()) end },
 }
 M.locations["ForestKasplatNearBarn"] = {
   { region = "ThornvineArea", logic = function() return (not settings.kasplat_rando()) end },
@@ -2678,7 +2678,7 @@ M.locations["Balloon063"] = {
   { region = "ThornvineArea", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["ForestDonkeyBarn"] = {
-  { region = "ThornvineBarn", logic = function() return (state.CanSlamSwitch("FungiForest", 1) and state.isdonkey() and ((state.climbing() and (state.can_use_vines() or state.monkey_maneuvers())) or (settings.bonus_barrels() == "skip"))) end },
+  { region = "ThornvineBarn", logic = function() return (state.CanSlamSwitch("FungiForest", 1) and state.donkey() and ((state.climbing() and (state.can_use_vines() or state.monkey_maneuvers())) or (settings.bonus_barrels() == "skip"))) end },
 }
 M.locations["MelonCrate_Location11"] = {
   { region = "ThornvineBarn", logic = function() return true end },
@@ -2690,16 +2690,16 @@ M.locations["KremKap_ForestThornBarnEnemy_Enemy"] = {
   { region = "ThornvineBarn", logic = function() return state.camera() end },
 }
 M.locations["BreakableForestThornvine"] = {
-  { region = "ThornvineBarn", logic = function() return (state.Slam() and state.isdonkey()) end },
+  { region = "ThornvineBarn", logic = function() return (state.Slam() and state.donkey()) end },
 }
 M.locations["ForestBananaFairyThornvines"] = {
-  { region = "ThornvineBarnAboveLadder", logic = function() return (state.isdonkey() and state.Slam() and state.camera()) end },
+  { region = "ThornvineBarnAboveLadder", logic = function() return (state.donkey() and state.Slam() and state.camera()) end },
 }
 M.locations["ForestTinyBeanstalk"] = {
-  { region = "WormArea", logic = function() return (state.saxophone() and state.mini() and state.istiny() and (state.Beans() >= 1)) end },
+  { region = "WormArea", logic = function() return (state.saxophone() and state.mini() and state.tiny() and (state.Beans() >= 1)) end },
 }
 M.locations["ForestChunkyApple"] = {
-  { region = "WormArea", logic = function() return (state.event("WormGatesOpened") and state.hunkyChunky() and state.ischunky() and state.barrels()) end },
+  { region = "WormArea", logic = function() return (state.event("WormGatesOpened") and state.hunkyChunky() and state.chunky() and state.barrels()) end },
 }
 M.locations["RainbowCoin_Location08"] = {
   { region = "WormArea", logic = function() return true end },
@@ -2834,28 +2834,28 @@ M.locations["GalleonKasplatNearLab"] = {
   { region = "GalleonPastVines", logic = function() return (not settings.kasplat_rando()) end },
 }
 M.locations["GalleonChunkyCannonGame"] = {
-  { region = "GalleonBeyondPineappleGate", logic = function() return (state.CanGetOnCannonGamePlatform() and state.ischunky() and state.barrels()) end },
+  { region = "GalleonBeyondPineappleGate", logic = function() return (state.CanGetOnCannonGamePlatform() and state.chunky() and state.barrels()) end },
 }
 M.locations["GalleonKasplatCannons"] = {
   { region = "GalleonBeyondPineappleGate", logic = function() return ((not settings.kasplat_rando()) and state.CanGetOnCannonGamePlatform()) end },
 }
 M.locations["Balloon048"] = {
-  { region = "GalleonBeyondPineappleGate", logic = function() return (state.ischunky() and state.pineapple() and state.CanGetOnCannonGamePlatform()) end },
+  { region = "GalleonBeyondPineappleGate", logic = function() return (state.chunky() and state.pineapple() and state.CanGetOnCannonGamePlatform()) end },
 }
 M.locations["GalleonKasplatLighthouseArea"] = {
   { region = "LighthouseSurface", logic = function() return (not settings.kasplat_rando()) end },
 }
 M.locations["Balloon040"] = {
-  { region = "LighthouseSurface", logic = function() return (state.istiny() and state.feather() and state.event("WaterLowered")) end },
+  { region = "LighthouseSurface", logic = function() return (state.tiny() and state.feather() and state.event("WaterLowered")) end },
 }
 M.locations["GalleonDiddyShipSwitch"] = {
-  { region = "LighthousePlatform", logic = function() return (state.event("ActivatedLighthouse") and state.jetpack() and state.CanSlamSwitch("GloomyGalleon", 1) and state.isdiddy()) end },
+  { region = "LighthousePlatform", logic = function() return (state.event("ActivatedLighthouse") and state.jetpack() and state.CanSlamSwitch("GloomyGalleon", 1) and state.diddy()) end },
 }
 M.locations["Balloon044"] = {
-  { region = "LighthousePlatform", logic = function() return (state.isdiddy() and state.peanut()) end },
+  { region = "LighthousePlatform", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["Balloon045"] = {
-  { region = "LighthousePlatform", logic = function() return (state.isdonkey() and state.coconut()) end },
+  { region = "LighthousePlatform", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["GalleonLankyEnguardeChest"] = {
   { region = "LighthouseUnderwater", logic = function() return (state.event("LighthouseEnguarde") and state.lanky()) end },
@@ -2894,19 +2894,19 @@ M.locations["Balloon064"] = {
   { region = "Lighthouse", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["GalleonDonkeyLighthouse"] = {
-  { region = "LighthouseAboveLadder", logic = function() return (state.event("ActivatedLighthouse") and (state.isdonkey() or settings.free_trade_items())) end },
+  { region = "LighthouseAboveLadder", logic = function() return (state.event("ActivatedLighthouse") and (state.donkey() or settings.free_trade_items())) end },
 }
 M.locations["GalleonTinyPearls"] = {
-  { region = "MermaidRoom", logic = function() return ((state.Pearls() >= settings.mermaid_gb_pearls()) and (state.istiny() or settings.free_trade_items())) end },
+  { region = "MermaidRoom", logic = function() return ((state.Pearls() >= settings.mermaid_gb_pearls()) and (state.tiny() or settings.free_trade_items())) end },
 }
 M.locations["KremKap_GalleonNPC_Mermaid"] = {
   { region = "MermaidRoom", logic = function() return state.camera() end },
 }
 M.locations["GalleonChunkySeasick"] = {
-  { region = "SickBay", logic = function() return (state.punch() and state.ischunky()) end },
+  { region = "SickBay", logic = function() return (state.punch() and state.chunky()) end },
 }
 M.locations["GalleonDonkeyFreetheSeal"] = {
-  { region = "Shipyard", logic = function() return (state.event("SealReleased") and (state.isdonkey() or settings.free_trade_items())) end },
+  { region = "Shipyard", logic = function() return (state.event("SealReleased") and (state.donkey() or settings.free_trade_items())) end },
 }
 M.locations["GalleonKasplatNearSub"] = {
   { region = "Shipyard", logic = function() return (not settings.kasplat_rando()) end },
@@ -2939,7 +2939,7 @@ M.locations["KremKap_GalleonMainEnemy_5DS1"] = {
   { region = "ShipyardUnderwater", logic = function() return state.camera() end },
 }
 M.locations["KremKap_GalleonNPC_Mechfish"] = {
-  { region = "ShipyardUnderwater", logic = function() return (state.camera() and state.event("MechafishSummoned") and state.isdiddy()) end },
+  { region = "ShipyardUnderwater", logic = function() return (state.camera() and state.event("MechafishSummoned") and state.diddy()) end },
 }
 M.locations["BreakableGalleonCloseSubmarine"] = {
   { region = "ShipyardUnderwater", logic = function() return state.event("ShipyardEnguarde") end },
@@ -2960,16 +2960,16 @@ M.locations["GalleonDonkeySealRace"] = {
   { region = "SealRace", logic = function() return state.HasEnoughRaceCoins("GalleonSealRace", "donkey", (not settings.free_trade_items())) end },
 }
 M.locations["GalleonLankyGoldTower"] = {
-  { region = "TreasureRoom", logic = function() return (((state.event("WaterRaised") or (state.event("ShipyardEnguarde") and state.event("ShipyardTreasureRoomOpened") and state.monkey_maneuvers())) and state.balloon() and state.islanky()) or (state.CanMoonkick() and settings.free_trade_items())) end },
+  { region = "TreasureRoom", logic = function() return (((state.event("WaterRaised") or (state.event("ShipyardEnguarde") and state.event("ShipyardTreasureRoomOpened") and state.monkey_maneuvers())) and state.balloon() and state.lanky()) or (state.CanMoonkick() and settings.free_trade_items())) end },
 }
 M.locations["Balloon047"] = {
-  { region = "TreasureRoom", logic = function() return (state.isdiddy() and state.peanut()) end },
+  { region = "TreasureRoom", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["Balloon052"] = {
-  { region = "TreasureRoom", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "TreasureRoom", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["GalleonDiddyGoldTower"] = {
-  { region = "TreasureRoomDiddyGoldTower", logic = function() return ((state.spring() and state.isdiddy()) or (state.CanMoonkick() and settings.free_trade_items())) end },
+  { region = "TreasureRoomDiddyGoldTower", logic = function() return ((state.spring() and state.diddy()) or (state.CanMoonkick() and settings.free_trade_items())) end },
 }
 M.locations["GalleonKasplatGoldTower"] = {
   { region = "TreasureRoomDiddyGoldTower", logic = function() return (not settings.kasplat_rando()) end },
@@ -2990,7 +2990,7 @@ M.locations["GalleonPearl4"] = {
   { region = "TinyChest", logic = function() return true end },
 }
 M.locations["GalleonTinySubmarine"] = {
-  { region = "Submarine", logic = function() return (state.istiny() or settings.free_trade_items()) end },
+  { region = "Submarine", logic = function() return (state.tiny() or settings.free_trade_items()) end },
 }
 M.locations["KremKap_GalleonSubEnemy_Enemy0"] = {
   { region = "Submarine", logic = function() return state.camera() end },
@@ -3008,22 +3008,22 @@ M.locations["GalleonDiddyMechafish"] = {
   { region = "Mechafish", logic = function() return (state.HasGun("diddy") or (settings.free_trade_items() and state.HasGun("any"))) end },
 }
 M.locations["GalleonLanky2DoorShip"] = {
-  { region = "LankyShip", logic = function() return (state.islanky() or (settings.free_trade_items() and state.CanPhaseswim())) end },
+  { region = "LankyShip", logic = function() return (state.lanky() or (settings.free_trade_items() and state.CanPhaseswim())) end },
 }
 M.locations["BreakableGalleon2DSNearest"] = {
-  { region = "LankyShip", logic = function() return state.islanky() end },
+  { region = "LankyShip", logic = function() return state.lanky() end },
 }
 M.locations["BreakableGalleon2DSNear"] = {
-  { region = "LankyShip", logic = function() return state.islanky() end },
+  { region = "LankyShip", logic = function() return state.lanky() end },
 }
 M.locations["BreakableGalleon2DSFar"] = {
-  { region = "LankyShip", logic = function() return state.islanky() end },
+  { region = "LankyShip", logic = function() return state.lanky() end },
 }
 M.locations["BreakableGalleon2DSFurthest"] = {
-  { region = "LankyShip", logic = function() return state.islanky() end },
+  { region = "LankyShip", logic = function() return state.lanky() end },
 }
 M.locations["GalleonTiny2DoorShip"] = {
-  { region = "TinyShip", logic = function() return (state.istiny() or settings.free_trade_items()) end },
+  { region = "TinyShip", logic = function() return (state.tiny() or settings.free_trade_items()) end },
 }
 M.locations["KremKap_Galleon2DSEnemy_Tiny0"] = {
   { region = "TinyShip", logic = function() return state.camera() end },
@@ -3032,7 +3032,7 @@ M.locations["KremKap_Galleon2DSEnemy_Tiny1"] = {
   { region = "TinyShip", logic = function() return state.camera() end },
 }
 M.locations["GalleonDonkey5DoorShip"] = {
-  { region = "BongosShip", logic = function() return (state.isdonkey() or settings.free_trade_items()) end },
+  { region = "BongosShip", logic = function() return (state.donkey() or settings.free_trade_items()) end },
 }
 M.locations["KremKap_Galleon5DSDTEnemy_DK0"] = {
   { region = "BongosShip", logic = function() return state.camera() end },
@@ -3044,19 +3044,19 @@ M.locations["KremKap_Galleon5DSDTEnemy_DK2"] = {
   { region = "BongosShip", logic = function() return state.camera() end },
 }
 M.locations["GalleonDiddy5DoorShip"] = {
-  { region = "GuitarShip", logic = function() return (state.isdiddy() or settings.free_trade_items()) end },
+  { region = "GuitarShip", logic = function() return (state.diddy() or settings.free_trade_items()) end },
 }
 M.locations["KremKap_Galleon5DSDLCEnemy_Diddy"] = {
   { region = "GuitarShip", logic = function() return state.camera() end },
 }
 M.locations["GalleonLanky5DoorShip"] = {
-  { region = "TromboneShip", logic = function() return (state.islanky() or settings.free_trade_items()) end },
+  { region = "TromboneShip", logic = function() return (state.lanky() or settings.free_trade_items()) end },
 }
 M.locations["KremKap_Galleon5DSDLCEnemy_Lanky"] = {
   { region = "TromboneShip", logic = function() return state.camera() end },
 }
 M.locations["GalleonTiny5DoorShip"] = {
-  { region = "SaxophoneShip", logic = function() return (state.istiny() or settings.free_trade_items()) end },
+  { region = "SaxophoneShip", logic = function() return (state.tiny() or settings.free_trade_items()) end },
 }
 M.locations["GalleonBananaFairy5DoorShip"] = {
   { region = "SaxophoneShip", logic = function() return state.camera() end },
@@ -3068,7 +3068,7 @@ M.locations["KremKap_Galleon5DSDTEnemy_TinyBed"] = {
   { region = "SaxophoneShip", logic = function() return state.camera() end },
 }
 M.locations["GalleonChunky5DoorShip"] = {
-  { region = "TriangleShip", logic = function() return (state.ischunky() or settings.free_trade_items()) end },
+  { region = "TriangleShip", logic = function() return (state.chunky() or settings.free_trade_items()) end },
 }
 M.locations["KremKap_Galleon5DSDLCEnemy_Chunky"] = {
   { region = "TriangleShip", logic = function() return state.camera() end },
@@ -3171,10 +3171,10 @@ M.locations["KremKap_HelmMainEnemy_MiniRoom3"] = {
   { region = "HideoutHelmMiniRoom", logic = function() return state.camera() end },
 }
 M.locations["HelmBattleArena"] = {
-  { region = "HideoutHelmMain", logic = function() return ((not settings.crown_placement_rando()) and state.jetpack() and state.isdiddy() and state.event("HelmFinished")) end },
+  { region = "HideoutHelmMain", logic = function() return ((not settings.crown_placement_rando()) and state.jetpack() and state.diddy() and state.event("HelmFinished")) end },
 }
 M.locations["HelmDonkeyMedal"] = {
-  { region = "HideoutHelmDonkeyRoom", logic = function() return (state.event("HelmDonkeyDone") and state.isdonkey()) end },
+  { region = "HideoutHelmDonkeyRoom", logic = function() return (state.event("HelmDonkeyDone") and state.donkey()) end },
 }
 M.locations["HelmMainEnemy_DKRoom"] = {
   { region = "HideoutHelmDonkeyRoom", logic = function() return true end },
@@ -3183,7 +3183,7 @@ M.locations["KremKap_HelmMainEnemy_DKRoom"] = {
   { region = "HideoutHelmDonkeyRoom", logic = function() return state.camera() end },
 }
 M.locations["HelmChunkyMedal"] = {
-  { region = "HideoutHelmChunkyRoom", logic = function() return (state.event("HelmChunkyDone") and state.ischunky()) end },
+  { region = "HideoutHelmChunkyRoom", logic = function() return (state.event("HelmChunkyDone") and state.chunky()) end },
 }
 M.locations["HelmMainEnemy_ChunkyRoom0"] = {
   { region = "HideoutHelmChunkyRoom", logic = function() return true end },
@@ -3198,7 +3198,7 @@ M.locations["KremKap_HelmMainEnemy_ChunkyRoom1"] = {
   { region = "HideoutHelmChunkyRoom", logic = function() return state.camera() end },
 }
 M.locations["HelmTinyMedal"] = {
-  { region = "HideoutHelmTinyRoom", logic = function() return (state.event("HelmTinyDone") and state.istiny()) end },
+  { region = "HideoutHelmTinyRoom", logic = function() return (state.event("HelmTinyDone") and state.tiny()) end },
 }
 M.locations["HelmMainEnemy_TinyRoom"] = {
   { region = "HideoutHelmTinyRoom", logic = function() return true end },
@@ -3207,7 +3207,7 @@ M.locations["KremKap_HelmMainEnemy_TinyRoom"] = {
   { region = "HideoutHelmTinyRoom", logic = function() return state.camera() end },
 }
 M.locations["HelmLankyMedal"] = {
-  { region = "HideoutHelmLankyRoom", logic = function() return (state.event("HelmLankyDone") and state.islanky()) end },
+  { region = "HideoutHelmLankyRoom", logic = function() return (state.event("HelmLankyDone") and state.lanky()) end },
 }
 M.locations["HelmMainEnemy_LankyRoom0"] = {
   { region = "HideoutHelmLankyRoom", logic = function() return true end },
@@ -3222,7 +3222,7 @@ M.locations["KremKap_HelmMainEnemy_LankyRoom1"] = {
   { region = "HideoutHelmLankyRoom", logic = function() return state.camera() end },
 }
 M.locations["HelmDiddyMedal"] = {
-  { region = "HideoutHelmDiddyRoom", logic = function() return (state.event("HelmDiddyDone") and state.isdiddy()) end },
+  { region = "HideoutHelmDiddyRoom", logic = function() return (state.event("HelmDiddyDone") and state.diddy()) end },
 }
 M.locations["HelmMainEnemy_DiddyRoom0"] = {
   { region = "HideoutHelmDiddyRoom", logic = function() return true end },
@@ -3333,7 +3333,7 @@ M.locations["DiddyKong"] = {
   { region = "JapesHillTop", logic = function() return state.CanFreeDiddy() end },
 }
 M.locations["Balloon002"] = {
-  { region = "JapesHillTop", logic = function() return (state.isdonkey() and state.coconut()) end },
+  { region = "JapesHillTop", logic = function() return (state.donkey() and state.coconut()) end },
 }
 M.locations["JapesDonkeyFrontofCage"] = {
   { region = "JapesHillTop", logic = function() return (state.HasKong(settings.diddy_freeing_kong()) or settings.free_trade_items()) end },
@@ -3384,25 +3384,25 @@ M.locations["RainbowCoin_Location00"] = {
   { region = "JapesPaintingRoomHill", logic = function() return true end },
 }
 M.locations["JapesDiddyMountain"] = {
-  { region = "JapesTopOfMountain", logic = function() return (state.event("JapesDiddySwitch2") and (state.isdiddy() or settings.free_trade_items())) end },
+  { region = "JapesTopOfMountain", logic = function() return (state.event("JapesDiddySwitch2") and (state.diddy() or settings.free_trade_items())) end },
 }
 M.locations["Balloon005"] = {
-  { region = "JapesTopOfMountain", logic = function() return (state.isdiddy() and state.peanut()) end },
+  { region = "JapesTopOfMountain", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["JapesDonkeyBaboonBlast"] = {
-  { region = "JapesBaboonBlast", logic = function() return state.isdonkey() end },
+  { region = "JapesBaboonBlast", logic = function() return state.donkey() end },
 }
 M.locations["Balloon001"] = {
-  { region = "JapesBeyondPeanutGate", logic = function() return (state.isdiddy() and state.peanut()) end },
+  { region = "JapesBeyondPeanutGate", logic = function() return (state.diddy() and state.peanut()) end },
 }
 M.locations["JapesDiddyTunnel"] = {
-  { region = "JapesBeyondPeanutGate", logic = function() return (state.isdiddy() or settings.free_trade_items()) end },
+  { region = "JapesBeyondPeanutGate", logic = function() return (state.diddy() or settings.free_trade_items()) end },
 }
 M.locations["JapesLankyGrapeGate"] = {
-  { region = "JapesBeyondPeanutGate", logic = function() return ((state.grape() and state.islanky()) or ((state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and (state.islanky() or settings.free_trade_items()))) end },
+  { region = "JapesBeyondPeanutGate", logic = function() return ((state.grape() and state.lanky()) or ((state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and (state.lanky() or settings.free_trade_items()))) end },
 }
 M.locations["JapesTinyFeatherGateBarrel"] = {
-  { region = "JapesBeyondPeanutGate", logic = function() return ((state.feather() and state.istiny()) or ((state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and (state.istiny() or settings.free_trade_items()))) end },
+  { region = "JapesBeyondPeanutGate", logic = function() return ((state.feather() and state.tiny()) or ((state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and (state.tiny() or settings.free_trade_items()))) end },
 }
 M.locations["JapesMainEnemy_DiddyCavern"] = {
   { region = "JapesBeyondPeanutGate", logic = function() return true end },
@@ -3423,10 +3423,10 @@ M.locations["KremKap_JapesMainEnemy_FeatherTunnel"] = {
   { region = "JapesBeyondCoconutGate1", logic = function() return state.camera() end },
 }
 M.locations["JapesTinyStump"] = {
-  { region = "JapesBeyondFeatherGate", logic = function() return (((state.mini() and state.istiny()) or state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and state.istiny()) end },
+  { region = "JapesBeyondFeatherGate", logic = function() return (((state.mini() and state.tiny()) or state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and state.tiny()) end },
 }
 M.locations["JapesChunkyGiantBonusBarrel"] = {
-  { region = "JapesBeyondFeatherGate", logic = function() return (state.climbing() and state.hunkyChunky() and state.ischunky()) end },
+  { region = "JapesBeyondFeatherGate", logic = function() return (state.climbing() and state.hunkyChunky() and state.chunky()) end },
 }
 M.locations["JapesMainEnemy_Hive0"] = {
   { region = "JapesBeyondFeatherGate", logic = function() return true end },
@@ -3459,28 +3459,28 @@ M.locations["KremKap_JapesMainEnemy_Hive4"] = {
   { region = "JapesBeyondFeatherGate", logic = function() return state.camera() end },
 }
 M.locations["JapesTinyBeehive"] = {
-  { region = "TinyHive", logic = function() return ((state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) or (settings.free_trade_items() and state.CanPhase())) end },
+  { region = "TinyHive", logic = function() return ((state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) or (settings.free_trade_items() and state.CanPhase())) end },
 }
 M.locations["JapesShellhiveEnemy_FirstRoom"] = {
   { region = "TinyHive", logic = function() return true end },
 }
 M.locations["JapesShellhiveEnemy_SecondRoom0"] = {
-  { region = "TinyHive", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+  { region = "TinyHive", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
 }
 M.locations["JapesShellhiveEnemy_SecondRoom1"] = {
-  { region = "TinyHive", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+  { region = "TinyHive", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
 }
 M.locations["JapesShellhiveEnemy_ThirdRoom0"] = {
-  { region = "TinyHive", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+  { region = "TinyHive", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
 }
 M.locations["JapesShellhiveEnemy_ThirdRoom1"] = {
-  { region = "TinyHive", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+  { region = "TinyHive", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
 }
 M.locations["JapesShellhiveEnemy_ThirdRoom2"] = {
-  { region = "TinyHive", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+  { region = "TinyHive", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
 }
 M.locations["JapesShellhiveEnemy_ThirdRoom3"] = {
-  { region = "TinyHive", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+  { region = "TinyHive", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
 }
 M.locations["JapesShellhiveEnemy_MainRoom"] = {
   { region = "TinyHive", logic = function() return true end },
@@ -3489,31 +3489,31 @@ M.locations["KremKap_JapesShellhiveEnemy_FirstRoom"] = {
   { region = "TinyHive", logic = function() return state.camera() end },
 }
 M.locations["KremKap_JapesShellhiveEnemy_SecondRoom0"] = {
-  { region = "TinyHive", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+  { region = "TinyHive", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
 }
 M.locations["KremKap_JapesShellhiveEnemy_SecondRoom1"] = {
-  { region = "TinyHive", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+  { region = "TinyHive", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
 }
 M.locations["KremKap_JapesShellhiveEnemy_ThirdRoom0"] = {
-  { region = "TinyHive", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+  { region = "TinyHive", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
 }
 M.locations["KremKap_JapesShellhiveEnemy_ThirdRoom1"] = {
-  { region = "TinyHive", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+  { region = "TinyHive", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
 }
 M.locations["KremKap_JapesShellhiveEnemy_ThirdRoom2"] = {
-  { region = "TinyHive", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+  { region = "TinyHive", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
 }
 M.locations["KremKap_JapesShellhiveEnemy_ThirdRoom3"] = {
-  { region = "TinyHive", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+  { region = "TinyHive", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
 }
 M.locations["KremKap_JapesShellhiveEnemy_MainRoom"] = {
   { region = "TinyHive", logic = function() return state.camera() end },
 }
 M.locations["Balloon013"] = {
-  { region = "TinyHive", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "TinyHive", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["JapesLankySlope"] = {
-  { region = "JapesBeyondCoconutGate2", logic = function() return ((state.handstand() and state.islanky()) or state.slope_resets()) end },
+  { region = "JapesBeyondCoconutGate2", logic = function() return ((state.handstand() and state.lanky()) or state.slope_resets()) end },
 }
 M.locations["JapesKasplatNearPaintingRoom"] = {
   { region = "JapesBeyondCoconutGate2", logic = function() return (not settings.kasplat_rando()) end },
@@ -3576,28 +3576,28 @@ M.locations["MelonCrate_Location01"] = {
   { region = "BeyondRambiGate", logic = function() return true end },
 }
 M.locations["Balloon003"] = {
-  { region = "BeyondRambiGate", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "BeyondRambiGate", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["Balloon009"] = {
-  { region = "BeyondRambiGate", logic = function() return (state.istiny() and state.feather()) end },
+  { region = "BeyondRambiGate", logic = function() return (state.tiny() and state.feather()) end },
 }
 M.locations["Balloon010"] = {
-  { region = "BeyondRambiGate", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "BeyondRambiGate", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["Balloon011"] = {
-  { region = "BeyondRambiGate", logic = function() return (state.ischunky() and state.pineapple()) end },
+  { region = "BeyondRambiGate", logic = function() return (state.chunky() and state.pineapple()) end },
 }
 M.locations["JapesLankyFairyCave"] = {
-  { region = "JapesLankyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.islanky()) end },
+  { region = "JapesLankyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.lanky()) end },
 }
 M.locations["JapesBananaFairyLankyCave"] = {
-  { region = "JapesLankyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.islanky() and state.camera()) end },
+  { region = "JapesLankyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.lanky() and state.camera()) end },
 }
 M.locations["Balloon014"] = {
-  { region = "JapesLankyCave", logic = function() return (state.islanky() and state.grape()) end },
+  { region = "JapesLankyCave", logic = function() return (state.lanky() and state.grape()) end },
 }
 M.locations["Balloon000"] = {
-  { region = "Mine", logic = function() return (state.isdiddy() and (state.CanSlamSwitch("JungleJapes", 1) or state.CanPhase()) and state.peanut()) end },
+  { region = "Mine", logic = function() return (state.diddy() and (state.CanSlamSwitch("JungleJapes", 1) or state.CanPhase()) and state.peanut()) end },
 }
 M.locations["JapesMountainEnemy_Start0"] = {
   { region = "Mine", logic = function() return true end },
@@ -3621,13 +3621,13 @@ M.locations["JapesMountainEnemy_NearGateSwitch1"] = {
   { region = "Mine", logic = function() return true end },
 }
 M.locations["JapesMountainEnemy_HiLo"] = {
-  { region = "Mine", logic = function() return ((state.charge() and state.isdiddy()) or state.CanPhase()) end },
+  { region = "Mine", logic = function() return ((state.charge() and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["JapesMountainEnemy_Conveyor0"] = {
-  { region = "Mine", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase()) end },
+  { region = "Mine", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["JapesMountainEnemy_Conveyor1"] = {
-  { region = "Mine", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase()) end },
+  { region = "Mine", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase()) end },
 }
 M.locations["KremKap_JapesMountainEnemy_Start0"] = {
   { region = "Mine", logic = function() return state.camera() end },
@@ -3651,22 +3651,22 @@ M.locations["KremKap_JapesMountainEnemy_NearGateSwitch1"] = {
   { region = "Mine", logic = function() return state.camera() end },
 }
 M.locations["KremKap_JapesMountainEnemy_HiLo"] = {
-  { region = "Mine", logic = function() return (state.camera() and ((state.charge() and state.isdiddy()) or state.CanPhase())) end },
+  { region = "Mine", logic = function() return (state.camera() and ((state.charge() and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["KremKap_JapesMountainEnemy_Conveyor0"] = {
-  { region = "Mine", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase())) end },
+  { region = "Mine", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["KremKap_JapesMountainEnemy_Conveyor1"] = {
-  { region = "Mine", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase())) end },
+  { region = "Mine", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase())) end },
 }
 M.locations["JapesDiddyMinecarts"] = {
   { region = "JapesMinecarts", logic = function() return state.HasEnoughRaceCoins("JapesMinecarts", "diddy", true) end },
 }
 M.locations["JapesChunkyUnderground"] = {
-  { region = "JapesCatacomb", logic = function() return ((state.can_use_vines() and state.pineapple() and state.ischunky()) or (((state.twirl() and state.istiny()) or (state.can_use_vines() and (state.isdiddy() or state.istiny())) or (state.isdonkey() and (not state.isKrushaAdjacent("donkey")))) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase()) end },
+  { region = "JapesCatacomb", logic = function() return ((state.can_use_vines() and state.pineapple() and state.chunky()) or (((state.twirl() and state.tiny()) or (state.can_use_vines() and (state.diddy() or state.tiny())) or (state.donkey() and (not state.isKrushaAdjacent("donkey")))) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase()) end },
 }
 M.locations["JapesKasplatUnderground"] = {
-  { region = "JapesCatacomb", logic = function() return ((not settings.kasplat_rando()) and ((state.can_use_vines() and state.pineapple() and state.ischunky()) or (state.can_use_vines() and (state.isdiddy() or state.istiny()) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase())) end },
+  { region = "JapesCatacomb", logic = function() return ((not settings.kasplat_rando()) and ((state.can_use_vines() and state.pineapple() and state.chunky()) or (state.can_use_vines() and (state.diddy() or state.tiny()) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase())) end },
 }
 M.locations["JapesKey"] = {
   { region = "JapesBoss", logic = function() return state.IsBossBeatable("JungleJapes") end },
@@ -3675,217 +3675,217 @@ M.locations["SharedJapesGun"] = {
   { region = "FunkyJapes", logic = function() return state.CanBuy("SharedJapesGun") end },
 }
 M.locations["CoconutGun"] = {
-  { region = "FunkyJapes", logic = function() return (state.isdonkey() and state.CanBuy("CoconutGun")) end },
+  { region = "FunkyJapes", logic = function() return (state.donkey() and state.CanBuy("CoconutGun")) end },
 }
 M.locations["PeanutGun"] = {
-  { region = "FunkyJapes", logic = function() return (state.isdiddy() and state.CanBuy("PeanutGun")) end },
+  { region = "FunkyJapes", logic = function() return (state.diddy() and state.CanBuy("PeanutGun")) end },
 }
 M.locations["GrapeGun"] = {
-  { region = "FunkyJapes", logic = function() return (state.islanky() and state.CanBuy("GrapeGun")) end },
+  { region = "FunkyJapes", logic = function() return (state.lanky() and state.CanBuy("GrapeGun")) end },
 }
 M.locations["FeatherGun"] = {
-  { region = "FunkyJapes", logic = function() return (state.istiny() and state.CanBuy("FeatherGun")) end },
+  { region = "FunkyJapes", logic = function() return (state.tiny() and state.CanBuy("FeatherGun")) end },
 }
 M.locations["PineappleGun"] = {
-  { region = "FunkyJapes", logic = function() return (state.ischunky() and state.CanBuy("PineappleGun")) end },
+  { region = "FunkyJapes", logic = function() return (state.chunky() and state.CanBuy("PineappleGun")) end },
 }
 M.locations["SharedAztecGun"] = {
   { region = "FunkyAztec", logic = function() return state.CanBuy("SharedAztecGun") end },
 }
 M.locations["DonkeyAztecGun"] = {
-  { region = "FunkyAztec", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyAztecGun")) end },
+  { region = "FunkyAztec", logic = function() return (state.donkey() and state.CanBuy("DonkeyAztecGun")) end },
 }
 M.locations["DiddyAztecGun"] = {
-  { region = "FunkyAztec", logic = function() return (state.isdiddy() and state.CanBuy("DiddyAztecGun")) end },
+  { region = "FunkyAztec", logic = function() return (state.diddy() and state.CanBuy("DiddyAztecGun")) end },
 }
 M.locations["LankyAztecGun"] = {
-  { region = "FunkyAztec", logic = function() return (state.islanky() and state.CanBuy("LankyAztecGun")) end },
+  { region = "FunkyAztec", logic = function() return (state.lanky() and state.CanBuy("LankyAztecGun")) end },
 }
 M.locations["TinyAztecGun"] = {
-  { region = "FunkyAztec", logic = function() return (state.istiny() and state.CanBuy("TinyAztecGun")) end },
+  { region = "FunkyAztec", logic = function() return (state.tiny() and state.CanBuy("TinyAztecGun")) end },
 }
 M.locations["ChunkyAztecGun"] = {
-  { region = "FunkyAztec", logic = function() return (state.ischunky() and state.CanBuy("ChunkyAztecGun")) end },
+  { region = "FunkyAztec", logic = function() return (state.chunky() and state.CanBuy("ChunkyAztecGun")) end },
 }
 M.locations["AmmoBelt1"] = {
   { region = "FunkyFactory", logic = function() return state.CanBuy("AmmoBelt1") end },
 }
 M.locations["DonkeyFactoryGun"] = {
-  { region = "FunkyFactory", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyFactoryGun")) end },
+  { region = "FunkyFactory", logic = function() return (state.donkey() and state.CanBuy("DonkeyFactoryGun")) end },
 }
 M.locations["DiddyFactoryGun"] = {
-  { region = "FunkyFactory", logic = function() return (state.isdiddy() and state.CanBuy("DiddyFactoryGun")) end },
+  { region = "FunkyFactory", logic = function() return (state.diddy() and state.CanBuy("DiddyFactoryGun")) end },
 }
 M.locations["LankyFactoryGun"] = {
-  { region = "FunkyFactory", logic = function() return (state.islanky() and state.CanBuy("LankyFactoryGun")) end },
+  { region = "FunkyFactory", logic = function() return (state.lanky() and state.CanBuy("LankyFactoryGun")) end },
 }
 M.locations["TinyFactoryGun"] = {
-  { region = "FunkyFactory", logic = function() return (state.istiny() and state.CanBuy("TinyFactoryGun")) end },
+  { region = "FunkyFactory", logic = function() return (state.tiny() and state.CanBuy("TinyFactoryGun")) end },
 }
 M.locations["ChunkyFactoryGun"] = {
-  { region = "FunkyFactory", logic = function() return (state.ischunky() and state.CanBuy("ChunkyFactoryGun")) end },
+  { region = "FunkyFactory", logic = function() return (state.chunky() and state.CanBuy("ChunkyFactoryGun")) end },
 }
 M.locations["SharedGalleonGun"] = {
   { region = "FunkyGalleon", logic = function() return state.CanBuy("SharedGalleonGun") end },
 }
 M.locations["DonkeyGalleonGun"] = {
-  { region = "FunkyGalleon", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyGalleonGun")) end },
+  { region = "FunkyGalleon", logic = function() return (state.donkey() and state.CanBuy("DonkeyGalleonGun")) end },
 }
 M.locations["DiddyGalleonGun"] = {
-  { region = "FunkyGalleon", logic = function() return (state.isdiddy() and state.CanBuy("DiddyGalleonGun")) end },
+  { region = "FunkyGalleon", logic = function() return (state.diddy() and state.CanBuy("DiddyGalleonGun")) end },
 }
 M.locations["LankyGalleonGun"] = {
-  { region = "FunkyGalleon", logic = function() return (state.islanky() and state.CanBuy("LankyGalleonGun")) end },
+  { region = "FunkyGalleon", logic = function() return (state.lanky() and state.CanBuy("LankyGalleonGun")) end },
 }
 M.locations["TinyGalleonGun"] = {
-  { region = "FunkyGalleon", logic = function() return (state.istiny() and state.CanBuy("TinyGalleonGun")) end },
+  { region = "FunkyGalleon", logic = function() return (state.tiny() and state.CanBuy("TinyGalleonGun")) end },
 }
 M.locations["ChunkyGalleonGun"] = {
-  { region = "FunkyGalleon", logic = function() return (state.ischunky() and state.CanBuy("ChunkyGalleonGun")) end },
+  { region = "FunkyGalleon", logic = function() return (state.chunky() and state.CanBuy("ChunkyGalleonGun")) end },
 }
 M.locations["HomingAmmo"] = {
   { region = "FunkyForest", logic = function() return state.CanBuy("HomingAmmo") end },
 }
 M.locations["DonkeyForestGun"] = {
-  { region = "FunkyForest", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyForestGun")) end },
+  { region = "FunkyForest", logic = function() return (state.donkey() and state.CanBuy("DonkeyForestGun")) end },
 }
 M.locations["DiddyForestGun"] = {
-  { region = "FunkyForest", logic = function() return (state.isdiddy() and state.CanBuy("DiddyForestGun")) end },
+  { region = "FunkyForest", logic = function() return (state.diddy() and state.CanBuy("DiddyForestGun")) end },
 }
 M.locations["LankyForestGun"] = {
-  { region = "FunkyForest", logic = function() return (state.islanky() and state.CanBuy("LankyForestGun")) end },
+  { region = "FunkyForest", logic = function() return (state.lanky() and state.CanBuy("LankyForestGun")) end },
 }
 M.locations["TinyForestGun"] = {
-  { region = "FunkyForest", logic = function() return (state.istiny() and state.CanBuy("TinyForestGun")) end },
+  { region = "FunkyForest", logic = function() return (state.tiny() and state.CanBuy("TinyForestGun")) end },
 }
 M.locations["ChunkyForestGun"] = {
-  { region = "FunkyForest", logic = function() return (state.ischunky() and state.CanBuy("ChunkyForestGun")) end },
+  { region = "FunkyForest", logic = function() return (state.chunky() and state.CanBuy("ChunkyForestGun")) end },
 }
 M.locations["AmmoBelt2"] = {
   { region = "FunkyCaves", logic = function() return state.CanBuy("AmmoBelt2") end },
 }
 M.locations["DonkeyCavesGun"] = {
-  { region = "FunkyCaves", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyCavesGun")) end },
+  { region = "FunkyCaves", logic = function() return (state.donkey() and state.CanBuy("DonkeyCavesGun")) end },
 }
 M.locations["DiddyCavesGun"] = {
-  { region = "FunkyCaves", logic = function() return (state.isdiddy() and state.CanBuy("DiddyCavesGun")) end },
+  { region = "FunkyCaves", logic = function() return (state.diddy() and state.CanBuy("DiddyCavesGun")) end },
 }
 M.locations["LankyCavesGun"] = {
-  { region = "FunkyCaves", logic = function() return (state.islanky() and state.CanBuy("LankyCavesGun")) end },
+  { region = "FunkyCaves", logic = function() return (state.lanky() and state.CanBuy("LankyCavesGun")) end },
 }
 M.locations["TinyCavesGun"] = {
-  { region = "FunkyCaves", logic = function() return (state.istiny() and state.CanBuy("TinyCavesGun")) end },
+  { region = "FunkyCaves", logic = function() return (state.tiny() and state.CanBuy("TinyCavesGun")) end },
 }
 M.locations["ChunkyCavesGun"] = {
-  { region = "FunkyCaves", logic = function() return (state.ischunky() and state.CanBuy("ChunkyCavesGun")) end },
+  { region = "FunkyCaves", logic = function() return (state.chunky() and state.CanBuy("ChunkyCavesGun")) end },
 }
 M.locations["SniperSight"] = {
   { region = "FunkyCastle", logic = function() return state.CanBuy("SniperSight") end },
 }
 M.locations["DonkeyCastleGun"] = {
-  { region = "FunkyCastle", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyCastleGun")) end },
+  { region = "FunkyCastle", logic = function() return (state.donkey() and state.CanBuy("DonkeyCastleGun")) end },
 }
 M.locations["DiddyCastleGun"] = {
-  { region = "FunkyCastle", logic = function() return (state.isdiddy() and state.CanBuy("DiddyCastleGun")) end },
+  { region = "FunkyCastle", logic = function() return (state.diddy() and state.CanBuy("DiddyCastleGun")) end },
 }
 M.locations["LankyCastleGun"] = {
-  { region = "FunkyCastle", logic = function() return (state.islanky() and state.CanBuy("LankyCastleGun")) end },
+  { region = "FunkyCastle", logic = function() return (state.lanky() and state.CanBuy("LankyCastleGun")) end },
 }
 M.locations["TinyCastleGun"] = {
-  { region = "FunkyCastle", logic = function() return (state.istiny() and state.CanBuy("TinyCastleGun")) end },
+  { region = "FunkyCastle", logic = function() return (state.tiny() and state.CanBuy("TinyCastleGun")) end },
 }
 M.locations["ChunkyCastleGun"] = {
-  { region = "FunkyCastle", logic = function() return (state.ischunky() and state.CanBuy("ChunkyCastleGun")) end },
+  { region = "FunkyCastle", logic = function() return (state.chunky() and state.CanBuy("ChunkyCastleGun")) end },
 }
 M.locations["SharedAztecInstrument"] = {
   { region = "CandyAztec", logic = function() return state.CanBuy("SharedAztecInstrument") end },
 }
 M.locations["Bongos"] = {
-  { region = "CandyAztec", logic = function() return (state.isdonkey() and state.CanBuy("Bongos")) end },
+  { region = "CandyAztec", logic = function() return (state.donkey() and state.CanBuy("Bongos")) end },
 }
 M.locations["Guitar"] = {
-  { region = "CandyAztec", logic = function() return (state.isdiddy() and state.CanBuy("Guitar")) end },
+  { region = "CandyAztec", logic = function() return (state.diddy() and state.CanBuy("Guitar")) end },
 }
 M.locations["Trombone"] = {
-  { region = "CandyAztec", logic = function() return (state.islanky() and state.CanBuy("Trombone")) end },
+  { region = "CandyAztec", logic = function() return (state.lanky() and state.CanBuy("Trombone")) end },
 }
 M.locations["Saxophone"] = {
-  { region = "CandyAztec", logic = function() return (state.istiny() and state.CanBuy("Saxophone")) end },
+  { region = "CandyAztec", logic = function() return (state.tiny() and state.CanBuy("Saxophone")) end },
 }
 M.locations["Triangle"] = {
-  { region = "CandyAztec", logic = function() return (state.ischunky() and state.CanBuy("Triangle")) end },
+  { region = "CandyAztec", logic = function() return (state.chunky() and state.CanBuy("Triangle")) end },
 }
 M.locations["SharedFactoryInstrument"] = {
   { region = "CandyFactory", logic = function() return state.CanBuy("SharedFactoryInstrument") end },
 }
 M.locations["DonkeyFactoryInstrument"] = {
-  { region = "CandyFactory", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyFactoryInstrument")) end },
+  { region = "CandyFactory", logic = function() return (state.donkey() and state.CanBuy("DonkeyFactoryInstrument")) end },
 }
 M.locations["DiddyFactoryInstrument"] = {
-  { region = "CandyFactory", logic = function() return (state.isdiddy() and state.CanBuy("DiddyFactoryInstrument")) end },
+  { region = "CandyFactory", logic = function() return (state.diddy() and state.CanBuy("DiddyFactoryInstrument")) end },
 }
 M.locations["LankyFactoryInstrument"] = {
-  { region = "CandyFactory", logic = function() return (state.islanky() and state.CanBuy("LankyFactoryInstrument")) end },
+  { region = "CandyFactory", logic = function() return (state.lanky() and state.CanBuy("LankyFactoryInstrument")) end },
 }
 M.locations["TinyFactoryInstrument"] = {
-  { region = "CandyFactory", logic = function() return (state.istiny() and state.CanBuy("TinyFactoryInstrument")) end },
+  { region = "CandyFactory", logic = function() return (state.tiny() and state.CanBuy("TinyFactoryInstrument")) end },
 }
 M.locations["ChunkyFactoryInstrument"] = {
-  { region = "CandyFactory", logic = function() return (state.ischunky() and state.CanBuy("ChunkyFactoryInstrument")) end },
+  { region = "CandyFactory", logic = function() return (state.chunky() and state.CanBuy("ChunkyFactoryInstrument")) end },
 }
 M.locations["MusicUpgrade1"] = {
   { region = "CandyGalleon", logic = function() return state.CanBuy("MusicUpgrade1") end },
 }
 M.locations["DonkeyGalleonInstrument"] = {
-  { region = "CandyGalleon", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyGalleonInstrument")) end },
+  { region = "CandyGalleon", logic = function() return (state.donkey() and state.CanBuy("DonkeyGalleonInstrument")) end },
 }
 M.locations["DiddyGalleonInstrument"] = {
-  { region = "CandyGalleon", logic = function() return (state.isdiddy() and state.CanBuy("DiddyGalleonInstrument")) end },
+  { region = "CandyGalleon", logic = function() return (state.diddy() and state.CanBuy("DiddyGalleonInstrument")) end },
 }
 M.locations["LankyGalleonInstrument"] = {
-  { region = "CandyGalleon", logic = function() return (state.islanky() and state.CanBuy("LankyGalleonInstrument")) end },
+  { region = "CandyGalleon", logic = function() return (state.lanky() and state.CanBuy("LankyGalleonInstrument")) end },
 }
 M.locations["TinyGalleonInstrument"] = {
-  { region = "CandyGalleon", logic = function() return (state.istiny() and state.CanBuy("TinyGalleonInstrument")) end },
+  { region = "CandyGalleon", logic = function() return (state.tiny() and state.CanBuy("TinyGalleonInstrument")) end },
 }
 M.locations["ChunkyGalleonInstrument"] = {
-  { region = "CandyGalleon", logic = function() return (state.ischunky() and state.CanBuy("ChunkyGalleonInstrument")) end },
+  { region = "CandyGalleon", logic = function() return (state.chunky() and state.CanBuy("ChunkyGalleonInstrument")) end },
 }
 M.locations["ThirdMelon"] = {
   { region = "CandyCaves", logic = function() return state.CanBuy("ThirdMelon") end },
 }
 M.locations["DonkeyCavesInstrument"] = {
-  { region = "CandyCaves", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyCavesInstrument")) end },
+  { region = "CandyCaves", logic = function() return (state.donkey() and state.CanBuy("DonkeyCavesInstrument")) end },
 }
 M.locations["DiddyCavesInstrument"] = {
-  { region = "CandyCaves", logic = function() return (state.isdiddy() and state.CanBuy("DiddyCavesInstrument")) end },
+  { region = "CandyCaves", logic = function() return (state.diddy() and state.CanBuy("DiddyCavesInstrument")) end },
 }
 M.locations["LankyCavesInstrument"] = {
-  { region = "CandyCaves", logic = function() return (state.islanky() and state.CanBuy("LankyCavesInstrument")) end },
+  { region = "CandyCaves", logic = function() return (state.lanky() and state.CanBuy("LankyCavesInstrument")) end },
 }
 M.locations["TinyCavesInstrument"] = {
-  { region = "CandyCaves", logic = function() return (state.istiny() and state.CanBuy("TinyCavesInstrument")) end },
+  { region = "CandyCaves", logic = function() return (state.tiny() and state.CanBuy("TinyCavesInstrument")) end },
 }
 M.locations["ChunkyCavesInstrument"] = {
-  { region = "CandyCaves", logic = function() return (state.ischunky() and state.CanBuy("ChunkyCavesInstrument")) end },
+  { region = "CandyCaves", logic = function() return (state.chunky() and state.CanBuy("ChunkyCavesInstrument")) end },
 }
 M.locations["MusicUpgrade2"] = {
   { region = "CandyCastle", logic = function() return state.CanBuy("MusicUpgrade2") end },
 }
 M.locations["DonkeyCastleInstrument"] = {
-  { region = "CandyCastle", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyCastleInstrument")) end },
+  { region = "CandyCastle", logic = function() return (state.donkey() and state.CanBuy("DonkeyCastleInstrument")) end },
 }
 M.locations["DiddyCastleInstrument"] = {
-  { region = "CandyCastle", logic = function() return (state.isdiddy() and state.CanBuy("DiddyCastleInstrument")) end },
+  { region = "CandyCastle", logic = function() return (state.diddy() and state.CanBuy("DiddyCastleInstrument")) end },
 }
 M.locations["LankyCastleInstrument"] = {
-  { region = "CandyCastle", logic = function() return (state.islanky() and state.CanBuy("LankyCastleInstrument")) end },
+  { region = "CandyCastle", logic = function() return (state.lanky() and state.CanBuy("LankyCastleInstrument")) end },
 }
 M.locations["TinyCastleInstrument"] = {
-  { region = "CandyCastle", logic = function() return (state.istiny() and state.CanBuy("TinyCastleInstrument")) end },
+  { region = "CandyCastle", logic = function() return (state.tiny() and state.CanBuy("TinyCastleInstrument")) end },
 }
 M.locations["ChunkyCastleInstrument"] = {
-  { region = "CandyCastle", logic = function() return (state.ischunky() and state.CanBuy("ChunkyCastleInstrument")) end },
+  { region = "CandyCastle", logic = function() return (state.chunky() and state.CanBuy("ChunkyCastleInstrument")) end },
 }
 M.locations["RarewareCoin"] = {
   { region = "CrankyGeneric", logic = function() return state.CanGetRarewareCoin() end },
@@ -3894,145 +3894,145 @@ M.locations["SharedJapesPotion"] = {
   { region = "CrankyJapes", logic = function() return state.CanBuy("SharedJapesPotion") end },
 }
 M.locations["BaboonBlast"] = {
-  { region = "CrankyJapes", logic = function() return (state.isdonkey() and state.CanBuy("BaboonBlast")) end },
+  { region = "CrankyJapes", logic = function() return (state.donkey() and state.CanBuy("BaboonBlast")) end },
 }
 M.locations["ChimpyCharge"] = {
-  { region = "CrankyJapes", logic = function() return (state.isdiddy() and state.CanBuy("ChimpyCharge")) end },
+  { region = "CrankyJapes", logic = function() return (state.diddy() and state.CanBuy("ChimpyCharge")) end },
 }
 M.locations["Orangstand"] = {
-  { region = "CrankyJapes", logic = function() return (state.islanky() and state.CanBuy("Orangstand")) end },
+  { region = "CrankyJapes", logic = function() return (state.lanky() and state.CanBuy("Orangstand")) end },
 }
 M.locations["MiniMonkey"] = {
-  { region = "CrankyJapes", logic = function() return (state.istiny() and state.CanBuy("MiniMonkey")) end },
+  { region = "CrankyJapes", logic = function() return (state.tiny() and state.CanBuy("MiniMonkey")) end },
 }
 M.locations["HunkyChunky"] = {
-  { region = "CrankyJapes", logic = function() return (state.ischunky() and state.CanBuy("HunkyChunky")) end },
+  { region = "CrankyJapes", logic = function() return (state.chunky() and state.CanBuy("HunkyChunky")) end },
 }
 M.locations["SharedAztecPotion"] = {
   { region = "CrankyAztec", logic = function() return state.CanBuy("SharedAztecPotion") end },
 }
 M.locations["StrongKong"] = {
-  { region = "CrankyAztec", logic = function() return (state.isdonkey() and state.CanBuy("StrongKong")) end },
+  { region = "CrankyAztec", logic = function() return (state.donkey() and state.CanBuy("StrongKong")) end },
 }
 M.locations["RocketbarrelBoost"] = {
-  { region = "CrankyAztec", logic = function() return (state.isdiddy() and state.CanBuy("RocketbarrelBoost")) end },
+  { region = "CrankyAztec", logic = function() return (state.diddy() and state.CanBuy("RocketbarrelBoost")) end },
 }
 M.locations["LankyAztecPotion"] = {
-  { region = "CrankyAztec", logic = function() return (state.islanky() and state.CanBuy("LankyAztecPotion")) end },
+  { region = "CrankyAztec", logic = function() return (state.lanky() and state.CanBuy("LankyAztecPotion")) end },
 }
 M.locations["TinyAztecPotion"] = {
-  { region = "CrankyAztec", logic = function() return (state.istiny() and state.CanBuy("TinyAztecPotion")) end },
+  { region = "CrankyAztec", logic = function() return (state.tiny() and state.CanBuy("TinyAztecPotion")) end },
 }
 M.locations["ChunkyAztecPotion"] = {
-  { region = "CrankyAztec", logic = function() return (state.ischunky() and state.CanBuy("ChunkyAztecPotion")) end },
+  { region = "CrankyAztec", logic = function() return (state.chunky() and state.CanBuy("ChunkyAztecPotion")) end },
 }
 M.locations["SharedFactoryPotion"] = {
   { region = "CrankyFactory", logic = function() return state.CanBuy("SharedFactoryPotion") end },
 }
 M.locations["GorillaGrab"] = {
-  { region = "CrankyFactory", logic = function() return (state.isdonkey() and state.CanBuy("GorillaGrab")) end },
+  { region = "CrankyFactory", logic = function() return (state.donkey() and state.CanBuy("GorillaGrab")) end },
 }
 M.locations["SimianSpring"] = {
-  { region = "CrankyFactory", logic = function() return (state.isdiddy() and state.CanBuy("SimianSpring")) end },
+  { region = "CrankyFactory", logic = function() return (state.diddy() and state.CanBuy("SimianSpring")) end },
 }
 M.locations["BaboonBalloon"] = {
-  { region = "CrankyFactory", logic = function() return (state.islanky() and state.CanBuy("BaboonBalloon")) end },
+  { region = "CrankyFactory", logic = function() return (state.lanky() and state.CanBuy("BaboonBalloon")) end },
 }
 M.locations["PonyTailTwirl"] = {
-  { region = "CrankyFactory", logic = function() return (state.istiny() and state.CanBuy("PonyTailTwirl")) end },
+  { region = "CrankyFactory", logic = function() return (state.tiny() and state.CanBuy("PonyTailTwirl")) end },
 }
 M.locations["PrimatePunch"] = {
-  { region = "CrankyFactory", logic = function() return (state.ischunky() and state.CanBuy("PrimatePunch")) end },
+  { region = "CrankyFactory", logic = function() return (state.chunky() and state.CanBuy("PrimatePunch")) end },
 }
 M.locations["SharedGalleonPotion"] = {
   { region = "CrankyGalleon", logic = function() return state.CanBuy("SharedGalleonPotion") end },
 }
 M.locations["DonkeyGalleonPotion"] = {
-  { region = "CrankyGalleon", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyGalleonPotion")) end },
+  { region = "CrankyGalleon", logic = function() return (state.donkey() and state.CanBuy("DonkeyGalleonPotion")) end },
 }
 M.locations["DiddyGalleonPotion"] = {
-  { region = "CrankyGalleon", logic = function() return (state.isdiddy() and state.CanBuy("DiddyGalleonPotion")) end },
+  { region = "CrankyGalleon", logic = function() return (state.diddy() and state.CanBuy("DiddyGalleonPotion")) end },
 }
 M.locations["LankyGalleonPotion"] = {
-  { region = "CrankyGalleon", logic = function() return (state.islanky() and state.CanBuy("LankyGalleonPotion")) end },
+  { region = "CrankyGalleon", logic = function() return (state.lanky() and state.CanBuy("LankyGalleonPotion")) end },
 }
 M.locations["TinyGalleonPotion"] = {
-  { region = "CrankyGalleon", logic = function() return (state.istiny() and state.CanBuy("TinyGalleonPotion")) end },
+  { region = "CrankyGalleon", logic = function() return (state.tiny() and state.CanBuy("TinyGalleonPotion")) end },
 }
 M.locations["ChunkyGalleonPotion"] = {
-  { region = "CrankyGalleon", logic = function() return (state.ischunky() and state.CanBuy("ChunkyGalleonPotion")) end },
+  { region = "CrankyGalleon", logic = function() return (state.chunky() and state.CanBuy("ChunkyGalleonPotion")) end },
 }
 M.locations["SuperSimianSlam"] = {
   { region = "CrankyForest", logic = function() return state.CanBuy("SuperSimianSlam") end },
 }
 M.locations["DonkeyForestPotion"] = {
-  { region = "CrankyForest", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyForestPotion")) end },
+  { region = "CrankyForest", logic = function() return (state.donkey() and state.CanBuy("DonkeyForestPotion")) end },
 }
 M.locations["DiddyForestPotion"] = {
-  { region = "CrankyForest", logic = function() return (state.isdiddy() and state.CanBuy("DiddyForestPotion")) end },
+  { region = "CrankyForest", logic = function() return (state.diddy() and state.CanBuy("DiddyForestPotion")) end },
 }
 M.locations["LankyForestPotion"] = {
-  { region = "CrankyForest", logic = function() return (state.islanky() and state.CanBuy("LankyForestPotion")) end },
+  { region = "CrankyForest", logic = function() return (state.lanky() and state.CanBuy("LankyForestPotion")) end },
 }
 M.locations["TinyForestPotion"] = {
-  { region = "CrankyForest", logic = function() return (state.istiny() and state.CanBuy("TinyForestPotion")) end },
+  { region = "CrankyForest", logic = function() return (state.tiny() and state.CanBuy("TinyForestPotion")) end },
 }
 M.locations["ChunkyForestPotion"] = {
-  { region = "CrankyForest", logic = function() return (state.ischunky() and state.CanBuy("ChunkyForestPotion")) end },
+  { region = "CrankyForest", logic = function() return (state.chunky() and state.CanBuy("ChunkyForestPotion")) end },
 }
 M.locations["SharedCavesPotion"] = {
   { region = "CrankyCaves", logic = function() return state.CanBuy("SharedCavesPotion") end },
 }
 M.locations["OrangstandSprint"] = {
-  { region = "CrankyCaves", logic = function() return (state.islanky() and state.CanBuy("OrangstandSprint")) end },
+  { region = "CrankyCaves", logic = function() return (state.lanky() and state.CanBuy("OrangstandSprint")) end },
 }
 M.locations["Monkeyport"] = {
-  { region = "CrankyCaves", logic = function() return (state.istiny() and state.CanBuy("Monkeyport")) end },
+  { region = "CrankyCaves", logic = function() return (state.tiny() and state.CanBuy("Monkeyport")) end },
 }
 M.locations["GorillaGone"] = {
-  { region = "CrankyCaves", logic = function() return (state.ischunky() and state.CanBuy("GorillaGone")) end },
+  { region = "CrankyCaves", logic = function() return (state.chunky() and state.CanBuy("GorillaGone")) end },
 }
 M.locations["DonkeyCavesPotion"] = {
-  { region = "CrankyCaves", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyCavesPotion")) end },
+  { region = "CrankyCaves", logic = function() return (state.donkey() and state.CanBuy("DonkeyCavesPotion")) end },
 }
 M.locations["DiddyCavesPotion"] = {
-  { region = "CrankyCaves", logic = function() return (state.isdiddy() and state.CanBuy("DiddyCavesPotion")) end },
+  { region = "CrankyCaves", logic = function() return (state.diddy() and state.CanBuy("DiddyCavesPotion")) end },
 }
 M.locations["SuperDuperSimianSlam"] = {
   { region = "CrankyCastle", logic = function() return state.CanBuy("SuperDuperSimianSlam") end },
 }
 M.locations["DonkeyCastlePotion"] = {
-  { region = "CrankyCastle", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyCastlePotion")) end },
+  { region = "CrankyCastle", logic = function() return (state.donkey() and state.CanBuy("DonkeyCastlePotion")) end },
 }
 M.locations["DiddyCastlePotion"] = {
-  { region = "CrankyCastle", logic = function() return (state.isdiddy() and state.CanBuy("DiddyCastlePotion")) end },
+  { region = "CrankyCastle", logic = function() return (state.diddy() and state.CanBuy("DiddyCastlePotion")) end },
 }
 M.locations["LankyCastlePotion"] = {
-  { region = "CrankyCastle", logic = function() return (state.islanky() and state.CanBuy("LankyCastlePotion")) end },
+  { region = "CrankyCastle", logic = function() return (state.lanky() and state.CanBuy("LankyCastlePotion")) end },
 }
 M.locations["TinyCastlePotion"] = {
-  { region = "CrankyCastle", logic = function() return (state.istiny() and state.CanBuy("TinyCastlePotion")) end },
+  { region = "CrankyCastle", logic = function() return (state.tiny() and state.CanBuy("TinyCastlePotion")) end },
 }
 M.locations["ChunkyCastlePotion"] = {
-  { region = "CrankyCastle", logic = function() return (state.ischunky() and state.CanBuy("ChunkyCastlePotion")) end },
+  { region = "CrankyCastle", logic = function() return (state.chunky() and state.CanBuy("ChunkyCastlePotion")) end },
 }
 M.locations["SimianSlam"] = {
   { region = "CrankyIsles", logic = function() return state.CanBuy("SimianSlam") end },
 }
 M.locations["DonkeyIslesPotion"] = {
-  { region = "CrankyIsles", logic = function() return (state.isdonkey() and state.CanBuy("DonkeyIslesPotion")) end },
+  { region = "CrankyIsles", logic = function() return (state.donkey() and state.CanBuy("DonkeyIslesPotion")) end },
 }
 M.locations["DiddyIslesPotion"] = {
-  { region = "CrankyIsles", logic = function() return (state.isdiddy() and state.CanBuy("DiddyIslesPotion")) end },
+  { region = "CrankyIsles", logic = function() return (state.diddy() and state.CanBuy("DiddyIslesPotion")) end },
 }
 M.locations["LankyIslesPotion"] = {
-  { region = "CrankyIsles", logic = function() return (state.islanky() and state.CanBuy("LankyIslesPotion")) end },
+  { region = "CrankyIsles", logic = function() return (state.lanky() and state.CanBuy("LankyIslesPotion")) end },
 }
 M.locations["TinyIslesPotion"] = {
-  { region = "CrankyIsles", logic = function() return (state.istiny() and state.CanBuy("TinyIslesPotion")) end },
+  { region = "CrankyIsles", logic = function() return (state.tiny() and state.CanBuy("TinyIslesPotion")) end },
 }
 M.locations["ChunkyIslesPotion"] = {
-  { region = "CrankyIsles", logic = function() return (state.ischunky() and state.CanBuy("ChunkyIslesPotion")) end },
+  { region = "CrankyIsles", logic = function() return (state.chunky() and state.CanBuy("ChunkyIslesPotion")) end },
 }
 M.locations["TurnInJungleJapesDonkeyBlueprint"] = {
   { region = "SnideFirstGroup", logic = function() return state.CanGetBlueprintReward(1) end },

@@ -10,7 +10,6 @@ M.regions["AngryAztecMedals"] = {
   display_name = [[Angry Aztec Medals]],
   hint_region  = "AztecCBs",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -36,7 +35,6 @@ M.regions["AngryAztecEntryHandler"] = {
   display_name = [[Angry Aztec Entry Handler]],
   hint_region  = "Error",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -55,14 +53,13 @@ M.regions["AngryAztecStart"] = {
   display_name = [[Angry Aztec Start]],
   hint_region  = "AztecTunnels",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
   events = {
   },
   exits = {
-    { dest = "BetweenVinesByPortal", logic = function() return (state.assumeAztecEntry() or state.can_use_vines() or (state.istiny() and state.twirl()) or state.CanPhase()) end },
+    { dest = "BetweenVinesByPortal", logic = function() return (state.assumeAztecEntry() or state.can_use_vines() or (state.tiny() and state.twirl()) or state.CanPhase()) end },
   },
 }
 
@@ -71,7 +68,6 @@ M.regions["BetweenVinesByPortal"] = {
   display_name = [[Angry Aztec Between Vines By Portal]],
   hint_region  = "AztecTunnels",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "AztecChunkyVases", logic = function() return ((state.pineapple() or state.CanPhase()) and state.chunky() and state.barrels()) end },
@@ -79,15 +75,15 @@ M.regions["BetweenVinesByPortal"] = {
     { id = "HoldableVaseTriangle", logic = function() return ((state.pineapple() or state.CanPhase()) and state.chunky() and state.barrels()) end },
     { id = "HoldableVaseColon", logic = function() return ((state.pineapple() or state.CanPhase()) and state.chunky() and state.barrels()) end },
     { id = "HoldableVasePlus", logic = function() return ((state.pineapple() or state.CanPhase()) and state.chunky() and state.barrels()) end },
-    { id = "AztecMainEnemy_VaseRoom0", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
-    { id = "AztecMainEnemy_VaseRoom1", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
-    { id = "AztecMainEnemy_VaseRoom2", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
+    { id = "AztecMainEnemy_VaseRoom0", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
+    { id = "AztecMainEnemy_VaseRoom1", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
+    { id = "AztecMainEnemy_VaseRoom2", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
     { id = "AztecMainEnemy_StartingTunnel0", logic = function() return true end },
     { id = "AztecMainEnemy_StartingTunnel1", logic = function() return true end },
     { id = "AztecMainEnemy_StartingTunnel2", logic = function() return true end },
-    { id = "KremKap_AztecMainEnemy_VaseRoom0", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
-    { id = "KremKap_AztecMainEnemy_VaseRoom1", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
-    { id = "KremKap_AztecMainEnemy_VaseRoom2", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
+    { id = "KremKap_AztecMainEnemy_VaseRoom0", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
+    { id = "KremKap_AztecMainEnemy_VaseRoom1", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
+    { id = "KremKap_AztecMainEnemy_VaseRoom2", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
     { id = "KremKap_AztecMainEnemy_StartingTunnel0", logic = function() return state.camera() end },
     { id = "KremKap_AztecMainEnemy_StartingTunnel1", logic = function() return state.camera() end },
     { id = "KremKap_AztecMainEnemy_StartingTunnel2", logic = function() return state.camera() end },
@@ -96,8 +92,8 @@ M.regions["BetweenVinesByPortal"] = {
     { id = "AztecW1aTagged", logic = function() return true end },
   },
   exits = {
-    { dest = "AngryAztecStart", logic = function() return (state.can_use_vines() or (state.istiny() and state.twirl()) or state.CanPhase()) end },
-    { dest = "AztecTunnelBeforeOasis", logic = function() return (state.assumeAztecEntry() or state.can_use_vines() or (state.istiny() and state.twirl()) or state.CanPhase()) end },
+    { dest = "AngryAztecStart", logic = function() return (state.can_use_vines() or (state.tiny() and state.twirl()) or state.CanPhase()) end },
+    { dest = "AztecTunnelBeforeOasis", logic = function() return (state.assumeAztecEntry() or state.can_use_vines() or (state.tiny() and state.twirl()) or state.CanPhase()) end },
   },
 }
 
@@ -106,17 +102,16 @@ M.regions["AztecTunnelBeforeOasis"] = {
   display_name = [[Angry Aztec Tunnel Before Oasis]],
   hint_region  = "AztecTunnels",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecKasplatSandyBridge", logic = function() return ((not settings.kasplat_rando()) and (state.CanPhase() or (state.hasMoveSwitchsanity("AztecBlueprintDoor", false) and ((state.strongKong() and state.isdonkey()) or (state.twirl() and state.istiny()))))) end },
+    { id = "AztecKasplatSandyBridge", logic = function() return ((not settings.kasplat_rando()) and (state.CanPhase() or (state.hasMoveSwitchsanity("AztecBlueprintDoor", false) and ((state.strongKong() and state.donkey()) or (state.twirl() and state.tiny()))))) end },
     { id = "AztecMainEnemy_StartingTunnel3", logic = function() return true end },
     { id = "KremKap_AztecMainEnemy_StartingTunnel3", logic = function() return state.camera() end },
   },
   events = {
   },
   exits = {
-    { dest = "BetweenVinesByPortal", logic = function() return (state.can_use_vines() or (state.istiny() and state.twirl()) or state.CanPhase()) end },
+    { dest = "BetweenVinesByPortal", logic = function() return (state.can_use_vines() or (state.tiny() and state.twirl()) or state.CanPhase()) end },
     { dest = "AngryAztecOasis", logic = function() return true end },
   },
 }
@@ -126,11 +121,10 @@ M.regions["AngryAztecOasis"] = {
   display_name = [[Angry Aztec Oasis]],
   hint_region  = "OasisAndTotem",
   level        = "AngryAztec",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "AztecDonkeyFreeLlama", logic = function() return state.event("LlamaFreed") end },
-    { id = "AztecKasplatOnTinyTemple", logic = function() return ((not settings.kasplat_rando()) and state.jetpack() and state.isdiddy() and state.climbing()) end },
+    { id = "AztecKasplatOnTinyTemple", logic = function() return ((not settings.kasplat_rando()) and state.jetpack() and state.diddy() and state.climbing()) end },
     { id = "RainbowCoin_Location06", logic = function() return true end },
     { id = "AztecMainEnemy_NearCandy", logic = function() return true end },
     { id = "AztecMainEnemy_OasisDoor", logic = function() return true end },
@@ -139,13 +133,13 @@ M.regions["AngryAztecOasis"] = {
     { id = "Balloon055", logic = function() return (state.diddy() and state.peanut()) end },
   },
   events = {
-    { id = "AztecGuitarPad", logic = function() return (((state.can_use_vines() and state.climbing()) or (state.jetpack() and state.isdiddy() and state.climbing()) or (state.monkey_maneuvers() and (state.istiny() or state.isdiddy()))) and state.hasMoveSwitchsanity("AztecGuitar", true)) end },
+    { id = "AztecGuitarPad", logic = function() return (((state.can_use_vines() and state.climbing()) or (state.jetpack() and state.diddy() and state.climbing()) or (state.monkey_maneuvers() and (state.tiny() or state.diddy()))) and state.hasMoveSwitchsanity("AztecGuitar", true)) end },
     { id = "AztecW1bTagged", logic = function() return true end },
     { id = "AztecW2aTagged", logic = function() return true end },
   },
   exits = {
     { dest = "AztecTunnelBeforeOasis", logic = function() return true end },
-    { dest = "TempleStart", logic = function() return (((state.peanut() and state.isdiddy()) or (state.grape() and state.islanky()) or (state.feather() and state.istiny()) or (state.pineapple() and state.ischunky())) or state.CanPhase()) end, exitShuffleId="Transitions.AztecStartToTemple" },
+    { dest = "TempleStart", logic = function() return (((state.peanut() and state.diddy()) or (state.grape() and state.lanky()) or (state.feather() and state.tiny()) or (state.pineapple() and state.chunky())) or state.CanPhase()) end, exitShuffleId="Transitions.AztecStartToTemple" },
     { dest = "AngryAztecConnectorTunnel", logic = function() return (state.checkBarrier("aztec_tunnel_door") or state.event("AztecGuitarPad") or state.CanPhase() or state.generalclips()) end },
     { dest = "CandyAztec", logic = function() return state.candyAccess() end },
     { dest = "AztecBossLobby", logic = function() return (not settings.tns_location_rando()) end },
@@ -157,10 +151,9 @@ M.regions["TempleStart"] = {
   display_name = [[Temple Start]],
   hint_region  = "TinyTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecChunkyKlaptrapRoom", logic = function() return ((state.triangle() or (state.CanPhaseswim() and state.event("AztecIceMelted")) or state.CanPhase()) and state.ischunky()) end },
+    { id = "AztecChunkyKlaptrapRoom", logic = function() return ((state.triangle() or (state.CanPhaseswim() and state.event("AztecIceMelted")) or state.CanPhase()) and state.chunky()) end },
     { id = "AztecTempleEnemy_GuardRotating0", logic = function() return true end },
     { id = "AztecTempleEnemy_GuardRotating1", logic = function() return true end },
     { id = "AztecTempleEnemy_MainRoom0", logic = function() return true end },
@@ -176,7 +169,7 @@ M.regions["TempleStart"] = {
   },
   exits = {
     { dest = "AngryAztecOasis", logic = function() return true end, exitShuffleId="Transitions.AztecTempleToStart" },
-    { dest = "TempleGuitarPad", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.peanut() and state.isdiddy()) end },
+    { dest = "TempleGuitarPad", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.peanut() and state.diddy()) end },
     { dest = "TempleUnderwater", logic = function() return (state.swim() and state.event("AztecIceMelted")) end },
   },
 }
@@ -186,12 +179,11 @@ M.regions["TempleGuitarPad"] = {
   display_name = [[Temple Guitar Pad]],
   hint_region  = "TinyTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
   },
   events = {
-    { id = "AztecIceMelted", logic = function() return (state.guitar() and state.isdiddy()) end },
+    { id = "AztecIceMelted", logic = function() return (state.guitar() and state.diddy()) end },
   },
   exits = {
     { dest = "TempleStart", logic = function() return true end },
@@ -203,10 +195,9 @@ M.regions["TempleUnderwater"] = {
   display_name = [[Temple Underwater]],
   hint_region  = "TinyTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecTinyKlaptrapRoom", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.generalclips() or state.CanPhaseswim()) end },
+    { id = "AztecTinyKlaptrapRoom", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.generalclips() or state.CanPhaseswim()) end },
     { id = "KremKap_AztecTempleEnemy_Underwater", logic = function() return state.camera() end },
   },
   events = {
@@ -223,12 +214,11 @@ M.regions["TempleVultureRoom"] = {
   display_name = [[Temple Vulture Room]],
   hint_region  = "TinyTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecLankyVulture", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.grape() and state.islanky()) end },
+    { id = "AztecLankyVulture", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.grape() and state.lanky()) end },
     { id = "AztecBattleArena", logic = function() return ((not settings.crown_placement_rando()) and state.CanSlamSwitch("AngryAztec", 1) and state.grape() and state.lanky()) end },
-    { id = "Balloon017", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "Balloon017", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
   },
@@ -242,7 +232,6 @@ M.regions["TempleKONGRoom"] = {
   display_name = [[Temple KONG Room]],
   hint_region  = "TinyTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "TinyKong", logic = function() return state.CanFreeTiny() end },
@@ -257,8 +246,8 @@ M.regions["TempleKONGRoom"] = {
     { id = "KremKap_AztecTempleEnemy_KongRoom2", logic = function() return state.camera() end },
     { id = "KremKap_AztecTempleEnemy_KongRoom3", logic = function() return state.camera() end },
     { id = "KremKap_AztecTempleEnemy_KongRoom4", logic = function() return state.camera() end },
-    { id = "Balloon015", logic = function() return (state.istiny() and state.feather()) end },
-    { id = "Balloon016", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "Balloon015", logic = function() return (state.tiny() and state.feather()) end },
+    { id = "Balloon016", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
   },
@@ -272,10 +261,9 @@ M.regions["AngryAztecConnectorTunnel"] = {
   display_name = [[Angry Aztec Connector Tunnel]],
   hint_region  = "AztecTunnels",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecChunkyCagedBarrel", logic = function() return (state.ischunky() and ((state.hunkyChunky() and (state.barrels() or state.generalclips())) or state.CanPhase())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "AztecChunkyCagedBarrel", logic = function() return (state.chunky() and ((state.hunkyChunky() and (state.barrels() or state.generalclips())) or state.CanPhase())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "AztecKasplatNearLab", logic = function() return (not settings.kasplat_rando()) end },
     { id = "AztecMainEnemy_TunnelPad0", logic = function() return true end },
     { id = "AztecMainEnemy_TunnelCage0", logic = function() return true end },
@@ -289,7 +277,7 @@ M.regions["AngryAztecConnectorTunnel"] = {
     { id = "KremKap_AztecMainEnemy_TunnelCage2", logic = function() return state.camera() end },
     { id = "KremKap_AztecMainEnemy_TunnelCage3", logic = function() return state.camera() end },
     { id = "KremKap_AztecMainEnemy_TunnelPad1", logic = function() return state.camera() end },
-    { id = "HoldableBoulderAztec", logic = function() return (state.barrels() and state.hunkyChunky() and state.ischunky()) end },
+    { id = "HoldableBoulderAztec", logic = function() return (state.barrels() and state.hunkyChunky() and state.chunky()) end },
     { id = "Balloon054", logic = function() return (state.donkey() and state.coconut()) end },
     { id = "Balloon057", logic = function() return (state.donkey() and state.coconut()) end },
   },
@@ -308,12 +296,11 @@ M.regions["AngryAztecMain"] = {
   display_name = [[Angry Aztec Main]],
   hint_region  = "OasisAndTotem",
   level        = "AngryAztec",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "AztecDiddyRamGongs", logic = function() return (state.charge() and state.jetpack() and state.diddy()) end },
     { id = "AztecDiddyVultureRace", logic = function() return (state.jetpack() and state.diddy()) end },
-    { id = "MelonCrate_Location06", logic = function() return ((state.jetpack() and state.isdiddy()) or state.CanMoonkick()) end },
+    { id = "MelonCrate_Location06", logic = function() return ((state.jetpack() and state.diddy()) or state.CanMoonkick()) end },
     { id = "MelonCrate_Location07", logic = function() return true end },
     { id = "AztecMainEnemy_OutsideLlama", logic = function() return true end },
     { id = "AztecMainEnemy_OutsideTower", logic = function() return true end },
@@ -339,17 +326,17 @@ M.regions["AngryAztecMain"] = {
   },
   exits = {
     { dest = "AngryAztecConnectorTunnel", logic = function() return true end },
-    { dest = "DonkeyTemple", logic = function() return ((state.event("FedTotem") and state.coconut() and state.isdonkey()) or state.CanPhase() or state.generalclips()) end, exitShuffleId="Transitions.AztecMainToDonkey" },
-    { dest = "DiddyTemple", logic = function() return ((state.event("FedTotem") and state.peanut() and state.isdiddy()) or (state.generalclips() and state.charge() and state.isdiddy()) or state.CanPhase()) end, exitShuffleId="Transitions.AztecMainToDiddy" },
-    { dest = "LankyTempleEntrance", logic = function() return ((state.event("FedTotem") and state.grape() and state.islanky()) or state.CanPhase()) end, exitShuffleId="Transitions.AztecMainToLanky" },
-    { dest = "TinyTempleEntrance", logic = function() return ((state.event("FedTotem") and state.feather() and state.istiny()) or state.CanPhase()) end, exitShuffleId="Transitions.AztecMainToTiny" },
-    { dest = "ChunkyTempleEntrance", logic = function() return ((state.event("FedTotem") and state.pineapple() and state.ischunky()) or state.CanPhase() or (state.generalclips() and state.ischunky() and state.hunkyChunky())) end, exitShuffleId="Transitions.AztecMainToChunky" },
-    { dest = "AztecTinyRace", logic = function() return (state.charge() and state.jetpack() and state.diddy() and state.mini() and state.saxophone() and state.istiny()) end, exitShuffleId="Transitions.AztecMainToRace" },
-    { dest = "LlamaTemple", logic = function() return (state.canOpenLlamaTemple() or state.CanPhase() or (state.generalclips() and (state.isdonkey() or state.isdiddy() or state.istiny() or state.ischunky()))) end, exitShuffleId="Transitions.AztecMainToLlama" },
-    { dest = "AztecBaboonBlast", logic = function() return (state.blast() and state.isdonkey()) end },
+    { dest = "DonkeyTemple", logic = function() return ((state.event("FedTotem") and state.coconut() and state.donkey()) or state.CanPhase() or state.generalclips()) end, exitShuffleId="Transitions.AztecMainToDonkey" },
+    { dest = "DiddyTemple", logic = function() return ((state.event("FedTotem") and state.peanut() and state.diddy()) or (state.generalclips() and state.charge() and state.diddy()) or state.CanPhase()) end, exitShuffleId="Transitions.AztecMainToDiddy" },
+    { dest = "LankyTempleEntrance", logic = function() return ((state.event("FedTotem") and state.grape() and state.lanky()) or state.CanPhase()) end, exitShuffleId="Transitions.AztecMainToLanky" },
+    { dest = "TinyTempleEntrance", logic = function() return ((state.event("FedTotem") and state.feather() and state.tiny()) or state.CanPhase()) end, exitShuffleId="Transitions.AztecMainToTiny" },
+    { dest = "ChunkyTempleEntrance", logic = function() return ((state.event("FedTotem") and state.pineapple() and state.chunky()) or state.CanPhase() or (state.generalclips() and state.chunky() and state.hunkyChunky())) end, exitShuffleId="Transitions.AztecMainToChunky" },
+    { dest = "AztecTinyRace", logic = function() return (state.charge() and state.jetpack() and state.diddy() and state.mini() and state.saxophone() and state.tiny()) end, exitShuffleId="Transitions.AztecMainToRace" },
+    { dest = "LlamaTemple", logic = function() return (state.canOpenLlamaTemple() or state.CanPhase() or (state.generalclips() and (state.donkey() or state.diddy() or state.tiny() or state.chunky()))) end, exitShuffleId="Transitions.AztecMainToLlama" },
+    { dest = "AztecBaboonBlast", logic = function() return (state.blast() and state.donkey()) end },
     { dest = "Snide", logic = function() return state.snideAccess() end },
     { dest = "FunkyAztec", logic = function() return state.funkyAccess() end },
-    { dest = "AztecDonkeyQuicksandCave", logic = function() return ((((state.event("AztecDonkeySwitch") and state.strongKong()) or ((not settings.shuffle_shops()) and state.generalclips())) and state.isdonkey()) or state.CanPhase()) end },
+    { dest = "AztecDonkeyQuicksandCave", logic = function() return ((((state.event("AztecDonkeySwitch") and state.strongKong()) or ((not settings.shuffle_shops()) and state.generalclips())) and state.donkey()) or state.CanPhase()) end },
     { dest = "AztecBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
 }
@@ -359,17 +346,16 @@ M.regions["AztecDonkeyQuicksandCave"] = {
   display_name = [[Aztec Donkey Sand Tunnel]],
   hint_region  = "AztecTunnels",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecDonkeyQuicksandCave", logic = function() return (state.isdonkey() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "Balloon058", logic = function() return (state.diddy() and state.peanut() and state.isdonkey() and state.strongKong()) end },
+    { id = "AztecDonkeyQuicksandCave", logic = function() return (state.donkey() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "Balloon058", logic = function() return (state.diddy() and state.peanut() and state.donkey() and state.strongKong()) end },
   },
   events = {
     { id = "AztecW5bTagged", logic = function() return state.special_loc("AztecDonkeyQuicksandCave") end },
   },
   exits = {
-    { dest = "AngryAztecMain", logic = function() return ((state.isdonkey() and state.strongKong()) or state.CanPhase()) end },
+    { dest = "AngryAztecMain", logic = function() return ((state.donkey() and state.strongKong()) or state.CanPhase()) end },
   },
 }
 
@@ -378,12 +364,11 @@ M.regions["AztecBaboonBlast"] = {
   display_name = [[Aztec Baboon Blast]],
   hint_region  = "OasisAndTotem",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
   events = {
-    { id = "LlamaFreed", logic = function() return state.isdonkey() end },
+    { id = "LlamaFreed", logic = function() return state.donkey() end },
   },
   exits = {
     { dest = "AngryAztecMain", logic = function() return true end },
@@ -395,27 +380,26 @@ M.regions["DonkeyTemple"] = {
   display_name = [[Donkey Temple]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   locations = {
-    { id = "AztecDonkey5DoorTemple", logic = function() return ((state.coconut() or state.CanPhase()) and (state.isdonkey() or settings.free_trade_items())) end },
-    { id = "AztecDK5DTEnemy_EndTrap0", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
-    { id = "AztecDK5DTEnemy_EndTrap1", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
-    { id = "AztecDK5DTEnemy_EndTrap2", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
-    { id = "AztecDK5DTEnemy_EndPath0", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
-    { id = "AztecDK5DTEnemy_EndPath1", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
-    { id = "AztecDK5DTEnemy_StartPath", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
-    { id = "KremKap_AztecDK5DTEnemy_EndTrap0", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDK5DTEnemy_EndTrap1", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDK5DTEnemy_EndTrap2", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDK5DTEnemy_EndPath0", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDK5DTEnemy_EndPath1", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDK5DTEnemy_StartPath", logic = function() return (state.camera() and ((state.coconut() and state.isdonkey()) or state.CanPhase())) end },
+    { id = "AztecDonkey5DoorTemple", logic = function() return ((state.coconut() or state.CanPhase()) and (state.donkey() or settings.free_trade_items())) end },
+    { id = "AztecDK5DTEnemy_EndTrap0", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
+    { id = "AztecDK5DTEnemy_EndTrap1", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
+    { id = "AztecDK5DTEnemy_EndTrap2", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
+    { id = "AztecDK5DTEnemy_EndPath0", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
+    { id = "AztecDK5DTEnemy_EndPath1", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
+    { id = "AztecDK5DTEnemy_StartPath", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
+    { id = "KremKap_AztecDK5DTEnemy_EndTrap0", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDK5DTEnemy_EndTrap1", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDK5DTEnemy_EndTrap2", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDK5DTEnemy_EndPath0", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDK5DTEnemy_EndPath1", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDK5DTEnemy_StartPath", logic = function() return (state.camera() and ((state.coconut() and state.donkey()) or state.CanPhase())) end },
   },
   events = {
   },
   exits = {
     { dest = "AngryAztecMain", logic = function() return true end, exitShuffleId="Transitions.AztecDonkeyToMain" },
-    { dest = "DonkeyTempleDeadEndRight", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase()) end },
+    { dest = "DonkeyTempleDeadEndRight", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase()) end },
   },
 }
 
@@ -424,7 +408,6 @@ M.regions["DonkeyTempleDeadEndRight"] = {
   display_name = [[Donkey Temple Dead End Right]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "AztecDK5DTEnemy_StartTrap0", logic = function() return true end },
@@ -446,24 +429,23 @@ M.regions["DiddyTemple"] = {
   display_name = [[Diddy Temple]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   locations = {
-    { id = "AztecDiddy5DoorTemple", logic = function() return ((state.peanut() or state.CanPhase()) and (state.isdiddy() or settings.free_trade_items())) end },
-    { id = "AztecDiddy5DTEnemy_StartLeft0", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
-    { id = "AztecDiddy5DTEnemy_StartLeft1", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
-    { id = "AztecDiddy5DTEnemy_Reward", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
-    { id = "AztecDiddy5DTEnemy_SecondSwitch", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
-    { id = "KremKap_AztecDiddy5DTEnemy_StartLeft0", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDiddy5DTEnemy_StartLeft1", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDiddy5DTEnemy_Reward", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
-    { id = "KremKap_AztecDiddy5DTEnemy_SecondSwitch", logic = function() return (state.camera() and ((state.peanut() and state.isdiddy()) or state.CanPhase())) end },
-    { id = "Balloon021", logic = function() return (state.isdiddy() and state.peanut()) end },
+    { id = "AztecDiddy5DoorTemple", logic = function() return ((state.peanut() or state.CanPhase()) and (state.diddy() or settings.free_trade_items())) end },
+    { id = "AztecDiddy5DTEnemy_StartLeft0", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
+    { id = "AztecDiddy5DTEnemy_StartLeft1", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
+    { id = "AztecDiddy5DTEnemy_Reward", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
+    { id = "AztecDiddy5DTEnemy_SecondSwitch", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
+    { id = "KremKap_AztecDiddy5DTEnemy_StartLeft0", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDiddy5DTEnemy_StartLeft1", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDiddy5DTEnemy_Reward", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
+    { id = "KremKap_AztecDiddy5DTEnemy_SecondSwitch", logic = function() return (state.camera() and ((state.peanut() and state.diddy()) or state.CanPhase())) end },
+    { id = "Balloon021", logic = function() return (state.diddy() and state.peanut()) end },
   },
   events = {
   },
   exits = {
     { dest = "AngryAztecMain", logic = function() return true end, exitShuffleId="Transitions.AztecDiddyToMain" },
-    { dest = "DiddyTempleDeadEndRight", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanPhase()) end },
+    { dest = "DiddyTempleDeadEndRight", logic = function() return ((state.peanut() and state.diddy()) or state.CanPhase()) end },
   },
 }
 
@@ -472,7 +454,6 @@ M.regions["DiddyTempleDeadEndRight"] = {
   display_name = [[Diddy Temple Dead End Right]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "AztecDiddy5DTEnemy_EndTrap0", logic = function() return true end },
@@ -494,7 +475,6 @@ M.regions["LankyTempleEntrance"] = {
   display_name = [[Lanky Temple Entrance]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -502,7 +482,7 @@ M.regions["LankyTempleEntrance"] = {
   },
   exits = {
     { dest = "AngryAztecMain", logic = function() return true end, exitShuffleId="Transitions.AztecLankyToMain" },
-    { dest = "LankyTemple", logic = function() return ((state.grape() and state.islanky()) or state.CanPhase()) end },
+    { dest = "LankyTemple", logic = function() return ((state.grape() and state.lanky()) or state.CanPhase()) end },
   },
 }
 
@@ -511,17 +491,16 @@ M.regions["LankyTemple"] = {
   display_name = [[Lanky Temple]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecLanky5DoorTemple", logic = function() return ((state.grape() or state.CanPhase()) and (state.islanky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "AztecLanky5DoorTemple", logic = function() return ((state.grape() or state.CanPhase()) and (state.lanky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "AztecLanky5DTEnemy_JoiningPaths", logic = function() return true end },
-    { id = "AztecLanky5DTEnemy_EndTrap", logic = function() return ((state.grape() and state.islanky()) or state.CanPhase()) end },
-    { id = "AztecLanky5DTEnemy_Reward", logic = function() return ((state.grape() and state.islanky()) or state.CanPhase()) end },
+    { id = "AztecLanky5DTEnemy_EndTrap", logic = function() return ((state.grape() and state.lanky()) or state.CanPhase()) end },
+    { id = "AztecLanky5DTEnemy_Reward", logic = function() return ((state.grape() and state.lanky()) or state.CanPhase()) end },
     { id = "KremKap_AztecLanky5DTEnemy_JoiningPaths", logic = function() return state.camera() end },
-    { id = "KremKap_AztecLanky5DTEnemy_EndTrap", logic = function() return (state.camera() and ((state.grape() and state.islanky()) or state.CanPhase())) end },
-    { id = "KremKap_AztecLanky5DTEnemy_Reward", logic = function() return (state.camera() and ((state.grape() and state.islanky()) or state.CanPhase())) end },
-    { id = "Balloon022", logic = function() return (state.islanky() and state.grape()) end },
+    { id = "KremKap_AztecLanky5DTEnemy_EndTrap", logic = function() return (state.camera() and ((state.grape() and state.lanky()) or state.CanPhase())) end },
+    { id = "KremKap_AztecLanky5DTEnemy_Reward", logic = function() return (state.camera() and ((state.grape() and state.lanky()) or state.CanPhase())) end },
+    { id = "Balloon022", logic = function() return (state.lanky() and state.grape()) end },
   },
   events = {
   },
@@ -535,7 +514,6 @@ M.regions["TinyTempleEntrance"] = {
   display_name = [[Tiny Temple Entrance]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -543,7 +521,7 @@ M.regions["TinyTempleEntrance"] = {
   },
   exits = {
     { dest = "AngryAztecMain", logic = function() return true end, exitShuffleId="Transitions.AztecTinyToMain" },
-    { dest = "TinyTemple", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
+    { dest = "TinyTemple", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
   },
 }
 
@@ -552,27 +530,26 @@ M.regions["TinyTemple"] = {
   display_name = [[Tiny Temple]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecTiny5DoorTemple", logic = function() return ((state.feather() or state.CanPhase()) and (state.istiny() or settings.free_trade_items())) end },
-    { id = "AztecBananaFairyTinyTemple", logic = function() return (state.camera() and ((state.mini() and state.istiny()) or state.CanPhase())) end },
+    { id = "AztecTiny5DoorTemple", logic = function() return ((state.feather() or state.CanPhase()) and (state.tiny() or settings.free_trade_items())) end },
+    { id = "AztecBananaFairyTinyTemple", logic = function() return (state.camera() and ((state.mini() and state.tiny()) or state.CanPhase())) end },
     { id = "AztecTiny5DTEnemy_StartRightFront", logic = function() return true end },
     { id = "AztecTiny5DTEnemy_StartLeftBack", logic = function() return true end },
     { id = "AztecTiny5DTEnemy_StartRightBack", logic = function() return true end },
     { id = "AztecTiny5DTEnemy_StartLeftFront", logic = function() return true end },
-    { id = "AztecTiny5DTEnemy_Reward0", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
-    { id = "AztecTiny5DTEnemy_Reward1", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
-    { id = "AztecTiny5DTEnemy_DeadEnd0", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
-    { id = "AztecTiny5DTEnemy_DeadEnd1", logic = function() return ((state.feather() and state.istiny()) or state.CanPhase()) end },
+    { id = "AztecTiny5DTEnemy_Reward0", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
+    { id = "AztecTiny5DTEnemy_Reward1", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
+    { id = "AztecTiny5DTEnemy_DeadEnd0", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
+    { id = "AztecTiny5DTEnemy_DeadEnd1", logic = function() return ((state.feather() and state.tiny()) or state.CanPhase()) end },
     { id = "KremKap_AztecTiny5DTEnemy_StartRightFront", logic = function() return state.camera() end },
     { id = "KremKap_AztecTiny5DTEnemy_StartLeftBack", logic = function() return state.camera() end },
     { id = "KremKap_AztecTiny5DTEnemy_StartRightBack", logic = function() return state.camera() end },
     { id = "KremKap_AztecTiny5DTEnemy_StartLeftFront", logic = function() return state.camera() end },
-    { id = "KremKap_AztecTiny5DTEnemy_Reward0", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
-    { id = "KremKap_AztecTiny5DTEnemy_Reward1", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
-    { id = "KremKap_AztecTiny5DTEnemy_DeadEnd0", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
-    { id = "KremKap_AztecTiny5DTEnemy_DeadEnd1", logic = function() return (state.camera() and ((state.feather() and state.istiny()) or state.CanPhase())) end },
+    { id = "KremKap_AztecTiny5DTEnemy_Reward0", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
+    { id = "KremKap_AztecTiny5DTEnemy_Reward1", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
+    { id = "KremKap_AztecTiny5DTEnemy_DeadEnd0", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
+    { id = "KremKap_AztecTiny5DTEnemy_DeadEnd1", logic = function() return (state.camera() and ((state.feather() and state.tiny()) or state.CanPhase())) end },
   },
   events = {
   },
@@ -586,7 +563,6 @@ M.regions["ChunkyTempleEntrance"] = {
   display_name = [[Chunky Temple Entrance]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -594,7 +570,7 @@ M.regions["ChunkyTempleEntrance"] = {
   },
   exits = {
     { dest = "AngryAztecMain", logic = function() return true end, exitShuffleId="Transitions.AztecChunkyToMain" },
-    { dest = "ChunkyTemple", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
+    { dest = "ChunkyTemple", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
   },
 }
 
@@ -603,24 +579,23 @@ M.regions["ChunkyTemple"] = {
   display_name = [[Chunky Temple]],
   hint_region  = "FiveDoorTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecChunky5DoorTemple", logic = function() return ((state.pineapple() or state.CanPhase()) and (state.ischunky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "AztecKasplatChunky5DT", logic = function() return ((not settings.kasplat_rando()) and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
+    { id = "AztecChunky5DoorTemple", logic = function() return ((state.pineapple() or state.CanPhase()) and (state.chunky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "AztecKasplatChunky5DT", logic = function() return ((not settings.kasplat_rando()) and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
     { id = "RainbowCoin_Location01", logic = function() return true end },
     { id = "AztecChunky5DTEnemy_StartRight", logic = function() return true end },
     { id = "AztecChunky5DTEnemy_StartLeft", logic = function() return true end },
     { id = "AztecChunky5DTEnemy_SecondRight", logic = function() return true end },
     { id = "AztecChunky5DTEnemy_SecondLeft", logic = function() return true end },
-    { id = "AztecChunky5DTEnemy_Reward", logic = function() return ((state.pineapple() and state.ischunky()) or state.CanPhase()) end },
+    { id = "AztecChunky5DTEnemy_Reward", logic = function() return ((state.pineapple() and state.chunky()) or state.CanPhase()) end },
     { id = "KremKap_AztecChunky5DTEnemy_StartRight", logic = function() return state.camera() end },
     { id = "KremKap_AztecChunky5DTEnemy_StartLeft", logic = function() return state.camera() end },
     { id = "KremKap_AztecChunky5DTEnemy_SecondRight", logic = function() return state.camera() end },
     { id = "KremKap_AztecChunky5DTEnemy_SecondLeft", logic = function() return state.camera() end },
-    { id = "KremKap_AztecChunky5DTEnemy_Reward", logic = function() return (state.camera() and ((state.pineapple() and state.ischunky()) or state.CanPhase())) end },
-    { id = "Balloon023", logic = function() return (state.ischunky() and state.pineapple()) end },
-    { id = "Balloon024", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "KremKap_AztecChunky5DTEnemy_Reward", logic = function() return (state.camera() and ((state.pineapple() and state.chunky()) or state.CanPhase())) end },
+    { id = "Balloon023", logic = function() return (state.chunky() and state.pineapple()) end },
+    { id = "Balloon024", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
   },
@@ -634,7 +609,6 @@ M.regions["AztecTinyRace"] = {
   display_name = [[Aztec Tiny Race]],
   hint_region  = "OasisAndTotem",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "AztecTinyBeetleRace", logic = function() return state.HasEnoughRaceCoins("AztecTinyRace", "tiny", (not settings.free_trade_items())) end },
@@ -651,17 +625,16 @@ M.regions["LlamaTemple"] = {
   display_name = [[Llama Temple]],
   hint_region  = "LlamaTemple",
   level        = "AngryAztec",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "LankyKong", logic = function() return state.CanFreeLanky() end },
     { id = "AztecDonkeyFreeLanky", logic = function() return state.CanFreeLanky() end },
-    { id = "AztecLankyLlamaTempleBarrel", logic = function() return (state.trombone() and ((state.handstand() and state.islanky()) or (settings.free_trade_items() and ((state.istiny() and ((state.twirl() and state.monkey_maneuvers()) or state.slope_resets())) or state.CanMoonkick())))) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "AztecLankyLlamaTempleBarrel", logic = function() return (state.trombone() and ((state.handstand() and state.lanky()) or (settings.free_trade_items() and ((state.tiny() and ((state.twirl() and state.monkey_maneuvers()) or state.slope_resets())) or state.CanMoonkick())))) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "AztecBananaFairyLlamaTemple", logic = function() return state.camera() end },
     { id = "MelonCrate_Location02", logic = function() return true end },
-    { id = "Balloon018", logic = function() return (state.istiny() and state.feather() and state.swim()) end },
-    { id = "Balloon019", logic = function() return (state.islanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
-    { id = "Balloon020", logic = function() return (state.islanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
+    { id = "Balloon018", logic = function() return (state.tiny() and state.feather() and state.swim()) end },
+    { id = "Balloon019", logic = function() return (state.lanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
+    { id = "Balloon020", logic = function() return (state.lanky() and state.grape() and ((state.event("AztecLlamaSpit") and state.swim()) or state.CanPhaseswim() or state.CanPhase())) end },
     { id = "AztecLlamaEnemy_KongFreeInstrument", logic = function() return true end },
     { id = "AztecLlamaEnemy_DinoInstrument", logic = function() return true end },
     { id = "AztecLlamaEnemy_Right", logic = function() return true end },
@@ -685,8 +658,8 @@ M.regions["LlamaTemple"] = {
   },
   exits = {
     { dest = "AngryAztecMain", logic = function() return true end, exitShuffleId="Transitions.AztecLlamaToMain" },
-    { dest = "LlamaTempleMatching", logic = function() return ((state.grape() and state.islanky()) or state.CanPhase()) end },
-    { dest = "LlamaTempleBack", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.ledgeclip() or state.CanOStandTBSNoclip()) end },
+    { dest = "LlamaTempleMatching", logic = function() return ((state.grape() and state.lanky()) or state.CanPhase()) end },
+    { dest = "LlamaTempleBack", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.ledgeclip() or state.CanOStandTBSNoclip()) end },
   },
 }
 
@@ -695,7 +668,6 @@ M.regions["LlamaTempleMatching"] = {
   display_name = [[Llama Temple Matching]],
   hint_region  = "LlamaTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "AztecLankyMatchingGame", logic = function() return (state.grape() and state.CanSlamSwitch("AngryAztec", 1) and state.lanky()) end },
@@ -716,10 +688,9 @@ M.regions["LlamaTempleBack"] = {
   display_name = [[Llama Temple Back]],
   hint_region  = "LlamaTemple",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "AztecTinyLlamaTemple", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.istiny()) end },
+    { id = "AztecTinyLlamaTemple", logic = function() return (state.CanSlamSwitch("AngryAztec", 1) and state.tiny()) end },
     { id = "AztecKasplatLlamaTemple", logic = function() return (not settings.kasplat_rando()) end },
   },
   events = {
@@ -735,7 +706,6 @@ M.regions["AztecBossLobby"] = {
   display_name = [[Aztec Boss Lobby]],
   hint_region  = "Bosses",
   level        = "AngryAztec",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
   },
@@ -751,7 +721,6 @@ M.regions["AztecBoss"] = {
   display_name = [[Aztec Boss]],
   hint_region  = "Bosses",
   level        = "AngryAztec",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "AztecKey", logic = function() return state.IsBossBeatable("AngryAztec") end },

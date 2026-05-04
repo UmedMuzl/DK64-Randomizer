@@ -10,7 +10,6 @@ M.regions["FungiForestMedals"] = {
   display_name = [[Fungi Forest Medals]],
   hint_region  = "ForestCBs",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -36,7 +35,6 @@ M.regions["FungiForestEntryHandler"] = {
   display_name = [[Fungi Forest Entry Handler]],
   hint_region  = "Error",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -55,7 +53,6 @@ M.regions["FungiForestStart"] = {
   display_name = [[Fungi Forest Start]],
   hint_region  = "ForestCenterAndBeanstalk",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "ForestMainEnemy_NearAppleDropoff", logic = function() return true end },
@@ -68,8 +65,8 @@ M.regions["FungiForestStart"] = {
     { id = "KremKap_ForestMainEnemy_GreenTunnel", logic = function() return (state.camera() and (state.checkBarrier("forest_green_tunnel") or state.hasMoveSwitchsanity("FungiGreenFeather", false))) end },
   },
   events = {
-    { id = "Night", logic = function() return ((settings.shuffled_location_types_contains("FungiTime") and state.nightAccess()) or ((not settings.shuffled_location_types_contains("FungiTime")) and (state.cannons() or (state.isdiddy() and state.jetpack()) or state.climbing()) and (state.HasGun("any") or state.adv_orange_usage() or (((settings.fungi_time_internal() == "night") or (settings.fungi_time_internal() == "dusk") or (settings.fungi_time_internal() == "progressive")) and state.nightAccess())))) end },
-    { id = "Day", logic = function() return ((settings.shuffled_location_types_contains("FungiTime") and state.dayAccess()) or ((not settings.shuffled_location_types_contains("FungiTime")) and (state.cannons() or (state.isdiddy() and state.jetpack()) or state.climbing()) and (state.HasGun("any") or state.adv_orange_usage() or (((settings.fungi_time_internal() == "day") or (settings.fungi_time_internal() == "dusk") or (settings.fungi_time_internal() == "progressive")) and state.dayAccess())))) end },
+    { id = "Night", logic = function() return ((settings.shuffled_location_types_contains("FungiTime") and state.nightAccess()) or ((not settings.shuffled_location_types_contains("FungiTime")) and (state.cannons() or (state.diddy() and state.jetpack()) or state.climbing()) and (state.HasGun("any") or state.adv_orange_usage() or (((settings.fungi_time_internal() == "night") or (settings.fungi_time_internal() == "dusk") or (settings.fungi_time_internal() == "progressive")) and state.nightAccess())))) end },
+    { id = "Day", logic = function() return ((settings.shuffled_location_types_contains("FungiTime") and state.dayAccess()) or ((not settings.shuffled_location_types_contains("FungiTime")) and (state.cannons() or (state.diddy() and state.jetpack()) or state.climbing()) and (state.HasGun("any") or state.adv_orange_usage() or (((settings.fungi_time_internal() == "day") or (settings.fungi_time_internal() == "dusk") or (settings.fungi_time_internal() == "progressive")) and state.dayAccess())))) end },
     { id = "WormGatesOpened", logic = function() return (state.checkBarrier("forest_green_tunnel") or (state.hasMoveSwitchsanity("FungiGreenFeather", false) and state.hasMoveSwitchsanity("FungiGreenPineapple", false))) end },
     { id = "ForestW1aTagged", logic = function() return true end },
     { id = "ForestW2aTagged", logic = function() return true end },
@@ -77,7 +74,7 @@ M.regions["FungiForestStart"] = {
     { id = "ForestW4aTagged", logic = function() return true end },
   },
   exits = {
-    { dest = "ForestMinecarts", logic = function() return (state.Slam() and state.ischunky()) end },
+    { dest = "ForestMinecarts", logic = function() return (state.Slam() and state.chunky()) end },
     { dest = "GiantMushroomArea", logic = function() return true end },
     { dest = "MillArea", logic = function() return true end },
     { dest = "WormArea", logic = function() return (state.event("WormGatesOpened") or state.CanPhase() or state.CanPhaseswim()) end },
@@ -89,7 +86,6 @@ M.regions["ForestMinecarts"] = {
   display_name = [[Forest Minecarts]],
   hint_region  = "ForestCenterAndBeanstalk",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "ForestChunkyMinecarts", logic = function() return state.HasEnoughRaceCoins("ForestMinecarts", "chunky", (not settings.free_trade_items())) end },
@@ -106,10 +102,9 @@ M.regions["GiantMushroomArea"] = {
   display_name = [[Giant Mushroom Area]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "ForestDiddyTopofMushroom", logic = function() return (state.jetpack() and state.isdiddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "ForestDiddyTopofMushroom", logic = function() return (state.jetpack() and state.diddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "ForestLankyRabbitRace", logic = function() return (state.CanOStandTBSNoclip() and state.spawn_snags()) end },
     { id = "ForestMainEnemy_YellowTunnel0", logic = function() return true end },
     { id = "ForestMainEnemy_NearLowWarp5", logic = function() return true end },
@@ -136,12 +131,12 @@ M.regions["GiantMushroomArea"] = {
   exits = {
     { dest = "FungiForestStart", logic = function() return true end },
     { dest = "MushroomLower", logic = function() return true end, exitShuffleId="Transitions.ForestMainToLowerMushroom" },
-    { dest = "MushroomLowerExterior", logic = function() return ((state.jetpack() and state.isdiddy()) or (state.monkey_maneuvers() and state.twirl() and state.istiny()) or (state.climbing() and (state.isdonkey() or state.ischunky()) and state.monkey_maneuvers())) end },
-    { dest = "MushroomBlastLevelExterior", logic = function() return (state.jetpack() and state.isdiddy()) end },
-    { dest = "MushroomUpperMidExterior", logic = function() return (state.jetpack() and state.isdiddy()) end },
-    { dest = "MushroomUpperExterior", logic = function() return (state.jetpack() and state.isdiddy()) end },
-    { dest = "MushroomNightExterior", logic = function() return (state.jetpack() and state.isdiddy()) end },
-    { dest = "MushroomVeryTopExterior", logic = function() return (state.jetpack() and state.isdiddy()) end },
+    { dest = "MushroomLowerExterior", logic = function() return ((state.jetpack() and state.diddy()) or (state.monkey_maneuvers() and state.twirl() and state.tiny()) or (state.climbing() and (state.donkey() or state.chunky()) and state.monkey_maneuvers())) end },
+    { dest = "MushroomBlastLevelExterior", logic = function() return (state.jetpack() and state.diddy()) end },
+    { dest = "MushroomUpperMidExterior", logic = function() return (state.jetpack() and state.diddy()) end },
+    { dest = "MushroomUpperExterior", logic = function() return (state.jetpack() and state.diddy()) end },
+    { dest = "MushroomNightExterior", logic = function() return (state.jetpack() and state.diddy()) end },
+    { dest = "MushroomVeryTopExterior", logic = function() return (state.jetpack() and state.diddy()) end },
     { dest = "HollowTreeArea", logic = function() return (state.checkBarrier("forest_yellow_tunnel") or state.event("HollowTreeGateOpened") or state.CanPhaseswim() or state.CanPhase() or state.CanOStandTBSNoclip() or state.CanSkew(true)) end },
     { dest = "Anthill", logic = function() return state.CanSkew(true) end, exitShuffleId="Transitions.ForestTreeToAnthill", isGlitchTransition=true },
     { dest = "CrankyForest", logic = function() return state.crankyAccess() end },
@@ -153,7 +148,6 @@ M.regions["MushroomLower"] = {
   display_name = [[Mushroom Lower]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "Balloon068", logic = function() return (state.lanky() and state.grape()) end },
@@ -174,7 +168,6 @@ M.regions["MushroomLowerBetweenLadders"] = {
   display_name = [[Mushroom Lower Between Ladders]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
   },
@@ -191,10 +184,9 @@ M.regions["MushroomLowerMid"] = {
   display_name = [[Mushroom Lower Middle]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "ForestTinyMushroomBarrel", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and state.istiny() and state.climbing()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "ForestTinyMushroomBarrel", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and state.tiny() and state.climbing()) end, bonusBarrel="MinigameType.BonusBarrel" },
   },
   events = {
   },
@@ -209,7 +201,6 @@ M.regions["MushroomUpperMidExterior"] = {
   display_name = [[Mushroom Upper Mid Exterior]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -227,7 +218,6 @@ M.regions["MushroomBlastLevelExterior"] = {
   display_name = [[Mushroom Blast Level Exterior]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "ForestMainEnemy_NearBBlast", logic = function() return true end },
@@ -238,7 +228,7 @@ M.regions["MushroomBlastLevelExterior"] = {
   exits = {
     { dest = "MushroomLowerExterior", logic = function() return true end },
     { dest = "MushroomUpperMidExterior", logic = function() return state.climbing() end },
-    { dest = "ForestBaboonBlast", logic = function() return (state.blast() and state.isdonkey()) end },
+    { dest = "ForestBaboonBlast", logic = function() return (state.blast() and state.donkey()) end },
   },
 }
 
@@ -247,11 +237,10 @@ M.regions["MushroomLowerExterior"] = {
   display_name = [[Mushroom Lower Exterior]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "ForestKasplatLowerMushroomExterior", logic = function() return (not settings.kasplat_rando()) end },
-    { id = "Balloon060", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "Balloon060", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
   },
@@ -267,10 +256,9 @@ M.regions["ForestBaboonBlast"] = {
   display_name = [[Forest Baboon Blast]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "ForestDonkeyBaboonBlast", logic = function() return state.isdonkey() end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "ForestDonkeyBaboonBlast", logic = function() return state.donkey() end, bonusBarrel="MinigameType.BonusBarrel" },
   },
   events = {
   },
@@ -284,7 +272,6 @@ M.regions["MushroomMiddle"] = {
   display_name = [[Mushroom Middle]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "ForestKasplatInsideMushroom", logic = function() return (not settings.kasplat_rando()) end },
@@ -303,7 +290,6 @@ M.regions["MushroomUpperMid"] = {
   display_name = [[Mushroom Upper Middle]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "ForestGMEnemy_Path0", logic = function() return true end },
@@ -325,7 +311,6 @@ M.regions["MushroomUpperVineFloor"] = {
   display_name = [[Mushroom Upper Vine Floor]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "ForestGMEnemy_AboveNightDoor", logic = function() return true end },
@@ -344,7 +329,6 @@ M.regions["MushroomUpper"] = {
   display_name = [[Mushroom Upper]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "ForestDonkeyMushroomCannons", logic = function() return (state.event("MushroomCannonsSpawned") and state.event("DonkeyMushroomSwitch")) end },
@@ -363,7 +347,6 @@ M.regions["MushroomNightDoor"] = {
   display_name = [[Mushroom Night Door]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -381,11 +364,10 @@ M.regions["MushroomNightExterior"] = {
   display_name = [[Mushroom Night Exterior]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "ForestKasplatUpperMushroomExterior", logic = function() return (not settings.kasplat_rando()) end },
-    { id = "Balloon062", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "Balloon062", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
   },
@@ -400,10 +382,9 @@ M.regions["MushroomUpperExterior"] = {
   display_name = [[Mushroom Upper Exterior]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
-    { id = "ForestBattleArena", logic = function() return ((not settings.crown_placement_rando()) and ((not state.IsHardFallDamage()) or (state.istiny() and state.twirl()) or (state.isdiddy() and state.jetpack()) or state.event("Night"))) end },
+    { id = "ForestBattleArena", logic = function() return ((not settings.crown_placement_rando()) and ((not state.IsHardFallDamage()) or (state.tiny() and state.twirl()) or (state.diddy() and state.jetpack()) or state.event("Night"))) end },
     { id = "ForestMainEnemy_NearFacePuzzle", logic = function() return true end },
     { id = "ForestMainEnemy_NearCrown", logic = function() return true end },
     { id = "ForestMainEnemy_NearHighWarp5", logic = function() return true end },
@@ -416,10 +397,10 @@ M.regions["MushroomUpperExterior"] = {
   },
   exits = {
     { dest = "MushroomUpper", logic = function() return true end, exitShuffleId="Transitions.ForestUpperExteriorToUpperMushroom" },
-    { dest = "MushroomNightExterior", logic = function() return ((state.istiny() and state.twirl()) or (not state.IsHardFallDamage())) end },
+    { dest = "MushroomNightExterior", logic = function() return ((state.tiny() and state.twirl()) or (not state.IsHardFallDamage())) end },
     { dest = "GiantMushroomArea", logic = function() return true end },
-    { dest = "MushroomVeryTopExterior", logic = function() return ((state.handstand() and state.islanky()) or (state.slope_resets() and state.isdiddy())) end },
-    { dest = "MushroomChunkyRoom", logic = function() return ((state.CanSlamSwitch("FungiForest", 2) and state.ischunky()) or state.CanPhase() or state.CanOStandTBSNoclip()) end, exitShuffleId="Transitions.ForestExteriorToChunky" },
+    { dest = "MushroomVeryTopExterior", logic = function() return ((state.handstand() and state.lanky()) or (state.slope_resets() and state.diddy())) end },
+    { dest = "MushroomChunkyRoom", logic = function() return ((state.CanSlamSwitch("FungiForest", 2) and state.chunky()) or state.CanPhase() or state.CanOStandTBSNoclip()) end, exitShuffleId="Transitions.ForestExteriorToChunky" },
     { dest = "MushroomLankyZingersRoom", logic = function() return (state.event("LankyMushroomSlamSwitch") or state.CanOStandTBSNoclip()) end, exitShuffleId="Transitions.ForestExteriorToZingers" },
     { dest = "MushroomLankyMushroomsRoom", logic = function() return (state.event("LankyMushroomSlamSwitch") or state.CanPhase() or state.CanOStandTBSNoclip()) end, exitShuffleId="Transitions.ForestExteriorToMushrooms" },
     { dest = "ForestBossLobby", logic = function() return (not settings.tns_location_rando()) end },
@@ -431,14 +412,13 @@ M.regions["MushroomVeryTopExterior"] = {
   display_name = [[Very Top of Mushroom]],
   hint_region  = "MushroomExterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "ForestMainEnemy_TopOfMushroom", logic = function() return true end },
     { id = "KremKap_ForestMainEnemy_TopOfMushroom", logic = function() return state.camera() end },
   },
   events = {
-    { id = "LankyMushroomSlamSwitch", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and state.islanky()) end },
+    { id = "LankyMushroomSlamSwitch", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and state.lanky()) end },
   },
   exits = {
     { dest = "MushroomUpperExterior", logic = function() return true end },
@@ -450,13 +430,12 @@ M.regions["MushroomChunkyRoom"] = {
   display_name = [[Mushroom Chunky Room]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "ForestChunkyFacePuzzle", logic = function() return (state.pineapple() and state.CanSlamSwitch("FungiForest", 2) and state.ischunky()) end },
+    { id = "ForestChunkyFacePuzzle", logic = function() return (state.pineapple() and state.CanSlamSwitch("FungiForest", 2) and state.chunky()) end },
     { id = "ForestFacePuzzleEnemy_Enemy", logic = function() return true end },
     { id = "KremKap_ForestFacePuzzleEnemy_Enemy", logic = function() return state.camera() end },
-    { id = "Balloon069", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "Balloon069", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
   },
@@ -470,10 +449,9 @@ M.regions["MushroomLankyZingersRoom"] = {
   display_name = [[Mushroom Lanky Zingers Room]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "ForestLankyZingers", logic = function() return (state.islanky() or settings.free_trade_items()) end },
+    { id = "ForestLankyZingers", logic = function() return (state.lanky() or settings.free_trade_items()) end },
     { id = "ForestLeapEnemy_Enemy0", logic = function() return true end },
     { id = "ForestLeapEnemy_Enemy1", logic = function() return true end },
     { id = "KremKap_ForestLeapEnemy_Enemy0", logic = function() return state.camera() end },
@@ -491,10 +469,9 @@ M.regions["MushroomLankyMushroomsRoom"] = {
   display_name = [[Mushroom Lanky Mushrooms Room]],
   hint_region  = "MushroomInterior",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "ForestLankyColoredMushrooms", logic = function() return (state.Slam() and (state.islanky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "ForestLankyColoredMushrooms", logic = function() return (state.Slam() and (state.lanky() or settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
   },
   events = {
   },
@@ -508,10 +485,9 @@ M.regions["HollowTreeArea"] = {
   display_name = [[Hollow Tree Area]],
   hint_region  = "OwlTree",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
-    { id = "ForestDiddyOwlRace", logic = function() return (state.TimeAccess("HollowTreeArea", "Night") and state.jetpack() and state.guitar() and state.isdiddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "ForestDiddyOwlRace", logic = function() return (state.TimeAccess("HollowTreeArea", "Night") and state.jetpack() and state.guitar() and state.diddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "ForestLankyRabbitRace", logic = function() return (state.TimeAccess("HollowTreeArea", "Day") and state.trombone() and state.sprint() and state.lanky()) end },
     { id = "ForestKasplatOwlTree", logic = function() return (not settings.kasplat_rando()) end },
     { id = "MelonCrate_Location08", logic = function() return true end },
@@ -539,7 +515,7 @@ M.regions["HollowTreeArea"] = {
   },
   exits = {
     { dest = "GiantMushroomArea", logic = function() return (state.event("HollowTreeGateOpened") or state.CanPhase()) end },
-    { dest = "Anthill", logic = function() return (state.mini() and state.saxophone() and state.istiny()) end, exitShuffleId="Transitions.ForestTreeToAnthill" },
+    { dest = "Anthill", logic = function() return (state.mini() and state.saxophone() and state.tiny()) end, exitShuffleId="Transitions.ForestTreeToAnthill" },
     { dest = "ForestBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
 }
@@ -549,11 +525,10 @@ M.regions["Anthill"] = {
   display_name = [[Anthill]],
   hint_region  = "OwlTree",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "ForestTinyAnthill", logic = function() return ((state.istiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
-    { id = "ForestBean", logic = function() return ((state.istiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
+    { id = "ForestTinyAnthill", logic = function() return ((state.tiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
+    { id = "ForestBean", logic = function() return ((state.tiny() or settings.free_trade_items()) and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end },
     { id = "ForestAnthillEnemy_Gauntlet0", logic = function() return true end },
     { id = "ForestAnthillEnemy_Gauntlet1", logic = function() return true end },
     { id = "ForestAnthillEnemy_Gauntlet2", logic = function() return true end },
@@ -566,7 +541,7 @@ M.regions["Anthill"] = {
   events = {
   },
   exits = {
-    { dest = "HollowTreeArea", logic = function() return ((state.istiny() or settings.free_trade_items()) and state.cannons() and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end, exitShuffleId="Transitions.ForestAnthillToTree" },
+    { dest = "HollowTreeArea", logic = function() return ((state.tiny() or settings.free_trade_items()) and state.cannons() and (state.oranges() or state.saxophone() or (settings.free_trade_items() and state.HasInstrument("any")))) end, exitShuffleId="Transitions.ForestAnthillToTree" },
   },
 }
 
@@ -575,7 +550,6 @@ M.regions["ForestMillTopOfNightCage"] = {
   display_name = [[Mill top of Night Cage]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -591,7 +565,6 @@ M.regions["ForestVeryTopOfMill"] = {
   display_name = [[Very top of the Mill]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -600,7 +573,7 @@ M.regions["ForestVeryTopOfMill"] = {
   exits = {
     { dest = "ForestTopOfMill", logic = function() return true end },
     { dest = "MillArea", logic = function() return true end },
-    { dest = "WinchRoom", logic = function() return ((state.CanSlamSwitch("FungiForest", 2) and state.isdiddy()) or state.CanMoonkick()) end, exitShuffleId="Transitions.ForestMainToWinch", time="Time.Night" },
+    { dest = "WinchRoom", logic = function() return ((state.CanSlamSwitch("FungiForest", 2) and state.diddy()) or state.CanMoonkick()) end, exitShuffleId="Transitions.ForestMainToWinch", time="Time.Night" },
   },
 }
 
@@ -609,7 +582,6 @@ M.regions["ForestTopOfMill"] = {
   display_name = [[Top of the Mill]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -627,11 +599,10 @@ M.regions["MillArea"] = {
   display_name = [[Mill Area]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "ForestDonkeyMill", logic = function() return ((state.TimeAccess("MillArea", "Night") or state.CanPhase() or state.CanPhaseswim() or state.ledgeclip()) and state.event("ConveyorActivated") and state.donkey()) end },
-    { id = "ForestDiddyCagedBanana", logic = function() return ((state.TimeAccess("MillArea", "Night") and state.event("WinchRaised") and state.guitar() and state.diddy()) or ((state.CanPhaseswim() or state.ledgeclip()) and (state.isdiddy() or settings.free_trade_items()))) end },
+    { id = "ForestDiddyCagedBanana", logic = function() return ((state.TimeAccess("MillArea", "Night") and state.event("WinchRaised") and state.guitar() and state.diddy()) or ((state.CanPhaseswim() or state.ledgeclip()) and (state.diddy() or settings.free_trade_items()))) end },
     { id = "RainbowCoin_Location07", logic = function() return true end },
     { id = "MelonCrate_Location10", logic = function() return true end },
     { id = "ForestMainEnemy_NearSnide", logic = function() return true end },
@@ -652,18 +623,18 @@ M.regions["MillArea"] = {
   },
   exits = {
     { dest = "FungiForestStart", logic = function() return true end },
-    { dest = "MillChunkyTinyArea", logic = function() return ((state.punch() and state.ischunky()) or state.CanPhase() or state.CanPhaseswim() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestMainToChunkyMill", time="Time.Day" },
-    { dest = "MillChunkyTinyArea", logic = function() return ((state.event("MillBoxBroken") and state.mini() and state.istiny()) or state.CanPhase() or state.CanPhaseswim() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestMainToTinyMill" },
+    { dest = "MillChunkyTinyArea", logic = function() return ((state.punch() and state.chunky()) or state.CanPhase() or state.CanPhaseswim() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestMainToChunkyMill", time="Time.Day" },
+    { dest = "MillChunkyTinyArea", logic = function() return ((state.event("MillBoxBroken") and state.mini() and state.tiny()) or state.CanPhase() or state.CanPhaseswim() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestMainToTinyMill" },
     { dest = "GrinderRoom", logic = function() return true end, exitShuffleId="Transitions.ForestMainToGrinder", time="Time.Day" },
-    { dest = "MillRafters", logic = function() return ((state.spring() or state.CanMoontail()) and state.isdiddy()) end, exitShuffleId="Transitions.ForestMainToRafters", time="Time.Night" },
+    { dest = "MillRafters", logic = function() return ((state.spring() or state.CanMoontail()) and state.diddy()) end, exitShuffleId="Transitions.ForestMainToRafters", time="Time.Night" },
     { dest = "ThornvineArea", logic = function() return true end, time="Time.Night" },
     { dest = "ThornvineArea", logic = function() return state.CanPhaseswim() end },
     { dest = "Snide", logic = function() return state.snideAccess() end, time="Time.Day" },
     { dest = "ForestBossLobby", logic = function() return (not settings.tns_location_rando()) end, time="Time.Day" },
     { dest = "ThornvineBarn", logic = function() return state.CanPhaseswim() end, exitShuffleId="Transitions.ForestMainToBarn", isGlitchTransition=true },
     { dest = "ForestVeryTopOfMill", logic = function() return state.climbing() end },
-    { dest = "ForestTopOfMill", logic = function() return (state.balloon() and state.islanky()) end },
-    { dest = "ForestMillTopOfNightCage", logic = function() return (state.isdiddy() or state.istiny() or state.ischunky()) end },
+    { dest = "ForestTopOfMill", logic = function() return (state.balloon() and state.lanky()) end },
+    { dest = "ForestMillTopOfNightCage", logic = function() return (state.diddy() or state.tiny() or state.chunky()) end },
   },
 }
 
@@ -672,24 +643,23 @@ M.regions["MillChunkyTinyArea"] = {
   display_name = [[Mill Back Room]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "ForestMillRearEnemy_Enemy", logic = function() return true end },
     { id = "KremKap_ForestMillRearEnemy_Enemy", logic = function() return state.camera() end },
-    { id = "HoldableKegMillRear", logic = function() return (state.barrels() and state.ischunky()) end },
-    { id = "BreakableForestMillRearTriangle", logic = function() return (state.punch() and state.ischunky()) end },
-    { id = "BreakableForestMillRearMini", logic = function() return (state.punch() and state.ischunky()) end },
+    { id = "HoldableKegMillRear", logic = function() return (state.barrels() and state.chunky()) end },
+    { id = "BreakableForestMillRearTriangle", logic = function() return (state.punch() and state.chunky()) end },
+    { id = "BreakableForestMillRearMini", logic = function() return (state.punch() and state.chunky()) end },
   },
   events = {
-    { id = "GrinderActivated", logic = function() return (state.punch() and state.triangle() and state.ischunky()) end },
-    { id = "MillBoxBroken", logic = function() return (state.punch() and state.ischunky()) end },
+    { id = "GrinderActivated", logic = function() return (state.punch() and state.triangle() and state.chunky()) end },
+    { id = "MillBoxBroken", logic = function() return (state.punch() and state.chunky()) end },
   },
   exits = {
     { dest = "MillArea", logic = function() return true end, exitShuffleId="Transitions.ForestChunkyMillToMain", time="Time.Day" },
-    { dest = "MillArea", logic = function() return ((state.event("MillBoxBroken") and state.mini() and state.istiny()) or state.CanPhase() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestTinyMillToMain" },
+    { dest = "MillArea", logic = function() return ((state.event("MillBoxBroken") and state.mini() and state.tiny()) or state.CanPhase() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestTinyMillToMain" },
     { dest = "SpiderRoom", logic = function() return true end, exitShuffleId="Transitions.ForestTinyMillToSpider", time="Time.Night" },
-    { dest = "GrinderRoom", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestTinyMillToGrinder" },
+    { dest = "GrinderRoom", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.ledgeclip()) end, exitShuffleId="Transitions.ForestTinyMillToGrinder" },
   },
 }
 
@@ -698,7 +668,6 @@ M.regions["SpiderRoom"] = {
   display_name = [[Spider Room]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = "Regions.MillChunkyTinyArea",
   locations = {
     { id = "ForestTinySpiderBoss", logic = function() return (state.HasGun("tiny") or (settings.free_trade_items() and state.HasGun("any"))) end },
@@ -715,23 +684,22 @@ M.regions["GrinderRoom"] = {
   display_name = [[Grinder Room]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "ForestChunkyKegs", logic = function() return (state.event("GrinderActivated") and state.event("ConveyorActivated") and state.chunky() and state.barrels()) end },
     { id = "ForestMillFrontEnemy_Enemy", logic = function() return true end },
     { id = "KremKap_ForestMillFrontEnemy_Enemy", logic = function() return state.camera() end },
-    { id = "HoldableKegMillFrontFar", logic = function() return (state.barrels() and state.ischunky()) end },
-    { id = "HoldableKegMillFrontNear", logic = function() return (state.barrels() and state.ischunky()) end },
+    { id = "HoldableKegMillFrontFar", logic = function() return (state.barrels() and state.chunky()) end },
+    { id = "HoldableKegMillFrontNear", logic = function() return (state.barrels() and state.chunky()) end },
     { id = "BreakableForestMillFront", logic = function() return state.Slam() end },
-    { id = "Balloon066", logic = function() return (state.isdonkey() and state.coconut() and state.Slam() and state.CanSlamSwitch("FungiForest", 2)) end },
+    { id = "Balloon066", logic = function() return (state.donkey() and state.coconut() and state.Slam() and state.CanSlamSwitch("FungiForest", 2)) end },
   },
   events = {
     { id = "ConveyorActivated", logic = function() return ((state.CanSlamSwitch("FungiForest", 2) or state.CanPhase() or state.generalclips()) and state.grab() and state.donkey()) end },
   },
   exits = {
     { dest = "MillArea", logic = function() return true end, exitShuffleId="Transitions.ForestGrinderToMain", time="Time.Day" },
-    { dest = "MillChunkyTinyArea", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.generalclips()) end, exitShuffleId="Transitions.ForestGrinderToTinyMill" },
+    { dest = "MillChunkyTinyArea", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.generalclips()) end, exitShuffleId="Transitions.ForestGrinderToTinyMill" },
   },
 }
 
@@ -740,11 +708,10 @@ M.regions["MillRafters"] = {
   display_name = [[Mill Rafters]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "ForestDiddyRafters", logic = function() return (state.guitar() and state.isdiddy()) end },
-    { id = "ForestBananaFairyRafters", logic = function() return (state.guitar() and state.isdiddy() and state.camera()) end },
+    { id = "ForestDiddyRafters", logic = function() return (state.guitar() and state.diddy()) end },
+    { id = "ForestBananaFairyRafters", logic = function() return (state.guitar() and state.diddy() and state.camera()) end },
   },
   events = {
   },
@@ -758,15 +725,14 @@ M.regions["WinchRoom"] = {
   display_name = [[Winch Room]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "ForestWinchEnemy_Enemy", logic = function() return true end },
     { id = "KremKap_ForestWinchEnemy_Enemy", logic = function() return state.camera() end },
-    { id = "Balloon065", logic = function() return (state.isdiddy() and state.peanut()) end },
+    { id = "Balloon065", logic = function() return (state.diddy() and state.peanut()) end },
   },
   events = {
-    { id = "WinchRaised", logic = function() return (state.peanut() and state.charge() and state.isdiddy()) end },
+    { id = "WinchRaised", logic = function() return (state.peanut() and state.charge() and state.diddy()) end },
   },
   exits = {
     { dest = "ForestVeryTopOfMill", logic = function() return true end, exitShuffleId="Transitions.ForestWinchToMain" },
@@ -778,10 +744,9 @@ M.regions["MillAttic"] = {
   display_name = [[Mill Attic]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "ForestLankyAttic", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and (state.homing() or state.hard_shooting()) and state.grape() and state.islanky()) end },
+    { id = "ForestLankyAttic", logic = function() return (state.CanSlamSwitch("FungiForest", 2) and (state.homing() or state.hard_shooting()) and state.grape() and state.lanky()) end },
   },
   events = {
   },
@@ -795,7 +760,6 @@ M.regions["ThornvineArea"] = {
   display_name = [[Thornvine Area]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "ForestKasplatNearBarn", logic = function() return (not settings.kasplat_rando()) end },
@@ -814,7 +778,7 @@ M.regions["ThornvineArea"] = {
   },
   exits = {
     { dest = "MillArea", logic = function() return true end, time="Time.Night" },
-    { dest = "ThornvineBarn", logic = function() return ((state.CanSlamSwitch("FungiForest", 2) and state.isdonkey() and state.strongKong()) or state.CanPhase()) end, exitShuffleId="Transitions.ForestMainToBarn" },
+    { dest = "ThornvineBarn", logic = function() return ((state.CanSlamSwitch("FungiForest", 2) and state.donkey() and state.strongKong()) or state.CanPhase()) end, exitShuffleId="Transitions.ForestMainToBarn" },
     { dest = "ForestBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
 }
@@ -824,14 +788,13 @@ M.regions["ThornvineBarn"] = {
   display_name = [[Thornvine Barn]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "ForestDonkeyBarn", logic = function() return (state.CanSlamSwitch("FungiForest", 1) and state.isdonkey() and ((state.climbing() and (state.can_use_vines() or state.monkey_maneuvers())) or (settings.bonus_barrels() == "skip"))) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "ForestDonkeyBarn", logic = function() return (state.CanSlamSwitch("FungiForest", 1) and state.donkey() and ((state.climbing() and (state.can_use_vines() or state.monkey_maneuvers())) or (settings.bonus_barrels() == "skip"))) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "MelonCrate_Location11", logic = function() return true end },
     { id = "ForestThornBarnEnemy_Enemy", logic = function() return true end },
     { id = "KremKap_ForestThornBarnEnemy_Enemy", logic = function() return state.camera() end },
-    { id = "BreakableForestThornvine", logic = function() return (state.Slam() and state.isdonkey()) end },
+    { id = "BreakableForestThornvine", logic = function() return (state.Slam() and state.donkey()) end },
   },
   events = {
   },
@@ -846,10 +809,9 @@ M.regions["ThornvineBarnAboveLadder"] = {
   display_name = [[Thornvine Barn Above Ladder]],
   hint_region  = "Mills",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "ForestBananaFairyThornvines", logic = function() return (state.isdonkey() and state.Slam() and state.camera()) end },
+    { id = "ForestBananaFairyThornvines", logic = function() return (state.donkey() and state.Slam() and state.camera()) end },
   },
   events = {
   },
@@ -863,11 +825,10 @@ M.regions["WormArea"] = {
   display_name = [[Worm Area]],
   hint_region  = "ForestCenterAndBeanstalk",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
-    { id = "ForestTinyBeanstalk", logic = function() return (state.saxophone() and state.mini() and state.istiny() and (state.Beans() >= 1)) end },
-    { id = "ForestChunkyApple", logic = function() return (state.event("WormGatesOpened") and state.hunkyChunky() and state.ischunky() and state.barrels()) end },
+    { id = "ForestTinyBeanstalk", logic = function() return (state.saxophone() and state.mini() and state.tiny() and (state.Beans() >= 1)) end },
+    { id = "ForestChunkyApple", logic = function() return (state.event("WormGatesOpened") and state.hunkyChunky() and state.chunky() and state.barrels()) end },
     { id = "RainbowCoin_Location08", logic = function() return true end },
     { id = "ForestMainEnemy_NearBeanstalk0", logic = function() return true end },
     { id = "ForestMainEnemy_NearBeanstalk1", logic = function() return true end },
@@ -897,7 +858,6 @@ M.regions["ForestBossLobby"] = {
   display_name = [[Forest Boss Lobby]],
   hint_region  = "Bosses",
   level        = "FungiForest",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
   },
@@ -913,7 +873,6 @@ M.regions["ForestBoss"] = {
   display_name = [[Forest Boss]],
   hint_region  = "Bosses",
   level        = "FungiForest",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "ForestKey", logic = function() return state.IsBossBeatable("FungiForest") end },

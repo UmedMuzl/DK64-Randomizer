@@ -10,7 +10,6 @@ M.regions["CrystalCavesMedals"] = {
   display_name = [[Crystal Caves Medals]],
   hint_region  = "CavesCBs",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -36,7 +35,6 @@ M.regions["CrystalCavesEntryHandler"] = {
   display_name = [[Crystal Caves Entry Handler]],
   hint_region  = "Error",
   level        = "CreepyCastle",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -55,10 +53,9 @@ M.regions["CrystalCavesMain"] = {
   display_name = [[Crystal Caves Main]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "CavesDiddyJetpackBarrel", logic = function() return ((state.jetpack() and state.isdiddy()) or ((not settings.shuffle_shops()) and state.monkey_maneuvers() and ((state.isdonkey() and (not state.isKrushaAdjacent("donkey"))) or (state.istiny() and state.twirl())) and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CavesDiddyJetpackBarrel", logic = function() return ((state.jetpack() and state.diddy()) or ((not settings.shuffle_shops()) and state.monkey_maneuvers() and ((state.donkey() and (not state.isKrushaAdjacent("donkey"))) or (state.tiny() and state.twirl())) and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "CavesKasplatNearLab", logic = function() return (not settings.kasplat_rando()) end },
     { id = "CavesMainEnemy_Start", logic = function() return true end },
     { id = "CavesMainEnemy_NearIceCastle", logic = function() return true end },
@@ -74,26 +71,26 @@ M.regions["CrystalCavesMain"] = {
     { id = "Balloon070", logic = function() return (state.diddy() and state.peanut()) end },
   },
   events = {
-    { id = "CavesSmallBoulderButton", logic = function() return (state.ischunky() and state.barrels()) end },
+    { id = "CavesSmallBoulderButton", logic = function() return (state.chunky() and state.barrels()) end },
     { id = "CavesW1aTagged", logic = function() return true end },
     { id = "CavesW2aTagged", logic = function() return true end },
   },
   exits = {
     { dest = "CavesGGRoom", logic = function() return (state.hasMoveSwitchsanity("CavesGoneCave", false) or state.CanPhase() or state.CanPhaseswim() or state.checkBarrier("caves_ice_walls")) end },
-    { dest = "CavesBlueprintCave", logic = function() return ((state.mini() and state.twirl() and state.istiny()) or state.CanPhase() or state.CanSkew(true)) end },
-    { dest = "CavesBonusCave", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.CanSkew(true)) end },
-    { dest = "CavesBlueprintPillar", logic = function() return ((state.jetpack() and state.isdiddy()) or (state.monkey_maneuvers() and ((state.balloon() and state.islanky()) or ((not settings.shuffle_shops()) and state.twirl() and state.istiny())))) end },
-    { dest = "CavesBananaportSpire", logic = function() return ((state.jetpack() and state.isdiddy()) or state.monkey_maneuvers()) end },
+    { dest = "CavesBlueprintCave", logic = function() return ((state.mini() and state.twirl() and state.tiny()) or state.CanPhase() or state.CanSkew(true)) end },
+    { dest = "CavesBonusCave", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.CanSkew(true)) end },
+    { dest = "CavesBlueprintPillar", logic = function() return ((state.jetpack() and state.diddy()) or (state.monkey_maneuvers() and ((state.balloon() and state.lanky()) or ((not settings.shuffle_shops()) and state.twirl() and state.tiny())))) end },
+    { dest = "CavesBananaportSpire", logic = function() return ((state.jetpack() and state.diddy()) or state.monkey_maneuvers()) end },
     { dest = "BoulderCave", logic = function() return (state.hasMoveSwitchsanity("CavesBoulderCave", false) or state.CanSkew(true) or state.checkBarrier("caves_ice_walls")) end },
-    { dest = "CavesLankyRace", logic = function() return ((state.CanSlamSwitch("CrystalCaves", 2) and (state.balloon() or state.monkey_maneuvers()) and state.islanky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesMainToRace" },
-    { dest = "FrozenCastle", logic = function() return ((state.CanSlamSwitch("CrystalCaves", 2) and state.islanky()) or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesMainToCastle" },
+    { dest = "CavesLankyRace", logic = function() return ((state.CanSlamSwitch("CrystalCaves", 2) and (state.balloon() or state.monkey_maneuvers()) and state.lanky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesMainToRace" },
+    { dest = "FrozenCastle", logic = function() return ((state.CanSlamSwitch("CrystalCaves", 2) and state.lanky()) or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesMainToCastle" },
     { dest = "IglooArea", logic = function() return true end },
     { dest = "CabinArea", logic = function() return true end },
     { dest = "FunkyCaves", logic = function() return state.funkyAccess() end },
     { dest = "CrankyCaves", logic = function() return state.crankyAccess() end },
     { dest = "CavesSnideArea", logic = function() return (state.hasMoveSwitchsanity("CavesSnideCave", false) or state.CanPhase() or state.CanPhaseswim() or state.checkBarrier("caves_ice_walls")) end },
     { dest = "CavesBossLobby", logic = function() return ((not settings.tns_location_rando()) and (state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase() or state.CanPhaseswim() or state.checkBarrier("caves_ice_walls"))) end },
-    { dest = "CavesBaboonBlast", logic = function() return (state.blast() and state.isdonkey()) end },
+    { dest = "CavesBaboonBlast", logic = function() return (state.blast() and state.donkey()) end },
   },
 }
 
@@ -102,11 +99,10 @@ M.regions["CavesGGRoom"] = {
   display_name = [[Caves GG Room]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesChunkyGorillaGone", logic = function() return (state.gorillaGone() and state.ischunky()) end },
-    { id = "Balloon074", logic = function() return (state.isdonkey() and state.coconut()) end },
+    { id = "CavesChunkyGorillaGone", logic = function() return (state.gorillaGone() and state.chunky()) end },
+    { id = "Balloon074", logic = function() return (state.donkey() and state.coconut()) end },
   },
   events = {
   },
@@ -120,7 +116,6 @@ M.regions["CavesSnideArea"] = {
   display_name = [[Caves Snide Area]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "Balloon071", logic = function() return (state.chunky() and state.pineapple()) end },
@@ -139,18 +134,17 @@ M.regions["CavesBlueprintCave"] = {
   display_name = [[Caves Blueprint Cave]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CavesKasplatNearFunky", logic = function() return (not settings.kasplat_rando()) end },
-    { id = "Balloon077", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "Balloon077", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
-    { id = "CavesMonkeyportAccess", logic = function() return (state.istiny() and state.monkeyport()) end },
+    { id = "CavesMonkeyportAccess", logic = function() return (state.tiny() and state.monkeyport()) end },
     { id = "CavesW4bTagged", logic = function() return true end },
   },
   exits = {
-    { dest = "CrystalCavesMain", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.CanSkew(true)) end },
+    { dest = "CrystalCavesMain", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.CanSkew(true)) end },
   },
 }
 
@@ -159,17 +153,16 @@ M.regions["CavesBonusCave"] = {
   display_name = [[Caves Bonus Cave]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesTinyCaveBarrel", logic = function() return (state.istiny() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "Balloon076", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "CavesTinyCaveBarrel", logic = function() return (state.tiny() or settings.free_trade_items()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "Balloon076", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
     { id = "CavesW3bTagged", logic = function() return state.special_loc("CavesTinyCaveBarrel") end },
   },
   exits = {
-    { dest = "CrystalCavesMain", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.CanSkew(true)) end },
+    { dest = "CrystalCavesMain", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.CanSkew(true)) end },
   },
 }
 
@@ -178,7 +171,6 @@ M.regions["CavesBlueprintPillar"] = {
   display_name = [[Caves Blueprint Pillar]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CavesKasplatPillar", logic = function() return (not settings.kasplat_rando()) end },
@@ -196,7 +188,6 @@ M.regions["CavesBananaportSpire"] = {
   display_name = [[Caves Bananaport Spire]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -213,10 +204,9 @@ M.regions["CavesBaboonBlast"] = {
   display_name = [[Caves Baboon Blast]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesDonkeyBaboonBlast", logic = function() return state.isdonkey() end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CavesDonkeyBaboonBlast", logic = function() return state.donkey() end, bonusBarrel="MinigameType.BonusBarrel" },
   },
   events = {
   },
@@ -230,7 +220,6 @@ M.regions["BoulderCave"] = {
   display_name = [[Boulder Cave]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "HoldableBoulderCavesLarge", logic = function() return (state.barrels() and state.chunky() and state.hunkyChunky() and state.event("CavesSmallBoulderButton")) end },
@@ -250,7 +239,6 @@ M.regions["CavesLankyRace"] = {
   display_name = [[Caves Lanky Race]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CavesLankyBeetleRace", logic = function() return (state.sprint() and state.HasEnoughRaceCoins("CavesLankyRace", "lanky", true)) end },
@@ -267,12 +255,11 @@ M.regions["FrozenCastle"] = {
   display_name = [[Frozen Castle]],
   hint_region  = "MainCaves",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesLankyCastle", logic = function() return (state.Slam() and (state.islanky() or (settings.free_trade_items() and (state.isdiddy() or state.istiny() or state.ischunky() or state.superSlam())))) end },
+    { id = "CavesLankyCastle", logic = function() return (state.Slam() and (state.lanky() or (settings.free_trade_items() and (state.diddy() or state.tiny() or state.chunky() or state.superSlam())))) end },
     { id = "KremKap_CavesNPC_IceTomato", logic = function() return state.camera() end },
-    { id = "Balloon086", logic = function() return (state.islanky() and state.grape()) end },
+    { id = "Balloon086", logic = function() return (state.lanky() and state.grape()) end },
   },
   events = {
   },
@@ -286,10 +273,9 @@ M.regions["IglooArea"] = {
   display_name = [[Igloo Area]],
   hint_region  = "Igloo",
   level        = "CrystalCaves",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "CavesTinyMonkeyportIgloo", logic = function() return (((state.event("CavesMonkeyportAccess") or state.CanPhaseswim()) and state.istiny()) or (state.CanPhaseswim() and settings.free_trade_items())) end },
+    { id = "CavesTinyMonkeyportIgloo", logic = function() return (((state.event("CavesMonkeyportAccess") or state.CanPhaseswim()) and state.tiny()) or (state.CanPhaseswim() and settings.free_trade_items())) end },
     { id = "CavesChunkyTransparentIgloo", logic = function() return (((state.event("CavesLargeBoulderButton") or state.generalclips() or state.CanPhaseswim()) and state.chunky()) or ((state.generalclips() or state.CanPhaseswim()) and settings.free_trade_items())) end },
     { id = "CavesKasplatOn5DI", logic = function() return (not settings.kasplat_rando()) end },
   },
@@ -299,12 +285,12 @@ M.regions["IglooArea"] = {
   },
   exits = {
     { dest = "CrystalCavesMain", logic = function() return true end },
-    { dest = "GiantKosha", logic = function() return (state.event("CavesLargeBoulderButton") and state.monkeyport() and state.istiny()) end },
-    { dest = "DonkeyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.bongos() and state.isdonkey())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToDonkey" },
-    { dest = "DiddyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.guitar() and state.isdiddy())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToDiddy" },
-    { dest = "LankyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.trombone() and state.islanky())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToLanky" },
-    { dest = "TinyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.saxophone() and state.istiny())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToTiny" },
-    { dest = "ChunkyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.triangle() and state.ischunky())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToChunky" },
+    { dest = "GiantKosha", logic = function() return (state.event("CavesLargeBoulderButton") and state.monkeyport() and state.tiny()) end },
+    { dest = "DonkeyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.bongos() and state.donkey())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToDonkey" },
+    { dest = "DiddyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.guitar() and state.diddy())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToDiddy" },
+    { dest = "LankyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.trombone() and state.lanky())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToLanky" },
+    { dest = "TinyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.saxophone() and state.tiny())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToTiny" },
+    { dest = "ChunkyIgloo", logic = function() return (((state.checkBarrier("caves_igloo_pads") or (state.jetpack() and state.diddy())) and (state.triangle() and state.chunky())) or state.CanPhaseswim() or state.CanPhase()) end, exitShuffleId="Transitions.CavesIglooToChunky" },
     { dest = "CavesBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
 }
@@ -314,7 +300,6 @@ M.regions["GiantKosha"] = {
   display_name = [[Giant Kosha]],
   hint_region  = "Igloo",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "RainbowCoin_Location10", logic = function() return true end },
@@ -331,15 +316,14 @@ M.regions["DonkeyIgloo"] = {
   display_name = [[Donkey Igloo]],
   hint_region  = "Igloo",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesDonkey5DoorIgloo", logic = function() return ((state.strongKong() and state.isdonkey()) or state.CanMoonkick()) end },
+    { id = "CavesDonkey5DoorIgloo", logic = function() return ((state.strongKong() and state.donkey()) or state.CanMoonkick()) end },
     { id = "Caves5DIDKEnemy_Right", logic = function() return true end },
     { id = "Caves5DIDKEnemy_Left", logic = function() return true end },
     { id = "KremKap_Caves5DIDKEnemy_Right", logic = function() return state.camera() end },
     { id = "KremKap_Caves5DIDKEnemy_Left", logic = function() return state.camera() end },
-    { id = "Balloon081", logic = function() return (state.isdonkey() and state.coconut()) end },
+    { id = "Balloon081", logic = function() return (state.donkey() and state.coconut()) end },
   },
   events = {
   },
@@ -353,11 +337,10 @@ M.regions["DiddyIgloo"] = {
   display_name = [[Diddy Igloo]],
   hint_region  = "Igloo",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesDiddy5DoorIgloo", logic = function() return ((state.isdiddy() or settings.free_trade_items()) and state.barrels()) end },
-    { id = "Balloon087", logic = function() return (state.isdiddy() and state.peanut()) end },
+    { id = "CavesDiddy5DoorIgloo", logic = function() return ((state.diddy() or settings.free_trade_items()) and state.barrels()) end },
+    { id = "Balloon087", logic = function() return (state.diddy() and state.peanut()) end },
   },
   events = {
   },
@@ -371,10 +354,9 @@ M.regions["LankyIgloo"] = {
   display_name = [[Lanky Igloo]],
   hint_region  = "Igloo",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   locations = {
-    { id = "CavesLanky5DoorIgloo", logic = function() return (((state.balloon() or state.monkey_maneuvers()) and state.islanky()) or (settings.free_trade_items() and state.monkey_maneuvers() and (state.isdiddy() or state.istiny()))) end },
-    { id = "Balloon080", logic = function() return (state.islanky() and state.grape() and (state.balloon() or state.monkey_maneuvers())) end },
+    { id = "CavesLanky5DoorIgloo", logic = function() return (((state.balloon() or state.monkey_maneuvers()) and state.lanky()) or (settings.free_trade_items() and state.monkey_maneuvers() and (state.diddy() or state.tiny()))) end },
+    { id = "Balloon080", logic = function() return (state.lanky() and state.grape() and (state.balloon() or state.monkey_maneuvers())) end },
   },
   events = {
   },
@@ -388,14 +370,13 @@ M.regions["TinyIgloo"] = {
   display_name = [[Tiny Igloo]],
   hint_region  = "Igloo",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "CavesTiny5DoorIgloo", logic = function() return (state.Slam() and state.istiny()) end },
-    { id = "CavesBananaFairyIgloo", logic = function() return (state.Slam() and state.istiny() and state.camera()) end },
+    { id = "CavesTiny5DoorIgloo", logic = function() return (state.Slam() and state.tiny()) end },
+    { id = "CavesBananaFairyIgloo", logic = function() return (state.Slam() and state.tiny() and state.camera()) end },
     { id = "Caves5DITinyEnemy_BigEnemy", logic = function() return true end },
     { id = "KremKap_Caves5DITinyEnemy_BigEnemy", logic = function() return state.camera() end },
-    { id = "Balloon079", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "Balloon079", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
   },
@@ -409,11 +390,10 @@ M.regions["ChunkyIgloo"] = {
   display_name = [[Chunky Igloo]],
   hint_region  = "Igloo",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesChunky5DoorIgloo", logic = function() return (state.ischunky() or settings.free_trade_items()) end },
-    { id = "Balloon085", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "CavesChunky5DoorIgloo", logic = function() return (state.chunky() or settings.free_trade_items()) end },
+    { id = "Balloon085", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
     { id = "KilledRabbit", logic = function() return true end },
@@ -428,7 +408,6 @@ M.regions["CabinArea"] = {
   display_name = [[Cabin Area]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "CavesKasplatNearCandy", logic = function() return (not settings.kasplat_rando()) end },
@@ -448,15 +427,15 @@ M.regions["CabinArea"] = {
   },
   exits = {
     { dest = "CrystalCavesMain", logic = function() return true end },
-    { dest = "CavesRotatingCabinRoof", logic = function() return ((state.isdiddy() and state.jetpack()) or state.CanMoonkick() or ((state.isdiddy() or state.istiny() or (state.islanky() and (not state.isKrushaAdjacent("lanky")))) and state.monkey_maneuvers()) or state.CanPhase()) end },
-    { dest = "RotatingCabin", logic = function() return ((state.bongos() and state.isdonkey()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToRotating" },
-    { dest = "DonkeyCabin", logic = function() return ((state.bongos() and state.isdonkey()) or state.CanPhase() or state.CanSkew(true) or state.generalclips()) end, exitShuffleId="Transitions.CavesCabinToDonkey" },
-    { dest = "DiddyLowerCabin", logic = function() return ((state.guitar() and state.isdiddy()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToDiddyLower" },
-    { dest = "DiddyUpperCabin", logic = function() return ((state.guitar() and state.isdiddy()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToDiddyUpper" },
-    { dest = "CavesSprintCabinRoof", logic = function() return ((state.isdiddy() and state.jetpack()) or (state.islanky() and state.balloon()) or state.CanMoonkick() or state.CanPhase()) end },
-    { dest = "LankyCabin", logic = function() return ((state.trombone() and state.balloon() and state.islanky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToLanky" },
-    { dest = "TinyCabin", logic = function() return ((state.saxophone() and state.istiny()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToTiny" },
-    { dest = "ChunkyCabin", logic = function() return ((state.triangle() and state.ischunky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToChunky" },
+    { dest = "CavesRotatingCabinRoof", logic = function() return ((state.diddy() and state.jetpack()) or state.CanMoonkick() or ((state.diddy() or state.tiny() or (state.lanky() and (not state.isKrushaAdjacent("lanky")))) and state.monkey_maneuvers()) or state.CanPhase()) end },
+    { dest = "RotatingCabin", logic = function() return ((state.bongos() and state.donkey()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToRotating" },
+    { dest = "DonkeyCabin", logic = function() return ((state.bongos() and state.donkey()) or state.CanPhase() or state.CanSkew(true) or state.generalclips()) end, exitShuffleId="Transitions.CavesCabinToDonkey" },
+    { dest = "DiddyLowerCabin", logic = function() return ((state.guitar() and state.diddy()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToDiddyLower" },
+    { dest = "DiddyUpperCabin", logic = function() return ((state.guitar() and state.diddy()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToDiddyUpper" },
+    { dest = "CavesSprintCabinRoof", logic = function() return ((state.diddy() and state.jetpack()) or (state.lanky() and state.balloon()) or state.CanMoonkick() or state.CanPhase()) end },
+    { dest = "LankyCabin", logic = function() return ((state.trombone() and state.balloon() and state.lanky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToLanky" },
+    { dest = "TinyCabin", logic = function() return ((state.saxophone() and state.tiny()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToTiny" },
+    { dest = "ChunkyCabin", logic = function() return ((state.triangle() and state.chunky()) or state.CanPhase() or state.CanSkew(true)) end, exitShuffleId="Transitions.CavesCabinToChunky" },
     { dest = "CandyCaves", logic = function() return state.candyAccess() end },
   },
 }
@@ -466,7 +445,6 @@ M.regions["CavesSprintCabinRoof"] = {
   display_name = [[Caves Sprint Cabin Roof]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -483,7 +461,6 @@ M.regions["CavesRotatingCabinRoof"] = {
   display_name = [[Caves Rotating Cabin Roof]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -500,11 +477,10 @@ M.regions["RotatingCabin"] = {
   display_name = [[Rotating Cabin]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesDonkeyRotatingCabin", logic = function() return ((state.Slam() and state.isdonkey()) or state.CanMoonkick()) end },
-    { id = "CavesBattleArena", logic = function() return ((not settings.crown_placement_rando()) and state.Slam() and state.isdonkey()) end },
+    { id = "CavesDonkeyRotatingCabin", logic = function() return ((state.Slam() and state.donkey()) or state.CanMoonkick()) end },
+    { id = "CavesBattleArena", logic = function() return ((not settings.crown_placement_rando()) and state.Slam() and state.donkey()) end },
   },
   events = {
   },
@@ -518,7 +494,6 @@ M.regions["DonkeyCabin"] = {
   display_name = [[Donkey Cabin]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CavesDonkey5DoorCabin", logic = function() return ((state.homing() or state.hard_shooting()) and (state.HasGun("donkey") or state.adv_orange_usage() or (settings.free_trade_items() and state.HasGun("any")))) end },
@@ -535,10 +510,9 @@ M.regions["DiddyLowerCabin"] = {
   display_name = [[Diddy Lower Cabin]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesDiddy5DoorCabinLower", logic = function() return (state.isdiddy() and state.oranges() and (state.jetpack() or state.monkey_maneuvers())) end },
+    { id = "CavesDiddy5DoorCabinLower", logic = function() return (state.diddy() and state.oranges() and (state.jetpack() or state.monkey_maneuvers())) end },
   },
   events = {
   },
@@ -552,11 +526,10 @@ M.regions["DiddyUpperCabin"] = {
   display_name = [[Diddy Upper Cabin]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesDiddy5DoorCabinUpper", logic = function() return ((state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.isdiddy()) end },
-    { id = "CavesBananaFairyCabin", logic = function() return (state.camera() and (state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.isdiddy()) end },
+    { id = "CavesDiddy5DoorCabinUpper", logic = function() return ((state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.diddy()) end },
+    { id = "CavesBananaFairyCabin", logic = function() return (state.camera() and (state.guitar() or state.oranges()) and (state.spring() or (state.CanMoontail() and (not state.cabinBarrelMoved()))) and state.jetpack() and state.diddy()) end },
   },
   events = {
   },
@@ -570,10 +543,9 @@ M.regions["LankyCabin"] = {
   display_name = [[Lanky Cabin]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "CavesLanky1DoorCabin", logic = function() return (state.sprint() and state.balloon() and state.islanky()) end },
+    { id = "CavesLanky1DoorCabin", logic = function() return (state.sprint() and state.balloon() and state.lanky()) end },
     { id = "Caves1DCEnemy_Near", logic = function() return true end },
     { id = "KremKap_Caves1DCEnemy_Near", logic = function() return state.camera() end },
   },
@@ -589,11 +561,10 @@ M.regions["TinyCabin"] = {
   display_name = [[Tiny Cabin]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesTiny5DoorCabin", logic = function() return ((state.istiny() or settings.free_trade_items()) and state.oranges()) end },
-    { id = "Balloon084", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "CavesTiny5DoorCabin", logic = function() return ((state.tiny() or settings.free_trade_items()) and state.oranges()) end },
+    { id = "Balloon084", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
   },
@@ -607,10 +578,9 @@ M.regions["ChunkyCabin"] = {
   display_name = [[Chunky Cabin]],
   hint_region  = "Cabins",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "CavesChunky5DoorCabin", logic = function() return (state.gorillaGone() and state.Slam() and state.ischunky()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "CavesChunky5DoorCabin", logic = function() return (state.gorillaGone() and state.Slam() and state.chunky()) end, bonusBarrel="MinigameType.BonusBarrel" },
   },
   events = {
   },
@@ -624,7 +594,6 @@ M.regions["CavesBossLobby"] = {
   display_name = [[Caves Boss Lobby]],
   hint_region  = "Bosses",
   level        = "CrystalCaves",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
   },
@@ -640,7 +609,6 @@ M.regions["CavesBoss"] = {
   display_name = [[Caves Boss]],
   hint_region  = "Bosses",
   level        = "CrystalCaves",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "CavesKey", logic = function() return state.IsBossBeatable("CrystalCaves") end },

@@ -10,7 +10,6 @@ M.regions["HideoutHelmEntry"] = {
   display_name = [[Hideout Helm Entry Redirect]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "HelmDonkey1", logic = function() return ((not settings.helm_donkey()) or (settings.helm_setting() == "skip_all")) end },
@@ -42,7 +41,6 @@ M.regions["HideoutHelmStart"] = {
   display_name = [[Hideout Helm Start]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "HelmMainEnemy_Start0", logic = function() return true end },
@@ -53,7 +51,7 @@ M.regions["HideoutHelmStart"] = {
   events = {
   },
   exits = {
-    { dest = "HideoutHelmSwitchRoom", logic = function() return ((state.handstand() and state.islanky()) or state.slope_resets()) end },
+    { dest = "HideoutHelmSwitchRoom", logic = function() return ((state.handstand() and state.lanky()) or state.slope_resets()) end },
     { dest = "HideoutHelmAfterBoM", logic = function() return ((settings.helm_setting() == "skip_all") or state.event("HelmFinished")) end },
   },
 }
@@ -63,7 +61,6 @@ M.regions["HideoutHelmSwitchRoom"] = {
   display_name = [[Hideout Helm Start]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "HelmMainEnemy_Hill", logic = function() return true end },
@@ -87,7 +84,6 @@ M.regions["HideoutHelmMiniRoom"] = {
   display_name = [[Hideout Helm Start]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "HelmMainEnemy_MiniRoom0", logic = function() return true end },
@@ -102,8 +98,8 @@ M.regions["HideoutHelmMiniRoom"] = {
   events = {
   },
   exits = {
-    { dest = "HideoutHelmMain", logic = function() return (state.istiny() and state.mini()) end },
-    { dest = "HideoutHelmOOBChunky", logic = function() return ((state.generalclips() and state.ischunky()) or state.CanPhase() or state.CanOStandTBSNoclip()) end },
+    { dest = "HideoutHelmMain", logic = function() return (state.tiny() and state.mini()) end },
+    { dest = "HideoutHelmOOBChunky", logic = function() return ((state.generalclips() and state.chunky()) or state.CanPhase() or state.CanOStandTBSNoclip()) end },
   },
 }
 
@@ -112,10 +108,9 @@ M.regions["HideoutHelmMain"] = {
   display_name = [[Hideout Helm Main]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
-    { id = "HelmBattleArena", logic = function() return ((not settings.crown_placement_rando()) and state.jetpack() and state.isdiddy() and state.event("HelmFinished")) end },
+    { id = "HelmBattleArena", logic = function() return ((not settings.crown_placement_rando()) and state.jetpack() and state.diddy() and state.event("HelmFinished")) end },
   },
   events = {
     { id = "HelmDoorsOpened", logic = function() return (state.grab() and state.donkey() and state.jetpack() and state.diddy()) end },
@@ -128,11 +123,11 @@ M.regions["HideoutHelmMain"] = {
     { id = "HelmFinished", logic = function() return (state.event("HelmDonkeyDone") and state.event("HelmChunkyDone") and state.event("HelmTinyDone") and state.event("HelmLankyDone") and state.event("HelmDiddyDone")) end },
   },
   exits = {
-    { dest = "HideoutHelmDonkeyRoom", logic = function() return (state.bongos() and state.isdonkey() and state.isPriorHelmComplete("donkey") and state.event("HelmGatesPunched")) end },
-    { dest = "HideoutHelmChunkyRoom", logic = function() return (state.triangle() and state.ischunky() and state.isPriorHelmComplete("chunky") and state.event("HelmGatesPunched")) end },
-    { dest = "HideoutHelmTinyRoom", logic = function() return (state.saxophone() and state.istiny() and state.isPriorHelmComplete("tiny") and state.event("HelmGatesPunched")) end },
-    { dest = "HideoutHelmLankyRoom", logic = function() return (state.trombone() and state.islanky() and state.isPriorHelmComplete("lanky") and state.event("HelmGatesPunched")) end },
-    { dest = "HideoutHelmDiddyRoom", logic = function() return (state.guitar() and state.jetpack() and state.isdiddy() and state.isPriorHelmComplete("diddy") and state.event("HelmDoorsOpened")) end },
+    { dest = "HideoutHelmDonkeyRoom", logic = function() return (state.bongos() and state.donkey() and state.isPriorHelmComplete("donkey") and state.event("HelmGatesPunched")) end },
+    { dest = "HideoutHelmChunkyRoom", logic = function() return (state.triangle() and state.chunky() and state.isPriorHelmComplete("chunky") and state.event("HelmGatesPunched")) end },
+    { dest = "HideoutHelmTinyRoom", logic = function() return (state.saxophone() and state.tiny() and state.isPriorHelmComplete("tiny") and state.event("HelmGatesPunched")) end },
+    { dest = "HideoutHelmLankyRoom", logic = function() return (state.trombone() and state.lanky() and state.isPriorHelmComplete("lanky") and state.event("HelmGatesPunched")) end },
+    { dest = "HideoutHelmDiddyRoom", logic = function() return (state.guitar() and state.jetpack() and state.diddy() and state.isPriorHelmComplete("diddy") and state.event("HelmDoorsOpened")) end },
     { dest = "HideoutHelmAfterBoM", logic = function() return state.event("HelmFinished") end },
     { dest = "HideoutHelmOOBChunky", logic = function() return (state.CanPhase() or state.CanOStandTBSNoclip()) end },
     { dest = "HideoutHelmOOBLanky", logic = function() return state.CanPhase() end },
@@ -144,12 +139,11 @@ M.regions["HideoutHelmDonkeyRoom"] = {
   display_name = [[Hideout Helm Main]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "HelmDonkey1", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelSecond" },
     { id = "HelmDonkey2", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelFirst" },
-    { id = "HelmDonkeyMedal", logic = function() return (state.event("HelmDonkeyDone") and state.isdonkey()) end },
+    { id = "HelmDonkeyMedal", logic = function() return (state.event("HelmDonkeyDone") and state.donkey()) end },
     { id = "HelmMainEnemy_DKRoom", logic = function() return true end },
     { id = "KremKap_HelmMainEnemy_DKRoom", logic = function() return state.camera() end },
   },
@@ -157,7 +151,7 @@ M.regions["HideoutHelmDonkeyRoom"] = {
   },
   exits = {
     { dest = "HideoutHelmMain", logic = function() return true end },
-    { dest = "HideoutHelmOOBChunky", logic = function() return (state.CanPhase() or (state.isdonkey() and state.generalclips())) end },
+    { dest = "HideoutHelmOOBChunky", logic = function() return (state.CanPhase() or (state.donkey() and state.generalclips())) end },
   },
 }
 
@@ -166,12 +160,11 @@ M.regions["HideoutHelmChunkyRoom"] = {
   display_name = [[Hideout Helm Main]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "HelmChunky1", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelFirst" },
     { id = "HelmChunky2", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelSecond" },
-    { id = "HelmChunkyMedal", logic = function() return (state.event("HelmChunkyDone") and state.ischunky()) end },
+    { id = "HelmChunkyMedal", logic = function() return (state.event("HelmChunkyDone") and state.chunky()) end },
     { id = "HelmMainEnemy_ChunkyRoom0", logic = function() return true end },
     { id = "HelmMainEnemy_ChunkyRoom1", logic = function() return true end },
     { id = "KremKap_HelmMainEnemy_ChunkyRoom0", logic = function() return state.camera() end },
@@ -190,12 +183,11 @@ M.regions["HideoutHelmTinyRoom"] = {
   display_name = [[Hideout Helm Main]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "HelmTiny1", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelSecond" },
     { id = "HelmTiny2", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelFirst" },
-    { id = "HelmTinyMedal", logic = function() return (state.event("HelmTinyDone") and state.istiny()) end },
+    { id = "HelmTinyMedal", logic = function() return (state.event("HelmTinyDone") and state.tiny()) end },
     { id = "HelmMainEnemy_TinyRoom", logic = function() return true end },
     { id = "KremKap_HelmMainEnemy_TinyRoom", logic = function() return state.camera() end },
   },
@@ -212,12 +204,11 @@ M.regions["HideoutHelmLankyRoom"] = {
   display_name = [[Hideout Helm Main]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "HelmLanky1", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelFirst" },
     { id = "HelmLanky2", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelSecond" },
-    { id = "HelmLankyMedal", logic = function() return (state.event("HelmLankyDone") and state.islanky()) end },
+    { id = "HelmLankyMedal", logic = function() return (state.event("HelmLankyDone") and state.lanky()) end },
     { id = "HelmMainEnemy_LankyRoom0", logic = function() return true end },
     { id = "HelmMainEnemy_LankyRoom1", logic = function() return true end },
     { id = "KremKap_HelmMainEnemy_LankyRoom0", logic = function() return state.camera() end },
@@ -236,12 +227,11 @@ M.regions["HideoutHelmDiddyRoom"] = {
   display_name = [[Hideout Helm Main]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "HelmDiddy1", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelFirst" },
     { id = "HelmDiddy2", logic = function() return true end, bonusBarrel="MinigameType.HelmBarrelSecond" },
-    { id = "HelmDiddyMedal", logic = function() return (state.event("HelmDiddyDone") and state.isdiddy()) end },
+    { id = "HelmDiddyMedal", logic = function() return (state.event("HelmDiddyDone") and state.diddy()) end },
     { id = "HelmMainEnemy_DiddyRoom0", logic = function() return true end },
     { id = "HelmMainEnemy_DiddyRoom1", logic = function() return true end },
     { id = "KremKap_HelmMainEnemy_DiddyRoom0", logic = function() return state.camera() end },
@@ -260,7 +250,6 @@ M.regions["HideoutHelmAfterBoM"] = {
   display_name = [[Hideout Helm Navigation Room]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "HelmMainEnemy_NavRight", logic = function() return state.event("HelmFinished") end },
@@ -283,7 +272,6 @@ M.regions["HideoutHelmThroneRoom"] = {
   display_name = [[Hideout Helm Throne Room]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -301,7 +289,6 @@ M.regions["HideoutHelmKeyRoom"] = {
   display_name = [[Hideout Helm Key Room]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "HelmKey", logic = function() return true end },
@@ -320,7 +307,6 @@ M.regions["HideoutHelmOOBChunky"] = {
   display_name = [[Hideout Helm OOB (Chunky Room Elevation)]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
   },
@@ -336,7 +322,7 @@ M.regions["HideoutHelmOOBChunky"] = {
     { dest = "HideoutHelmTinyRoom", logic = function() return true end },
     { dest = "HideoutHelmAfterBoM", logic = function() return true end },
     { dest = "HideoutHelmThroneRoom", logic = function() return true end },
-    { dest = "HideoutHelmOOBLanky", logic = function() return (state.isdiddy() or state.istiny()) end },
+    { dest = "HideoutHelmOOBLanky", logic = function() return (state.diddy() or state.tiny()) end },
   },
 }
 
@@ -345,7 +331,6 @@ M.regions["HideoutHelmOOBLanky"] = {
   display_name = [[Hideout Helm OOB (Lanky Room Elevation)]],
   hint_region  = "Helm",
   level        = "HideoutHelm",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
   },
@@ -354,7 +339,7 @@ M.regions["HideoutHelmOOBLanky"] = {
   exits = {
     { dest = "HideoutHelmOOBChunky", logic = function() return true end },
     { dest = "HideoutHelmLankyRoom", logic = function() return true end },
-    { dest = "HideoutHelmDiddyRoom", logic = function() return (state.isdiddy() or state.istiny()) end },
+    { dest = "HideoutHelmDiddyRoom", logic = function() return (state.diddy() or state.tiny()) end },
     { dest = "HideoutHelmAfterBoM", logic = function() return true end },
     { dest = "HideoutHelmThroneRoom", logic = function() return true end },
     { dest = "HideoutHelmKeyRoom", logic = function() return true end },

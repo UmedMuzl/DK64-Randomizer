@@ -10,7 +10,6 @@ M.regions["FranticFactoryMedals"] = {
   display_name = [[Frantic Factory Medals]],
   hint_region  = "FactoryCBs",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -36,7 +35,6 @@ M.regions["FranticFactoryEntryHandler"] = {
   display_name = [[Frantic Factory Entry Handler]],
   hint_region  = "Error",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -56,7 +54,6 @@ M.regions["FranticFactoryStart"] = {
   display_name = [[Frantic Factory Foyer]],
   hint_region  = "FactoryStart",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "FactoryMainEnemy_LobbyLeft", logic = function() return true end },
@@ -65,7 +62,7 @@ M.regions["FranticFactoryStart"] = {
     { id = "KremKap_FactoryMainEnemy_LobbyLeft", logic = function() return state.camera() end },
     { id = "KremKap_FactoryMainEnemy_LobbyRight", logic = function() return state.camera() end },
     { id = "KremKap_FactoryMainEnemy_TunnelToHatch", logic = function() return state.camera() end },
-    { id = "Balloon025", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "Balloon025", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
     { id = "HatchOpened", logic = function() return true end },
@@ -85,12 +82,11 @@ M.regions["Testing"] = {
   display_name = [[Testing]],
   hint_region  = "Testing",
   level        = "FranticFactory",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
-    { id = "FactoryDonkeyNumberGame", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.isdonkey()) end },
-    { id = "FactoryDiddyBlockTower", logic = function() return ((state.spring() or state.CanMoontail()) and state.isdiddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "FactoryLankyTestingRoomBarrel", logic = function() return ((state.balloon() or state.monkey_maneuvers()) and state.islanky()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "FactoryDonkeyNumberGame", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.donkey()) end },
+    { id = "FactoryDiddyBlockTower", logic = function() return ((state.spring() or state.CanMoontail()) and state.diddy()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "FactoryLankyTestingRoomBarrel", logic = function() return ((state.balloon() or state.monkey_maneuvers()) and state.lanky()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "FactoryTinyDartboard", logic = function() return (state.event("DartsPlayed") and state.tiny()) end },
     { id = "FactoryKasplatBlocks", logic = function() return (not settings.kasplat_rando()) end },
     { id = "FactoryBananaFairybyCounting", logic = function() return state.camera() end },
@@ -113,7 +109,7 @@ M.regions["Testing"] = {
     { id = "Balloon036", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
-    { id = "DartsPlayed", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and (state.mini() or state.CanPhase()) and state.feather() and state.istiny()) end },
+    { id = "DartsPlayed", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and (state.mini() or state.CanPhase()) and state.feather() and state.tiny()) end },
     { id = "FactoryW3bTagged", logic = function() return true end },
     { id = "FactoryW5bTagged", logic = function() return true end },
   },
@@ -131,18 +127,17 @@ M.regions["RandDUpper"] = {
   display_name = [[R&D Upper]],
   hint_region  = "ResearchAndDevelopment",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "FactoryDiddyRandD", logic = function() return ((state.guitar() or state.CanAccessRNDRoom()) and state.charge() and state.isdiddy()) end },
-    { id = "FactoryChunkyRandD", logic = function() return (((state.triangle() and state.climbing()) or state.CanAccessRNDRoom()) and state.punch() and state.hunkyChunky() and state.ischunky() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) end },
+    { id = "FactoryDiddyRandD", logic = function() return ((state.guitar() or state.CanAccessRNDRoom()) and state.charge() and state.diddy()) end },
+    { id = "FactoryChunkyRandD", logic = function() return (((state.triangle() and state.climbing()) or state.CanAccessRNDRoom()) and state.punch() and state.hunkyChunky() and state.chunky() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) end },
     { id = "FactoryKasplatRandD", logic = function() return (not settings.kasplat_rando()) end },
     { id = "FactoryBattleArena", logic = function() return ((not settings.crown_placement_rando()) and ((state.grab() and state.donkey()) or state.CanAccessRNDRoom())) end },
-    { id = "Balloon029", logic = function() return (state.isdiddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
-    { id = "Balloon030", logic = function() return (state.isdiddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
-    { id = "Balloon031", logic = function() return (state.isdonkey() and state.coconut()) end },
-    { id = "Balloon034", logic = function() return (state.isdiddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
-    { id = "Balloon038", logic = function() return (state.ischunky() and state.pineapple() and ((state.triangle() and state.climbing() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) or state.CanAccessRNDRoom())) end },
+    { id = "Balloon029", logic = function() return (state.diddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
+    { id = "Balloon030", logic = function() return (state.diddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
+    { id = "Balloon031", logic = function() return (state.donkey() and state.coconut()) end },
+    { id = "Balloon034", logic = function() return (state.diddy() and state.peanut() and (state.guitar() or state.CanAccessRNDRoom())) end },
+    { id = "Balloon038", logic = function() return (state.chunky() and state.pineapple() and ((state.triangle() and state.climbing() and state.hasMoveSwitchsanity("FactoryToyMonsterGrate", false)) or state.CanAccessRNDRoom())) end },
   },
   events = {
   },
@@ -157,11 +152,10 @@ M.regions["RandD"] = {
   display_name = [[R&D]],
   hint_region  = "ResearchAndDevelopment",
   level        = "FranticFactory",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "FactoryLankyRandD", logic = function() return ((((state.trombone() or state.CanAccessRNDRoom()) and state.CanSlamSwitch("FranticFactory", 1)) or (state.CanOStandTBSNoclip() and state.spawn_snags())) and state.islanky()) end },
-    { id = "Balloon027", logic = function() return (state.islanky() and state.grape() and (state.trombone() or state.CanAccessRNDRoom())) end },
+    { id = "FactoryLankyRandD", logic = function() return ((((state.trombone() or state.CanAccessRNDRoom()) and state.CanSlamSwitch("FranticFactory", 1)) or (state.CanOStandTBSNoclip() and state.spawn_snags())) and state.lanky()) end },
+    { id = "Balloon027", logic = function() return (state.lanky() and state.grape() and (state.trombone() or state.CanAccessRNDRoom())) end },
     { id = "FactoryMainEnemy_TunnelToRace0", logic = function() return true end },
     { id = "FactoryMainEnemy_TunnelToRace1", logic = function() return true end },
     { id = "KremKap_FactoryMainEnemy_TunnelToRace0", logic = function() return state.camera() end },
@@ -172,8 +166,8 @@ M.regions["RandD"] = {
   },
   exits = {
     { dest = "Testing", logic = function() return true end },
-    { dest = "RandDUpper", logic = function() return ((state.climbing() or state.isdiddy() or state.istiny()) or state.monkey_maneuvers()) end },
-    { dest = "FactoryTinyRaceLobby", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.CanOStandTBSNoclip()) end },
+    { dest = "RandDUpper", logic = function() return ((state.climbing() or state.diddy() or state.tiny()) or state.monkey_maneuvers()) end },
+    { dest = "FactoryTinyRaceLobby", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.CanOStandTBSNoclip()) end },
     { dest = "FactoryTinyRace", logic = function() return (state.CanPhase() or state.CanOStandTBSNoclip()) end, exitShuffleId="Transitions.FactoryRandDToRace", isGlitchTransition=true },
     { dest = "FactoryBossLobby", logic = function() return (not settings.tns_location_rando()) end },
   },
@@ -184,15 +178,14 @@ M.regions["FactoryTinyRaceLobby"] = {
   display_name = [[Factory Tiny Race Lobby]],
   hint_region  = "ResearchAndDevelopment",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
   events = {
   },
   exits = {
-    { dest = "RandD", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase()) end },
-    { dest = "FactoryTinyRace", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase()) end, exitShuffleId="Transitions.FactoryRandDToRace" },
+    { dest = "RandD", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase()) end },
+    { dest = "FactoryTinyRace", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase()) end, exitShuffleId="Transitions.FactoryRandDToRace" },
   },
 }
 
@@ -201,7 +194,6 @@ M.regions["FactoryTinyRace"] = {
   display_name = [[Factory Tiny Race]],
   hint_region  = "ResearchAndDevelopment",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "FactoryTinyCarRace", logic = function() return state.HasEnoughRaceCoins("FactoryTinyRace", "tiny", (not settings.free_trade_items())) end },
@@ -218,15 +210,14 @@ M.regions["ChunkyRoomPlatform"] = {
   display_name = [[Chunky Room Platform]],
   hint_region  = "Storage",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "FactoryDiddyChunkyRoomBarrel", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.isdiddy() and (state.can_use_vines() or (settings.bonus_barrels() == "skip"))) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "FactoryDiddyChunkyRoomBarrel", logic = function() return (state.CanSlamSwitch("FranticFactory", 1) and state.diddy() and (state.can_use_vines() or (settings.bonus_barrels() == "skip"))) end, bonusBarrel="MinigameType.BonusBarrel" },
   },
   events = {
   },
   exits = {
-    { dest = "PowerHut", logic = function() return ((state.coconut() and state.isdonkey()) or state.CanPhase() or state.CanMoonkick()) end, exitShuffleId="Transitions.FactoryChunkyRoomToPower" },
+    { dest = "PowerHut", logic = function() return ((state.coconut() and state.donkey()) or state.CanPhase() or state.CanMoonkick()) end, exitShuffleId="Transitions.FactoryChunkyRoomToPower" },
     { dest = "BeyondHatch", logic = function() return true end },
   },
 }
@@ -236,13 +227,12 @@ M.regions["PowerHut"] = {
   display_name = [[Power Hut]],
   hint_region  = "Storage",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "FactoryDonkeyPowerHut", logic = function() return (state.event("MainCoreActivated") and (state.isdonkey() or settings.free_trade_items())) end },
+    { id = "FactoryDonkeyPowerHut", logic = function() return (state.event("MainCoreActivated") and (state.donkey() or settings.free_trade_items())) end },
   },
   events = {
-    { id = "MainCoreActivated", logic = function() return (state.grab() and state.isdonkey()) end },
+    { id = "MainCoreActivated", logic = function() return (state.grab() and state.donkey()) end },
   },
   exits = {
     { dest = "ChunkyRoomPlatform", logic = function() return true end, exitShuffleId="Transitions.FactoryPowerToChunkyRoom" },
@@ -254,12 +244,11 @@ M.regions["BeyondHatch"] = {
   display_name = [[Beyond Hatch]],
   hint_region  = "Storage",
   level        = "FranticFactory",
-  tagbarrel    = true,
   deathwarp    = -1,
   locations = {
     { id = "ChunkyKong", logic = function() return state.event("ChunkyFreed") end },
     { id = "FactoryLankyFreeChunky", logic = function() return state.event("ChunkyFreed") end },
-    { id = "FactoryChunkyDarkRoom", logic = function() return ((state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase()) and ((state.punch() and state.CanSlamSwitch("FranticFactory", 1)) or state.generalclips()) and state.ischunky()) end },
+    { id = "FactoryChunkyDarkRoom", logic = function() return ((state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase()) and ((state.punch() and state.CanSlamSwitch("FranticFactory", 1)) or state.generalclips()) and state.chunky()) end },
     { id = "BreakableFactoryDarkRoom", logic = function() return ((state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase()) and state.Slam() and state.chunky()) end },
     { id = "RainbowCoin_Location02", logic = function() return (state.hasMoveSwitchsanity("FactoryDarkRoomGrate", false) or state.CanPhase()) end },
     { id = "FactoryKasplatStorage", logic = function() return (not settings.kasplat_rando()) end },
@@ -283,12 +272,12 @@ M.regions["BeyondHatch"] = {
   exits = {
     { dest = "FactoryArcadePole", logic = function() return state.climbing() end, exitShuffleId="Transitions.FactoryStorageToArcade" },
     { dest = "LowerCore", logic = function() return true end },
-    { dest = "ChunkyRoomPlatform", logic = function() return (state.CanMoonkick() or (state.twirl() and state.istiny() and state.monkey_maneuvers()) or (state.isdiddy() and state.monkey_maneuvers())) end },
+    { dest = "ChunkyRoomPlatform", logic = function() return (state.CanMoonkick() or (state.twirl() and state.tiny() and state.monkey_maneuvers()) or (state.diddy() and state.monkey_maneuvers())) end },
     { dest = "CrankyFactory", logic = function() return state.crankyAccess() end },
     { dest = "CandyFactory", logic = function() return state.candyAccess() end },
-    { dest = "FactoryStoragePipe", logic = function() return ((state.islanky() and state.handstand()) or state.slope_resets()) end },
+    { dest = "FactoryStoragePipe", logic = function() return ((state.lanky() and state.handstand()) or state.slope_resets()) end },
     { dest = "FactoryBossLobby", logic = function() return (not settings.tns_location_rando()) end },
-    { dest = "FactoryBaboonBlast", logic = function() return (state.blast() and state.isdonkey()) end },
+    { dest = "FactoryBaboonBlast", logic = function() return (state.blast() and state.donkey()) end },
   },
 }
 
@@ -297,7 +286,6 @@ M.regions["FactoryStoragePipe"] = {
   display_name = [[Factory Storage Pipe]],
   hint_region  = "Storage",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -314,7 +302,6 @@ M.regions["FactoryArcadePole"] = {
   display_name = [[Factory Arcade Upper Pole]],
   hint_region  = "Storage",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -331,13 +318,12 @@ M.regions["FactoryArcadeTunnel"] = {
   display_name = [[Arcade Tunnel]],
   hint_region  = "Storage",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "NintendoCoin", logic = function() return (state.event("ArcadeLeverSpawned") and state.grab() and state.isdonkey() and (state.GetCoins("donkey") >= 2)) end },
+    { id = "NintendoCoin", logic = function() return (state.event("ArcadeLeverSpawned") and state.grab() and state.donkey() and (state.GetCoins("donkey") >= 2)) end },
     { id = "FactoryTinybyArcade", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase()) end },
-    { id = "FactoryChunkybyArcade", logic = function() return (((state.hasMoveSwitchsanity("FactoryArcadeTunnelGrate", false) or state.CanPhase()) and state.ischunky()) or (state.CanPhase() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "FactoryDonkeyDKArcade", logic = function() return ((not state.checkFastCheck("factory_arcade_round_1")) and (state.event("ArcadeLeverSpawned") and state.grab() and state.isdonkey())) end },
+    { id = "FactoryChunkybyArcade", logic = function() return (((state.hasMoveSwitchsanity("FactoryArcadeTunnelGrate", false) or state.CanPhase()) and state.chunky()) or (state.CanPhase() and settings.free_trade_items())) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "FactoryDonkeyDKArcade", logic = function() return ((not state.checkFastCheck("factory_arcade_round_1")) and (state.event("ArcadeLeverSpawned") and state.grab() and state.donkey())) end },
   },
   events = {
     { id = "FactoryW5aTagged", logic = function() return true end },
@@ -352,13 +338,12 @@ M.regions["FactoryBaboonBlast"] = {
   display_name = [[Factory Baboon Blast]],
   hint_region  = "Storage",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "FactoryDonkeyDKArcade", logic = function() return (state.checkFastCheck("factory_arcade_round_1") and state.isdonkey()) end },
+    { id = "FactoryDonkeyDKArcade", logic = function() return (state.checkFastCheck("factory_arcade_round_1") and state.donkey()) end },
   },
   events = {
-    { id = "ArcadeLeverSpawned", logic = function() return state.isdonkey() end },
+    { id = "ArcadeLeverSpawned", logic = function() return state.donkey() end },
   },
   exits = {
     { dest = "BeyondHatch", logic = function() return true end },
@@ -370,7 +355,6 @@ M.regions["AlcoveBeyondHatch"] = {
   display_name = [[Alcove Beyond Hatch]],
   hint_region  = "ProductionRoom",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -387,7 +371,6 @@ M.regions["LowerCore"] = {
   display_name = [[Lower Core]],
   hint_region  = "ProductionRoom",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
     { id = "FactoryKasplatProductionBottom", logic = function() return (not settings.kasplat_rando()) end },
@@ -421,11 +404,10 @@ M.regions["InsideCore"] = {
   display_name = [[Inside Core]],
   hint_region  = "ProductionRoom",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "FactoryDonkeyCrusherRoom", logic = function() return ((state.strongKong() and state.isdonkey()) or state.generalclips() or state.CanPhase()) end },
-    { id = "Balloon053", logic = function() return (state.islanky() and state.grape()) end },
+    { id = "FactoryDonkeyCrusherRoom", logic = function() return ((state.strongKong() and state.donkey()) or state.generalclips() or state.CanPhase()) end },
+    { id = "Balloon053", logic = function() return (state.lanky() and state.grape()) end },
   },
   events = {
   },
@@ -439,10 +421,9 @@ M.regions["MiddleCore"] = {
   display_name = [[Middle Core]],
   hint_region  = "ProductionRoom",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "Balloon035", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "Balloon035", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
   },
@@ -458,7 +439,6 @@ M.regions["SpinningCore"] = {
   display_name = [[Spinning Core]],
   hint_region  = "ProductionRoom",
   level        = "FranticFactory",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "FactoryChunkyProductionRoom", logic = function() return (state.event("ChunkyCoreSwitch") and state.event("MainCoreActivated") and state.chunky()) end },
@@ -477,12 +457,11 @@ M.regions["UpperCore"] = {
   display_name = [[Upper Core]],
   hint_region  = "ProductionRoom",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "FactoryDiddyProductionRoom", logic = function() return (state.event("DiddyCoreSwitch") and state.event("MainCoreActivated") and state.spring() and state.diddy()) end },
     { id = "FactoryLankyProductionRoom", logic = function() return (state.event("LankyCoreSwitch") and state.event("MainCoreActivated") and ((state.handstand() and state.lanky()) or (state.tiny() and settings.free_trade_items() and state.slope_resets()))) end },
-    { id = "FactoryTinyProductionRoom", logic = function() return (state.event("TinyCoreSwitch") and state.event("MainCoreActivated") and state.twirl() and state.istiny()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "FactoryTinyProductionRoom", logic = function() return (state.event("TinyCoreSwitch") and state.event("MainCoreActivated") and state.twirl() and state.tiny()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "FactoryKasplatProductionTop", logic = function() return (not settings.kasplat_rando()) end },
     { id = "Balloon037", logic = function() return (state.lanky() and state.grape()) end },
   },
@@ -500,7 +479,6 @@ M.regions["FactoryBossLobby"] = {
   display_name = [[Factory Boss Lobby]],
   hint_region  = "Bosses",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -516,7 +494,6 @@ M.regions["FactoryBoss"] = {
   display_name = [[Factory Boss]],
   hint_region  = "Bosses",
   level        = "FranticFactory",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "FactoryKey", logic = function() return state.IsBossBeatable("FranticFactory") end },

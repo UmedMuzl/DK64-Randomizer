@@ -10,7 +10,6 @@ M.regions["JungleJapesMedals"] = {
   display_name = [[Jungle Japes Medals]],
   hint_region  = "JapesCBs",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -36,7 +35,6 @@ M.regions["JungleJapesEntryHandler"] = {
   display_name = [[Jungle Japes Entry Handler]],
   hint_region  = "Error",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   restart      = -1,
   locations = {
@@ -55,7 +53,6 @@ M.regions["JungleJapesStart"] = {
   display_name = [[Jungle Japes Start]],
   hint_region  = "Lowlands",
   level        = "JungleJapes",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "JapesDonkeyCagedBanana", logic = function() return (((state.event("JapesDonkeySwitch") or state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false)) and state.donkey()) or ((state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false)) and settings.free_trade_items())) end },
@@ -85,7 +82,7 @@ M.regions["JungleJapesStart"] = {
     { dest = "JapesBeyondCoconutGate1", logic = function() return (state.checkBarrier("japes_coconut_gates") or state.event("JapesFreeKongOpenGates") or state.CanPhase() or state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false) or state.generalclips()) end },
     { dest = "JapesBeyondCoconutGate2", logic = function() return (state.checkBarrier("japes_coconut_gates") or state.event("JapesFreeKongOpenGates") or state.CanPhase() or state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false) or state.generalclips()) end },
     { dest = "JapesCatacomb", logic = function() return ((state.Slam() and state.chunky() and state.barrels()) or state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false)) end, exitShuffleId="Transitions.JapesMainToCatacomb" },
-    { dest = "JapesBlastPadPlatform", logic = function() return ((state.can_use_vines() or state.CanMoonkick()) and state.climbing() and (state.isdonkey() or state.isdiddy() or state.ischunky())) end },
+    { dest = "JapesBlastPadPlatform", logic = function() return ((state.can_use_vines() or state.CanMoonkick()) and state.climbing() and (state.donkey() or state.diddy() or state.chunky())) end },
   },
 }
 
@@ -94,7 +91,6 @@ M.regions["JapesBlastPadPlatform"] = {
   display_name = [[Japes Blast Pad Platform]],
   hint_region  = "Lowlands",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -102,7 +98,7 @@ M.regions["JapesBlastPadPlatform"] = {
   },
   exits = {
     { dest = "JungleJapesStart", logic = function() return true end },
-    { dest = "JapesBaboonBlast", logic = function() return (state.blast() and state.isdonkey()) end },
+    { dest = "JapesBaboonBlast", logic = function() return (state.blast() and state.donkey()) end },
   },
 }
 
@@ -111,7 +107,6 @@ M.regions["JapesCannonPlatform"] = {
   display_name = [[Jungle Japes Cannon Platform]],
   hint_region  = "Hillside",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "JapesLankyCagedBanana", logic = function() return (((state.event("JapesLankySwitch") or ((not settings.shuffle_shops()) and state.CanSkew(true)) or state.CanSkew(false)) and state.lanky()) or (((not settings.shuffle_shops()) and state.CanSkew(true)) or (state.CanSkew(false) and settings.free_trade_items()))) end },
@@ -131,11 +126,10 @@ M.regions["JapesHillTop"] = {
   display_name = [[Jungle Japes Hilltop]],
   hint_region  = "Hillside",
   level        = "JungleJapes",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "DiddyKong", logic = function() return state.CanFreeDiddy() end },
-    { id = "Balloon002", logic = function() return (state.isdonkey() and state.coconut()) end },
+    { id = "Balloon002", logic = function() return (state.donkey() and state.coconut()) end },
     { id = "JapesDonkeyFrontofCage", logic = function() return (state.HasKong(settings.diddy_freeing_kong()) or settings.free_trade_items()) end },
     { id = "JapesDonkeyFreeDiddy", logic = function() return state.event("JapesFreeKongOpenGates") end },
     { id = "MelonCrate_Location00", logic = function() return true end },
@@ -150,8 +144,8 @@ M.regions["JapesHillTop"] = {
   exits = {
     { dest = "Snide", logic = function() return state.snideAccess() end },
     { dest = "JapesTnSAlcove", logic = function() return (state.monkey_maneuvers() and (not state.IsHardFallDamage())) end },
-    { dest = "Mine", logic = function() return (state.peanut() and state.isdiddy()) end, exitShuffleId="Transitions.JapesMainToMine" },
-    { dest = "JapesTopOfMountain", logic = function() return ((state.peanut() and state.isdiddy()) or state.CanMoonkick()) end },
+    { dest = "Mine", logic = function() return (state.peanut() and state.diddy()) end, exitShuffleId="Transitions.JapesMainToMine" },
+    { dest = "JapesTopOfMountain", logic = function() return ((state.peanut() and state.diddy()) or state.CanMoonkick()) end },
     { dest = "JapesHill", logic = function() return true end },
     { dest = "JapesCannonPlatform", logic = function() return true end },
     { dest = "JungleJapesMain", logic = function() return true end },
@@ -163,7 +157,6 @@ M.regions["JapesHill"] = {
   display_name = [[Jungle Japes Hill]],
   hint_region  = "Hillside",
   level        = "JungleJapes",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
     { id = "JapesDiddyCagedBanana", logic = function() return (((state.event("JapesDiddySwitch1") or state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and state.diddy()) or ((state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and settings.free_trade_items())) end },
@@ -184,7 +177,6 @@ M.regions["JungleJapesMain"] = {
   display_name = [[Jungle Japes Main]],
   hint_region  = "Hillside",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "JapesTinyCagedBanana", logic = function() return (((state.event("JapesTinySwitch") or state.CanPhase() or state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false)) and state.tiny()) or ((state.CanPhase() or state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false)) and settings.free_trade_items())) end },
@@ -202,8 +194,8 @@ M.regions["JungleJapesMain"] = {
     { dest = "JungleJapesStart", logic = function() return true end },
     { dest = "JapesCannonPlatform", logic = function() return ((state.handstand() and state.lanky() and state.monkey_maneuvers()) or ((not state.isKrushaAdjacent("tiny")) and state.tiny() and state.slope_resets())) end },
     { dest = "JapesBeyondCoconutGate2", logic = function() return (state.checkBarrier("japes_coconut_gates") or state.event("JapesFreeKongOpenGates") or state.CanPhase() or state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false) or state.generalclips()) end },
-    { dest = "JapesPaintingRoomHill", logic = function() return ((state.handstand() and state.islanky()) or (state.twirl() and state.istiny() and state.climbing()) or state.CanMoonkick() or state.CanSkew(true) or state.CanSkew(false) or state.slope_resets()) end },
-    { dest = "JapesLankyCave", logic = function() return (((state.hasMoveSwitchsanity("JapesPainting", false) or state.CanSkew(true) or state.CanSkew(false)) and ((state.handstand() and state.islanky()) or (state.twirl() and state.istiny() and state.climbing()) or state.CanMoonkick() or state.slope_resets())) or (state.CanMoonkick() and (state.CanPhase() or state.CanSkew(true) or state.CanSkew(false))) or ((state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and (state.isdiddy() or state.istiny()))) end, exitShuffleId="Transitions.JapesMainToLankyCave", isGlitchTransition=true },
+    { dest = "JapesPaintingRoomHill", logic = function() return ((state.handstand() and state.lanky()) or (state.twirl() and state.tiny() and state.climbing()) or state.CanMoonkick() or state.CanSkew(true) or state.CanSkew(false) or state.slope_resets()) end },
+    { dest = "JapesLankyCave", logic = function() return (((state.hasMoveSwitchsanity("JapesPainting", false) or state.CanSkew(true) or state.CanSkew(false)) and ((state.handstand() and state.lanky()) or (state.twirl() and state.tiny() and state.climbing()) or state.CanMoonkick() or state.slope_resets())) or (state.CanMoonkick() and (state.CanPhase() or state.CanSkew(true) or state.CanSkew(false))) or ((state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and (state.diddy() or state.tiny()))) end, exitShuffleId="Transitions.JapesMainToLankyCave", isGlitchTransition=true },
     { dest = "BeyondRambiGate", logic = function() return (state.CanPhaseswim() or state.CanSkew(true) or state.CanSkew(false) or state.CanPhase() or state.generalclips()) end },
     { dest = "JapesTnSAlcove", logic = function() return ((state.can_use_vines() or state.CanMoonkick()) and state.climbing()) end },
   },
@@ -214,7 +206,6 @@ M.regions["JapesPaintingRoomHill"] = {
   display_name = [[Japes Painting Room Hill]],
   hint_region  = "Hillside",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "RainbowCoin_Location00", logic = function() return true end },
@@ -232,7 +223,6 @@ M.regions["JapesTnSAlcove"] = {
   display_name = [[Japes T&S Alcove]],
   hint_region  = "Hillside",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -249,11 +239,10 @@ M.regions["JapesTopOfMountain"] = {
   display_name = [[Japes Top of Mountain]],
   hint_region  = "Hillside",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "JapesDiddyMountain", logic = function() return (state.event("JapesDiddySwitch2") and (state.isdiddy() or settings.free_trade_items())) end },
-    { id = "Balloon005", logic = function() return (state.isdiddy() and state.peanut()) end },
+    { id = "JapesDiddyMountain", logic = function() return (state.event("JapesDiddySwitch2") and (state.diddy() or settings.free_trade_items())) end },
+    { id = "Balloon005", logic = function() return (state.diddy() and state.peanut()) end },
   },
   events = {
     { id = "JapesW5bTagged", logic = function() return state.special_loc("JapesDiddyMountain") end },
@@ -268,10 +257,9 @@ M.regions["JapesBaboonBlast"] = {
   display_name = [[Japes Baboon Blast]],
   hint_region  = "Lowlands",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "JapesDonkeyBaboonBlast", logic = function() return state.isdonkey() end },
+    { id = "JapesDonkeyBaboonBlast", logic = function() return state.donkey() end },
   },
   events = {
   },
@@ -285,13 +273,12 @@ M.regions["JapesBeyondPeanutGate"] = {
   display_name = [[Japes Beyond Peanut Gate]],
   hint_region  = "Lowlands",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "Balloon001", logic = function() return (state.isdiddy() and state.peanut()) end },
-    { id = "JapesDiddyTunnel", logic = function() return (state.isdiddy() or settings.free_trade_items()) end },
-    { id = "JapesLankyGrapeGate", logic = function() return ((state.grape() and state.islanky()) or ((state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and (state.islanky() or settings.free_trade_items()))) end, bonusBarrel="MinigameType.BonusBarrel" },
-    { id = "JapesTinyFeatherGateBarrel", logic = function() return ((state.feather() and state.istiny()) or ((state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and (state.istiny() or settings.free_trade_items()))) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "Balloon001", logic = function() return (state.diddy() and state.peanut()) end },
+    { id = "JapesDiddyTunnel", logic = function() return (state.diddy() or settings.free_trade_items()) end },
+    { id = "JapesLankyGrapeGate", logic = function() return ((state.grape() and state.lanky()) or ((state.CanPhase() or state.generalclips() or state.CanSkew(true) or state.CanSkew(false)) and (state.lanky() or settings.free_trade_items()))) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "JapesTinyFeatherGateBarrel", logic = function() return ((state.feather() and state.tiny()) or ((state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and (state.tiny() or settings.free_trade_items()))) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "JapesMainEnemy_DiddyCavern", logic = function() return true end },
     { id = "KremKap_JapesMainEnemy_DiddyCavern", logic = function() return state.camera() end },
   },
@@ -308,7 +295,6 @@ M.regions["JapesBeyondCoconutGate1"] = {
   display_name = [[Japes Beyond Coconut Gate 1]],
   hint_region  = "HiveTunnel",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "JapesKasplatLeftTunnelNear", logic = function() return (not settings.kasplat_rando()) end },
@@ -329,11 +315,10 @@ M.regions["JapesBeyondFeatherGate"] = {
   display_name = [[Japes Beyond Feather Gate]],
   hint_region  = "HiveTunnel",
   level        = "JungleJapes",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "JapesTinyStump", logic = function() return (((state.mini() and state.istiny()) or state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and state.istiny()) end },
-    { id = "JapesChunkyGiantBonusBarrel", logic = function() return (state.climbing() and state.hunkyChunky() and state.ischunky()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "JapesTinyStump", logic = function() return (((state.mini() and state.tiny()) or state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) and state.tiny()) end },
+    { id = "JapesChunkyGiantBonusBarrel", logic = function() return (state.climbing() and state.hunkyChunky() and state.chunky()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "JapesMainEnemy_Hive0", logic = function() return true end },
     { id = "JapesMainEnemy_Hive1", logic = function() return true end },
     { id = "JapesMainEnemy_Hive2", logic = function() return true end },
@@ -350,8 +335,8 @@ M.regions["JapesBeyondFeatherGate"] = {
   },
   exits = {
     { dest = "JapesBeyondCoconutGate1", logic = function() return true end },
-    { dest = "TinyHive", logic = function() return ((state.mini() and state.istiny()) or state.CanPhase() or state.CanSkew(true) or state.CanSkew(false) or (state.hunkyChunky() and state.ischunky() and state.generalclips())) end, exitShuffleId="Transitions.JapesMainToTinyHive" },
-    { dest = "BeyondRambiGate", logic = function() return (state.hunkyChunky() and state.ischunky() and state.generalclips()) end },
+    { dest = "TinyHive", logic = function() return ((state.mini() and state.tiny()) or state.CanPhase() or state.CanSkew(true) or state.CanSkew(false) or (state.hunkyChunky() and state.chunky() and state.generalclips())) end, exitShuffleId="Transitions.JapesMainToTinyHive" },
+    { dest = "BeyondRambiGate", logic = function() return (state.hunkyChunky() and state.chunky() and state.generalclips()) end },
   },
 }
 
@@ -360,32 +345,31 @@ M.regions["TinyHive"] = {
   display_name = [[Tiny Hive]],
   hint_region  = "HiveTunnel",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "JapesTinyBeehive", logic = function() return ((state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) or (settings.free_trade_items() and state.CanPhase())) end },
+    { id = "JapesTinyBeehive", logic = function() return ((state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) or (settings.free_trade_items() and state.CanPhase())) end },
     { id = "JapesShellhiveEnemy_FirstRoom", logic = function() return true end },
-    { id = "JapesShellhiveEnemy_SecondRoom0", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
-    { id = "JapesShellhiveEnemy_SecondRoom1", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
-    { id = "JapesShellhiveEnemy_ThirdRoom0", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
-    { id = "JapesShellhiveEnemy_ThirdRoom1", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
-    { id = "JapesShellhiveEnemy_ThirdRoom2", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
-    { id = "JapesShellhiveEnemy_ThirdRoom3", logic = function() return (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+    { id = "JapesShellhiveEnemy_SecondRoom0", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+    { id = "JapesShellhiveEnemy_SecondRoom1", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+    { id = "JapesShellhiveEnemy_ThirdRoom0", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+    { id = "JapesShellhiveEnemy_ThirdRoom1", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+    { id = "JapesShellhiveEnemy_ThirdRoom2", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
+    { id = "JapesShellhiveEnemy_ThirdRoom3", logic = function() return (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips())) end },
     { id = "JapesShellhiveEnemy_MainRoom", logic = function() return true end },
     { id = "KremKap_JapesShellhiveEnemy_FirstRoom", logic = function() return state.camera() end },
-    { id = "KremKap_JapesShellhiveEnemy_SecondRoom0", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
-    { id = "KremKap_JapesShellhiveEnemy_SecondRoom1", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
-    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom0", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
-    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom1", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
-    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom2", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
-    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom3", logic = function() return (state.camera() and (state.istiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+    { id = "KremKap_JapesShellhiveEnemy_SecondRoom0", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+    { id = "KremKap_JapesShellhiveEnemy_SecondRoom1", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom0", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom1", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom2", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
+    { id = "KremKap_JapesShellhiveEnemy_ThirdRoom3", logic = function() return (state.camera() and (state.tiny() and ((state.CanSlamSwitch("JungleJapes", 1) and (state.saxophone() or state.oranges())) or state.CanPhase() or state.generalclips()))) end },
     { id = "KremKap_JapesShellhiveEnemy_MainRoom", logic = function() return state.camera() end },
-    { id = "Balloon013", logic = function() return (state.istiny() and state.feather()) end },
+    { id = "Balloon013", logic = function() return (state.tiny() and state.feather()) end },
   },
   events = {
   },
   exits = {
-    { dest = "JapesBeyondFeatherGate", logic = function() return (state.isdiddy() or state.istiny() or state.islanky() or state.CanPhase()) end, exitShuffleId="Transitions.JapesTinyHiveToMain" },
+    { dest = "JapesBeyondFeatherGate", logic = function() return (state.diddy() or state.tiny() or state.lanky() or state.CanPhase()) end, exitShuffleId="Transitions.JapesTinyHiveToMain" },
   },
 }
 
@@ -394,10 +378,9 @@ M.regions["JapesBeyondCoconutGate2"] = {
   display_name = [[Japes Beyond Coconut Gate 2]],
   hint_region  = "StormyTunnel",
   level        = "JungleJapes",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
-    { id = "JapesLankySlope", logic = function() return ((state.handstand() and state.islanky()) or state.slope_resets()) end, bonusBarrel="MinigameType.BonusBarrel" },
+    { id = "JapesLankySlope", logic = function() return ((state.handstand() and state.lanky()) or state.slope_resets()) end, bonusBarrel="MinigameType.BonusBarrel" },
     { id = "JapesKasplatNearPaintingRoom", logic = function() return (not settings.kasplat_rando()) end },
     { id = "JapesKasplatNearLab", logic = function() return (not settings.kasplat_rando()) end },
     { id = "JapesMainEnemy_Storm0", logic = function() return true end },
@@ -429,7 +412,7 @@ M.regions["JapesBeyondCoconutGate2"] = {
   exits = {
     { dest = "JungleJapesStart", logic = function() return true end },
     { dest = "JungleJapesMain", logic = function() return true end },
-    { dest = "JapesUselessSlope", logic = function() return ((state.handstand() and state.islanky()) or state.CanPhase() or state.slope_resets()) end },
+    { dest = "JapesUselessSlope", logic = function() return ((state.handstand() and state.lanky()) or state.CanPhase() or state.slope_resets()) end },
     { dest = "BeyondRambiGate", logic = function() return (state.event("Rambi") or state.CanPhase() or state.CanSkew(true) or state.CanSkew(false)) end },
     { dest = "CrankyJapes", logic = function() return state.crankyAccess() end },
     { dest = "JapesBeyondFeatherGate", logic = function() return state.CanMoonkick() end },
@@ -441,7 +424,6 @@ M.regions["JapesUselessSlope"] = {
   display_name = [[Japes Useless Slope]],
   hint_region  = "StormyTunnel",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
   },
@@ -457,18 +439,17 @@ M.regions["BeyondRambiGate"] = {
   display_name = [[Beyond Rambi Gate]],
   hint_region  = "StormyTunnel",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "JapesBananaFairyRambiCave", logic = function() return state.camera() end },
     { id = "MelonCrate_Location01", logic = function() return true end },
-    { id = "Balloon003", logic = function() return (state.ischunky() and state.pineapple()) end },
-    { id = "Balloon009", logic = function() return (state.istiny() and state.feather()) end },
-    { id = "Balloon010", logic = function() return (state.ischunky() and state.pineapple()) end },
-    { id = "Balloon011", logic = function() return (state.ischunky() and state.pineapple()) end },
+    { id = "Balloon003", logic = function() return (state.chunky() and state.pineapple()) end },
+    { id = "Balloon009", logic = function() return (state.tiny() and state.feather()) end },
+    { id = "Balloon010", logic = function() return (state.chunky() and state.pineapple()) end },
+    { id = "Balloon011", logic = function() return (state.chunky() and state.pineapple()) end },
   },
   events = {
-    { id = "JapesChunkySwitch", logic = function() return (state.CanSlamSwitch("JungleJapes", 1) and state.ischunky() and state.barrels()) end },
+    { id = "JapesChunkySwitch", logic = function() return (state.CanSlamSwitch("JungleJapes", 1) and state.chunky() and state.barrels()) end },
   },
   exits = {
     { dest = "JapesBeyondCoconutGate2", logic = function() return true end },
@@ -481,12 +462,11 @@ M.regions["JapesLankyCave"] = {
   display_name = [[Japes Lanky Cave]],
   hint_region  = "CavesAndMines",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "JapesLankyFairyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.islanky()) end },
-    { id = "JapesBananaFairyLankyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.islanky() and state.camera()) end },
-    { id = "Balloon014", logic = function() return (state.islanky() and state.grape()) end },
+    { id = "JapesLankyFairyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.lanky()) end },
+    { id = "JapesBananaFairyLankyCave", logic = function() return ((((state.grape() or state.trombone() or state.adv_orange_usage()) and state.Slam()) or state.generalclips()) and state.lanky() and state.camera()) end },
+    { id = "Balloon014", logic = function() return (state.lanky() and state.grape()) end },
   },
   events = {
   },
@@ -500,10 +480,9 @@ M.regions["Mine"] = {
   display_name = [[Mine]],
   hint_region  = "CavesAndMines",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = -1,
   locations = {
-    { id = "Balloon000", logic = function() return (state.isdiddy() and (state.CanSlamSwitch("JungleJapes", 1) or state.CanPhase()) and state.peanut()) end },
+    { id = "Balloon000", logic = function() return (state.diddy() and (state.CanSlamSwitch("JungleJapes", 1) or state.CanPhase()) and state.peanut()) end },
     { id = "JapesMountainEnemy_Start0", logic = function() return true end },
     { id = "JapesMountainEnemy_Start1", logic = function() return true end },
     { id = "JapesMountainEnemy_Start2", logic = function() return true end },
@@ -511,9 +490,9 @@ M.regions["Mine"] = {
     { id = "JapesMountainEnemy_Start4", logic = function() return true end },
     { id = "JapesMountainEnemy_NearGateSwitch0", logic = function() return true end },
     { id = "JapesMountainEnemy_NearGateSwitch1", logic = function() return true end },
-    { id = "JapesMountainEnemy_HiLo", logic = function() return ((state.charge() and state.isdiddy()) or state.CanPhase()) end },
-    { id = "JapesMountainEnemy_Conveyor0", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase()) end },
-    { id = "JapesMountainEnemy_Conveyor1", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase()) end },
+    { id = "JapesMountainEnemy_HiLo", logic = function() return ((state.charge() and state.diddy()) or state.CanPhase()) end },
+    { id = "JapesMountainEnemy_Conveyor0", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase()) end },
+    { id = "JapesMountainEnemy_Conveyor1", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase()) end },
     { id = "KremKap_JapesMountainEnemy_Start0", logic = function() return state.camera() end },
     { id = "KremKap_JapesMountainEnemy_Start1", logic = function() return state.camera() end },
     { id = "KremKap_JapesMountainEnemy_Start2", logic = function() return state.camera() end },
@@ -521,16 +500,16 @@ M.regions["Mine"] = {
     { id = "KremKap_JapesMountainEnemy_Start4", logic = function() return state.camera() end },
     { id = "KremKap_JapesMountainEnemy_NearGateSwitch0", logic = function() return state.camera() end },
     { id = "KremKap_JapesMountainEnemy_NearGateSwitch1", logic = function() return state.camera() end },
-    { id = "KremKap_JapesMountainEnemy_HiLo", logic = function() return (state.camera() and ((state.charge() and state.isdiddy()) or state.CanPhase())) end },
-    { id = "KremKap_JapesMountainEnemy_Conveyor0", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase())) end },
-    { id = "KremKap_JapesMountainEnemy_Conveyor1", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.isdiddy()) or state.CanPhase())) end },
+    { id = "KremKap_JapesMountainEnemy_HiLo", logic = function() return (state.camera() and ((state.charge() and state.diddy()) or state.CanPhase())) end },
+    { id = "KremKap_JapesMountainEnemy_Conveyor0", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase())) end },
+    { id = "KremKap_JapesMountainEnemy_Conveyor1", logic = function() return (state.camera() and ((state.CanSlamSwitch("JungleJapes", 1) and state.diddy()) or state.CanPhase())) end },
   },
   events = {
-    { id = "JapesDiddySwitch2", logic = function() return (state.CanSlamSwitch("JungleJapes", 1) and (state.peanut() or state.monkey_maneuvers()) and state.isdiddy()) end },
+    { id = "JapesDiddySwitch2", logic = function() return (state.CanSlamSwitch("JungleJapes", 1) and (state.peanut() or state.monkey_maneuvers()) and state.diddy()) end },
   },
   exits = {
     { dest = "JapesHillTop", logic = function() return true end, exitShuffleId="Transitions.JapesMineToMain" },
-    { dest = "JapesMinecarts", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) or state.CanPhase()) and ((state.charge() and state.isdiddy()) or state.CanPhase() or (state.monkey_maneuvers() and state.isdiddy()))) end },
+    { dest = "JapesMinecarts", logic = function() return ((state.CanSlamSwitch("JungleJapes", 1) or state.CanPhase()) and ((state.charge() and state.diddy()) or state.CanPhase() or (state.monkey_maneuvers() and state.diddy()))) end },
   },
 }
 
@@ -539,7 +518,6 @@ M.regions["JapesMinecarts"] = {
   display_name = [[Japes Minecarts]],
   hint_region  = "CavesAndMines",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "JapesDiddyMinecarts", logic = function() return state.HasEnoughRaceCoins("JapesMinecarts", "diddy", true) end },
@@ -556,11 +534,10 @@ M.regions["JapesCatacomb"] = {
   display_name = [[Japes Catacomb]],
   hint_region  = "CavesAndMines",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
-    { id = "JapesChunkyUnderground", logic = function() return ((state.can_use_vines() and state.pineapple() and state.ischunky()) or (((state.twirl() and state.istiny()) or (state.can_use_vines() and (state.isdiddy() or state.istiny())) or (state.isdonkey() and (not state.isKrushaAdjacent("donkey")))) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase()) end },
-    { id = "JapesKasplatUnderground", logic = function() return ((not settings.kasplat_rando()) and ((state.can_use_vines() and state.pineapple() and state.ischunky()) or (state.can_use_vines() and (state.isdiddy() or state.istiny()) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase())) end },
+    { id = "JapesChunkyUnderground", logic = function() return ((state.can_use_vines() and state.pineapple() and state.chunky()) or (((state.twirl() and state.tiny()) or (state.can_use_vines() and (state.diddy() or state.tiny())) or (state.donkey() and (not state.isKrushaAdjacent("donkey")))) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase()) end },
+    { id = "JapesKasplatUnderground", logic = function() return ((not settings.kasplat_rando()) and ((state.can_use_vines() and state.pineapple() and state.chunky()) or (state.can_use_vines() and (state.diddy() or state.tiny()) and state.monkey_maneuvers() and settings.free_trade_items()) or state.CanPhase())) end },
   },
   events = {
   },
@@ -574,7 +551,6 @@ M.regions["JapesBossLobby"] = {
   display_name = [[Japes Boss Lobby]],
   hint_region  = "Bosses",
   level        = "JungleJapes",
-  tagbarrel    = true,
   deathwarp    = nil,
   locations = {
   },
@@ -590,7 +566,6 @@ M.regions["JapesBoss"] = {
   display_name = [[Japes Boss]],
   hint_region  = "Bosses",
   level        = "JungleJapes",
-  tagbarrel    = false,
   deathwarp    = nil,
   locations = {
     { id = "JapesKey", logic = function() return state.IsBossBeatable("JungleJapes") end },

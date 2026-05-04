@@ -89,13 +89,48 @@ ENUM_AS_STRING = {
 
 @dataclass
 class TranspileContext:
-    """Carries filename/source so error messages point back to the offending lambda."""
+    """Carries filename/source so error messages point back to the offending lambda.
+
+    `references`, when supplied by the caller, is populated as a side-effect with every
+    attribute / method / setting / event / item / enum-member name encountered. This
+    lets the generator cross-check against setting_map.py.
+    """
 
     filename: str = ""
     source: str = ""
     # Names introduced by the lambda (e.g. the parameter name) — references to these
     # should not be rewritten as state.X.
     bound_names: List[str] = field(default_factory=list)
+    references: Optional["AttrReferences"] = None
+
+
+class AttrReferences:
+    """Collects every name referenced inside transpiled lambdas, by category."""
+
+    def __init__(self) -> None:
+        self.state_attrs: set = set()      # l.<attr>           -> "donkey", "coconut", ...
+        self.state_methods: set = set()    # l.<method>(...)    -> "CanPhase", "CanSlamSwitch", ...
+        self.settings_attrs: set = set()   # l.settings.<opt>   -> "free_trade_items", ...
+        self.settings_lists: set = set()   # l.settings.<list_opt> seen in `in` -> "glitches_selected", ...
+        self.events: set = set()           # Events.X in l.Events
+        self.special_locs: set = set()     # Locations.X in l.SpecialLocationsReached
+        self.items: set = set()            # Items.X in ownedItems
+        # Enum-member references (Class.Member) — to validate against the enum's value space.
+        self.enum_members: dict = {}       # {enum_class: set(member_name, ...)}
+
+    def record_enum(self, cls: str, member: str) -> None:
+        self.enum_members.setdefault(cls, set()).add(member)
+
+    def merge(self, other: "AttrReferences") -> None:
+        self.state_attrs |= other.state_attrs
+        self.state_methods |= other.state_methods
+        self.settings_attrs |= other.settings_attrs
+        self.settings_lists |= other.settings_lists
+        self.events |= other.events
+        self.special_locs |= other.special_locs
+        self.items |= other.items
+        for cls, members in other.enum_members.items():
+            self.enum_members.setdefault(cls, set()).update(members)
 
 
 def transpile_lambda(node: ast.Lambda, ctx: Optional[TranspileContext] = None) -> str:
@@ -110,7 +145,7 @@ def transpile_lambda(node: ast.Lambda, ctx: Optional[TranspileContext] = None) -
             lineno=node.lineno,
         )
     bound = list(ctx.bound_names) + [a.arg for a in node.args.args]
-    inner = TranspileContext(filename=ctx.filename, source=ctx.source, bound_names=bound)
+    inner = TranspileContext(filename=ctx.filename, source=ctx.source, bound_names=bound, references=ctx.references)
     return _expr(node.body, inner)
 
 
@@ -175,6 +210,8 @@ def _attribute(node: ast.Attribute, ctx: TranspileContext) -> str:
 
     # Enum member: Foo.Bar where Foo is in ENUM_AS_STRING.
     if isinstance(val, ast.Name) and val.id in ENUM_AS_STRING:
+        if ctx.references is not None:
+            ctx.references.record_enum(val.id, node.attr)
         return f'"{node.attr}"'
 
     # l.settings.<opt>  -> settings.<opt>()
@@ -184,10 +221,28 @@ def _attribute(node: ast.Attribute, ctx: TranspileContext) -> str:
         and isinstance(val.value, ast.Name)
         and val.value.id in ctx.bound_names
     ):
+        if ctx.references is not None:
+            ctx.references.settings_attrs.add(node.attr)
         return f"settings.{node.attr}()"
 
     # l.<attr>
     if isinstance(val, ast.Name) and val.id in ctx.bound_names:
+        # Tag-anywhere collapse: archipelago/Logic.py forces tag_anywhere on, so
+        # `l.isdonkey` etc. always equal the corresponding ownership flag. Rewrite at
+        # transpile time so state.lua doesn't need to maintain duplicate `is<kong>` helpers.
+        ISX_ALIAS = {
+            "isdonkey": "donkey",
+            "isdiddy":  "diddy",
+            "islanky":  "lanky",
+            "istiny":   "tiny",
+            "ischunky": "chunky",
+        }
+        if node.attr in ISX_ALIAS:
+            base = ISX_ALIAS[node.attr]
+            if ctx.references is not None:
+                ctx.references.state_attrs.add(base)
+            return f"state.{base}()"
+
         # Special-cased "container" attributes that only make sense in `in`/Subscript context.
         # If we get here, they're being read directly — not supported.
         if node.attr in ("Events", "SpecialLocationsReached", "ColoredBananas", "settings"):
@@ -205,6 +260,8 @@ def _attribute(node: ast.Attribute, ctx: TranspileContext) -> str:
                 filename=ctx.filename,
                 lineno=node.lineno,
             )
+        if ctx.references is not None:
+            ctx.references.state_attrs.add(node.attr)
         return f"state.{node.attr}()"
 
     raise LambdaTranspileError(
@@ -232,6 +289,8 @@ def _call(node: ast.Call, ctx: TranspileContext) -> str:
         and isinstance(func.value, ast.Name)
         and func.value.id in ctx.bound_names
     ):
+        if ctx.references is not None:
+            ctx.references.state_methods.add(func.attr)
         return f"state.{func.attr}({', '.join(args_lua)})"
 
     # l.settings.method(args)  (rare but possible) -> settings.method(args)
@@ -242,6 +301,8 @@ def _call(node: ast.Call, ctx: TranspileContext) -> str:
         and isinstance(func.value.value, ast.Name)
         and func.value.value.id in ctx.bound_names
     ):
+        if ctx.references is not None:
+            ctx.references.settings_attrs.add(func.attr)
         return f"settings.{func.attr}({', '.join(args_lua)})"
 
     # Bare builtins: max(a,b), min(a,b), int(x), len(x)
@@ -362,6 +423,8 @@ def _membership(left: ast.AST, right: ast.AST, ctx: TranspileContext) -> str:
             and isinstance(left.value, ast.Name)
             and left.value.id == "Events"
         ):
+            if ctx.references is not None:
+                ctx.references.events.add(left.attr)
             return f'state.event("{left.attr}")'
         # Fall through: arbitrary expression as event name
         return f"state.event({_expr(left, ctx)})"
@@ -378,6 +441,8 @@ def _membership(left: ast.AST, right: ast.AST, ctx: TranspileContext) -> str:
             and isinstance(left.value, ast.Name)
             and left.value.id == "Locations"
         ):
+            if ctx.references is not None:
+                ctx.references.special_locs.add(left.attr)
             return f'state.special_loc("{left.attr}")'
         return f"state.special_loc({_expr(left, ctx)})"
 
@@ -388,6 +453,8 @@ def _membership(left: ast.AST, right: ast.AST, ctx: TranspileContext) -> str:
             and isinstance(left.value, ast.Name)
             and left.value.id == "Items"
         ):
+            if ctx.references is not None:
+                ctx.references.items.add(left.attr)
             return f'state.has_item("{left.attr}")'
         return f"state.has_item({_expr(left, ctx)})"
 
@@ -399,6 +466,8 @@ def _membership(left: ast.AST, right: ast.AST, ctx: TranspileContext) -> str:
         and isinstance(right.value.value, ast.Name)
         and right.value.value.id in ctx.bound_names
     ):
+        if ctx.references is not None:
+            ctx.references.settings_lists.add(right.attr)
         # Render as settings.<opt>_contains("Member")
         if isinstance(left, ast.Attribute) and isinstance(left.value, ast.Name):
             return f'settings.{right.attr}_contains("{left.attr}")'
@@ -435,6 +504,8 @@ def _subscript(node: ast.Subscript, ctx: TranspileContext) -> str:
         and isinstance(val.value.value, ast.Name)
         and val.value.value.id in ctx.bound_names
     ):
+        if ctx.references is not None:
+            ctx.references.settings_attrs.add(val.attr)
         idx = _expr(node.slice, ctx)
         return f"settings.{val.attr}({idx})"
 
