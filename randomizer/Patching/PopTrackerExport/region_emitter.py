@@ -23,7 +23,7 @@ from .lambda_to_lua import AttrReferences, LambdaTranspileError, TranspileContex
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 LOGIC_DIR = REPO_ROOT / "randomizer" / "LogicFiles"
-DEFAULT_OUT = Path(__file__).resolve().parent / "_spike_output" / "regions"
+DEFAULT_OUT = Path(__file__).resolve().parent / "out" / "regions"
 
 LOGIC_FILES = [
     "AngryAztec.py",

@@ -10,15 +10,23 @@ from pathlib import Path
 
 import lupa
 
-SPIKE_DIR = Path(__file__).resolve().parent / "_spike_output"
+EXPORT_DIR = Path(__file__).resolve().parent
+RUNTIME_DIR = EXPORT_DIR / "runtime"
+OUT_DIR = EXPORT_DIR / "out"
 
 
 def main() -> int:
     lua = lupa.LuaRuntime(unpack_returned_tuples=True)
-    # Make `require` find files relative to the spike output directory.
-    lua.execute(f"package.path = [[{SPIKE_DIR}/?.lua;{SPIKE_DIR}/?/init.lua]] .. ';' .. package.path")
-    # Capture Lua print() to stdout (lupa already maps it to Python; this is just to confirm).
-    script = (SPIKE_DIR / "test_reachability.lua").read_text()
+    # `require("graph")` / `require("state")` resolve from runtime/; per-level region
+    # files come from out/regions/. Both paths are added to Lua's search paths.
+    paths = ";".join([
+        f"{RUNTIME_DIR}/?.lua",
+        f"{RUNTIME_DIR}/?/init.lua",
+        f"{OUT_DIR}/?.lua",
+        f"{OUT_DIR}/?/init.lua",
+    ])
+    lua.execute(f"package.path = [[{paths}]] .. ';' .. package.path")
+    script = (RUNTIME_DIR / "test_reachability.lua").read_text()
     try:
         lua.execute(script)
     except lupa.LuaError as e:
