@@ -34,49 +34,44 @@ Gfx* drawScreenRect(Gfx* dl, int x1, int y1, int x2, int y2, int red, int green,
 	return dl;
 }
 
-Gfx *drawTriangleSeries(Gfx *dl, Vtx *vertex_write, short *coordinates, int red, int green, int blue, int point_count) {
-    // vertex_write must be a pointer to an array of {point_count} items
-    // coordinates must be a pointer to an array of {point_count} x and y coordinates
-    // Triangle series must be a convex polygon
-    // Point count cannot exceed 32 vertices
+Gfx *drawTriangleSeries(Gfx *dl, Vtx *vertex_write, short *coordinates,
+                         int red, int green, int blue, int point_count) {
     for (int i = 0; i < point_count; i++) {
-        // Coords
         vertex_write[i].v.ob[0] = coordinates[i << 1];
         vertex_write[i].v.ob[1] = coordinates[(i << 1) + 1];
         vertex_write[i].v.ob[2] = 0;
-        // Misc
         vertex_write[i].v.flag = 0;
         vertex_write[i].v.tc[0] = 0;
         vertex_write[i].v.tc[1] = 0;
-        // Color
         vertex_write[i].v.cn[0] = red;
         vertex_write[i].v.cn[1] = green;
         vertex_write[i].v.cn[2] = blue;
         vertex_write[i].v.cn[3] = 0xFF;
     }
-    __osWritebackDCache(vertex_write, sizeof(Vtx) * point_count);
+
     gDPPipeSync(dl++);
+    gSPTexture(dl++, 0, 0, 0, G_TX_RENDERTILE, G_OFF);
+    gSPClearGeometryMode(dl++, 0xFFFFFFFF);
+    gSPSetGeometryMode(dl++, G_SHADE | G_SHADING_SMOOTH);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
     gDPSetCombineMode(dl++, G_CC_SHADE, G_CC_SHADE);
     gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-    gSPClearGeometryMode(dl++, 0xFFFFFFFF);
-    gSPSetGeometryMode(dl++, G_SHADE | G_SHADING_SMOOTH);
-    gSPSegment(dl++, 0x0, 0x0);
-    gSPVertex(dl++, (int)(vertex_write) & 0x7FFFFFFF, point_count, 0);
+
+    gSPVertex(dl++, vertex_write, point_count, 0);
+
     int tri_count = point_count - 2;
     int offset_index = 0;
     while (tri_count > 0) {
-        // if (tri_count == 1) {
+        if (tri_count == 1) {
             gSP1Triangle(dl++, 0, offset_index + 1, offset_index + 2, 0);
             tri_count--;
             offset_index++;
-        // } else {
-        //     gSP2Triangles(dl++, 0, offset_index + 1, offset_index + 2, 0, 0, offset_index + 2, offset_index + 3, 0);
-        //     tri_count -= 2;
-        //     offset_index += 2;
-        // }
+        } else {
+            gSP2Triangles(dl++, 0, offset_index + 1, offset_index + 2, 0, 0, offset_index + 2, offset_index + 3, 0);
+            tri_count -= 2;
+            offset_index += 2;
+        }
     }
-    gDPPipeSync(dl++);
     return dl;
 }
 
@@ -146,7 +141,7 @@ void gameInit(void) {
 
 ROM_RODATA_NUM static const short barrel_types[3] = {0x1C, 0x86, 0x6B};
 void exitMinigame(const MinigameSignalStruct *data) {
-    if (data->exit_map == 0) {
+    if ((data->exit_map == 0) || (CurrentMap != data->main_map_id)) {
         ExitFromBonus();
     } else {
         initiateTransition(data->exit_map, 0);
@@ -155,9 +150,11 @@ void exitMinigame(const MinigameSignalStruct *data) {
 
 void gameExit(void) {
     // Exits the game. Call this for an exit from the game which does not yield the reward
-    if (game_exited) {
-        return;
-    }
+    if ((enable_reward) && (!in_story)) {
+    int b = 0;
+    int index = getSpawnerIndexOfResolvedBonus(&barrel_types, 3, &b);
+    resolveBonus(b, index, 7, 2.0f);
+}
     const MinigameSignalStruct *ref_data = getMinigameSlot();
     if (CurrentMap == ref_data->main_map_id) {
         if ((enable_reward) && (in_story)) {

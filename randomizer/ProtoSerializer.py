@@ -1576,6 +1576,39 @@ def _populate_fill_time_settings(spoiler_settings: Any, proto: fill_result_pb2.M
         except (TypeError, ValueError):
             proto.boss_bananas.append(0)
 
+    # Boss shuffle results
+    for kong in getattr(spoiler_settings, "boss_kongs", []) or []:
+        proto.boss_kongs.append(int(_enum_value(kong)))
+
+    for boss_map in getattr(spoiler_settings, "boss_maps", []) or []:
+        proto.boss_maps.append(int(_enum_value(boss_map)))
+
+    for kong in getattr(spoiler_settings, "kutout_kongs", []) or []:
+        proto.kutout_kongs.append(int(_enum_value(kong)))
+
+    for phase in getattr(spoiler_settings, "kko_phase_order", []) or []:
+        proto.kko_phase_order.append(int(phase))
+
+    for toe in getattr(spoiler_settings, "toe_order", []) or []:
+        proto.toe_order.append(int(toe))
+
+    # Hideout Helm room order
+    for slot in getattr(spoiler_settings, "helm_order", []) or []:
+        proto.helm_order.append(int(slot))
+
+    for kong in getattr(spoiler_settings, "kong_helm_order", []) or []:
+        proto.kong_helm_order.append(int(_enum_value(kong)))
+
+    helm_kong_flags = [
+        bool(getattr(spoiler_settings, "helm_donkey", False)),
+        bool(getattr(spoiler_settings, "helm_diddy", False)),
+        bool(getattr(spoiler_settings, "helm_lanky", False)),
+        bool(getattr(spoiler_settings, "helm_tiny", False)),
+        bool(getattr(spoiler_settings, "helm_chunky", False)),
+    ]
+    if any(helm_kong_flags):
+        proto.helm_kong_flags.extend(helm_kong_flags)
+
     # Switchsanity
     if getattr(spoiler_settings, "switchsanity_enabled", False):
         proto.switchsanity_enabled = True
@@ -1589,6 +1622,10 @@ def _populate_fill_time_settings(spoiler_settings: Any, proto: fill_result_pb2.M
         assignment.switch = int(_enum_value(switch_enum))
         assignment.kong = int(_enum_value(kong))
         assignment.switch_type = int(_enum_value(switch_type))
+
+    # Hash
+    for digit in getattr(spoiler_settings, "seed_hash", []) or []:
+        proto.seed_hash.append(int(digit))
 
 
 def _populate_misc_patching_data(spoiler: "Spoiler", proto: fill_result_pb2.MiscPatchingData) -> None:

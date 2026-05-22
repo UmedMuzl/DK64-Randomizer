@@ -240,6 +240,8 @@ base-hack/asm/minigames/*/objects.asm
 base-hack/instance_scripts_data.json
 base-hack/modelling/*.obj
 tools/dump_lanky.py
+tools/pack_lanky.py
+*.textproto
 *.apworld
 /dk64/
 *.rgba32
@@ -250,3 +252,6 @@ tools/dump_lanky.py
 *.ia8
 base-hack/modelling/*.obj
 dk64_full_item_table.txt
+randomizer/Patching/Library/ScriptOld.py
+batch_spoilers/
+base-hack/src/minigames/rom_cache.txt
